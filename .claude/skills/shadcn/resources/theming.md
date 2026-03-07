@@ -17,67 +17,67 @@ shadcn/ui now uses **OKLCH** (Oklch color space) for CSS variables, providing be
 
 ```css
 @layer base {
-  :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
+    :root {
+        --background: oklch(1 0 0);
+        --foreground: oklch(0.145 0 0);
 
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
+        --card: oklch(1 0 0);
+        --card-foreground: oklch(0.145 0 0);
 
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
+        --popover: oklch(1 0 0);
+        --popover-foreground: oklch(0.145 0 0);
 
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
+        --primary: oklch(0.205 0 0);
+        --primary-foreground: oklch(0.985 0 0);
 
-    --secondary: oklch(0.961 0 0);
-    --secondary-foreground: oklch(0.145 0 0);
+        --secondary: oklch(0.961 0 0);
+        --secondary-foreground: oklch(0.145 0 0);
 
-    --muted: oklch(0.961 0 0);
-    --muted-foreground: oklch(0.469 0 0);
+        --muted: oklch(0.961 0 0);
+        --muted-foreground: oklch(0.469 0 0);
 
-    --accent: oklch(0.961 0 0);
-    --accent-foreground: oklch(0.145 0 0);
+        --accent: oklch(0.961 0 0);
+        --accent-foreground: oklch(0.145 0 0);
 
-    --destructive: oklch(0.602 0.22 29);
-    --destructive-foreground: oklch(0.985 0 0);
+        --destructive: oklch(0.602 0.22 29);
+        --destructive-foreground: oklch(0.985 0 0);
 
-    --border: oklch(0.914 0 0);
-    --input: oklch(0.914 0 0);
-    --ring: oklch(0.205 0 0);
+        --border: oklch(0.914 0 0);
+        --input: oklch(0.914 0 0);
+        --ring: oklch(0.205 0 0);
 
-    --radius: 0.5rem;
-  }
+        --radius: 0.5rem;
+    }
 
-  .dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
+    .dark {
+        --background: oklch(0.145 0 0);
+        --foreground: oklch(0.985 0 0);
 
-    --card: oklch(0.145 0 0);
-    --card-foreground: oklch(0.985 0 0);
+        --card: oklch(0.145 0 0);
+        --card-foreground: oklch(0.985 0 0);
 
-    --popover: oklch(0.145 0 0);
-    --popover-foreground: oklch(0.985 0 0);
+        --popover: oklch(0.145 0 0);
+        --popover-foreground: oklch(0.985 0 0);
 
-    --primary: oklch(0.598 0.15 264);
-    --primary-foreground: oklch(0.205 0 0);
+        --primary: oklch(0.598 0.15 264);
+        --primary-foreground: oklch(0.205 0 0);
 
-    --secondary: oklch(0.175 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
+        --secondary: oklch(0.175 0 0);
+        --secondary-foreground: oklch(0.985 0 0);
 
-    --muted: oklch(0.175 0 0);
-    --muted-foreground: oklch(0.651 0 0);
+        --muted: oklch(0.175 0 0);
+        --muted-foreground: oklch(0.651 0 0);
 
-    --accent: oklch(0.175 0 0);
-    --accent-foreground: oklch(0.985 0 0);
+        --accent: oklch(0.175 0 0);
+        --accent-foreground: oklch(0.985 0 0);
 
-    --destructive: oklch(0.306 0.15 29);
-    --destructive-foreground: oklch(0.985 0 0);
+        --destructive: oklch(0.306 0.15 29);
+        --destructive-foreground: oklch(0.985 0 0);
 
-    --border: oklch(0.175 0 0);
-    --input: oklch(0.175 0 0);
-    --ring: oklch(0.48 0.18 264);
-  }
+        --border: oklch(0.175 0 0);
+        --input: oklch(0.175 0 0);
+        --ring: oklch(0.48 0.18 264);
+    }
 }
 ```
 
@@ -92,11 +92,12 @@ shadcn/ui now uses **OKLCH** (Oklch color space) for CSS variables, providing be
 - **H (Hue)**: 0 to 360 degrees (color wheel angle)
 
 **Examples:**
+
 ```css
---white: oklch(1 0 0);           /* Pure white */
---black: oklch(0 0 0);           /* Pure black */
---blue: oklch(0.598 0.15 264);   /* Vivid blue */
---red: oklch(0.602 0.22 29);     /* Vivid red */
+--white: oklch(1 0 0); /* Pure white */
+--black: oklch(0 0 0); /* Pure black */
+--blue: oklch(0.598 0.15 264); /* Vivid blue */
+--red: oklch(0.602 0.22 29); /* Vivid red */
 ```
 
 ## Dark Mode Implementation
@@ -186,13 +187,13 @@ export function ThemeToggle() {
 
 ```css
 :root {
-  --brand: oklch(0.5 0.2 200);           /* Brand blue */
-  --brand-foreground: oklch(1 0 0);      /* White text */
+    --brand: oklch(0.5 0.2 200); /* Brand blue */
+    --brand-foreground: oklch(1 0 0); /* White text */
 }
 
 .dark {
-  --brand: oklch(0.4 0.18 200);          /* Darker brand blue */
-  --brand-foreground: oklch(1 0 0);      /* White text */
+    --brand: oklch(0.4 0.18 200); /* Darker brand blue */
+    --brand-foreground: oklch(1 0 0); /* White text */
 }
 ```
 
@@ -200,7 +201,7 @@ export function ThemeToggle() {
 
 ```typescript
 // Add to button variants
-brand: "bg-brand text-brand-foreground hover:bg-brand/90"
+brand: "bg-brand text-brand-foreground hover:bg-brand/90";
 ```
 
 ### Color Palette Examples
@@ -213,13 +214,13 @@ brand: "bg-brand text-brand-foreground hover:bg-brand/90"
 
 /* Green palette */
 --green-50: oklch(0.97 0.02 140);
---green-500: oklch(0.60 0.20 145);
---green-900: oklch(0.30 0.15 150);
+--green-500: oklch(0.6 0.2 145);
+--green-900: oklch(0.3 0.15 150);
 
 /* Red palette */
 --red-50: oklch(0.97 0.02 25);
---red-500: oklch(0.60 0.22 29);
---red-900: oklch(0.30 0.15 30);
+--red-500: oklch(0.6 0.22 29);
+--red-900: oklch(0.3 0.15 30);
 ```
 
 ## Border Radius
@@ -228,22 +229,22 @@ Adjust global border radius:
 
 ```css
 :root {
-  --radius: 0.5rem; /* Default */
+    --radius: 0.5rem; /* Default */
 }
 
 /* More rounded */
 :root {
-  --radius: 0.75rem;
+    --radius: 0.75rem;
 }
 
 /* Less rounded */
 :root {
-  --radius: 0.25rem;
+    --radius: 0.25rem;
 }
 
 /* Square */
 :root {
-  --radius: 0;
+    --radius: 0;
 }
 ```
 
@@ -254,22 +255,23 @@ Adjust global border radius:
 ```typescript
 // components/ui/button.tsx
 const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-md text-sm font-medium...",
-  {
-    variants: {
-      variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        // Add custom variant with OKLCH
-        gradient: "bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700",
-        brand: "bg-brand text-brand-foreground hover:bg-brand/90",
-      },
-      size: {
-        default: "h-10 px-4 py-2",
-        // Add custom size
-        xs: "h-7 px-2 text-xs",
-      }
-    }
-  }
+    "font-medium... inline-flex items-center justify-center rounded-md text-sm",
+    {
+        variants: {
+            variant: {
+                default: "bg-primary text-primary-foreground hover:bg-primary/90",
+                // Add custom variant with OKLCH
+                gradient:
+                    "bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700",
+                brand: "bg-brand text-brand-foreground hover:bg-brand/90",
+            },
+            size: {
+                default: "h-10 px-4 py-2",
+                // Add custom size
+                xs: "h-7 px-2 text-xs",
+            },
+        },
+    },
 );
 ```
 
@@ -279,29 +281,29 @@ const buttonVariants = cva(
 
 ```css
 /* index.css */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap");
 
 @layer base {
-  :root {
-    --font-sans: 'Inter', system-ui, sans-serif;
-    --font-mono: 'Roboto Mono', monospace;
-  }
+    :root {
+        --font-sans: "Inter", system-ui, sans-serif;
+        --font-mono: "Roboto Mono", monospace;
+    }
 }
 ```
 
 ```css
 /* globals.css */
 @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-family: var(--font-sans), sans-serif;
-  }
-  code {
-    font-family: var(--font-mono), monospace;
-  }
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-family: var(--font-sans), sans-serif;
+    }
+    code {
+        font-family: var(--font-mono), monospace;
+    }
 }
 ```
 
@@ -310,26 +312,26 @@ const buttonVariants = cva(
 ```css
 /* Blue theme */
 .theme-blue {
-  --primary: oklch(0.533 0.22 260);
-  --primary-foreground: oklch(0.985 0 0);
-  --accent: oklch(0.7 0.15 250);
-  /* ... */
+    --primary: oklch(0.533 0.22 260);
+    --primary-foreground: oklch(0.985 0 0);
+    --accent: oklch(0.7 0.15 250);
+    /* ... */
 }
 
 /* Green theme */
 .theme-green {
-  --primary: oklch(0.45 0.20 145);
-  --primary-foreground: oklch(0.985 0 0);
-  --accent: oklch(0.7 0.15 140);
-  /* ... */
+    --primary: oklch(0.45 0.2 145);
+    --primary-foreground: oklch(0.985 0 0);
+    --accent: oklch(0.7 0.15 140);
+    /* ... */
 }
 
 /* Purple theme */
 .theme-purple {
-  --primary: oklch(0.58 0.22 300);
-  --primary-foreground: oklch(0.985 0 0);
-  --accent: oklch(0.7 0.15 290);
-  /* ... */
+    --primary: oklch(0.58 0.22 300);
+    --primary-foreground: oklch(0.985 0 0);
+    --accent: oklch(0.7 0.15 290);
+    /* ... */
 }
 ```
 
@@ -344,6 +346,7 @@ const buttonVariants = cva(
 If you have existing HSL values, convert them to OKLCH:
 
 ### Online Tools
+
 - Use https://oklch.com/ for HSL → OKLCH conversion
 - Tailwind CSS v4 color tools
 
@@ -368,6 +371,7 @@ hsl(142, 71%, 45%) → oklch(0.60 0.20 145)   /* Green */
 ## Browser Support
 
 OKLCH is supported in:
+
 - Chrome 111+
 - Safari 15.4+
 - Firefox 113+

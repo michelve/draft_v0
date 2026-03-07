@@ -130,12 +130,12 @@ Best practices for using Tailwind CSS v4 utility classes effectively.
 ### Card
 
 ```tsx
-<div className="bg-white rounded-lg shadow-md overflow-hidden">
-  <img src="/image.jpg" alt="" className="w-full h-48 object-cover" />
-  <div className="p-6">
-    <h2 className="text-xl font-semibold mb-2">Card Title</h2>
-    <p className="text-gray-600">Card content goes here.</p>
-  </div>
+<div className="overflow-hidden rounded-lg bg-white shadow-md">
+    <img src="/image.jpg" alt="" className="h-48 w-full object-cover" />
+    <div className="p-6">
+        <h2 className="mb-2 text-xl font-semibold">Card Title</h2>
+        <p className="text-gray-600">Card content goes here.</p>
+    </div>
 </div>
 ```
 
@@ -143,16 +143,16 @@ Best practices for using Tailwind CSS v4 utility classes effectively.
 
 ```tsx
 <div className="space-y-2">
-  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-    Email
-  </label>
-  <input
-    type="email"
-    id="email"
-    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-    placeholder="you@example.com"
-  />
-  <p className="text-sm text-gray-500">We'll never share your email.</p>
+    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+        Email
+    </label>
+    <input
+        type="email"
+        id="email"
+        className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        placeholder="you@example.com"
+    />
+    <p className="text-sm text-gray-500">We'll never share your email.</p>
 </div>
 ```
 
@@ -174,16 +174,16 @@ Best practices for using Tailwind CSS v4 utility classes effectively.
 
 ```tsx
 <div className="group">
-  <img src="/image.jpg" className="group-hover:opacity-75 transition-opacity" />
-  <p className="group-hover:text-blue-600">Hover the container</p>
+    <img src="/image.jpg" className="transition-opacity group-hover:opacity-75" />
+    <p className="group-hover:text-blue-600">Hover the container</p>
 </div>
 ```
 
 ### Disabled
 
 ```tsx
-<button className="disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-  Disabled Button
+<button className="disabled:cursor-not-allowed disabled:opacity-50" disabled>
+    Disabled Button
 </button>
 ```
 
@@ -194,15 +194,15 @@ Best practices for using Tailwind CSS v4 utility classes effectively.
 @import "tailwindcss";
 
 @media (prefers-color-scheme: dark) {
-  /* Or use class-based: .dark */
+    /* Or use class-based: .dark */
 }
 ```
 
 ```tsx
 // Usage (same as v3)
-<div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-  <h1 className="text-gray-900 dark:text-white">Title</h1>
-  <p className="text-gray-600 dark:text-gray-400">Description</p>
+<div className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <h1 className="text-gray-900 dark:text-white">Title</h1>
+    <p className="text-gray-600 dark:text-gray-400">Description</p>
 </div>
 ```
 
@@ -221,9 +221,9 @@ Best practices for using Tailwind CSS v4 utility classes effectively.
 ```css
 /* components/button.css */
 .btn-primary {
-  @apply px-4 py-2 bg-blue-600 text-white font-medium rounded-md;
-  @apply hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500;
-  @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply rounded-md bg-blue-600 px-4 py-2 font-medium text-white;
+    @apply hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:outline-none;
+    @apply disabled:cursor-not-allowed disabled:opacity-50;
 }
 ```
 
@@ -236,19 +236,19 @@ Best practices for using Tailwind CSS v4 utility classes effectively.
 @import "tailwindcss";
 
 @theme {
-  /* Custom colors */
-  --color-brand-50: #eff6ff;
-  --color-brand-100: #dbeafe;
-  --color-brand-900: #1e3a8a;
+    /* Custom colors */
+    --color-brand-50: #eff6ff;
+    --color-brand-100: #dbeafe;
+    --color-brand-900: #1e3a8a;
 
-  /* Custom spacing */
-  --spacing-128: 32rem;
+    /* Custom spacing */
+    --spacing-128: 32rem;
 
-  /* Custom fonts */
-  --font-family-sans: 'Inter', sans-serif;
+    /* Custom fonts */
+    --font-family-sans: "Inter", sans-serif;
 
-  /* Custom breakpoints */
-  --breakpoint-3xl: 1920px;
+    /* Custom breakpoints */
+    --breakpoint-3xl: 1920px;
 }
 ```
 
@@ -257,33 +257,30 @@ Best practices for using Tailwind CSS v4 utility classes effectively.
 ```javascript
 // tailwind.config.js (optional in v4)
 module.exports = {
-  content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-  theme: {
-    extend: {
-      colors: {
-        brand: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          900: '#1e3a8a',
-        }
-      },
-      spacing: {
-        '128': '32rem',
-      },
-      fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-      },
+    content: ["./app/**/*.{js,ts,jsx,tsx,mdx}", "./components/**/*.{js,ts,jsx,tsx,mdx}"],
+    theme: {
+        extend: {
+            colors: {
+                brand: {
+                    50: "#eff6ff",
+                    100: "#dbeafe",
+                    900: "#1e3a8a",
+                },
+            },
+            spacing: {
+                128: "32rem",
+            },
+            fontFamily: {
+                sans: ["Inter", "sans-serif"],
+            },
+        },
     },
-  },
-  plugins: [
-    // In Tailwind v4, use @plugin in CSS instead:
-    // @plugin "@tailwindcss/forms";
-    // @plugin "@tailwindcss/typography";
-  ],
-}
+    plugins: [
+        // In Tailwind v4, use @plugin in CSS instead:
+        // @plugin "@tailwindcss/forms";
+        // @plugin "@tailwindcss/typography";
+    ],
+};
 ```
 
 ## Plugins
@@ -325,26 +322,26 @@ Tailwind v4 delivers 3.5x faster full builds (~100ms) compared to v3 using moder
 ### Centered Content
 
 ```tsx
-<div className="flex items-center justify-center min-h-screen">
-  <div>Centered content</div>
+<div className="flex min-h-screen items-center justify-center">
+    <div>Centered content</div>
 </div>
 ```
 
 ### Sticky Header
 
 ```tsx
-<header className="sticky top-0 z-50 bg-white border-b">
-  <nav>Navigation</nav>
+<header className="sticky top-0 z-50 border-b bg-white">
+    <nav>Navigation</nav>
 </header>
 ```
 
 ### Grid Layout
 
 ```tsx
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-  {posts.map(post => (
-    <PostCard key={post.id} post={post} />
-  ))}
+<div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {posts.map((post) => (
+        <PostCard key={post.id} post={post} />
+    ))}
 </div>
 ```
 
@@ -369,6 +366,7 @@ Tailwind v4 delivers 3.5x faster full builds (~100ms) compared to v3 using moder
 ## Additional Resources
 
 For detailed information, see:
+
 - [Utility Patterns](resources/utility-patterns.md)
 - [Component Library](resources/component-library.md)
 - [Configuration Guide](resources/configuration.md)
