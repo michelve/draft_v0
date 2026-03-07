@@ -1,0 +1,29 @@
+{
+    "permissions": {
+        "allow": [],
+        "deny": []
+    },
+    "hooks": {},
+    "mcpServers": {
+        "context7": {
+            "command": "npx",
+            "args": ["-y", "@upstash/context7-mcp@latest"]
+        },
+        "playwright": {
+            "command": "npx",
+            "args": ["-y", "@playwright/mcp@latest"]
+        },
+        "figma": {
+            "command": "npx",
+            "args": ["-y", "figma-developer-mcp", "--figma-api-key=$FIGMA_API_KEY", "--stdio"]
+        },
+        "figma-console": {
+            "command": "npx",
+            "args": ["-y", "figma-console-mcp", "--figma-api-key=$FIGMA_API_KEY"]
+        },
+        "sequential-thinking": {
+            "command": "npx",
+            "args": ["-y", "@anthropic/sequential-thinking-mcp"]
+        }
+    }
+}
