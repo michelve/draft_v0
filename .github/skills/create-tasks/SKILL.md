@@ -9,6 +9,23 @@ Creates well-formed tasks that provide large amounts of contexts so that enginee
 
 Tasks should be created using the tools and documentation conventions in the project the skills is being applied to. If the conventions are not clear, ask the user to clarify and then document them.
 
+## Task Storage
+
+All tasks are stored in `.tasks/` with the following lifecycle directories:
+
+| Directory              | Purpose                           |
+| ---------------------- | --------------------------------- |
+| `.tasks/backlog/`      | Tasks not yet started             |
+| `.tasks/in-progress/`  | Tasks currently being worked on   |
+| `.tasks/done/`         | Completed tasks (passed `task-check`) |
+| `.tasks/cancelled/`    | Cancelled tasks (with reason)     |
+
+**File naming:** `NNNN-short-title.md` — zero-padded number, lowercase, hyphenated.
+
+To find the next number, check across **all** subdirectories for the highest `NNNN` prefix and increment by 1.
+
+When creating tasks, use `.tasks/_template.md` as the base and save them to `.tasks/backlog/`.
+
 ## What Engineers Need
 
 Every task must provide:
@@ -148,36 +165,40 @@ Every task MUST pass INVEST before creation:
 
 ## Task Template
 
+See `.tasks/_template.md` for the full template. Key sections:
+
 ```markdown
-## Deliverable: [What user/stakeholder sees]
+---
+status: backlog
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+---
 
-### Context
+# NNNN-short-title
 
-[Where this came from and why it matters. PRD reference, bug report, conversation summary—whatever helps engineer understand WHY. You MUST provide the specific file path or URL for any referenced files like a PRD of bug report - don't assume the engineer knows where things are stored]
+## Deliverable
+[What user/stakeholder sees when this is done]
 
-### Key Decisions and principles
+## Context and Motivation
+[WHY this matters — PRD path, bug report URL, conversation context]
 
+## Key Decisions
 - [Decision/Principle] — [rationale]
 
-### Delivers
+## Acceptance Criteria
+- [ ] Given [context], when [action], then [outcome]
 
-[Specific outcome in user terms]
+## Out of Scope
+[What this task does NOT cover]
 
-### Acceptance Criteria
+## Dependencies
+- [Dependency] — [why needed]
 
-- Given [context] When [action] Then [outcome]
+## Related Code
+- `path/to/file` — [what pattern to follow]
 
-### Dependencies
-
-- [What must exist first]
-
-### Related Code
-
-- `path/to/file` — [what pattern/code to use]
-
-### Verification
-
-[Specific commands/tests that prove it works]
+## Verification
+[Commands/tests that prove it works]
 ```
 
 ## Process

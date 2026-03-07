@@ -174,9 +174,11 @@ When breaking down a PRD, feature request, or bug report into actionable work:
 1. **Load skill** — Read `create-tasks` skill for full methodology
 2. **Discover** — Apply Example Mapping (Story → Rules → Examples → Questions)
 3. **Split** — If task fails splitting signals (>3-4 rules, multiple actors, AND in name), use SPIDR
-4. **Write** — Use the task template with Given-When-Then acceptance criteria
+4. **Write** — Use `.tasks/_template.md` and save to `.tasks/backlog/NNNN-short-title.md`
 5. **Validate** — Every task must pass INVEST: Independent, Negotiable, Valuable, Estimable, Small (≤1 day), Testable
-6. **Verify** — Before marking any task complete, invoke the `task-check` agent to verify against acceptance criteria (max 3 attempts)
+6. **Start** — Move task from `backlog/` to `in-progress/` when work begins
+7. **Verify** — Before marking complete, invoke `task-check` agent (max 3 attempts)
+8. **Complete** — On PASS, move task from `in-progress/` to `done/`
 
 ---
 

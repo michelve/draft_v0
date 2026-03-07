@@ -10,9 +10,27 @@ Creates well-formed tasks that provide large amounts of contexts so that enginee
 
 Tasks should be created using the tools and documentation conventions in the project the skills is being applied to. If the conventions are not clear, ask the user to clarify and then document them.
 
+## Task Storage
+
+All tasks are stored in `.tasks/` with the following lifecycle directories:
+
+| Directory             | Purpose                               |
+| --------------------- | ------------------------------------- |
+| `.tasks/backlog/`     | Tasks not yet started                 |
+| `.tasks/in-progress/` | Tasks currently being worked on       |
+| `.tasks/done/`        | Completed tasks (passed `task-check`) |
+| `.tasks/cancelled/`   | Cancelled tasks (with reason)         |
+
+**File naming:** `NNNN-short-title.md` — zero-padded number, lowercase, hyphenated.
+
+To find the next number, check across **all** subdirectories for the highest `NNNN` prefix and increment by 1.
+
+When creating tasks, use `.tasks/_template.md` as the base and save them to `.tasks/backlog/`.
+
 ## What Engineers Need
 
 Every task must provide:
+
 - What they're building (deliverable)
 - Why it matters (context)
 - Key decisions and principles they must follow
@@ -29,12 +47,12 @@ Every task must provide:
 
 🚨 **Never copy PRD bullets verbatim.** Use Example Mapping to transform them into executable specifications.
 
-| Card | What You Do |
-|------|-------------|
-| 🟡 **Story** | State the deliverable in one specific sentence |
-| 🔵 **Rules** | List every business rule/constraint (3-4 max per task) |
-| 🟢 **Examples** | For EACH rule: happy path + edge cases + error cases |
-| 🔴 **Questions** | Surface unknowns → resolve or spike first |
+| Card             | What You Do                                            |
+| ---------------- | ------------------------------------------------------ |
+| 🟡 **Story**     | State the deliverable in one specific sentence         |
+| 🔵 **Rules**     | List every business rule/constraint (3-4 max per task) |
+| 🟢 **Examples**  | For EACH rule: happy path + edge cases + error cases   |
+| 🔴 **Questions** | Surface unknowns → resolve or spike first              |
 
 **The Examples (🟢) ARE your acceptance criteria.** Write them in Given-When-Then format:
 
@@ -46,17 +64,18 @@ Then [expected outcome]
 
 **Edge case checklist** — for each rule, systematically consider:
 
-| Category | Check For |
-|----------|-----------|
-| **Input** | Empty, null, whitespace, boundaries, invalid format, special chars, unicode, too long |
-| **State** | Concurrent updates, race conditions, invalid sequences, already exists, doesn't exist |
-| **Errors** | Network failure, timeout, partial failure, invalid permissions, quota exceeded |
+| Category   | Check For                                                                             |
+| ---------- | ------------------------------------------------------------------------------------- |
+| **Input**  | Empty, null, whitespace, boundaries, invalid format, special chars, unicode, too long |
+| **State**  | Concurrent updates, race conditions, invalid sequences, already exists, doesn't exist |
+| **Errors** | Network failure, timeout, partial failure, invalid permissions, quota exceeded        |
 
 **Example:** PRD says "User can search products"
 
 Rules identified: (1) Search by title, (2) Pagination, (3) Empty state
 
 For Rule 1 alone, edge case thinking yields:
+
 - Given products exist → When search → Then results (happy path)
 - Given no matches → When search → Then empty set
 - Given empty search term → When submit → Then validation error OR all products? (🔴 Question!)
@@ -77,13 +96,13 @@ If ANY of these are true, **STOP and split**:
 
 When you need to split, use these techniques:
 
-| Technique | Split By | Example |
-|-----------|----------|---------|
-| **P**aths | Different user flows | "Pay with card" vs "Pay with PayPal" |
-| **I**nterfaces | Different UIs/platforms | "Desktop search" vs "Mobile search" |
-| **D**ata | Different data types | "Upload images" vs "Upload videos" |
-| **R**ules | Different business rules | "Basic validation" vs "Premium validation" |
-| **S**pikes | Unknown areas | "Research payment APIs" before "Implement payments" |
+| Technique      | Split By                 | Example                                             |
+| -------------- | ------------------------ | --------------------------------------------------- |
+| **P**aths      | Different user flows     | "Pay with card" vs "Pay with PayPal"                |
+| **I**nterfaces | Different UIs/platforms  | "Desktop search" vs "Mobile search"                 |
+| **D**ata       | Different data types     | "Upload images" vs "Upload videos"                  |
+| **R**ules      | Different business rules | "Basic validation" vs "Premium validation"          |
+| **S**pikes     | Unknown areas            | "Research payment APIs" before "Implement payments" |
 
 ### Vertical Slices Only
 
@@ -115,14 +134,14 @@ Every task must be a **vertical slice**—cutting through all layers needed for 
 
 🚨 **NEVER use these—they signal an epic, not a task:**
 
-| Pattern | Why It's Wrong |
-|---------|----------------|
-| "Full implementation of X" | Epic masquerading as task |
-| "Build the X system" | Too vague, no specific deliverable |
-| "Complete X feature" | Undefined scope |
-| "Implement X" (alone) | Missing specificity |
-| "X and Y" | Two tasks combined |
-| "Set up X infrastructure" | Horizontal slice |
+| Pattern                    | Why It's Wrong                     |
+| -------------------------- | ---------------------------------- |
+| "Full implementation of X" | Epic masquerading as task          |
+| "Build the X system"       | Too vague, no specific deliverable |
+| "Complete X feature"       | Undefined scope                    |
+| "Implement X" (alone)      | Missing specificity                |
+| "X and Y"                  | Two tasks combined                 |
+| "Set up X infrastructure"  | Horizontal slice                   |
 
 If you catch yourself writing one of these, **STOP and apply SPIDR**.
 
@@ -130,14 +149,14 @@ If you catch yourself writing one of these, **STOP and apply SPIDR**.
 
 Every task MUST pass INVEST before creation:
 
-| Criterion | Question | Fail = Split |
-|-----------|----------|--------------|
-| **I**ndependent | Does it deliver value alone? | Depends on other incomplete tasks |
-| **N**egotiable | Can scope be discussed? | Rigid, all-or-nothing |
-| **V**aluable | Does user/stakeholder see benefit? | Only technical benefit |
-| **E**stimable | Can you size it confidently? | "Uh... maybe 3 days?" |
-| **S**mall | Fits in 1 day? | More than 1 day |
-| **T**estable | Has concrete acceptance criteria? | Vague or missing criteria |
+| Criterion       | Question                           | Fail = Split                      |
+| --------------- | ---------------------------------- | --------------------------------- |
+| **I**ndependent | Does it deliver value alone?       | Depends on other incomplete tasks |
+| **N**egotiable  | Can scope be discussed?            | Rigid, all-or-nothing             |
+| **V**aluable    | Does user/stakeholder see benefit? | Only technical benefit            |
+| **E**stimable   | Can you size it confidently?       | "Uh... maybe 3 days?"             |
+| **S**mall       | Fits in 1 day?                     | More than 1 day                   |
+| **T**estable    | Has concrete acceptance criteria?  | Vague or missing criteria         |
 
 ### Hard Limits
 
@@ -147,29 +166,48 @@ Every task MUST pass INVEST before creation:
 
 ## Task Template
 
+See `.tasks/_template.md` for the full template. Key sections:
+
 ```markdown
-## Deliverable: [What user/stakeholder sees]
+---
+status: backlog
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+---
 
-### Context
-[Where this came from and why it matters. PRD reference, bug report, conversation summary—whatever helps engineer understand WHY. You MUST provide the specific file path or URL for any referenced files like a PRD of bug report - don't assume the engineer knows where things are stored]
+# NNNN-short-title
 
-### Key Decisions and principles
+## Deliverable
+
+[What user/stakeholder sees when this is done]
+
+## Context and Motivation
+
+[WHY this matters — PRD path, bug report URL, conversation context]
+
+## Key Decisions
+
 - [Decision/Principle] — [rationale]
 
-### Delivers
-[Specific outcome in user terms]
+## Acceptance Criteria
 
-### Acceptance Criteria
-- Given [context] When [action] Then [outcome]
+- [ ] Given [context], when [action], then [outcome]
 
-### Dependencies
-- [What must exist first]
+## Out of Scope
 
-### Related Code
-- `path/to/file` — [what pattern/code to use]
+[What this task does NOT cover]
 
-### Verification
-[Specific commands/tests that prove it works]
+## Dependencies
+
+- [Dependency] — [why needed]
+
+## Related Code
+
+- `path/to/file` — [what pattern to follow]
+
+## Verification
+
+[Commands/tests that prove it works]
 ```
 
 ## Process
@@ -188,12 +226,12 @@ Every task MUST pass INVEST before creation:
 
 Before finalizing any task, verify ALL of these:
 
-| Check | Question | If No |
-|-------|----------|-------|
-| **Size** | Is this ≤1 day of work? | Split using SPIDR |
-| **Name** | Is the title specific and action-oriented? | Rewrite using formula |
-| **Vertical** | Does it cut through all layers for ONE thing? | Restructure as vertical slice |
-| **INVEST** | Does it pass all 6 criteria? | Fix the failing criterion |
-| **Context** | Can an engineer implement without asking questions? | Add what's missing |
+| Check        | Question                                            | If No                         |
+| ------------ | --------------------------------------------------- | ----------------------------- |
+| **Size**     | Is this ≤1 day of work?                             | Split using SPIDR             |
+| **Name**     | Is the title specific and action-oriented?          | Rewrite using formula         |
+| **Vertical** | Does it cut through all layers for ONE thing?       | Restructure as vertical slice |
+| **INVEST**   | Does it pass all 6 criteria?                        | Fix the failing criterion     |
+| **Context**  | Can an engineer implement without asking questions? | Add what's missing            |
 
 🚨 **If the PRD says "full implementation" or similar, you MUST split it. Creating such a task is a critical failure.**
