@@ -149,6 +149,19 @@ Combines workflows 1–3 in order:
     ```
 5. **Quality gates** — Run all checks (see below)
 
+### 5. Record an Architecture Decision (ADR)
+
+When a task involves a significant decision (new dependency, architectural change, convention shift):
+
+1. **Check** — Does this qualify? See `docs/decisions/README.md` for "When to Write" criteria
+2. **Number** — Find the next available `NNNN` in `docs/decisions/`
+3. **Create** — Copy `docs/decisions/_template.md` to `docs/decisions/NNNN-short-title.md`
+4. **Write** — Fill in Context, Decision, Consequences (positive/negative/neutral)
+5. **Index** — Add the entry to the table in `docs/decisions/README.md`
+6. **Status** — Set to `proposed` if under discussion, `accepted` if already implemented
+
+See `adr.instructions.md` for full details.
+
 ---
 
 ## Quality Gates
