@@ -63,11 +63,15 @@ Route → Controller → Service → Repository → Prisma (SQLite)
 | Implementing Figma designs into code    | `figma-implement-design` |
 | UI accessibility/design review          | `web-design-guidelines`  |
 | Creating new skills/instructions        | `skill-developer`        |
+| Breaking down PRDs into tasks           | `create-tasks`           |
+| Verifying task completion               | `task-check`             |
+| Writing tests, edge cases, assertions   | `writing-tests`          |
+| Automatic semantic code review          | `automatic-code-review`  |
 
 ### When to use which agent
 
 | Task                                       | Agent                        |
-| ------------------------------------------ | ---------------------------- |
+| ------------------------------------------ | ---------------------------- | --- | -------------------------------------- | ------------------------- |
 | TypeScript / build errors                  | `auto-error-resolver`        |
 | Code review, architectural consistency     | `code-architecture-reviewer` |
 | Refactoring execution                      | `code-refactor-master`       |
@@ -76,6 +80,7 @@ Route → Controller → Service → Repository → Prisma (SQLite)
 | Review plan before implementation          | `plan-reviewer`              |
 | Deep technical / first-principles analysis | `principal-engineer`         |
 | Internet research, debugging solutions     | `web-research-specialist`    |
+| Verify task completion before finishing    | `task-check`                 |     | Semantic code review on modified files | `automatic-code-reviewer` |
 
 ---
 
@@ -161,6 +166,17 @@ When a task involves a significant decision (new dependency, architectural chang
 6. **Status** — Set to `proposed` if under discussion, `accepted` if already implemented
 
 See `adr.instructions.md` for full details.
+
+### 6. Create & Verify Tasks
+
+When breaking down a PRD, feature request, or bug report into actionable work:
+
+1. **Load skill** — Read `create-tasks` skill for full methodology
+2. **Discover** — Apply Example Mapping (Story → Rules → Examples → Questions)
+3. **Split** — If task fails splitting signals (>3-4 rules, multiple actors, AND in name), use SPIDR
+4. **Write** — Use the task template with Given-When-Then acceptance criteria
+5. **Validate** — Every task must pass INVEST: Independent, Negotiable, Valuable, Estimable, Small (≤1 day), Testable
+6. **Verify** — Before marking any task complete, invoke the `task-check` agent to verify against acceptance criteria (max 3 attempts)
 
 ---
 
