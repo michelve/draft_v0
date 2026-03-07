@@ -1,8 +1,6 @@
 ---
 name: tailwindcss
-displayName: Tailwind CSS
 description: Tailwind CSS v4 utility-first styling patterns including responsive design, dark mode, and custom configuration. Use when styling with Tailwind, adding utility classes, configuring Tailwind, setting up dark mode, or customizing the theme.
-version: 1.0.0
 ---
 
 # Tailwind CSS v4 Development Guidelines
@@ -130,12 +128,12 @@ Best practices for using Tailwind CSS v4 utility classes effectively.
 ### Card
 
 ```tsx
-<div className="bg-white rounded-lg shadow-md overflow-hidden">
-  <img src="/image.jpg" alt="" className="w-full h-48 object-cover" />
-  <div className="p-6">
-    <h2 className="text-xl font-semibold mb-2">Card Title</h2>
-    <p className="text-gray-600">Card content goes here.</p>
-  </div>
+<div className="overflow-hidden rounded-lg bg-white shadow-md">
+    <img src="/image.jpg" alt="" className="h-48 w-full object-cover" />
+    <div className="p-6">
+        <h2 className="mb-2 text-xl font-semibold">Card Title</h2>
+        <p className="text-gray-600">Card content goes here.</p>
+    </div>
 </div>
 ```
 
@@ -143,16 +141,16 @@ Best practices for using Tailwind CSS v4 utility classes effectively.
 
 ```tsx
 <div className="space-y-2">
-  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-    Email
-  </label>
-  <input
-    type="email"
-    id="email"
-    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-    placeholder="you@example.com"
-  />
-  <p className="text-sm text-gray-500">We'll never share your email.</p>
+    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+        Email
+    </label>
+    <input
+        type="email"
+        id="email"
+        className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        placeholder="you@example.com"
+    />
+    <p className="text-sm text-gray-500">We'll never share your email.</p>
 </div>
 ```
 
@@ -174,35 +172,46 @@ Best practices for using Tailwind CSS v4 utility classes effectively.
 
 ```tsx
 <div className="group">
-  <img src="/image.jpg" className="group-hover:opacity-75 transition-opacity" />
-  <p className="group-hover:text-blue-600">Hover the container</p>
+    <img src="/image.jpg" className="transition-opacity group-hover:opacity-75" />
+    <p className="group-hover:text-blue-600">Hover the container</p>
 </div>
 ```
 
 ### Disabled
 
 ```tsx
-<button className="disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-  Disabled Button
+<button className="disabled:cursor-not-allowed disabled:opacity-50" disabled>
+    Disabled Button
 </button>
 ```
 
 ## Dark Mode
 
-```css
-/* Tailwind v4: Configure in app/globals.css */
-@import "tailwindcss";
+This project uses **class-based** dark mode configured in `src/client/index.css`:
 
-@media (prefers-color-scheme: dark) {
-  /* Or use class-based: .dark */
+```css
+@custom-variant dark (&:is(.dark *));
+```
+
+Colors use **oklch** values via CSS variables:
+
+```css
+:root {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+}
+
+.dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
 }
 ```
 
 ```tsx
-// Usage (same as v3)
-<div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-  <h1 className="text-gray-900 dark:text-white">Title</h1>
-  <p className="text-gray-600 dark:text-gray-400">Description</p>
+// Use semantic token classes (not raw colors)
+<div className="bg-background text-foreground">
+    <h1 className="text-foreground">Title</h1>
+    <p className="text-muted-foreground">Description</p>
 </div>
 ```
 
@@ -221,69 +230,63 @@ Best practices for using Tailwind CSS v4 utility classes effectively.
 ```css
 /* components/button.css */
 .btn-primary {
-  @apply px-4 py-2 bg-blue-600 text-white font-medium rounded-md;
-  @apply hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500;
-  @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply rounded-md bg-blue-600 px-4 py-2 font-medium text-white;
+    @apply hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:outline-none;
+    @apply disabled:cursor-not-allowed disabled:opacity-50;
 }
 ```
 
 ## Configuration
 
-### Tailwind v4: CSS-First Configuration
+### CSS-First Configuration (This Project)
+
+This project uses Tailwind CSS v4 with **CSS-first configuration** — no `tailwind.config.js`. All theme config lives in `src/client/index.css`:
 
 ```css
-/* app/globals.css */
 @import "tailwindcss";
+@import "tw-animate-css";
 
-@theme {
-  /* Custom colors */
-  --color-brand-50: #eff6ff;
-  --color-brand-100: #dbeafe;
-  --color-brand-900: #1e3a8a;
+@custom-variant dark (&:is(.dark *));
 
-  /* Custom spacing */
-  --spacing-128: 32rem;
-
-  /* Custom fonts */
-  --font-family-sans: 'Inter', sans-serif;
-
-  /* Custom breakpoints */
-  --breakpoint-3xl: 1920px;
+@theme inline {
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-destructive: var(--destructive);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
 }
 ```
 
-### Tailwind v3 Config (Still Supported)
+Colors are defined as **oklch** CSS variables:
 
-```javascript
-// tailwind.config.js (optional in v4)
-module.exports = {
-  content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-  theme: {
-    extend: {
-      colors: {
-        brand: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          900: '#1e3a8a',
-        }
-      },
-      spacing: {
-        '128': '32rem',
-      },
-      fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-      },
-    },
-  },
-  plugins: [
-    // In Tailwind v4, use @plugin in CSS instead:
-    // @plugin "@tailwindcss/forms";
-    // @plugin "@tailwindcss/typography";
-  ],
+```css
+:root {
+    --radius: 0.625rem;
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    /* ... */
 }
+```
+
+The Vite plugin handles Tailwind integration:
+
+```typescript
+// vite.config.ts
+import tailwindcss from "@tailwindcss/vite";
+// ...
+plugins: [tailwindcss() /* ... */];
 ```
 
 ## Plugins
@@ -310,41 +313,39 @@ npm install @tailwindcss/container-queries
 
 ## Performance
 
-### Automatic Content Detection
+### Build Integration
 
-Tailwind v4 automatically detects and scans all template files - no `content` configuration needed.
+This project uses the `@tailwindcss/vite` plugin for optimal build performance. Tailwind v4 automatically detects and scans all template files — no `content` configuration needed.
 
 ### Build Performance
 
 Tailwind v4 delivers 3.5x faster full builds (~100ms) compared to v3 using modern CSS features like `@property` and `color-mix()`.
-
-**Browser Requirements**: Safari 16.4+, Chrome 111+, Firefox 128+
 
 ## Common Patterns
 
 ### Centered Content
 
 ```tsx
-<div className="flex items-center justify-center min-h-screen">
-  <div>Centered content</div>
+<div className="flex min-h-screen items-center justify-center">
+    <div>Centered content</div>
 </div>
 ```
 
 ### Sticky Header
 
 ```tsx
-<header className="sticky top-0 z-50 bg-white border-b">
-  <nav>Navigation</nav>
+<header className="sticky top-0 z-50 border-b bg-white">
+    <nav>Navigation</nav>
 </header>
 ```
 
 ### Grid Layout
 
 ```tsx
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-  {posts.map(post => (
-    <PostCard key={post.id} post={post} />
-  ))}
+<div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {posts.map((post) => (
+        <PostCard key={post.id} post={post} />
+    ))}
 </div>
 ```
 
@@ -369,6 +370,7 @@ Tailwind v4 delivers 3.5x faster full builds (~100ms) compared to v3 using moder
 ## Additional Resources
 
 For detailed information, see:
+
 - [Utility Patterns](resources/utility-patterns.md)
 - [Component Library](resources/component-library.md)
 - [Configuration Guide](resources/configuration.md)

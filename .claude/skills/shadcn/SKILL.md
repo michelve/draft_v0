@@ -96,11 +96,13 @@ This creates `components.json` with your configuration:
 
 shadcn/ui components require:
 
-- **React** (18+)
-- **Tailwind CSS** (3.0+)
-- **Primitives**: Radix UI OR Base UI (depending on your choice)
+- **React** (18+ / 19)
+- **Tailwind CSS** (4.0+) with CSS-first configuration
+- **Primitives**: `radix-ui` flat package (v1.4+)
 - **class-variance-authority** (for variant styling)
 - **clsx** and **tailwind-merge** (for class composition)
+- **tw-animate-css** (for animation utilities)
+- **lucide-react** (for icons)
 
 ## Component Architecture
 
@@ -108,17 +110,19 @@ shadcn/ui components require:
 
 ```
 src/
-├── components/
-│   ├── ui/              # shadcn components
-│   │   ├── button.tsx
-│   │   ├── card.tsx
-│   │   └── dialog.tsx
-│   └── [custom]/        # your composed components
-│       └── user-card.tsx
-├── lib/
-│   └── utils.ts         # cn() utility
-└── app/
-    └── page.tsx
+├── client/
+│   ├── components/
+│   │   ├── ui/              # shadcn components
+│   │   │   ├── button.tsx
+│   │   │   ├── card.tsx
+│   │   │   └── dialog.tsx
+│   │   └── [custom]/        # your composed components
+│   │       └── user-card.tsx
+│   ├── lib/
+│   │   └── utils.ts         # cn() utility
+│   ├── routes/            # TanStack Router file-based routes
+│   └── index.css          # Tailwind v4 + theme (oklch)
+```
 ```
 
 ### The `cn()` Utility
@@ -144,20 +148,21 @@ This allows you to:
 
 ### 1. Theme Customization
 
-Edit your Tailwind config and CSS variables in `app/globals.css`:
+Edit CSS variables in `src/client/index.css`. This project uses **oklch** color format:
 
 ```css
 @layer base {
     :root {
-        --background: 0 0% 100%;
-        --foreground: 222.2 84% 4.9%;
-        --primary: 221.2 83.2% 53.3%;
+        --background: oklch(1 0 0);
+        --foreground: oklch(0.145 0 0);
+        --primary: oklch(0.205 0 0);
+        --primary-foreground: oklch(0.985 0 0);
         /* ... more variables */
     }
 
     .dark {
-        --background: 222.2 84% 4.9%;
-        --foreground: 210 40% 98%;
+        --background: oklch(0.145 0 0);
+        --foreground: oklch(0.985 0 0);
         /* ... dark mode overrides */
     }
 }
@@ -292,7 +297,7 @@ import {
     {
         "compilerOptions": {
             "paths": {
-                "@/*": ["./src/*"]
+                "@/*": ["./src/client/*"]
             }
         }
     }
@@ -300,9 +305,9 @@ import {
 
 ### Style Conflicts
 
-- Ensure Tailwind CSS is properly configured
-- Check that `globals.css` is imported in your root layout
-- Verify CSS variable names match between components and theme
+- Ensure Tailwind CSS v4 is properly configured via `@tailwindcss/vite` plugin
+- Check that `src/client/index.css` is imported in your root layout
+- Verify CSS variables use oklch format and names match between components and theme
 
 ### Missing Dependencies
 
@@ -333,6 +338,8 @@ Refer to the following resource files for detailed guidance:
 - `resources/setup-guide.md` - Step-by-step project initialization
 - `resources/component-catalog.md` - Complete component reference
 - `resources/customization-guide.md` - Theming and variant patterns
+- `resources/form-patterns.md` - Advanced form patterns with react-hook-form
+- `resources/theming.md` - Theming and OKLCH color customization
 - `resources/migration-guide.md` - Upgrading from other UI libraries
 
 ## Examples

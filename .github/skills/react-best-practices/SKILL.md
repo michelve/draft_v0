@@ -127,3 +127,5 @@ Each rule file contains:
 ## Full Compiled Document
 
 For the complete guide with all rules expanded: `AGENTS.md`
+
+For the full reference document: `references/react-best-practices-reference.md`

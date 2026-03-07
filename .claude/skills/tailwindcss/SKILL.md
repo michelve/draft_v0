@@ -1,8 +1,6 @@
 ---
 name: tailwindcss
-displayName: Tailwind CSS
 description: Tailwind CSS v4 utility-first styling patterns including responsive design, dark mode, and custom configuration. Use when styling with Tailwind, adding utility classes, configuring Tailwind, setting up dark mode, or customizing the theme.
-version: 1.0.0
 ---
 
 # Tailwind CSS v4 Development Guidelines
@@ -189,20 +187,31 @@ Best practices for using Tailwind CSS v4 utility classes effectively.
 
 ## Dark Mode
 
-```css
-/* Tailwind v4: Configure in app/globals.css */
-@import "tailwindcss";
+This project uses **class-based** dark mode configured in `src/client/index.css`:
 
-@media (prefers-color-scheme: dark) {
-    /* Or use class-based: .dark */
+```css
+@custom-variant dark (&:is(.dark *));
+```
+
+Colors use **oklch** values via CSS variables:
+
+```css
+:root {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+}
+
+.dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
 }
 ```
 
 ```tsx
-// Usage (same as v3)
-<div className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-    <h1 className="text-gray-900 dark:text-white">Title</h1>
-    <p className="text-gray-600 dark:text-gray-400">Description</p>
+// Use semantic token classes (not raw colors)
+<div className="bg-background text-foreground">
+    <h1 className="text-foreground">Title</h1>
+    <p className="text-muted-foreground">Description</p>
 </div>
 ```
 
@@ -229,58 +238,55 @@ Best practices for using Tailwind CSS v4 utility classes effectively.
 
 ## Configuration
 
-### Tailwind v4: CSS-First Configuration
+### CSS-First Configuration (This Project)
+
+This project uses Tailwind CSS v4 with **CSS-first configuration** — no `tailwind.config.js`. All theme config lives in `src/client/index.css`:
 
 ```css
-/* app/globals.css */
 @import "tailwindcss";
+@import "tw-animate-css";
 
-@theme {
-    /* Custom colors */
-    --color-brand-50: #eff6ff;
-    --color-brand-100: #dbeafe;
-    --color-brand-900: #1e3a8a;
+@custom-variant dark (&:is(.dark *));
 
-    /* Custom spacing */
-    --spacing-128: 32rem;
-
-    /* Custom fonts */
-    --font-family-sans: "Inter", sans-serif;
-
-    /* Custom breakpoints */
-    --breakpoint-3xl: 1920px;
+@theme inline {
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-destructive: var(--destructive);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
 }
 ```
 
-### Tailwind v3 Config (Still Supported)
+Colors are defined as **oklch** CSS variables:
 
-```javascript
-// tailwind.config.js (optional in v4)
-module.exports = {
-    content: ["./app/**/*.{js,ts,jsx,tsx,mdx}", "./components/**/*.{js,ts,jsx,tsx,mdx}"],
-    theme: {
-        extend: {
-            colors: {
-                brand: {
-                    50: "#eff6ff",
-                    100: "#dbeafe",
-                    900: "#1e3a8a",
-                },
-            },
-            spacing: {
-                128: "32rem",
-            },
-            fontFamily: {
-                sans: ["Inter", "sans-serif"],
-            },
-        },
-    },
-    plugins: [
-        // In Tailwind v4, use @plugin in CSS instead:
-        // @plugin "@tailwindcss/forms";
-        // @plugin "@tailwindcss/typography";
-    ],
-};
+```css
+:root {
+    --radius: 0.625rem;
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    /* ... */
+}
+```
+
+The Vite plugin handles Tailwind integration:
+
+```typescript
+// vite.config.ts
+import tailwindcss from "@tailwindcss/vite";
+// ...
+plugins: [tailwindcss(), /* ... */]
 ```
 
 ## Plugins
@@ -307,15 +313,13 @@ npm install @tailwindcss/container-queries
 
 ## Performance
 
-### Automatic Content Detection
+### Build Integration
 
-Tailwind v4 automatically detects and scans all template files - no `content` configuration needed.
+This project uses the `@tailwindcss/vite` plugin for optimal build performance. Tailwind v4 automatically detects and scans all template files — no `content` configuration needed.
 
 ### Build Performance
 
 Tailwind v4 delivers 3.5x faster full builds (~100ms) compared to v3 using modern CSS features like `@property` and `color-mix()`.
-
-**Browser Requirements**: Safari 16.4+, Chrome 111+, Firefox 128+
 
 ## Common Patterns
 

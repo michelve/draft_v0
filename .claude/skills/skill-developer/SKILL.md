@@ -155,7 +155,7 @@ The actual guidance, documentation, patterns, examples
 
 ### Step 2: Add to skill-rules.json
 
-See [SKILL_RULES_REFERENCE.md](SKILL_RULES_REFERENCE.md) for complete schema.
+See [SKILL_RULES_REFERENCE.md](resources/SKILL_RULES_REFERENCE.md) for complete schema.
 
 **Basic Template:**
 
@@ -317,7 +317,7 @@ When creating a new skill, verify:
 
 For detailed information on specific topics, see:
 
-### [TRIGGER_TYPES.md](TRIGGER_TYPES.md)
+### [TRIGGER_TYPES.md](resources/TRIGGER_TYPES.md)
 
 Complete guide to all trigger types:
 
@@ -328,7 +328,7 @@ Complete guide to all trigger types:
 - Best practices and examples for each
 - Common pitfalls and testing strategies
 
-### [SKILL_RULES_REFERENCE.md](SKILL_RULES_REFERENCE.md)
+### [SKILL_RULES_REFERENCE.md](resources/SKILL_RULES_REFERENCE.md)
 
 Complete skill-rules.json schema:
 
@@ -338,7 +338,7 @@ Complete skill-rules.json schema:
 - Complete domain skill example
 - Validation guide and common errors
 
-### [HOOK_MECHANISMS.md](HOOK_MECHANISMS.md)
+### [HOOK_MECHANISMS.md](resources/HOOK_MECHANISMS.md)
 
 Deep dive into hook internals:
 
@@ -348,7 +348,7 @@ Deep dive into hook internals:
 - Session state management
 - Performance considerations
 
-### [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+### [TROUBLESHOOTING.md](resources/TROUBLESHOOTING.md)
 
 Comprehensive debugging guide:
 
@@ -358,7 +358,7 @@ Comprehensive debugging guide:
 - Hook not executing at all
 - Performance issues
 
-### [PATTERNS_LIBRARY.md](PATTERNS_LIBRARY.md)
+### [PATTERNS_LIBRARY.md](resources/PATTERNS_LIBRARY.md)
 
 Ready-to-use pattern collection:
 
@@ -368,7 +368,7 @@ Ready-to-use pattern collection:
 - Organized by use case
 - Copy-paste ready
 
-### [ADVANCED.md](ADVANCED.md)
+### [ADVANCED.md](resources/ADVANCED.md)
 
 Future enhancements and ideas:
 
@@ -397,7 +397,7 @@ Future enhancements and ideas:
 - **File Paths**: Location-based activation
 - **Content**: Technology-specific detection
 
-See [TRIGGER_TYPES.md](TRIGGER_TYPES.md) for complete details.
+See [TRIGGER_TYPES.md](resources/TRIGGER_TYPES.md) for complete details.
 
 ### Enforcement
 
@@ -435,7 +435,7 @@ cat <<'EOF' | npx tsx .claude/hooks/skill-verification-guard.ts
 EOF
 ```
 
-See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for complete debugging guide.
+See [TROUBLESHOOTING.md](resources/TROUBLESHOOTING.md) for complete debugging guide.
 
 ---
 
