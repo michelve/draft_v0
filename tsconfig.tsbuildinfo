@@ -1,0 +1,1 @@
+{"root":["./src/client/main.tsx","./src/client/routetree.gen.ts","./src/client/components/ui/button.tsx","./src/client/lib/query-client.ts","./src/client/lib/utils.ts","./src/client/routes/__root.tsx","./src/client/routes/index.tsx","./vite.config.ts"],"version":"5.9.3"}

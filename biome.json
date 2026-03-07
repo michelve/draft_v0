@@ -85,16 +85,36 @@
         }
     },
     "files": {
-        "includes": ["src/**", "*.json", "*.js", "*.ts", "*.tsx", "*.css", "!**/*.gen.ts"],
+        "includes": [
+            "src/**",
+            "*.json",
+            "*.js",
+            "*.ts",
+            "*.tsx",
+            "*.css",
+            "!**/*.gen.ts",
+            "!**/*.gen.js"
+        ],
         "ignoreUnknown": true
     },
     "overrides": [
         {
             "includes": ["src/client/components/ui/**"],
+            "formatter": {
+                "enabled": false
+            },
+            "assist": {
+                "actions": {
+                    "source": {
+                        "organizeImports": "off"
+                    }
+                }
+            },
             "linter": {
                 "rules": {
                     "style": {
-                        "noNonNullAssertion": "off"
+                        "noNonNullAssertion": "off",
+                        "useImportType": "off"
                     },
                     "suspicious": {
                         "noExplicitAny": "off"
