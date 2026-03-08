@@ -1,3 +1,9 @@
+exclude_paths:
+    - commitlint.config.js
+    - eslint.config.js
+    - vite.config.ts
+    - playwright.config.ts
+    - biome.json
 runtimes:
     - node@22.2.0
     - python@3.11.11
