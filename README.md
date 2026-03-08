@@ -1,10 +1,10 @@
+# Draft v0
+
+**Ship faster. Build smarter.** Express scaffold built for modern teams. AI-powered workflows turn design into code, automate boring tasks, and enforce your team's conventions automatically. No more context-switching between Figma and code—no more inconsistent implementations.
+
 [![Dependabot Updates](https://github.com/michelve/draft_v0/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/michelve/draft_v0/actions/workflows/dependabot/dependabot-updates)
 
 [![E2E Tests](https://github.com/michelve/draft_v0/actions/workflows/e2e.yml/badge.svg)](https://github.com/michelve/draft_v0/actions/workflows/e2e.yml)
-
-# Draft v0
-
-A full-stack React 19 + Express scaffold with AI-powered development workflows. Ships with 15 skills, 8 agents, and 11 prompt templates that turn your AI assistant into a domain expert — producing code that follows your project's conventions on the first try.
 
 ## Why Draft v0?
 
