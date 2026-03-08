@@ -146,6 +146,14 @@ pnpm lint           # Zero ESLint errors
 pnpm build          # Clean production build
 ```
 
+## Security
+
+See [SECURITY.md](SECURITY.md) for how to report vulnerabilities. Please use GitHub Private Vulnerability Reporting — do not open public issues for security concerns.
+
+## Code of Conduct
+
+This project follows the [Contributor Covenant v2.1](CODE_OF_CONDUCT.md). By participating, you agree to uphold these standards. Report violations via a [GitHub Issue](https://github.com/michelve/draft_v0/issues).
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
