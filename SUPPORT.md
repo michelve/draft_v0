@@ -6,14 +6,14 @@ This document explains where to get help with Draft v0 and what to expect when y
 
 Check these resources first — your answer is likely already there:
 
-| Resource | What's covered |
-| -------- | -------------- |
-| [Getting Started](docs/guides/getting-started.md) | Installation, prerequisites, first run |
-| [Project Structure](docs/guides/project-structure.md) | Architecture and directory layout |
-| [Skills & Agents](docs/guides/skills-and-agents.md) | AI ecosystem reference |
-| [Tasks Workflow](docs/guides/tasks-workflow.md) | File-based task management |
-| [Figma Integration](docs/guides/figma-integration.md) | Design-to-code pipeline setup |
-| [Architecture Decisions](docs/guides/architecture-decisions.md) | Why things are built the way they are |
+| Resource                                                        | What's covered                         |
+| --------------------------------------------------------------- | -------------------------------------- |
+| [Getting Started](docs/guides/getting-started.md)               | Installation, prerequisites, first run |
+| [Project Structure](docs/guides/project-structure.md)           | Architecture and directory layout      |
+| [Skills & Agents](docs/guides/skills-and-agents.md)             | AI ecosystem reference                 |
+| [Tasks Workflow](docs/guides/tasks-workflow.md)                 | File-based task management             |
+| [Figma Integration](docs/guides/figma-integration.md)           | Design-to-code pipeline setup          |
+| [Architecture Decisions](docs/guides/architecture-decisions.md) | Why things are built the way they are  |
 
 ## Where to Get Help
 

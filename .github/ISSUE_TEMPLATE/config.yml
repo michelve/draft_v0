@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: "💬 Question or Discussion"
+    url: https://github.com/michelve/draft_v0/discussions
+    about: Ask how-to questions, share ideas, or get feedback. Discussions are searchable and help future users too.
+
+  - name: "🔒 Security Vulnerability"
+    url: https://github.com/michelve/draft_v0/security/advisories/new
+    about: Report security issues privately. Do NOT open a public issue for vulnerabilities.
+
+  - name: "📚 Documentation"
+    url: https://github.com/michelve/draft_v0/tree/main/docs/guides
+    about: Read the guides before opening an issue — your answer may already be there.

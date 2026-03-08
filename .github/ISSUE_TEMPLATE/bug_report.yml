@@ -1,0 +1,117 @@
+name: "🐛 Bug Report"
+description: Something is broken or behaving incorrectly.
+title: "fix: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Fill in as much detail as you can — it speeds up the fix.
+
+        **Security vulnerability?** Use [GitHub Private Vulnerability Reporting](https://github.com/michelve/draft_v0/security/advisories/new) instead.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected Area
+      description: Which part of the project is this related to?
+      options:
+        - Frontend (React / TanStack / Tailwind)
+        - Backend (Express / API routes)
+        - Database (Prisma / schema)
+        - Build / Tooling (Vite / TypeScript / Biome)
+        - AI Skills / Agents
+        - Figma Integration
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of the bug.
+      placeholder: "When I do X, Y happens instead of Z."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Exact steps to reproduce the behavior.
+      placeholder: |
+        1. Clone the repo and run `pnpm install`
+        2. Run `pnpm dev`
+        3. Navigate to ...
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should have happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened? Include any error messages or stack traces.
+      render: shell
+    validations:
+      required: true
+
+  - type: input
+    id: node_version
+    attributes:
+      label: Node.js Version
+      description: Run `node --version`
+      placeholder: "v20.x.x"
+    validations:
+      required: true
+
+  - type: input
+    id: pnpm_version
+    attributes:
+      label: pnpm Version
+      description: Run `pnpm --version`
+      placeholder: "9.x.x"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Screenshots, logs, or anything else that might help.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Before Submitting
+      options:
+        - label: I searched existing issues and this is not a duplicate
+          required: true
+        - label: I checked the [documentation](https://github.com/michelve/draft_v0/tree/main/docs/guides) and could not find an answer
+          required: true
+        - label: This is not a security vulnerability (those go to [Private Reporting](https://github.com/michelve/draft_v0/security/advisories/new))
+          required: true
