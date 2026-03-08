@@ -91,7 +91,7 @@ Domain-specific knowledge that teaches AI assistants your project's patterns:
 | **Backend**  | nodejs, prisma, route-tester                                               |
 | **Workflow** | create-tasks, task-check, writing-tests, automatic-code-review             |
 | **Design**   | figma, figma-implement-design                                              |
-| **Meta**     | skill-developer                                                            |
+| **Meta**     | skill-creator                                                              |
 
 ### Agents (8)
 
@@ -108,9 +108,9 @@ Specialized workers for autonomous multi-step tasks:
 | refactor-planner           | Create refactoring plans with risk assessment  |
 | web-research-specialist    | Research solutions across the internet         |
 
-### Prompt Templates (11)
+### Prompt Templates (12)
 
-One-click workflows: `build-page`, `figma-to-code`, `commit`, `pr`, `gh-new-pr`, `gh-debug-issue`, `gh-fix-ci`, `gh-pr-comments`, `make-moves`, `changeset`, `ralph-plan`.
+One-click workflows: `build-page`, `figma-to-code`, `commit`, `pr`, `gh-new-pr`, `gh-debug-issue`, `gh-fix-ci`, `gh-pr-comments`, `make-moves`, `changeset`, `ralph-plan`, `create-skill`.
 
 ## Adding UI Components
 

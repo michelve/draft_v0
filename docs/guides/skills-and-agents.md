@@ -1,6 +1,6 @@
 # Skills & Agents
 
-Draft v0 ships with **16 skills**, **8 agents**, and **11 prompt templates** that turn your AI assistant into a domain expert for every part of the stack. This is what makes Draft v0 different — instead of generic AI help, you get contextual guidance that knows your architecture, conventions, and patterns.
+Draft v0 ships with **16 skills**, **8 agents**, and **12 prompt templates** that turn your AI assistant into a domain expert for every part of the stack. This is what makes Draft v0 different — instead of generic AI help, you get contextual guidance that knows your architecture, conventions, and patterns.
 
 ## How It Works
 
@@ -59,9 +59,9 @@ AI generates code that follows YOUR project's rules
 
 ### Meta Skills
 
-| Skill               | Trigger             | What It Does                                         |
-| ------------------- | ------------------- | ---------------------------------------------------- |
-| **skill-developer** | Creating new skills | Builds new skills following Anthropic best practices |
+| Skill             | Trigger                                    | What It Does                                                                  |
+| ----------------- | ------------------------------------------ | ----------------------------------------------------------------------------- |
+| **skill-creator** | Creating, improving, and evaluating skills | Full authoring workflow: draft, test, eval, iterate, and optimize description |
 
 ## Agents Reference
 
@@ -95,6 +95,7 @@ One-click workflows that combine skills and agents for common tasks. Use them fr
 | **make-moves**     | Work on a specific GitHub issue with analysis and reproduction          |
 | **changeset**      | Create version-bump changesets for releases                             |
 | **ralph-plan**     | Interactive planning assistant for structured task planning             |
+| **create-skill**   | Build, improve, evaluate, and optimize skills — full authoring workflow |
 
 ## Rules (Convention Enforcement)
 

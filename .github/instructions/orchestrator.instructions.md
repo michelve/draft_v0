@@ -66,7 +66,7 @@ Route → Controller → Service → Repository → Prisma (SQLite)
 | Generating project-specific Figma-to-code rules      | `create-design-system-rules` |
 | Miro boards, diagrams, tables, docs                  | `miro-mcp`                   |
 | UI accessibility/design review                       | `web-design-guidelines`      |
-| Creating new skills/instructions                     | `skill-developer`            |
+| Creating new skills/instructions                     | `skill-creator`              |
 | Breaking down PRDs into tasks                        | `create-tasks`               |
 | Verifying task completion                            | `task-check`                 |
 | Writing tests, edge cases, assertions                | `writing-tests`              |

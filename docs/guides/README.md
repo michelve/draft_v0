@@ -6,9 +6,9 @@ Welcome to Draft v0 — a full-stack React 19 + Express scaffold with AI-powered
 
 Most project scaffolds give you a tech stack and leave you on your own. Draft v0 goes further:
 
-- **15 AI skills** that teach your AI assistant the exact patterns, conventions, and anti-patterns for every part of the stack
+- **16 AI skills** that teach your AI assistant the exact patterns, conventions, and anti-patterns for every part of the stack
 - **8 specialized agents** that autonomously fix errors, review code, plan refactors, and research solutions
-- **11 prompt templates** that chain skills into one-click workflows (build a page, implement a Figma design, create a PR)
+- **12 prompt templates** that chain skills into one-click workflows (build a page, implement a Figma design, create a PR)
 - **File-based task system** with AI-powered creation and verification — no external tools needed
 - **Architecture Decision Records** that capture the "why" behind every significant choice
 - **Figma-to-code pipeline** that translates designs to production components with 1:1 visual fidelity
@@ -21,7 +21,7 @@ The result: AI-generated code that follows your project's rules and passes quali
 | ----------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | [Getting Started](getting-started.md)                 | Prerequisites, installation, running the project, available commands                      |
 | [Project Structure](project-structure.md)             | Directory layout, architecture layers, path aliases, configuration files                  |
-| [Skills & Agents](skills-and-agents.md)               | All 15 skills, 8 agents, 11 prompts, and 7 rule files — what they do and when to use them |
+| [Skills & Agents](skills-and-agents.md)               | All 16 skills, 8 agents, 12 prompts, and 7 rule files — what they do and when to use them |
 | [Tasks Workflow](tasks-workflow.md)                   | File-based task management — creating, tracking, and verifying tasks with AI              |
 | [Workflows & Automation](workflows-and-automation.md) | GitHub Actions CI/CD, Dependabot, and local Git hooks (Husky + commitlint)                |
 | [Figma Integration](figma-integration.md)             | Setting up Figma MCP, design-to-code workflow, component mapping                          |
