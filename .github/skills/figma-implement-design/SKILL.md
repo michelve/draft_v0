@@ -3,7 +3,6 @@ name: "figma-implement-design"
 description: "Translate Figma nodes into production-ready code with 1:1 visual fidelity using the Figma MCP workflow (design context, screenshots, assets, and project-convention translation). Trigger when the user provides Figma URLs or node IDs, or asks to implement designs or components that must match Figma specs. Requires a working Figma MCP server connection."
 ---
 
-
 # Implement Design
 
 ## Overview
@@ -14,8 +13,8 @@ This skill provides a structured workflow for translating Figma designs into pro
 
 - Figma MCP server must be connected and accessible
 - User must provide a Figma URL in the format: `https://figma.com/design/:fileKey/:fileName?node-id=1-2`
-  - `:fileKey` is the file key
-  - `1-2` is the node ID (the specific component or frame to implement)
+    - `:fileKey` is the file key
+    - `1-2` is the node ID (the specific component or frame to implement)
 - **OR** when using `figma-desktop` MCP: User can select a node directly in the Figma desktop app (no URL required)
 - Project should have an established design system or component library (preferred)
 
@@ -28,11 +27,11 @@ This skill provides a structured workflow for translating Figma designs into pro
 If any MCP call fails because Figma MCP is not connected, pause and set it up:
 
 1. Add the Figma MCP:
-   - `codex mcp add figma --url https://mcp.figma.com/mcp`
+    - `codex mcp add figma --url https://mcp.figma.com/mcp`
 2. Enable remote MCP client:
-   - Set `[features].rmcp_client = true` in `config.toml` **or** run `codex --enable rmcp_client`
+    - Set `[features].rmcp_client = true` in `config.toml` **or** run `codex --enable rmcp_client`
 3. Log in with OAuth:
-   - `codex mcp login figma`
+    - `codex mcp login figma`
 
 After successful login, the user will have to restart codex. You should finish your answer and tell them so when they try again they can continue with Step 1.
 
@@ -105,6 +104,21 @@ Download any assets (images, icons, SVGs) returned by the Figma MCP server.
 - DO NOT import or add new icon packages - all assets should come from the Figma payload
 - DO NOT use or create placeholders if a `localhost` source is provided
 - Assets are served through the Figma MCP server's built-in assets endpoint
+
+**Where to save downloaded assets:**
+
+| Asset type                           | Save to                                                   | How to use                                    |
+| ------------------------------------ | --------------------------------------------------------- | --------------------------------------------- |
+| Images, icons, SVGs (Vite-processed) | `src/client/assets/images/` or `src/client/assets/icons/` | `import logo from "@/assets/images/logo.svg"` |
+| Web fonts (static URL, no hashing)   | `public/fonts/`                                           | `url("/fonts/MyFont.woff2")` in `custom.css`  |
+
+**Where to save styles from Figma:**
+
+| Style type                                                  | Save to                                                               |
+| ----------------------------------------------------------- | --------------------------------------------------------------------- |
+| Design tokens (colors, spacing, radii exported from Figma)  | `src/client/index.css` — add to `@theme inline`                       |
+| CSS variables, `@font-face`, `@keyframes`, global overrides | `src/client/custom.css`                                               |
+| Component-scoped styles                                     | Tailwind utilities inline via `cn()` / `cva()` — no separate CSS file |
 
 ### Step 5: Translate to Project Conventions
 

@@ -1,6 +1,6 @@
 # Skills & Agents
 
-Draft v0 ships with **15 skills**, **8 agents**, and **11 prompt templates** that turn your AI assistant into a domain expert for every part of the stack. This is what makes Draft v0 different — instead of generic AI help, you get contextual guidance that knows your architecture, conventions, and patterns.
+Draft v0 ships with **16 skills**, **8 agents**, and **11 prompt templates** that turn your AI assistant into a domain expert for every part of the stack. This is what makes Draft v0 different — instead of generic AI help, you get contextual guidance that knows your architecture, conventions, and patterns.
 
 ## How It Works
 
@@ -51,10 +51,11 @@ AI generates code that follows YOUR project's rules
 
 ### Design Skills
 
-| Skill                      | Trigger                 | What It Does                                                       |
-| -------------------------- | ----------------------- | ------------------------------------------------------------------ |
-| **figma**                  | Figma URLs, MCP setup   | Fetches design context, screenshots, variables from Figma via MCP  |
-| **figma-implement-design** | "implement this design" | Translates Figma nodes to production code with 1:1 visual fidelity |
+| Skill                      | Trigger                              | What It Does                                                       |
+| -------------------------- | ------------------------------------ | ------------------------------------------------------------------ |
+| **figma**                  | Figma URLs, MCP setup                | Fetches design context, screenshots, variables from Figma via MCP  |
+| **figma-implement-design** | "implement this design"              | Translates Figma nodes to production code with 1:1 visual fidelity |
+| **miro-mcp**               | Miro boards, diagrams, collaboration | Creates diagrams, docs, tables on Miro boards; reads board content |
 
 ### Meta Skills
 

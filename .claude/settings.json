@@ -24,6 +24,11 @@
         "sequential-thinking": {
             "command": "npx",
             "args": ["-y", "@anthropic/sequential-thinking-mcp"]
+        },
+        "miro-mcp": {
+            "url": "https://mcp.miro.com/",
+            "disabled": false,
+            "autoApprove": []
         }
     }
 }

@@ -61,6 +61,7 @@ Route → Controller → Service → Repository → Prisma (SQLite)
 | API route testing, integration tests    | `route-tester`           |
 | Figma MCP setup, fetching design data   | `figma`                  |
 | Implementing Figma designs into code    | `figma-implement-design` |
+| Miro boards, diagrams, tables, docs     | `miro-mcp`               |
 | UI accessibility/design review          | `web-design-guidelines`  |
 | Creating new skills/instructions        | `skill-developer`        |
 | Breaking down PRDs into tasks           | `create-tasks`           |

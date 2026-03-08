@@ -11,6 +11,15 @@ description: "Tailwind CSS v4 styling patterns and conventions"
 - Color system uses oklch values for consistent color space
 - Dark mode via `@custom-variant dark` (class-based)
 
+## File Locations
+
+| Purpose                                                                 | File                                                      |
+| ----------------------------------------------------------------------- | --------------------------------------------------------- |
+| Tailwind theme tokens (colors, spacing, radii)                          | `src/client/index.css` — `@theme inline` block            |
+| Custom CSS (@font-face, @keyframes, CSS vars, Figma exports, overrides) | `src/client/custom.css`                                   |
+| Vite-processed images/icons (imported in TS)                            | `src/client/assets/images/` or `src/client/assets/icons/` |
+| Static fonts referenced by URL in CSS                                   | `public/fonts/`                                           |
+
 ## Class Utilities
 
 - Use `cn()` from `@/lib/utils` to merge conditional classes (uses `tailwind-merge`)
