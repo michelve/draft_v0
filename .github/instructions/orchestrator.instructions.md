@@ -70,6 +70,7 @@ Route → Controller → Service → Repository → Prisma (SQLite)
 | Breaking down PRDs into tasks                        | `create-tasks`               |
 | Verifying task completion                            | `task-check`                 |
 | Writing tests, edge cases, assertions                | `writing-tests`              |
+| Browser automation, e2e testing, UI validation       | `playwright-skill`           |
 | Automatic semantic code review                       | `automatic-code-review`      |
 
 ### When to use which agent

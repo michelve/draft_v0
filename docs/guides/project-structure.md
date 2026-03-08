@@ -168,7 +168,7 @@ import { prisma } from "@server/lib/prisma";
 
 ```text
 .github/
-├── skills/              # 16 domain-specific skill guides
+├── skills/              # 17 domain-specific skill guides
 ├── agents/              # 8 specialized AI agents
 ├── prompts/             # 12 reusable prompt templates
 └── instructions/        # 3 global instruction files

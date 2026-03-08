@@ -1,6 +1,6 @@
 # Skills & Agents
 
-Draft v0 ships with **16 skills**, **8 agents**, and **12 prompt templates** that turn your AI assistant into a domain expert for every part of the stack. This is what makes Draft v0 different — instead of generic AI help, you get contextual guidance that knows your architecture, conventions, and patterns.
+Draft v0 ships with **17 skills**, **8 agents**, and **12 prompt templates** that turn your AI assistant into a domain expert for every part of the stack. This is what makes Draft v0 different — instead of generic AI help, you get contextual guidance that knows your architecture, conventions, and patterns.
 
 ## How It Works
 
@@ -42,12 +42,13 @@ AI generates code that follows YOUR project's rules
 
 ### Workflow Skills
 
-| Skill                     | Trigger                           | What It Does                                                               |
-| ------------------------- | --------------------------------- | -------------------------------------------------------------------------- |
-| **create-tasks**          | "create tasks", "break this down" | Creates well-formed tasks from PRDs/requirements using Example Mapping     |
-| **task-check**            | `/check <id> <path>`              | Verifies task completion against acceptance criteria (PASS/FAIL/NEED_INFO) |
-| **writing-tests**         | "add tests", test review          | Test writing principles — naming, assertions, edge case coverage           |
-| **automatic-code-review** | After code changes                | Semantic code review using project-specific rules                          |
+| Skill                     | Trigger                                  | What It Does                                                                 |
+| ------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
+| **create-tasks**          | "create tasks", "break this down"        | Creates well-formed tasks from PRDs/requirements using Example Mapping       |
+| **task-check**            | `/check <id> <path>`                     | Verifies task completion against acceptance criteria (PASS/FAIL/NEED_INFO)   |
+| **writing-tests**         | "add tests", test review                 | Test writing principles — naming, assertions, edge case coverage             |
+| **playwright-skill**      | "test this", "automate browser", e2e     | Browser automation — detect dev servers, write scripts, test pages and flows |
+| **automatic-code-review** | After code changes                       | Semantic code review using project-specific rules                            |
 
 ### Design Skills
 

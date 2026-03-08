@@ -85,13 +85,13 @@ prisma/
 
 Domain-specific knowledge that teaches AI assistants your project's patterns:
 
-| Category     | Skills                                                                     |
-| ------------ | -------------------------------------------------------------------------- |
-| **Frontend** | react, react-best-practices, tailwindcss, shadcn-ui, web-design-guidelines |
-| **Backend**  | nodejs, prisma, route-tester                                               |
-| **Workflow** | create-tasks, task-check, writing-tests, automatic-code-review             |
-| **Design**   | figma, figma-implement-design                                              |
-| **Meta**     | skill-creator                                                              |
+| Category     | Skills                                                                                |
+| ------------ | ------------------------------------------------------------------------------------- |
+| **Frontend** | react, react-best-practices, tailwindcss, shadcn-ui, web-design-guidelines            |
+| **Backend**  | nodejs, prisma, route-tester                                                          |
+| **Workflow** | create-tasks, task-check, writing-tests, playwright-skill, automatic-code-review      |
+| **Design**   | figma, figma-implement-design                                                         |
+| **Meta**     | skill-creator                                                                         |
 
 ### Agents (8)
 
