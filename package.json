@@ -90,6 +90,6 @@
     },
     "lint-staged": {
         "*.{ts,tsx}": "biome check --write",
-        "*.{css,md,json,yaml,yml}": "prettier --write --ignore-unknown"
+        "*.{css,scss,md,json,yaml,yml}": "prettier --write --ignore-unknown"
     }
 }
