@@ -50,24 +50,27 @@ Route → Controller → Service → Repository → Prisma (SQLite)
 
 ### When to use which skill
 
-| Task                                    | Skill                    |
-| --------------------------------------- | ------------------------ |
-| React components, hooks, Suspense       | `react`                  |
-| React performance optimization          | `react-best-practices`   |
-| Tailwind styling, responsive, dark mode | `tailwindcss`            |
-| Adding/using shadcn/ui components       | `shadcn`                 |
-| Prisma schema, queries, migrations      | `prisma`                 |
-| Node.js/Express backend patterns        | `nodejs`                 |
-| API route testing, integration tests    | `route-tester`           |
-| Figma MCP setup, fetching design data   | `figma`                  |
-| Implementing Figma designs into code    | `figma-implement-design` |
-| Miro boards, diagrams, tables, docs     | `miro-mcp`               |
-| UI accessibility/design review          | `web-design-guidelines`  |
-| Creating new skills/instructions        | `skill-developer`        |
-| Breaking down PRDs into tasks           | `create-tasks`           |
-| Verifying task completion               | `task-check`             |
-| Writing tests, edge cases, assertions   | `writing-tests`          |
-| Automatic semantic code review          | `automatic-code-review`  |
+| Task                                                 | Skill                        |
+| ---------------------------------------------------- | ---------------------------- |
+| React components, hooks, Suspense                    | `react`                      |
+| React performance optimization                       | `react-best-practices`       |
+| Tailwind styling, responsive, dark mode              | `tailwindcss`                |
+| Adding/using shadcn/ui components                    | `shadcn`                     |
+| Prisma schema, queries, migrations                   | `prisma`                     |
+| Node.js/Express backend patterns                     | `nodejs`                     |
+| API route testing, integration tests                 | `route-tester`               |
+| Figma MCP setup, fetching design data                | `figma`                      |
+| Implementing Figma designs into code                 | `figma-implement-design`     |
+| Implementing Figma designs (Copilot native)          | `implement-design`           |
+| Connecting Figma components to code via Code Connect | `code-connect-components`    |
+| Generating project-specific Figma-to-code rules      | `create-design-system-rules` |
+| Miro boards, diagrams, tables, docs                  | `miro-mcp`                   |
+| UI accessibility/design review                       | `web-design-guidelines`      |
+| Creating new skills/instructions                     | `skill-developer`            |
+| Breaking down PRDs into tasks                        | `create-tasks`               |
+| Verifying task completion                            | `task-check`                 |
+| Writing tests, edge cases, assertions                | `writing-tests`              |
+| Automatic semantic code review                       | `automatic-code-review`      |
 
 ### When to use which agent
 
