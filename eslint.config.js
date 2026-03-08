@@ -84,13 +84,4 @@ export default tseslint.config(
             "react-refresh/only-export-components": "off",
         },
     },
-
-    // CommonJS config files (e.g. commitlint.config.cjs)
-    {
-        files: ["**/*.cjs"],
-        languageOptions: {
-            sourceType: "commonjs",
-            globals: globals.node,
-        },
-    },
 );
