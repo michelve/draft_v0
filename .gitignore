@@ -28,6 +28,9 @@ Thumbs.db
 # Claude Code local files
 CLAUDE.local.md
 .claude/settings.local.json
+
+# Nested repo clone (not a submodule)
+draft_v0/
 .claude/agent-memory-local/
 
 # Research artifacts
