@@ -27,6 +27,8 @@ Each ADR follows the [MADR 4.0.0](https://adr.github.io/madr/) (Markdown Archite
 | 0009 | Knip for dead code and unused dependency detection         | accepted | 2026-03-08 |
 | 0010 | Node --env-file instead of dotenv package                  | accepted | 2026-03-08 |
 | 0011 | Single custom.css file for project-level style overrides   | accepted | 2026-03-08 |
+| 0012 | Use helmet for HTTP security headers                       | accepted | 2026-03-08 |
+| 0013 | Use express-rate-limit for API rate limiting               | accepted | 2026-03-08 |
 
 ## Naming Convention
 

@@ -1,8 +1,12 @@
 import { userRepository } from "@server/repositories/user.repository";
 
 export const userService = {
-    async getAllUsers() {
-        return userRepository.findAll();
+    async getAllUsers(params?: { skip?: number; take?: number }) {
+        return userRepository.findAll(params);
+    },
+
+    async countUsers() {
+        return userRepository.count();
     },
 
     async getUserById(id: string) {
@@ -18,13 +22,18 @@ export const userService = {
     },
 
     async updateUser(id: string, data: { email?: string; name?: string }) {
-        await this.getUserById(id);
-        return userRepository.update(id, data);
+        const user = await userRepository.update(id, data).catch((err) => {
+            if (err?.code === "P2025") throw new UserNotFoundError(id);
+            throw err;
+        });
+        return user;
     },
 
     async deleteUser(id: string) {
-        await this.getUserById(id);
-        return userRepository.delete(id);
+        await userRepository.delete(id).catch((err) => {
+            if (err?.code === "P2025") throw new UserNotFoundError(id);
+            throw err;
+        });
     },
 };
 

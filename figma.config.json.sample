@@ -1,0 +1,47 @@
+{
+  "codeConnect": {
+    "label": "React",
+    "include": [
+      "packages/ui-react/src/**/*"
+    ],
+    "exclude": [],
+    "parser": "react",
+    "importPaths": {
+      "compositions/**/*": "compositions",
+      "icons/*": "icons",
+      "images/*": "images",
+      "layout/**/*": "layout",
+      "primitives/**/*": "primitives"
+    },
+    "paths": {
+      "compositions": [
+        "packages/ui-react/src/compositions"
+      ],
+      "hooks": [
+        "packages/ui-react/src/hooks"
+      ],
+      "icons": [
+        "packages/ui-react/src/icons"
+      ],
+      "images": [
+        "packages/ui-react/src/images"
+      ],
+      "layout": [
+        "packages/ui-react/src/layout"
+      ],
+      "primitives": [
+        "packages/ui-react/src/primitives"
+      ],
+      "providers": [
+        "packages/ui-react/src/providers"
+      ],
+      "utils": [
+        "packages/ui-react/src/utils"
+      ]
+    },
+    "documentUrlSubstitutions": {
+      "<FIGMA_ICONS_BASE>": "https://figma.com/design/FILE_ID",
+      "<FIGMA_SAMPLE_COMPONENT_NAME>": "https://figma.com/design/FILE_ID?node-id=NODE_INFO"
+    }
+  }
+}

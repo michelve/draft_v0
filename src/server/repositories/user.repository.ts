@@ -2,18 +2,20 @@ import type { Prisma } from "@prisma/client";
 import { prisma } from "@server/lib/prisma";
 
 export const userRepository = {
-    findAll() {
+    findAll(params?: { skip?: number; take?: number }) {
         return prisma.user.findMany({
             orderBy: { createdAt: "desc" },
+            skip: params?.skip,
+            take: params?.take,
         });
+    },
+
+    count() {
+        return prisma.user.count();
     },
 
     findById(id: string) {
         return prisma.user.findUnique({ where: { id } });
-    },
-
-    findByEmail(email: string) {
-        return prisma.user.findUnique({ where: { email } });
     },
 
     create(data: Prisma.UserCreateInput) {

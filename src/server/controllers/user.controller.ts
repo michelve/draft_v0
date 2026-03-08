@@ -1,12 +1,44 @@
 import { Prisma } from "@prisma/client";
 import { UserNotFoundError, userService } from "@server/services/user.service";
 import type { Request, Response } from "express";
+import { z } from "zod";
+
+const userCreateSchema = z.object({
+    email: z.string().email("Invalid email format"),
+    name: z.string().min(1).max(100).optional(),
+});
+
+const userUpdateSchema = z.object({
+    email: z.string().email("Invalid email format").optional(),
+    name: z.string().min(1).max(100).optional(),
+});
+
+const paginationSchema = z.object({
+    page: z.coerce.number().int().min(1).default(1),
+    limit: z.coerce.number().int().min(1).max(100).default(20),
+});
 
 export const userController = {
-    async getAll(_req: Request, res: Response) {
+    async getAll(req: Request, res: Response) {
+        const parsed = paginationSchema.safeParse(req.query);
+        if (!parsed.success) {
+            res.status(400).json({
+                error: "Bad Request",
+                message: parsed.error.issues[0]?.message ?? "Invalid query params",
+            });
+            return;
+        }
+        const { page, limit } = parsed.data;
+        const skip = (page - 1) * limit;
         try {
-            const users = await userService.getAllUsers();
-            res.status(200).json({ data: users });
+            const [users, total] = await Promise.all([
+                userService.getAllUsers({ skip, take: limit }),
+                userService.countUsers(),
+            ]);
+            res.status(200).json({
+                data: users,
+                meta: { page, limit, total, totalPages: Math.ceil(total / limit) },
+            });
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: "Internal Server Error" });
@@ -19,10 +51,7 @@ export const userController = {
             res.status(200).json({ data: user });
         } catch (error) {
             if (error instanceof UserNotFoundError) {
-                res.status(404).json({
-                    error: "Not Found",
-                    message: "User not found",
-                });
+                res.status(404).json({ error: "Not Found", message: "User not found" });
                 return;
             }
             console.error(error);
@@ -31,16 +60,16 @@ export const userController = {
     },
 
     async create(req: Request, res: Response) {
+        const parsed = userCreateSchema.safeParse(req.body);
+        if (!parsed.success) {
+            res.status(400).json({
+                error: "Bad Request",
+                message: parsed.error.issues[0]?.message ?? "Invalid request body",
+            });
+            return;
+        }
         try {
-            const { email, name } = req.body;
-            if (!email || typeof email !== "string") {
-                res.status(400).json({
-                    error: "Bad Request",
-                    message: "Email is required",
-                });
-                return;
-            }
-            const user = await userService.createUser({ email, name });
+            const user = await userService.createUser(parsed.data);
             res.status(201).json({ data: user });
         } catch (error) {
             if (error instanceof Prisma.PrismaClientKnownRequestError) {
@@ -58,19 +87,20 @@ export const userController = {
     },
 
     async update(req: Request<{ id: string }>, res: Response) {
-        try {
-            const { email, name } = req.body;
-            const user = await userService.updateUser(req.params.id, {
-                email,
-                name,
+        const parsed = userUpdateSchema.safeParse(req.body);
+        if (!parsed.success) {
+            res.status(400).json({
+                error: "Bad Request",
+                message: parsed.error.issues[0]?.message ?? "Invalid request body",
             });
+            return;
+        }
+        try {
+            const user = await userService.updateUser(req.params.id, parsed.data);
             res.status(200).json({ data: user });
         } catch (error) {
             if (error instanceof UserNotFoundError) {
-                res.status(404).json({
-                    error: "Not Found",
-                    message: "User not found",
-                });
+                res.status(404).json({ error: "Not Found", message: "User not found" });
                 return;
             }
             if (error instanceof Prisma.PrismaClientKnownRequestError) {
@@ -90,13 +120,10 @@ export const userController = {
     async delete(req: Request<{ id: string }>, res: Response) {
         try {
             await userService.deleteUser(req.params.id);
-            res.status(200).json({ data: { success: true } });
+            res.status(204).send();
         } catch (error) {
             if (error instanceof UserNotFoundError) {
-                res.status(404).json({
-                    error: "Not Found",
-                    message: "User not found",
-                });
+                res.status(404).json({ error: "Not Found", message: "User not found" });
                 return;
             }
             console.error(error);
