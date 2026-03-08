@@ -1,6 +1,6 @@
 # Draft v0
 
-**Ship faster. Build smarter.** Express scaffold built for modern teams. AI-powered workflows turn design into code, automate boring tasks, and enforce your team's conventions automatically. No more context-switching between Figma and code—no more inconsistent implementations.
+**"We don't have time for that" is no longer an answer.** Draft v0 puts senior engineering expertise at your fingertips — 17 skills, 8 agents, and 12 prompt templates that handle the code so your team stops compromising on the design. Micro-interactions, pixel-perfect fidelity, design system consistency in every PR. Not backlog items. Not phase 2. Just the product you actually designed.
 
 [![Dependabot Updates](https://github.com/michelve/draft_v0/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/michelve/draft_v0/actions/workflows/dependabot/dependabot-updates)
 
@@ -8,14 +8,27 @@
 
 ## Why Draft v0?
 
-Most scaffolds give you a tech stack and leave you on your own. Draft v0 gives you an **opinionated, AI-augmented development system**:
+Every team has the same conversation: _"We love the design, but we don't have time to build it that way."_ Draft v0 ends that conversation. The engineering complexity — architecture, conventions, API wiring, state management — is already solved. Your AI assistant knows the stack as well as your best engineer. What used to take a sprint takes an afternoon.
 
-- **Skills** teach your AI assistant the exact patterns, conventions, and anti-patterns for every layer of the stack
-- **Agents** autonomously fix errors, review code, plan refactors, and research solutions
-- **Prompt templates** chain skills into one-click workflows — build a page, implement a Figma design, create a PR
-- **File-based task system** with AI-powered creation (Example Mapping) and verification (PASS/FAIL/NEED_INFO)
-- **Architecture Decision Records** capture the "why" behind every significant choice
-- **Figma-to-code pipeline** translates designs to production components with 1:1 visual fidelity
+- **Figma URL → production component** — paste a link, get a pixel-perfect, accessible, design-system-compliant component. No translation layer, no back-and-forth
+- **Your design system is encoded** — tokens, variants, spacing, motion. Every AI-generated component follows your rules without you having to explain them
+- **Micro-interactions ship on day one** — hover states, transitions, loading skeletons. Not "nice to haves." Not phase 2. Just done
+- **No revision cycles** — AI produces code that matches your conventions on the first try, because the conventions are baked in as skills
+- **Autonomous problem-solving** — agents fix build errors, review PRs for design system drift, and research solutions without pulling engineers away from building
+- **One-command workflows** — `figma-to-code`, `build-page`, `gh-new-pr` chain everything together so the path from Figma to merged PR is as short as possible
+
+## How It Works
+
+Draft v0 ships a complete AI development system on top of the scaffold. Designers get Figma-to-code workflows that just work. Developers get an AI assistant that already knows the architecture, patterns, and conventions — no handholding needed.
+
+| Component               | What it does                                                                                                                                                                                                                                |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **17 Skills**           | Teach your AI the exact patterns, conventions, and anti-patterns for every layer of the stack — React 19, Express, Prisma, Tailwind, Figma, and more. AI produces correct code on the first attempt, not after three correction rounds      |
+| **8 Agents**            | Autonomous workers: fix TypeScript errors, review code for architectural consistency, plan refactors with risk assessments, research solutions across the internet. Multi-step tasks that would interrupt a developer run in the background |
+| **12 Prompt templates** | One-click workflows that chain skills together — `figma-to-code` translates a Figma URL into a production component, `build-page` scaffolds a full route, `gh-new-pr` handles commit, PR, and description in one shot                       |
+| **Task system**         | File-based tasks with AI-powered breakdown (Example Mapping) and verification (PASS/FAIL/NEED_INFO). Work is tracked, verifiable, and never lost between sessions                                                                           |
+| **ADRs**                | Architecture Decision Records capture the _why_ behind every significant choice. New team members (and AI assistants) understand the reasoning, not just the result                                                                         |
+| **Figma pipeline**      | Two MCP servers + Code Connect, pre-configured. Your Figma components are linked to your code components — the AI sees both and keeps them in sync                                                                                          |
 
 ## Tech Stack
 
@@ -81,7 +94,7 @@ prisma/
 
 ## AI Ecosystem
 
-### Skills (15)
+### Skills (17)
 
 Domain-specific knowledge that teaches AI assistants your project's patterns:
 
