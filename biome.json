@@ -93,7 +93,8 @@
             "*.tsx",
             "*.css",
             "!**/*.gen.ts",
-            "!**/*.gen.js"
+            "!**/*.gen.js",
+            "!commitlint.config.cjs"
         ],
         "ignoreUnknown": true
     },
