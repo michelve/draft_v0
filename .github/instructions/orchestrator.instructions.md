@@ -197,6 +197,18 @@ pnpm build          # Clean build (tsc --noEmit + vite build)
 After file edits: Codacy CLI analysis (per `codacy.instructions.md`).
 After dependency changes: Codacy CLI with Trivy for security scanning.
 
+## Post-Task: Always Offer to Commit
+
+After completing **any** task that modifies files (feature, fix, refactor, docs, config, skill update), always end your response by asking:
+
+> "Would you like me to commit these changes?"
+
+- Do NOT commit automatically — always ask first
+- If the user says yes, follow the `commit` prompt template (`.github/prompts/commit.prompt.md`)
+- Use the commitlint rules: lowercase subject, type from `feat|fix|refactor|docs|chore|test|style`, header ≤ 100 chars, no trailing dot
+- If multiple logical groups of changes exist, suggest splitting into separate commits
+- Skip the offer only when the user has already committed or explicitly said they will handle it
+
 ---
 
 ## Anti-Patterns

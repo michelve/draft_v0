@@ -36,6 +36,13 @@ Do NOT write an ADR for bug fixes, small refactors, cosmetic changes, adding pag
 - **deprecated** — No longer relevant
 - **superseded** — Replaced by a newer ADR (link to it)
 
-## Proactive Suggestions
+## Agent Requirement — Non-Optional
 
-When implementing a task that involves a significant decision (new dependency, architectural change, convention shift), suggest writing an ADR before or alongside the implementation. Reference the template and existing ADRs for style consistency.
+When implementing a task that involves a qualifying decision (see "When to Write an ADR" above), you **MUST** write the ADR as part of the same task — not as a follow-up suggestion, not optional.
+
+- Write the ADR **before or alongside** the implementation, not after
+- If the implementation is already done, write the ADR immediately in the same response
+- Do NOT ask the user if they want an ADR — just write it
+- Reference the template and existing ADRs in `docs/decisions/` for style consistency
+
+The only exception is the explicit "Do NOT write" list above (bug fixes, small refactors, cosmetic changes, adding pages following existing patterns, installing shadcn/ui components).

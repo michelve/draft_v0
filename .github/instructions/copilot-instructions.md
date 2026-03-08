@@ -38,3 +38,8 @@ applyTo: "**"
 - Layered: Route → Controller → Service → Repository → Database
 - Feature-based organization, proper separation of concerns
 - Monorepo-aware: build only modified services
+
+## After Completing Any Task
+
+After finishing any task that modifies files, always ask: "Would you like me to commit these changes?"
+Do NOT commit automatically. If yes, follow the commit prompt (`.github/prompts/commit.prompt.md`) and commitlint rules.
