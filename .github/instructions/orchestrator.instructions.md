@@ -75,17 +75,20 @@ Route → Controller → Service → Repository → Prisma (SQLite)
 
 ### When to use which agent
 
-| Task                                       | Agent                        |
-| ------------------------------------------ | ---------------------------- | --- | -------------------------------------- | ------------------------- |
-| TypeScript / build errors                  | `auto-error-resolver`        |
-| Code review, architectural consistency     | `code-architecture-reviewer` |
-| Refactoring execution                      | `code-refactor-master`       |
-| Refactoring planning, risk assessment      | `refactor-planner`           |
-| Creating / updating documentation          | `documentation-architect`    |
-| Review plan before implementation          | `plan-reviewer`              |
-| Deep technical / first-principles analysis | `principal-engineer`         |
-| Internet research, debugging solutions     | `web-research-specialist`    |
-| Verify task completion before finishing    | `task-check`                 |     | Semantic code review on modified files | `automatic-code-reviewer` |
+| Task                                          | Agent                         |
+| --------------------------------------------- | ----------------------------- |
+| TypeScript / build errors                     | `auto-error-resolver`         |
+| Code review, architectural consistency        | `code-architecture-reviewer`  |
+| Refactoring execution                         | `code-refactor-master`        |
+| Refactoring planning, risk assessment         | `refactor-planner`            |
+| Creating / updating documentation             | `documentation-architect`     |
+| Review plan before implementation             | `plan-reviewer`               |
+| Deep technical / first-principles analysis    | `principal-engineer`          |
+| Internet research, debugging solutions        | `web-research-specialist`     |
+| Verify task completion before finishing       | `task-check`                  |
+| Writing / documenting / superseding an ADR    | `adr-writer`                  |
+| Checking if a change violates an existing ADR | `check-adr-violations` prompt |
+| Semantic code review on modified files        | `automatic-code-reviewer`     |
 
 ---
 
