@@ -105,6 +105,11 @@ def main() -> None:
             parts.append(f'\n### {section_name}\n{sections[section_name]}')
 
     if len(parts) > 1:
+        parts.append(
+            '\n⚙️  Task lifecycle reminder (auto-injected):\n'
+            '   • START  : move task file to .tasks/in-progress/ and set status: in-progress\n'
+            '   • FINISH : invoke task-check agent, then move to .tasks/done/ and set status: done'
+        )
         print('\n'.join(parts))
 
     sys.exit(0)

@@ -249,7 +249,26 @@ pnpm build          # Clean build (tsc --noEmit + vite build)
 After file edits: Codacy CLI analysis (per `codacy.instructions.md`).
 After dependency changes: Codacy CLI with Trivy for security scanning.
 
-## Post-Task: Always Offer to Commit
+## Post-Task: Task Lifecycle + Commit
+
+### Task lifecycle (mandatory — do not skip)
+
+Whenever you begin or finish work that corresponds to a task file in `.tasks/`:
+
+**When starting work on a task:**
+
+1. Move the file: `backlog/NNNN-*.md` → `in-progress/NNNN-*.md`
+2. Update frontmatter: `status: in-progress`
+
+**When completing a task:**
+
+1. Invoke `task-check` agent to verify all acceptance criteria pass (max 3 attempts)
+2. On PASS: move the file `in-progress/NNNN-*.md` → `done/NNNN-*.md`, update frontmatter: `status: done`
+3. On FAIL: address the failing criteria and retry
+
+Do this **automatically** — do not wait for the user to ask.
+
+### Commit offer (mandatory — do not skip)
 
 After completing **any** task that modifies files (feature, fix, refactor, docs, config, skill update), always end your response by asking:
 
