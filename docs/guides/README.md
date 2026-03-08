@@ -17,14 +17,15 @@ The result: AI-generated code that follows your project's rules and passes quali
 
 ## Guides
 
-| Guide                                               | Description                                                                               |
-| --------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| [Getting Started](getting-started.md)               | Prerequisites, installation, running the project, available commands                      |
-| [Project Structure](project-structure.md)           | Directory layout, architecture layers, path aliases, configuration files                  |
-| [Skills & Agents](skills-and-agents.md)             | All 15 skills, 8 agents, 11 prompts, and 7 rule files — what they do and when to use them |
-| [Tasks Workflow](tasks-workflow.md)                 | File-based task management — creating, tracking, and verifying tasks with AI              |
-| [Figma Integration](figma-integration.md)           | Setting up Figma MCP, design-to-code workflow, component mapping                          |
-| [Architecture Decisions](architecture-decisions.md) | ADR system — when and how to record technical decisions                                   |
+| Guide                                                 | Description                                                                               |
+| ----------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| [Getting Started](getting-started.md)                 | Prerequisites, installation, running the project, available commands                      |
+| [Project Structure](project-structure.md)             | Directory layout, architecture layers, path aliases, configuration files                  |
+| [Skills & Agents](skills-and-agents.md)               | All 15 skills, 8 agents, 11 prompts, and 7 rule files — what they do and when to use them |
+| [Tasks Workflow](tasks-workflow.md)                   | File-based task management — creating, tracking, and verifying tasks with AI              |
+| [Workflows & Automation](workflows-and-automation.md) | GitHub Actions CI/CD, Dependabot, and local Git hooks (Husky + commitlint)                |
+| [Figma Integration](figma-integration.md)             | Setting up Figma MCP, design-to-code workflow, component mapping                          |
+| [Architecture Decisions](architecture-decisions.md)   | ADR system — when and how to record technical decisions                                   |
 
 ## Quick Start
 
