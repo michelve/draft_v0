@@ -1,0 +1,11 @@
+/*
+ * custom.css — project-level styles
+ *
+ * Use this file for anything that Tailwind utilities can't express:
+ *   - Figma-exported CSS variables
+ *   - @font-face declarations (pair with fonts in public/fonts/ or src/client/assets/fonts/)
+ *   - Custom @keyframes animations
+ *   - CSS nesting or overrides that go beyond utility classes
+ *
+ * Tailwind design tokens (colors, spacing, radii) live in src/client/index.css @theme.
+ */
