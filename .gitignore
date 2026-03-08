@@ -6,6 +6,9 @@ node_modules/
 # Build output
 dist/
 
+# TanStack Router generated cache
+.tanstack/
+
 # Environment
 .env
 .env.local

@@ -42,13 +42,13 @@ AI generates code that follows YOUR project's rules
 
 ### Workflow Skills
 
-| Skill                     | Trigger                                  | What It Does                                                                 |
-| ------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
-| **create-tasks**          | "create tasks", "break this down"        | Creates well-formed tasks from PRDs/requirements using Example Mapping       |
-| **task-check**            | `/check <id> <path>`                     | Verifies task completion against acceptance criteria (PASS/FAIL/NEED_INFO)   |
-| **writing-tests**         | "add tests", test review                 | Test writing principles — naming, assertions, edge case coverage             |
-| **playwright-skill**      | "test this", "automate browser", e2e     | Browser automation — detect dev servers, write scripts, test pages and flows |
-| **automatic-code-review** | After code changes                       | Semantic code review using project-specific rules                            |
+| Skill                     | Trigger                              | What It Does                                                                 |
+| ------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
+| **create-tasks**          | "create tasks", "break this down"    | Creates well-formed tasks from PRDs/requirements using Example Mapping       |
+| **task-check**            | `/check <id> <path>`                 | Verifies task completion against acceptance criteria (PASS/FAIL/NEED_INFO)   |
+| **writing-tests**         | "add tests", test review             | Test writing principles — naming, assertions, edge case coverage             |
+| **playwright-skill**      | "test this", "automate browser", e2e | Browser automation — detect dev servers, write scripts, test pages and flows |
+| **automatic-code-review** | After code changes                   | Semantic code review using project-specific rules                            |
 
 ### Design Skills
 

@@ -1,3 +1,3 @@
 # TODO
 
-[] Move skills into a plugin
+[] Move skills into their own plugins
