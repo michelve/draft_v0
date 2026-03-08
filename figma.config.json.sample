@@ -2,46 +2,31 @@
   "codeConnect": {
     "label": "React",
     "include": [
-      "packages/ui-react/src/**/*"
+      "src/client/components/**/*"
     ],
-    "exclude": [],
+    "exclude": [
+      "src/client/components/ui/**"
+    ],
     "parser": "react",
     "importPaths": {
-      "compositions/**/*": "compositions",
-      "icons/*": "icons",
-      "images/*": "images",
-      "layout/**/*": "layout",
-      "primitives/**/*": "primitives"
+      "src/client/components/*": "@/components",
+      "src/client/lib/*": "@/lib",
+      "src/client/hooks/*": "@/hooks"
     },
     "paths": {
-      "compositions": [
-        "packages/ui-react/src/compositions"
+      "@/components": [
+        "src/client/components"
       ],
-      "hooks": [
-        "packages/ui-react/src/hooks"
+      "@/lib": [
+        "src/client/lib"
       ],
-      "icons": [
-        "packages/ui-react/src/icons"
-      ],
-      "images": [
-        "packages/ui-react/src/images"
-      ],
-      "layout": [
-        "packages/ui-react/src/layout"
-      ],
-      "primitives": [
-        "packages/ui-react/src/primitives"
-      ],
-      "providers": [
-        "packages/ui-react/src/providers"
-      ],
-      "utils": [
-        "packages/ui-react/src/utils"
+      "@/hooks": [
+        "src/client/hooks"
       ]
     },
     "documentUrlSubstitutions": {
-      "<FIGMA_ICONS_BASE>": "https://figma.com/design/FILE_ID",
-      "<FIGMA_SAMPLE_COMPONENT_NAME>": "https://figma.com/design/FILE_ID?node-id=NODE_INFO"
+      "<FIGMA_COMPONENT_NAME>": "https://figma.com/design/${FIGMA_FILE_ID}"
     }
   }
 }
+
