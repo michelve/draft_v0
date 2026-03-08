@@ -106,6 +106,16 @@ prisma/
 └── schema.prisma        # Database schema (SQLite default)
 e2e/
 └── *.spec.ts            # Playwright e2e tests
+.claude/
+├── hooks/               # Claude Code hooks (Python3 scripts)
+│   ├── commitlint-enforcer.py   # Blocks invalid commit messages
+│   ├── anti-pattern-guard.py    # Warns on React 19 anti-patterns
+│   ├── adr-gate.py              # Injects ADR check reminder
+│   ├── task-context-injector.py # Injects task context by number
+│   └── quality-gate-reminder.py # Reminds to run typecheck + biome
+├── rules/               # Always-on convention rules
+├── agents/              # Specialized autonomous agents
+└── settings.json        # Hook registration + MCP servers
 ```
 
 ## Adding UI Components

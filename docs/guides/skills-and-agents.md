@@ -112,6 +112,24 @@ Rules in `.claude/rules/` are always active and enforce project conventions auto
 | **tailwind**        | Tailwind v4 CSS-first config, utility classes, `cn()` usage |
 | **codacy**          | Automated code quality analysis after every file edit       |
 
+## Hooks (Claude Code)
+
+Hooks in `.claude/hooks/` run automatically at specific points in the Claude Code workflow — before writing files, after edits, on every user message. They enforce rules without relying on the AI to remember them.
+
+Registered in `.claude/settings.json`.
+
+| Hook                      | Event                                    | Triggers On                                         | Behavior                                                                                  |
+| ------------------------- | ---------------------------------------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| **commitlint-enforcer**   | `PreToolUse` / `Bash`                    | `git commit -m` commands                            | **Blocks** commits with invalid type prefix, uppercase, trailing dot, or >100 char header |
+| **anti-pattern-guard**    | `PreToolUse` / `Write\|Edit\|MultiEdit`  | `.ts` / `.tsx` writes                               | **Warns** on `React.FC`, `forwardRef(`, `.propTypes =`, `export default function`         |
+| **adr-gate**              | `UserPromptSubmit`                       | Keywords: install, switch to, migrate, new pattern… | **Injects** ADR violation check reminder before Claude processes the prompt               |
+| **task-context-injector** | `UserPromptSubmit`                       | Task numbers: `0005`, `task 5`, `#0005`             | **Injects** Deliverable + Acceptance Criteria from the matching task file                 |
+| **quality-gate-reminder** | `PostToolUse` / `Write\|Edit\|MultiEdit` | `.ts` / `.tsx` writes                               | **Reminds** to run `pnpm typecheck && pnpm biome:check` before committing                 |
+
+Hooks receive JSON via stdin and write to stdout. Exit 0 = allow (output appended to context), exit 2 = block (output shown as error).
+
+---
+
 ## What Makes This Different
 
 Traditional projects give AI assistants zero context about architecture decisions, naming conventions, or approved patterns. The result is code that works but does not fit.
