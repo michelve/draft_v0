@@ -1,0 +1,49 @@
+title: "[Show & Tell] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Built something with Draft v0? Extended it in an interesting way? Adapted the AI workflow for your own project? Share it here — this is the place for it.
+
+  - type: input
+    id: project
+    attributes:
+      label: What did you build?
+      description: A short name or title for what you're sharing.
+      placeholder: "My portfolio site / A multi-tenant SaaS scaffold / Custom agents for..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Tell us about it
+      description: What is it, how does it work, and what made Draft v0 the right starting point?
+    validations:
+      required: true
+
+  - type: textarea
+    id: interesting
+    attributes:
+      label: Anything interesting you learned or changed?
+      description: Extensions, workarounds, patterns you discovered, things you'd do differently — whatever's worth sharing.
+    validations:
+      required: false
+
+  - type: input
+    id: link
+    attributes:
+      label: Link
+      description: Repo, live site, or any other link (optional).
+      placeholder: "https://github.com/..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or demos
+      description: Paste images or GIFs here if you have them — drag and drop works.
+    validations:
+      required: false
