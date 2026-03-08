@@ -49,6 +49,10 @@ jobs:
             - name: Lint
               run: pnpm lint
 
+            - name: Dead code check
+              run: pnpm knip
+              continue-on-error: true
+
             - name: Build
               run: pnpm build
 
