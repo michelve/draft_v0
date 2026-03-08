@@ -12,9 +12,6 @@ updates:
       day: monday
     commit-message:
       prefix: "chore"
-    labels:
-      - dependencies
-      - github-actions
 
   # ── npm / pnpm ──────────────────────────────────────────────────────────────
   # Groups updates to reduce PR noise. Dev deps and prod deps are split so
@@ -26,8 +23,6 @@ updates:
       day: monday
     commit-message:
       prefix: "chore"
-    labels:
-      - dependencies
     open-pull-requests-limit: 10
     groups:
       # All dev tooling in one PR (biome, eslint, prettier, vite, tsx, etc.)
