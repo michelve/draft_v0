@@ -2,7 +2,7 @@
 
 ![Draft_v0 Banner](.github/banner.png)
 
-**We don't have time for that" is no longer an answer.** Draft_v0 puts senior engineering expertise at your fingertips — 17 skills, 8 agents, and 12 prompt templates that handle the code so your team stops compromising on the design. Micro-interactions, pixel-perfect fidelity, design system consistency in every PR. Not backlog items. Not phase 2. Just the product you actually designed.
+**"We don't have time for that" is no longer an answer.** Draft_v0 puts senior engineering expertise at your fingertips — 17 skills, 8 agents, and 12 prompt templates that handle the code so your team stops compromising on the design. Micro-interactions, pixel-perfect fidelity, design system consistency in every PR. Not backlog items. Not phase 2. Just the product you actually designed.
 
 [![Dependabot Updates](https://github.com/michelve/draft_v0/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/michelve/draft_v0/actions/workflows/dependabot/dependabot-updates)
 
