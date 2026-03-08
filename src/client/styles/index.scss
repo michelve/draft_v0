@@ -1,0 +1,8 @@
+// Custom styles barrel
+//
+// This file is imported in main.tsx alongside index.css (Tailwind entry).
+// Add partials here using @use. Order matters — tokens first.
+
+@use "tokens";
+@use "typography";
+@use "animations";

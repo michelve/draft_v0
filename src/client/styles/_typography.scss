@@ -1,0 +1,20 @@
+// Custom Typography
+//
+// Use this file for font-face declarations and type styles that go beyond
+// what Tailwind's utility classes can express — e.g. complex OpenType features,
+// variable-font axis settings, or responsive fluid type scales.
+//
+// Fonts served from public/fonts/ can be referenced as:
+//   src: url("/fonts/Inter-Variable.woff2") format("woff2");
+//
+// Fonts processed by Vite from src/client/assets/fonts/ should be imported
+// at the top of this file:
+//   @use "../assets/fonts/MyFont.woff2" as MyFontUrl;
+
+// @font-face {
+//     font-family: "Inter";
+//     font-style: normal;
+//     font-weight: 100 900;
+//     font-display: swap;
+//     src: url("/fonts/Inter-Variable.woff2") format("woff2-variations");
+// }
