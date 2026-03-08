@@ -92,12 +92,59 @@ Route → Controller → Service → Repository → Prisma (SQLite)
 
 ---
 
+## ADR Auto-Gate — No User Input Required
+
+The ADR system runs **automatically** at two points. You do not wait for the user to ask.
+
+### Pre-implementation: Violation Check
+
+Before starting any task that involves a qualifying decision, check for ADR conflicts:
+
+**Qualifying decisions (any one triggers the check):**
+
+- Adding a framework, library, or significant dependency
+- Designing a new architectural layer or pattern
+- Changing an existing convention or workflow
+- Making a trade-off that future engineers will question
+- Deprecating or replacing a previous decision
+
+**Steps (run silently before implementation):**
+
+1. Read all `status: accepted` ADRs from `docs/decisions/README.md`
+2. Compare the proposed approach against each ADR's Decision Outcome
+3. **No conflict** → proceed with implementation
+4. **Conflict found** → stop, name the specific ADR violated, offer two paths:
+    - **Comply** — give a concrete alternative that aligns with the ADR
+    - **Supersede** — invoke `write-adr.prompt.md` with `supersedes: NNNN`, then proceed
+
+**Do NOT wait for "does this violate an ADR?" — this check is mandatory.**
+
+### Post-decision: ADR Writing
+
+After implementing a qualifying decision, write the ADR **alongside** the implementation — not after.
+
+**Do NOT ask the user if they want an ADR — just write it.**
+
+Invoke `write-adr.prompt.md`. `adr.instructions.md` (`applyTo: "**"`) also enforces this reactively.
+
+### Quick Reference
+
+| Scenario                                | Who triggers it                    |
+| --------------------------------------- | ---------------------------------- |
+| Implementing an architectural decision  | **Automatic** — orchestrator gate  |
+| ADR writing after a qualifying decision | **Automatic** — `adr.instructions` |
+| "write an ADR for X"                    | Explicit → `adr-writer` skill      |
+| "does this violate an ADR?"             | Explicit → `check-adr-violations`  |
+
+---
+
 ## Workflows
 
 ### 1. Add a New API Resource
 
 Example: adding a `Post` resource — follow the existing `User` implementation.
 
+0. **ADR gate** — If this resource introduces a new pattern (new auth layer, caching strategy, pagination approach, etc.), run the pre-implementation violation check against accepted ADRs before writing any code
 1. **Schema** — Add model to `prisma/schema.prisma`
 2. **Push** — `pnpm db:push` then `pnpm db:generate`
 3. **Repository** — Create `src/server/repositories/post.repository.ts`
@@ -153,6 +200,7 @@ Example: adding a `Post` resource — follow the existing `User` implementation.
 
 Combines workflows 1–3 in order:
 
+0. **ADR gate** — Classify the feature: does it introduce a new dependency, pattern, or convention? If yes, run the violation check before writing any code
 1. **Prisma model** (if new entity) — schema → push → generate
 2. **Backend** (bottom-up) — repository → service → controller → route → mount
 3. **Frontend** — route file → data hooks (`useQuery`/`useMutation`) → components
@@ -160,20 +208,17 @@ Combines workflows 1–3 in order:
     ```ts
     queryClient.invalidateQueries({ queryKey: ["posts"] });
     ```
-5. **Quality gates** — Run all checks (see below)
+5. **ADR** — If a qualifying decision was made during implementation, invoke `write-adr.prompt.md` now (do not ask the user)
+6. **Quality gates** — Run all checks (see below)
 
 ### 5. Record an Architecture Decision (ADR)
 
 When a task involves a significant decision (new dependency, architectural change, convention shift):
 
-1. **Check** — Does this qualify? See `docs/decisions/README.md` for "When to Write" criteria
-2. **Number** — Find the next available `NNNN` in `docs/decisions/`
-3. **Create** — Copy `docs/decisions/_template.md` to `docs/decisions/NNNN-short-title.md`
-4. **Write** — Fill in Context, Decision, Consequences (positive/negative/neutral)
-5. **Index** — Add the entry to the table in `docs/decisions/README.md`
-6. **Status** — Set to `proposed` if under discussion, `accepted` if already implemented
+1. **Invoke** — Run `.github/prompts/write-adr.prompt.md`; it handles numbering, template, style, writing, and index update automatically
+2. **Supersede** — If replacing an existing ADR, pass `supersedes: NNNN` as context; the prompt marks the old ADR and writes the replacement
 
-See `adr.instructions.md` for full details.
+See `adr.instructions.md` for the qualifying-decision list and `write-adr.prompt.md` for the full 10-step workflow.
 
 ### 6. Create & Verify Tasks
 

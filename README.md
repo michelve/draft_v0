@@ -1,14 +1,16 @@
-# Draft v0
+# Draft_v0
 
-**"We don't have time for that" is no longer an answer.** Draft v0 puts senior engineering expertise at your fingertips — 17 skills, 8 agents, and 12 prompt templates that handle the code so your team stops compromising on the design. Micro-interactions, pixel-perfect fidelity, design system consistency in every PR. Not backlog items. Not phase 2. Just the product you actually designed.
+![Draft_v0 Banner](.github/banner.png)
+
+**"We don't have time for that" is no longer an answer.** Draft_v0 puts senior engineering expertise at your fingertips — 17 skills, 8 agents, and 12 prompt templates that handle the code so your team stops compromising on the design. Micro-interactions, pixel-perfect fidelity, design system consistency in every PR. Not backlog items. Not phase 2. Just the product you actually designed.
 
 [![Dependabot Updates](https://github.com/michelve/draft_v0/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/michelve/draft_v0/actions/workflows/dependabot/dependabot-updates)
 
 [![E2E Tests](https://github.com/michelve/draft_v0/actions/workflows/e2e.yml/badge.svg)](https://github.com/michelve/draft_v0/actions/workflows/e2e.yml)
 
-## Why Draft v0?
+## Why Draft_v0?
 
-Every team has the same conversation: _"We love the design, but we don't have time to build it that way."_ Draft v0 ends that conversation. The engineering complexity — architecture, conventions, API wiring, state management — is already solved. Your AI assistant knows the stack as well as your best engineer. What used to take a sprint takes an afternoon.
+Every team has the same conversation: _"We love the design, but we don't have time to build it that way."_ Draft_v0 ends that conversation. The engineering complexity — architecture, conventions, API wiring, state management — is already solved. Your AI assistant knows the stack as well as your best engineer. What used to take a sprint takes an afternoon.
 
 - **Figma URL → production component** — paste a link, get a pixel-perfect, accessible, design-system-compliant component. No translation layer, no back-and-forth
 - **Your design system is encoded** — tokens, variants, spacing, motion. Every AI-generated component follows your rules without you having to explain them
@@ -19,7 +21,7 @@ Every team has the same conversation: _"We love the design, but we don't have ti
 
 ## How It Works
 
-Draft v0 ships a complete AI development system on top of the scaffold. Designers get Figma-to-code workflows that just work. Developers get an AI assistant that already knows the architecture, patterns, and conventions — no handholding needed.
+Draft_v0 ships a complete AI development system on top of the scaffold. Designers get Figma-to-code workflows that just work. Developers get an AI assistant that already knows the architecture, patterns, and conventions — no handholding needed.
 
 | Component               | What it does                                                                                                                                                                                                                                |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
