@@ -1,0 +1,47 @@
+# Probot Stale configuration
+# https://github.com/probot/stale
+
+# Issues
+
+daysUntilStale: 60
+daysUntilClose: 14
+
+staleLabel: stale
+
+markComment: >
+  This issue hasn't had any activity in 60 days. I'm marking it as stale — if it's still relevant, just leave a comment and it'll stay open. Otherwise it'll be closed in 14 days to keep the backlog manageable.
+
+closeComment: >
+  Closing this due to inactivity. If the problem is still happening or the idea is still relevant, feel free to open a new issue with updated context. No hard feelings — keeping things tidy helps everyone.
+
+# Pull requests
+
+pulls:
+  daysUntilStale: 30
+  daysUntilClose: 14
+
+  markComment: >
+    This PR hasn't had any activity in 30 days. If it's still in progress, leave a comment or push an update to keep it open. It'll be closed in 14 days if there's no activity.
+
+  closeComment: >
+    Closing this PR due to inactivity. If you'd like to pick it back up, reopen it or open a fresh PR. Happy to review when it's ready.
+
+# Labels that prevent an issue or PR from ever being marked stale
+
+exemptLabels:
+  - pinned
+  - security
+  - bug
+  - in-progress
+  - blocked
+  - good first issue
+
+# Only stale issues/PRs that have these labels (leave empty to apply to all)
+onlyLabels: []
+
+# Set to true to not create a comment when closing a stale issue
+closeIssuesWithoutComment: false
+closePullRequestsWithoutComment: false
+
+# Limit the number of actions per run to avoid hitting rate limits
+limitPerRun: 30

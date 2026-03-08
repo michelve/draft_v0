@@ -1,0 +1,67 @@
+version: 2
+
+updates:
+  # ── GitHub Actions ──────────────────────────────────────────────────────────
+  # Keeps action tags (e.g. @v4) replaced with pinned commit SHAs.
+  # Covers: actions/checkout, actions/setup-node, actions/upload-artifact,
+  #         actions/dependency-review-action, pnpm/action-setup
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: "chore"
+    labels:
+      - dependencies
+      - github-actions
+
+  # ── npm / pnpm ──────────────────────────────────────────────────────────────
+  # Groups updates to reduce PR noise. Dev deps and prod deps are split so
+  # production bumps get more visibility.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: "chore"
+    labels:
+      - dependencies
+    open-pull-requests-limit: 10
+    groups:
+      # All dev tooling in one PR (biome, eslint, prettier, vite, tsx, etc.)
+      dev-tooling:
+        dependency-type: development
+        patterns:
+          - "@biomejs/*"
+          - "@eslint/*"
+          - "eslint*"
+          - "prettier*"
+          - "vite*"
+          - "@vitejs/*"
+          - "tsx"
+          - "typescript*"
+          - "typescript-eslint"
+          - "globals"
+          - "concurrently"
+      # Test tooling in its own PR (vitest, playwright)
+      testing:
+        dependency-type: development
+        patterns:
+          - "vitest"
+          - "@playwright/*"
+      # TanStack family together
+      tanstack:
+        patterns:
+          - "@tanstack/*"
+      # Prisma client + CLI together (they must stay in sync)
+      prisma:
+        patterns:
+          - "prisma"
+          - "@prisma/*"
+      # Type definitions together
+      types:
+        dependency-type: development
+        patterns:
+          - "@types/*"
