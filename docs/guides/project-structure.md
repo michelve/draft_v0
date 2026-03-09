@@ -52,7 +52,7 @@ function AboutPage() {
 }
 ```
 
-**shadcn/ui components** are installed to `src/client/components/ui/` and must never be modified directly. If you need to customize a component, create a wrapper in `src/client/components/`.
+**shadcn/ui components** are installed to `src/client/components/ui/` and must never be modified directly. If you need to customize a component, create a wrapper in `src/client/components/`. See the [shadcn/ui guide](shadcn-ui.md) for installation, styling rules, and common patterns.
 
 **Data fetching** uses TanStack Query — never `useState` + `useEffect` for server data:
 
