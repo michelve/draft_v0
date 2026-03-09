@@ -10,7 +10,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "python3 .claude/hooks/commitlint-enforcer.py"
+                        "command": "node .claude/hooks/run-hook.cjs commitlint-enforcer.py"
                     }
                 ]
             },
@@ -19,7 +19,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "python3 .claude/hooks/anti-pattern-guard.py"
+                        "command": "node .claude/hooks/run-hook.cjs anti-pattern-guard.py"
                     }
                 ]
             }
@@ -29,7 +29,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "python3 .claude/hooks/adr-gate.py"
+                        "command": "node .claude/hooks/run-hook.cjs adr-gate.py"
                     }
                 ]
             },
@@ -37,7 +37,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "python3 .claude/hooks/task-context-injector.py"
+                        "command": "node .claude/hooks/run-hook.cjs task-context-injector.py"
                     }
                 ]
             }
@@ -48,7 +48,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "python3 .claude/hooks/quality-gate-reminder.py"
+                        "command": "node .claude/hooks/run-hook.cjs quality-gate-reminder.py"
                     }
                 ]
             }
