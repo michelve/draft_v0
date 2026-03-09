@@ -58,7 +58,7 @@
         "@tanstack/router-plugin": "^1.114.0",
         "@types/cors": "^2.8.17",
         "@types/express": "^5.0.0",
-        "@types/node": "^22.10.0",
+        "@types/node": "^25.3.5",
         "@types/react": "^19.0.0",
         "@types/react-dom": "^19.0.0",
         "@vitejs/plugin-react": "^4.3.0",
