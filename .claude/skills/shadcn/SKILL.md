@@ -8,15 +8,32 @@ user-invocable: false
 
 A framework for building ui, components and design systems. Components are added as source code to the user's project via the CLI.
 
-> **IMPORTANT:** Run all CLI commands using the project's package runner: `npx shadcn@latest`, `pnpm dlx shadcn@latest`, or `bunx --bun shadcn@latest` — based on the project's `packageManager`. Examples below use `npx shadcn@latest` but substitute the correct runner for the project.
+> **IMPORTANT:** This project uses **`pnpm`**. Always run shadcn CLI as `pnpm dlx shadcn@latest`. Examples below use `npx shadcn@latest` — mentally substitute `pnpm dlx shadcn@latest` for every command.
 
 ## Current Project Context
 
 ```json
-!`npx shadcn@latest info --json 2>/dev/null || echo '{"error": "No shadcn project found. Run shadcn init first."}'`
+!`pnpm dlx shadcn@latest info --json 2>/dev/null || echo '{"error": "No shadcn project found. Run shadcn init first."}'`
 ```
 
-The JSON above contains the project config and installed components. Use `npx shadcn@latest docs <component>` to get documentation and example URLs for any component.
+The JSON above contains the project config and installed components. Use `pnpm dlx shadcn@latest docs <component>` to get documentation and example URLs for any component.
+
+### Pinned Config (this project)
+
+| Field                | Value                                                              |
+| -------------------- | ------------------------------------------------------------------ |
+| `style`              | `new-york`                                                         |
+| `rsc`                | `false` — Vite SPA, **never add `"use client"`**                   |
+| `framework`          | Vite + TanStack Router (file-based routes in `src/client/routes/`) |
+| `tailwindVersion`    | `v4` — CSS-first via `@theme inline` in `src/client/index.css`     |
+| `tailwindCssFile`    | `src/client/index.css` — edit this file, never create a new one    |
+| `base`               | `radix` (flat `radix-ui` package, uses `Slot.Root`)                |
+| `iconLibrary`        | `lucide` — import from `lucide-react`                              |
+| `ui alias`           | `@/components/ui` → `src/client/components/ui/`                    |
+| `utils alias`        | `@/lib/utils` → `src/client/lib/utils.ts`                          |
+| `hooks alias`        | `@/hooks` → `src/client/hooks/`                                    |
+| `packageManager`     | `pnpm`                                                             |
+| Installed components | `button`                                                           |
 
 ## Principles
 
@@ -140,7 +157,7 @@ These are the most common patterns that differentiate correct shadcn/ui code. Fo
 The injected project context contains these key fields:
 
 - **`aliases`** → use the actual alias prefix for imports (e.g. `@/`, `~/`), never hardcode.
-- **`isRSC`** → when `true`, components using `useState`, `useEffect`, event handlers, or browser APIs need `"use client"` at the top of the file. Always reference this field when advising on the directive.
+- **`isRSC`** → when `true`, components using `useState`, `useEffect`, event handlers, or browser APIs need `"use client"` at the top of the file. **In this project `rsc` is `false` (Vite SPA) — never add `"use client"`.**
 - **`tailwindVersion`** → `"v4"` uses `@theme inline` blocks; `"v3"` uses `tailwind.config.js`.
 - **`tailwindCssFile`** → the global CSS file where custom CSS variables are defined. Always edit this file, never create a new one.
 - **`style`** → component visual treatment (e.g. `nova`, `vega`).
