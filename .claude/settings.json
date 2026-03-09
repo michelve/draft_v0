@@ -79,6 +79,10 @@
             "url": "https://mcp.miro.com/",
             "disabled": false,
             "autoApprove": []
+        },
+        "shadcn": {
+            "command": "npx",
+            "args": ["shadcn@latest", "mcp"]
         }
     }
 }
