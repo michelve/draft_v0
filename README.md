@@ -2,15 +2,22 @@
 
 ![Draft_v0 Banner](.github/banner.jpg)
 
-**"We don't have time for that" is no longer an answer.** Draft_v0 puts senior engineering expertise at your fingertips — 17 skills, 8 agents, and 12 prompt templates that handle the code so your team stops compromising on the design. Micro-interactions, pixel-perfect fidelity, design system consistency in every PR. Not backlog items. Not phase 2. Just the product you actually designed.
+**"We don't have time for that" is no longer an answer.** Draft_v0 puts senior engineering expertise at your fingertips; 17 skills, 8 agents, and 12 prompt templates that handle the code so your team stops compromising on the design. Micro-interactions, pixel-perfect fidelity, design system consistency in every PR. Not backlog items. Not phase 2. Just the product you actually designed.
 
 [![Dependabot Updates](https://github.com/michelve/draft_v0/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/michelve/draft_v0/actions/workflows/dependabot/dependabot-updates)
-
 [![E2E Tests](https://github.com/michelve/draft_v0/actions/workflows/e2e.yml/badge.svg)](https://github.com/michelve/draft_v0/actions/workflows/e2e.yml)
+[![License](https://img.shields.io/github/license/michelve/draft_v0)](LICENSE)
+
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma&logoColor=white)](https://www.prisma.io/)
+[![pnpm](https://img.shields.io/badge/pnpm-package_manager-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
 
 ## Why Draft_v0?
 
-Every team has the same conversation: _"We love the design, but we don't have time to build it that way."_ Draft_v0 ends that conversation. The engineering complexity — architecture, conventions, API wiring, state management — is already solved. Your AI assistant knows the stack as well as your best engineer. What used to take a sprint takes an afternoon.
+Every team has the same conversation: _"We love the design, but we don't have time to build it that way."_ Draft_v0 ends that conversation. The engineering complexity; architecture, conventions, API wiring, state management; is already solved. Your AI assistant knows the stack as well as your best engineer. What used to take a sprint takes an afternoon.
 
 - **Figma URL → production component** — paste a link, get a pixel-perfect, accessible, design-system-compliant component. No translation layer, no back-and-forth
 - **Your design system is encoded** — tokens, variants, spacing, motion. Every AI-generated component follows your rules without you having to explain them
