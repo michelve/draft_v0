@@ -100,8 +100,10 @@ src/
 │   └── hooks/           # Custom React hooks
 ├── server/              # Express API
 │   ├── routes/          # API route handlers
-│   ├── lib/             # Shared (prisma client)
-│   └── services/        # Business logic
+│   ├── controllers/     # Request parsing + response sending
+│   ├── services/        # Business logic + custom error classes
+│   ├── repositories/    # Prisma queries, data access only
+│   └── lib/             # Shared (prisma client)
 prisma/
 └── schema.prisma        # Database schema (SQLite default)
 e2e/
