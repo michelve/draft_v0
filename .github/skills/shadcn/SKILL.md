@@ -25,6 +25,17 @@ shadcn/ui is **not a component library**—it's a collection of reusable compone
 
 ## Component Discovery and Installation
 
+### MCP Server (Pre-configured)
+
+The **shadcn MCP server is already configured** in this project — both `.vscode/mcp.json` and `.claude/settings.json` include it. Use it as the primary way to browse and install components via natural language:
+
+- _"Show me all available shadcn components"_
+- _"Add a data table component to my project"_
+- _"Find me a login form from the shadcn registry"_
+- _"Install the dialog, card, and sheet components"_
+
+The MCP server handles registry lookup and runs the shadcn CLI automatically. No manual `npx shadcn@latest add` needed when the MCP is active.
+
 ### 1. Browse Available Components
 
 Use the shadcn MCP tools to explore the component catalog and Registry Directory:
@@ -37,7 +48,11 @@ Use the shadcn MCP tools to explore the component catalog and Registry Directory
 
 There are two approaches to adding components:
 
-**A. Direct Installation (Recommended)**
+**A. Via MCP (Preferred when MCP is active)**
+
+Ask in natural language — the MCP translates and runs the install for you.
+
+**B. Direct CLI (Fallback)**
 
 ```bash
 npx shadcn@latest add [component-name]
