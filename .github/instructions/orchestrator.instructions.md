@@ -6,7 +6,7 @@ applyTo: "**"
 
 Master decision framework for the Draft v0 full-stack application.
 Routes tasks to the right skills, agents, and workflows.
-For philosophy and code standards, see `copilot-instructions.md`. For domain-specific rules, see `.claude/rules/`.
+For philosophy and code standards, see `copilot-instructions.md`. For domain-specific rules, see `.github/instructions/`.
 
 ---
 

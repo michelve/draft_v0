@@ -2,6 +2,13 @@
 
 This file describes available AI agents and their capabilities. Recognized by GitHub Copilot and Cursor.
 
+Agents are provided by the [hugin-v0](https://github.com/michelve/hugin-v0) Claude Code plugin. Install with:
+
+```bash
+/plugin marketplace add michelve/hugin-v0
+/plugin install hugin-v0@michelve
+```
+
 ## adr-writer
 
 Write, validate, and commit Architecture Decision Records in MADR 4.0.0 format. Reads the ADR index to determine the next number, loads the template and recent ADRs for style context, drafts all mandatory sections, validates phrasing ("Chosen option: X, because Y"), writes to `docs/decisions/NNNN-title.md`, and updates the README index. Handles the supersede flow when triggered by the violation checker - marks the old ADR as `superseded` and writes the replacement. Invokes `web-research-specialist` for external evidence grounding when requested. Use when creating, documenting, or superseding any architectural decision.

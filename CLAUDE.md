@@ -17,6 +17,7 @@
 - **Testing**: Vitest (unit), Playwright (e2e)
 - **Linting/Formatting**: Biome, ESLint, Prettier (with Tailwind plugin)
 - **Design**: Figma Code Connect, Figma MCP servers
+- **Plugin**: [hugin-v0](https://github.com/michelve/hugin-v0) (skills, agents, hooks, MCP servers)
 
 ## Code Standards
 
@@ -89,6 +90,19 @@ pnpm db:studio        # Open Prisma Studio
 pnpm db:generate      # Generate Prisma client
 ```
 
+## Plugin
+
+This project uses the [hugin-v0](https://github.com/michelve/hugin-v0) Claude Code plugin for skills, agents, hooks, and MCP servers.
+
+```bash
+# Install (in Claude Code)
+/plugin marketplace add michelve/hugin-v0
+/plugin install hugin-v0@michelve
+
+# Local testing
+claude --plugin-dir ./path/to/hugin-v0
+```
+
 ## Project Structure
 
 ```text
@@ -108,16 +122,6 @@ prisma/
 └── schema.prisma        # Database schema (SQLite default)
 e2e/
 └── *.spec.ts            # Playwright e2e tests
-.claude/
-├── hooks/               # Claude Code hooks (Python3 scripts)
-│   ├── commitlint-enforcer.py   # Blocks invalid commit messages
-│   ├── anti-pattern-guard.py    # Warns on React 19 anti-patterns
-│   ├── adr-gate.py              # Injects ADR check reminder
-│   ├── task-context-injector.py # Injects task context by number
-│   └── quality-gate-reminder.py # Reminds to run typecheck + biome
-├── rules/               # Always-on convention rules
-├── agents/              # Specialized autonomous agents
-└── settings.json        # Hook registration + MCP servers
 ```
 
 ## Adding UI Components
