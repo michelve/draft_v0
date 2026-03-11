@@ -19,25 +19,25 @@
 
 Every team has the same conversation: _"We love the design, but we don't have time to build it that way."_ Draft_v0 ends that conversation. The engineering complexity; architecture, conventions, API wiring, state management; is already solved. Your AI assistant knows the stack as well as your best engineer. What used to take a sprint takes an afternoon.
 
-- **Figma URL → production component** — paste a link, get a pixel-perfect, accessible, design-system-compliant component. No translation layer, no back-and-forth
-- **Your design system is encoded** — tokens, variants, spacing, motion. Every AI-generated component follows your rules without you having to explain them
-- **Micro-interactions ship on day one** — hover states, transitions, loading skeletons. Not "nice to haves." Not phase 2. Just done
-- **No revision cycles** — AI produces code that matches your conventions on the first try, because the conventions are baked in as skills
-- **Autonomous problem-solving** — agents fix build errors, review PRs for design system drift, and research solutions without pulling engineers away from building
-- **One-command workflows** — `figma-to-code`, `build-page`, `gh-new-pr` chain everything together so the path from Figma to merged PR is as short as possible
+- **Figma URL → production component** - paste a link, get a pixel-perfect, accessible, design-system-compliant component. No translation layer, no back-and-forth
+- **Your design system is encoded** - tokens, variants, spacing, motion. Every AI-generated component follows your rules without you having to explain them
+- **Micro-interactions ship on day one** - hover states, transitions, loading skeletons. Not "nice to haves." Not phase 2. Just done
+- **No revision cycles** - AI produces code that matches your conventions on the first try, because the conventions are baked in as skills
+- **Autonomous problem-solving** - agents fix build errors, review PRs for design system drift, and research solutions without pulling engineers away from building
+- **One-command workflows** - `figma-to-code`, `build-page`, `gh-new-pr` chain everything together so the path from Figma to merged PR is as short as possible
 
 ## How It Works
 
-Draft_v0 ships a complete AI development system on top of the scaffold. Designers get Figma-to-code workflows that just work. Developers get an AI assistant that already knows the architecture, patterns, and conventions — no handholding needed.
+Draft_v0 ships a complete AI development system on top of the scaffold. Designers get Figma-to-code workflows that just work. Developers get an AI assistant that already knows the architecture, patterns, and conventions - no handholding needed.
 
 | Component               | What it does                                                                                                                                                                                                                                |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **17 Skills**           | Teach your AI the exact patterns, conventions, and anti-patterns for every layer of the stack — React 19, Express, Prisma, Tailwind, Figma, and more. AI produces correct code on the first attempt, not after three correction rounds      |
+| **17 Skills**           | Teach your AI the exact patterns, conventions, and anti-patterns for every layer of the stack - React 19, Express, Prisma, Tailwind, Figma, and more. AI produces correct code on the first attempt, not after three correction rounds      |
 | **8 Agents**            | Autonomous workers: fix TypeScript errors, review code for architectural consistency, plan refactors with risk assessments, research solutions across the internet. Multi-step tasks that would interrupt a developer run in the background |
-| **12 Prompt templates** | One-click workflows that chain skills together — `figma-to-code` translates a Figma URL into a production component, `build-page` scaffolds a full route, `gh-new-pr` handles commit, PR, and description in one shot                       |
+| **12 Prompt templates** | One-click workflows that chain skills together - `figma-to-code` translates a Figma URL into a production component, `build-page` scaffolds a full route, `gh-new-pr` handles commit, PR, and description in one shot                       |
 | **Task system**         | File-based tasks with AI-powered breakdown (Example Mapping) and verification (PASS/FAIL/NEED_INFO). Work is tracked, verifiable, and never lost between sessions                                                                           |
 | **ADRs**                | Architecture Decision Records capture the _why_ behind every significant choice. New team members (and AI assistants) understand the reasoning, not just the result                                                                         |
-| **Figma pipeline**      | Two MCP servers + Code Connect, pre-configured. Your Figma components are linked to your code components — the AI sees both and keeps them in sync                                                                                          |
+| **Figma pipeline**      | Two MCP servers + Code Connect, pre-configured. Your Figma components are linked to your code components - the AI sees both and keeps them in sync                                                                                          |
 
 ## Tech Stack
 
@@ -63,7 +63,7 @@ pnpm db:push
 pnpm dev
 ```
 
-Open http://localhost:5173 (frontend) — API runs on http://localhost:3001.
+Open http://localhost:5173 (frontend) - API runs on http://localhost:3001.
 
 ## Project Structure
 
@@ -140,7 +140,7 @@ One-click workflows: `build-page`, `figma-to-code`, `commit`, `pr`, `gh-new-pr`,
 npx shadcn@latest add button card dialog
 ```
 
-Components install to `src/client/components/ui/`. Never modify these files directly — create wrappers in `src/client/components/` instead.
+Components install to `src/client/components/ui/`. Never modify these files directly - create wrappers in `src/client/components/` instead.
 
 ## Figma Integration
 
@@ -174,7 +174,7 @@ pnpm build          # Clean production build
 
 ## Security
 
-See [SECURITY.md](SECURITY.md) for how to report vulnerabilities. Please use GitHub Private Vulnerability Reporting — do not open public issues for security concerns.
+See [SECURITY.md](SECURITY.md) for how to report vulnerabilities. Please use GitHub Private Vulnerability Reporting - do not open public issues for security concerns.
 
 ## Code of Conduct
 

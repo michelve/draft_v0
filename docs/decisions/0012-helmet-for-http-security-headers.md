@@ -11,9 +11,9 @@ The Express server shipped with no HTTP security headers, leaving it vulnerable 
 
 ## Considered Options
 
-- `helmet` — de-facto Express security middleware; sets 11+ headers in one call
-- Manual `res.setHeader()` calls — no dependency, but error-prone and easy to miss headers
-- Custom middleware wrapping `res.setHeader()` — same burden as manual; adds maintenance cost
+- `helmet` - de-facto Express security middleware; sets 11+ headers in one call
+- Manual `res.setHeader()` calls - no dependency, but error-prone and easy to miss headers
+- Custom middleware wrapping `res.setHeader()` - same burden as manual; adds maintenance cost
 
 ## Decision Outcome
 

@@ -2,10 +2,10 @@
 
 ## Engineering Philosophy
 
-- **First Principles Over Convention** — Question assumptions, understand WHY things work
-- **Simple Over Clever** — Solve the actual problem, not the general case
-- **Measure, Don't Guess** — Data over intuition for performance claims
-- **#NoMessLeftBehind** — Never leave broken builds. Every error must be resolved
+- **First Principles Over Convention** - Question assumptions, understand WHY things work
+- **Simple Over Clever** - Solve the actual problem, not the general case
+- **Measure, Don't Guess** - Data over intuition for performance claims
+- **#NoMessLeftBehind** - Never leave broken builds. Every error must be resolved
 
 ## Tech Stack
 
@@ -20,7 +20,7 @@
 
 ## Code Standards
 
-- TypeScript strict mode — no `any` unless absolutely necessary
+- TypeScript strict mode - no `any` unless absolutely necessary
 - 4-space indentation, double quotes, semicolons, trailing commas
 - Naming: camelCase (variables/functions), PascalCase (types/components), UPPER_SNAKE_CASE (constants)
 - Max 300 lines per component, max 5 levels of nesting

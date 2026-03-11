@@ -11,10 +11,10 @@ As the project grows, unused exports, unreferenced files, and stale dependencies
 
 ## Considered Options
 
-- `knip` — static analysis tool that finds unused files, exports, and dependencies across the whole project graph
-- `ts-prune` — finds unused TypeScript exports only, no dependency awareness
-- `depcheck` — finds unused `package.json` dependencies only, no code-level analysis
-- No tooling — rely on manual review
+- `knip` - static analysis tool that finds unused files, exports, and dependencies across the whole project graph
+- `ts-prune` - finds unused TypeScript exports only, no dependency awareness
+- `depcheck` - finds unused `package.json` dependencies only, no code-level analysis
+- No tooling - rely on manual review
 
 ## Decision Outcome
 

@@ -15,7 +15,7 @@ Should the build script use `tsc` for compilation or only for type checking?
 
 - 7+ stray `.js` files appeared in `src/client/` and root
 - TanStack Router threw "Found route at both" error due to `index.js` / `index.tsx` conflict
-- Vite already handles transpilation — `tsc` output is redundant
+- Vite already handles transpilation - `tsc` output is redundant
 
 ## Considered Options
 
@@ -50,7 +50,7 @@ Also added `!**/*.gen.js` to Biome's file exclusions to prevent future conflicts
 - Good, because both `tsconfig.json` (client) and `tsconfig.node.json` (server/build) are type-checked
 - Bad, because two `tsc` invocations instead of one (negligible performance impact)
 - Bad, because developers must understand that `tsc` is only used for type checking, not compilation
-- Neutral, because `pnpm typecheck` script already used `tsc --noEmit` — this just aligns the build script
+- Neutral, because `pnpm typecheck` script already used `tsc --noEmit` - this just aligns the build script
 - Neutral, because `.gitignore` should already exclude `*.js` in `src/` but the root cause is now fixed
 
 ## More Information

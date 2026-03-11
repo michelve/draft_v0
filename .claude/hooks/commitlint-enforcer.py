@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-PreToolUse hook — commitlint-enforcer
+PreToolUse hook - commitlint-enforcer
 
 Intercepts `git commit -m` commands and blocks them if the commit message
 violates project commitlint rules. Runs before git and lint-staged.
@@ -42,7 +42,7 @@ def validate(msg: str) -> list[str]:
 
     if commit_type not in VALID_TYPES:
         errors.append(
-            f'unknown type "{commit_type}" — valid: {", ".join(sorted(VALID_TYPES))}'
+            f'unknown type "{commit_type}" - valid: {", ".join(sorted(VALID_TYPES))}'
         )
     if msg != msg.lower():
         errors.append('subject must be lowercase')
@@ -74,14 +74,14 @@ def main() -> None:
     command = data.get('tool_input', {}).get('command', '')
     match = COMMIT_RE.search(command)
     if not match:
-        sys.exit(0)  # No -m flag or not a commit command — allow
+        sys.exit(0)  # No -m flag or not a commit command - allow
 
     msg = (match.group(1) or match.group(2) or '').strip()
     errors = validate(msg)
 
     if errors:
         print(
-            '❌ Commit blocked — commitlint violation(s):\n'
+            '❌ Commit blocked - commitlint violation(s):\n'
             + '\n'.join(f'   • {e}' for e in errors)
             + f'\n\n   Suggested: {suggest(msg)}'
         )

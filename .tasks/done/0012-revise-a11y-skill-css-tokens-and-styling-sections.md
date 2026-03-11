@@ -4,13 +4,13 @@ created: 2026-03-09
 updated: 2026-03-09
 ---
 
-# 0012 — Revise a11y skill CSS tokens, focus styles, sr-only, and motion sections
+# 0012 - Revise a11y skill CSS tokens, focus styles, sr-only, and motion sections
 
 ## Deliverable
 
 The "Color Contrast", "Visible Focus", "Screen Reader Only Text", and "Reduced Motion" sections
 of the accessibility skill use Tailwind CSS v4 utilities and the project's actual CSS custom
-properties (`--ring`, `--primary`, `--destructive`, `--foreground`, `--background`) — no DSAi
+properties (`--ring`, `--primary`, `--destructive`, `--foreground`, `--background`) - no DSAi
 color tokens or raw class names.
 
 ## Context and Motivation
@@ -32,10 +32,10 @@ Reference: `src/client/index.css` for the definitive list of CSS custom properti
 ## Key Decisions
 
 - Color tokens come from `src/client/index.css` `@theme inline` block. Use: `--ring`, `--primary`, `--destructive`, `--foreground`, `--background`, `--muted-foreground`. Do NOT invent new var names.
-- Focus styles: document Tailwind utilities only — `focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:border-ring`. Reference the existing button.tsx implementation as the pattern to follow.
+- Focus styles: document Tailwind utilities only - `focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:border-ring`. Reference the existing button.tsx implementation as the pattern to follow.
 - `sr-only`: replace the raw CSS block entirely with the Tailwind built-in `sr-only` utility. Add `not-sr-only` as the counterpart.
 - Reduced motion: replace `.dsai-animated { animation: none; }` with Tailwind `motion-reduce:transition-none motion-reduce:animate-none` variants. Keep the `@media (prefers-reduced-motion: reduce)` CSS block as a secondary option for non-component CSS (e.g., `custom.css`).
-- The WCAG 2.1 AA contrast ratio table (4.5:1 / 3:1) is standard — keep it unchanged.
+- The WCAG 2.1 AA contrast ratio table (4.5:1 / 3:1) is standard - keep it unchanged.
 - Color contrast compliant combinations: replace raw hex values with semantic Tailwind classes (`bg-primary text-primary-foreground`, `bg-background text-foreground`, `bg-destructive text-destructive-foreground`).
 
 ## Acceptance Criteria
@@ -56,20 +56,20 @@ Reference: `src/client/index.css` for the definitive list of CSS custom properti
 - Metadata/frontmatter and utilities table (task 0010)
 - Keyboard navigation and focus management code examples (task 0011)
 - Testing section (task 0013)
-- Adding custom CSS to `src/client/custom.css` — the skill documents the pattern only.
-- Modifying `src/client/index.css` — read it as reference, do not change it.
+- Adding custom CSS to `src/client/custom.css` - the skill documents the pattern only.
+- Modifying `src/client/index.css` - read it as reference, do not change it.
 
 ## Dependencies
 
-- Task 0010 completed — ensures the overall skill framing is set before sections are revised.
+- Task 0010 completed - ensures the overall skill framing is set before sections are revised.
 - Task 0011 can proceed in parallel (different sections of the file).
 
 ## Related Code
 
-- `.github/skills/accessibility/SKILL.md` — color contrast section (~lines 310–345), visible focus (~lines 347–368), sr-only (~lines 370–383), CSS reduced motion (~lines 295–307)
-- `src/client/index.css` — `@theme inline` block containing `--ring`, `--primary`, `--destructive`, `--foreground`, `--background`, `--muted`, `--muted-foreground` tokens (use these exact names)
-- `src/client/components/ui/button.tsx` — the definitive focus-visible pattern in production: `focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50`
-- `src/client/custom.css` — where project-level CSS overrides live (currently empty; reference for reduced motion guidance)
+- `.github/skills/accessibility/SKILL.md` - color contrast section (~lines 310–345), visible focus (~lines 347–368), sr-only (~lines 370–383), CSS reduced motion (~lines 295–307)
+- `src/client/index.css` - `@theme inline` block containing `--ring`, `--primary`, `--destructive`, `--foreground`, `--background`, `--muted`, `--muted-foreground` tokens (use these exact names)
+- `src/client/components/ui/button.tsx` - the definitive focus-visible pattern in production: `focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50`
+- `src/client/custom.css` - where project-level CSS overrides live (currently empty; reference for reduced motion guidance)
 
 ## Verification
 

@@ -4,11 +4,11 @@ created: 2026-03-08
 updated: 2026-03-08
 ---
 
-# 0008 — Add task-context-injector Claude hook
+# 0008 - Add task-context-injector Claude hook
 
 ## Deliverable
 
-A `UserPromptSubmit` hook that detects task number references in user messages, reads the matching task file from `.tasks/`, and injects the task's acceptance criteria and deliverable into Claude's context — so every task conversation starts with full spec context automatically.
+A `UserPromptSubmit` hook that detects task number references in user messages, reads the matching task file from `.tasks/`, and injects the task's acceptance criteria and deliverable into Claude's context - so every task conversation starts with full spec context automatically.
 
 ## Context and Motivation
 
@@ -16,10 +16,10 @@ When working on a task (e.g. "let's do task 0006"), Claude has no automatic acce
 
 ## Key Decisions
 
-- **Bash first, PowerShell second** — deliver `task-context-injector.sh` (macOS/Linux) and `task-context-injector.ps1` (Windows)
+- **Bash first, PowerShell second** - deliver `task-context-injector.sh` (macOS/Linux) and `task-context-injector.ps1` (Windows)
 - **Detection pattern**: match `0\d{3}` (zero-padded 4-digit numbers), `task \d+`, `#\d{3,4}` in the user message (case-insensitive)
-- **Search path**: `.tasks/backlog/`, `.tasks/in-progress/`, `.tasks/done/` — search all three, prefer in-progress
-- **Inject**: Deliverable + Acceptance Criteria sections only (not the full file — keep injection lean)
+- **Search path**: `.tasks/backlog/`, `.tasks/in-progress/`, `.tasks/done/` - search all three, prefer in-progress
+- **Inject**: Deliverable + Acceptance Criteria sections only (not the full file - keep injection lean)
 - **Graceful fallback**: if no matching task file is found, proceed silently without injection
 
 ## Acceptance Criteria
@@ -31,7 +31,7 @@ When working on a task (e.g. "let's do task 0006"), Claude has no automatic acce
 - [ ] Given a task in `.tasks/in-progress/`, when the hook runs, then it is found and injected (not just backlog)
 - [ ] Given macOS/Linux, the `.sh` script executes correctly via bash
 - [ ] Given Windows, the `.ps1` script executes correctly via PowerShell
-- [ ] Injected content is clearly labeled: `"[Task 0006 context — auto-injected]"` header
+- [ ] Injected content is clearly labeled: `"[Task 0006 context - auto-injected]"` header
 
 ## Out of Scope
 
@@ -46,9 +46,9 @@ When working on a task (e.g. "let's do task 0006"), Claude has no automatic acce
 
 ## Related Code
 
-- `.tasks/backlog/` — task files to read (0001–0009 will exist after current sprint)
-- `.tasks/_template.md` — task file structure (defines section names to extract)
-- `.github/skills/create-tasks/SKILL.md` — task format reference
+- `.tasks/backlog/` - task files to read (0001–0009 will exist after current sprint)
+- `.tasks/_template.md` - task file structure (defines section names to extract)
+- `.github/skills/create-tasks/SKILL.md` - task format reference
 
 ## Verification
 

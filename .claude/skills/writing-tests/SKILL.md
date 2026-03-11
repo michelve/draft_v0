@@ -2,6 +2,7 @@
 name: writing-tests
 description: "Principles for writing effective, maintainable tests. Covers naming conventions, assertion best practices, and comprehensive edge case checklists. Based on BugMagnet by Gojko Adzic. Triggers on: writing any test, 'add tests', test review, test naming, assertion choices, edge case coverage, 'what should I test', test structure decisions."
 version: 1.0.0
+user-invocable: true
 ---
 
 # Writing Tests
@@ -62,41 +63,41 @@ Your test name should read like a specification. If someone reads ONLY the test 
 
 ```typescript
 // ❌ WEAK - passes even if completely wrong data
-expect(result).toBeDefined()
-expect(result.items).toHaveLength(2)
-expect(user).toBeTruthy()
+expect(result).toBeDefined();
+expect(result.items).toHaveLength(2);
+expect(user).toBeTruthy();
 
 // ✅ STRONG - catches actual bugs
-expect(result).toEqual({ status: 'success', items: ['a', 'b'] })
-expect(user.email).toBe('test@example.com')
+expect(result).toEqual({ status: "success", items: ["a", "b"] });
+expect(user.email).toBe("test@example.com");
 ```
 
 ### Match Assertions to Test Title
 
 ```typescript
 // ❌ TEST SAYS "different IDs" BUT ASSERTS COUNT
-it('generates different IDs for each call', () => {
-  const id1 = generateId()
-  const id2 = generateId()
-  expect([id1, id2]).toHaveLength(2)  // WRONG: doesn't check they're different!
-})
+it("generates different IDs for each call", () => {
+    const id1 = generateId();
+    const id2 = generateId();
+    expect([id1, id2]).toHaveLength(2); // WRONG: doesn't check they're different!
+});
 
 // ✅ ACTUALLY VERIFIES DIFFERENT IDs
-it('generates different IDs for each call', () => {
-  const id1 = generateId()
-  const id2 = generateId()
-  expect(id1).not.toBe(id2)  // RIGHT: verifies the claim
-})
+it("generates different IDs for each call", () => {
+    const id1 = generateId();
+    const id2 = generateId();
+    expect(id1).not.toBe(id2); // RIGHT: verifies the claim
+});
 ```
 
 ### Avoid Implementation Coupling
 
 ```typescript
 // ❌ BRITTLE - tests implementation details
-expect(mockDatabase.query).toHaveBeenCalledWith('SELECT * FROM users WHERE id = 1')
+expect(mockDatabase.query).toHaveBeenCalledWith("SELECT * FROM users WHERE id = 1");
 
 // ✅ FLEXIBLE - tests behavior
-expect(result.user.name).toBe('Alice')
+expect(result.user.name).toBe("Alice");
 ```
 
 ## Test Structure
@@ -104,42 +105,42 @@ expect(result.user.name).toBe('Alice')
 ### Arrange-Act-Assert
 
 ```typescript
-it('calculates total with tax for non-exempt items', () => {
-  // Arrange: Set up test data
-  const item = { price: 100, taxExempt: false }
-  const taxRate = 0.1
+it("calculates total with tax for non-exempt items", () => {
+    // Arrange: Set up test data
+    const item = { price: 100, taxExempt: false };
+    const taxRate = 0.1;
 
-  // Act: Execute the behavior
-  const total = calculateTotal(item, taxRate)
+    // Act: Execute the behavior
+    const total = calculateTotal(item, taxRate);
 
-  // Assert: Verify the outcome
-  expect(total).toBe(110)
-})
+    // Assert: Verify the outcome
+    expect(total).toBe(110);
+});
 ```
 
 ### One Concept Per Test
 
 ```typescript
 // ❌ MULTIPLE CONCEPTS - hard to diagnose failures
-it('validates and processes order', () => {
-  expect(validate(order)).toBe(true)
-  expect(process(order).status).toBe('complete')
-  expect(sendEmail).toHaveBeenCalled()
-})
+it("validates and processes order", () => {
+    expect(validate(order)).toBe(true);
+    expect(process(order).status).toBe("complete");
+    expect(sendEmail).toHaveBeenCalled();
+});
 
 // ✅ SINGLE CONCEPT - clear failures
-it('accepts valid orders', () => {
-  expect(validate(validOrder)).toBe(true)
-})
+it("accepts valid orders", () => {
+    expect(validate(validOrder)).toBe(true);
+});
 
-it('rejects orders with negative quantities', () => {
-  expect(validate(negativeQuantityOrder)).toBe(false)
-})
+it("rejects orders with negative quantities", () => {
+    expect(validate(negativeQuantityOrder)).toBe(false);
+});
 
-it('sends confirmation email after processing', () => {
-  process(order)
-  expect(sendEmail).toHaveBeenCalledWith(order.customerEmail)
-})
+it("sends confirmation email after processing", () => {
+    process(order);
+    expect(sendEmail).toHaveBeenCalledWith(order.customerEmail);
+});
 ```
 
 ## Edge Case Checklists
@@ -224,23 +225,27 @@ These test implicit assumptions in your domain:
 When testing code that validates properties against type constraints (e.g., validating `route: string` in an interface):
 
 **Wrong-type literals:**
+
 - [ ] Numeric literal when string expected (`route = 123`)
 - [ ] Boolean literal when string expected (`route = true`)
 - [ ] String literal when number expected (`count = 'five'`)
 - [ ] String literal when boolean expected (`enabled = 'yes'`)
 
 **Non-literal expressions:**
+
 - [ ] Template literal (`` route = `/path/${id}` ``)
 - [ ] Variable reference (`route = someVariable`)
 - [ ] Function call (`route = getRoute()`)
 - [ ] Computed property (`route = config.path`)
 
 **Correct type:**
+
 - [ ] Valid literal of correct type (`route = '/orders'`)
 - [ ] Edge values (empty string `''`, zero `0`, `false`)
 
 **Why this matters:**
 A common bug pattern is validating "is this a literal?" without checking "is this the RIGHT TYPE of literal?"
+
 - `hasLiteralValue()` returns true for `123`, `true`, and `'string'`
 - `hasStringLiteralValue()` returns true only for `'string'`
 

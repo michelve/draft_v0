@@ -15,7 +15,7 @@ description: "Express API route conventions and error handling for src/server/**
 
 - Parse JSON body via `express.json()` (already configured)
 - Validate input with Zod schemas before processing
-- Use async/await — wrap handlers in try/catch
+- Use async/await - wrap handlers in try/catch
 
 ## Response Format
 
@@ -32,16 +32,16 @@ res.status(500).json({ error: "Internal Server Error" });
 
 ## Status Codes
 
-- `200` — OK (read, update)
-- `201` — Created (new resource)
-- `400` — Bad Request (invalid input)
-- `404` — Not Found
-- `409` — Conflict (duplicate)
-- `500` — Internal Server Error
+- `200` - OK (read, update)
+- `201` - Created (new resource)
+- `400` - Bad Request (invalid input)
+- `404` - Not Found
+- `409` - Conflict (duplicate)
+- `500` - Internal Server Error
 
 ## Error Handling
 
-- Catch all errors in route handlers — never let exceptions crash the server
+- Catch all errors in route handlers - never let exceptions crash the server
 - **Never** expose internal error details (stack traces, SQL, Prisma internals) in responses
 - Log errors server-side with `console.error`
 - Return generic message to client with appropriate status code

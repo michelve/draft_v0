@@ -4,11 +4,11 @@ created: 2026-03-08
 updated: 2026-03-08
 ---
 
-# 0005 — Add commitlint-enforcer Claude hook
+# 0005 - Add commitlint-enforcer Claude hook
 
 ## Deliverable
 
-A `PreToolUse` hook that intercepts `git commit` terminal commands and blocks them if the commit message violates commitlint rules — before git or lint-staged even runs.
+A `PreToolUse` hook that intercepts `git commit` terminal commands and blocks them if the commit message violates commitlint rules - before git or lint-staged even runs.
 
 ## Context and Motivation
 
@@ -16,10 +16,10 @@ The commit convention (type: subject, ≤100 chars, lowercase, no trailing dot) 
 
 ## Key Decisions
 
-- **Bash first, PowerShell second** — deliver `commitlint-enforcer.sh` (macOS/Linux) and `commitlint-enforcer.ps1` (Windows) together
-- **Block, don't warn** — return `{"decision": "block", "reason": "..."}` with the corrected format shown; the cost of a false positive is low (just re-run with a valid message)
+- **Bash first, PowerShell second** - deliver `commitlint-enforcer.sh` (macOS/Linux) and `commitlint-enforcer.ps1` (Windows) together
+- **Block, don't warn** - return `{"decision": "block", "reason": "..."}` with the corrected format shown; the cost of a false positive is low (just re-run with a valid message)
 - **Register in `.claude/settings.json`** under `"hooks": { "PreToolUse": [...] }` with a `tool_name` matcher for `run_in_terminal`
-- **Valid types**: `feat|fix|refactor|docs|chore|test|style` — exactly as defined in `copilot-instructions.md`
+- **Valid types**: `feat|fix|refactor|docs|chore|test|style` - exactly as defined in `copilot-instructions.md`
 
 ## Acceptance Criteria
 
@@ -45,9 +45,9 @@ The commit convention (type: subject, ≤100 chars, lowercase, no trailing dot) 
 
 ## Related Code
 
-- `.claude/settings.json` — hook registration target
-- `.github/instructions/copilot-instructions.md` — commitlint rules source (type list, length limit)
-- `.github/prompts/commit.prompt.md` — commit convention reference
+- `.claude/settings.json` - hook registration target
+- `.github/instructions/copilot-instructions.md` - commitlint rules source (type list, length limit)
+- `.github/prompts/commit.prompt.md` - commit convention reference
 
 ## Verification
 

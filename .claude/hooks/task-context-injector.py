@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-UserPromptSubmit hook — task-context-injector
+UserPromptSubmit hook - task-context-injector
 
 Detects task number references in the user's message, reads the matching
 task file from .tasks/, and injects the Deliverable + Acceptance Criteria
@@ -99,7 +99,7 @@ def main() -> None:
     if not sections:
         sys.exit(0)
 
-    parts = [f'[Task {padded} context — auto-injected from {task_file}]']
+    parts = [f'[Task {padded} context - auto-injected from {task_file}]']
     for section_name in ['Deliverable', 'Acceptance Criteria']:
         if section_name in sections and sections[section_name]:
             parts.append(f'\n### {section_name}\n{sections[section_name]}')

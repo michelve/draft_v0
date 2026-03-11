@@ -20,24 +20,24 @@ Performance optimization guide for React applications, designed for AI agents an
 
 ## Table of Contents
 
-1. [Eliminating Waterfalls](#1-eliminating-waterfalls) — **CRITICAL**
-   - 1.1 [Promise.all() for Independent Operations](#11-promiseall-for-independent-operations)
-2. [Bundle Size Optimization](#2-bundle-size-optimization) — **CRITICAL**
-   - 2.1 [Avoid Barrel File Imports](#21-avoid-barrel-file-imports)
-   - 2.2 [Defer Non-Critical Third-Party Libraries](#22-defer-non-critical-third-party-libraries)
-3. [Client-Side Data Fetching](#3-client-side-data-fetching) — **MEDIUM-HIGH**
-   - 3.1 [Use TanStack Query for Automatic Deduplication](#31-use-tanstack-query-for-automatic-deduplication)
-4. [Re-render Optimization](#4-re-render-optimization) — **MEDIUM**
-   - 4.1 [Use Lazy State Initialization](#41-use-lazy-state-initialization)
-   - 4.2 [Use Transitions for Non-Urgent Updates](#42-use-transitions-for-non-urgent-updates)
-   - 4.3 [useEffectEvent for Functions in useEffect](#43-useeffectevent-for-functions-in-useeffect)
-5. [Rendering Performance](#5-rendering-performance) — **MEDIUM**
-   - 5.1 [Animate SVG Wrapper Instead of SVG Element](#51-animate-svg-wrapper-instead-of-svg-element)
-   - 5.2 [CSS content-visibility for Long Lists](#52-css-content-visibility-for-long-lists)
-6. [JavaScript Performance](#6-javascript-performance) — **LOW-MEDIUM**
-   - 6.1 [Early Length Check for Array Comparisons](#61-early-length-check-for-array-comparisons)
-   - 6.2 [Use Set/Map for O(1) Lookups](#62-use-setmap-for-o1-lookups)
-   - 6.3 [Use toSorted() Instead of sort() for Immutability](#63-use-tosorted-instead-of-sort-for-immutability)
+1. [Eliminating Waterfalls](#1-eliminating-waterfalls) - **CRITICAL**
+    - 1.1 [Promise.all() for Independent Operations](#11-promiseall-for-independent-operations)
+2. [Bundle Size Optimization](#2-bundle-size-optimization) - **CRITICAL**
+    - 2.1 [Avoid Barrel File Imports](#21-avoid-barrel-file-imports)
+    - 2.2 [Defer Non-Critical Third-Party Libraries](#22-defer-non-critical-third-party-libraries)
+3. [Client-Side Data Fetching](#3-client-side-data-fetching) - **MEDIUM-HIGH**
+    - 3.1 [Use TanStack Query for Automatic Deduplication](#31-use-tanstack-query-for-automatic-deduplication)
+4. [Re-render Optimization](#4-re-render-optimization) - **MEDIUM**
+    - 4.1 [Use Lazy State Initialization](#41-use-lazy-state-initialization)
+    - 4.2 [Use Transitions for Non-Urgent Updates](#42-use-transitions-for-non-urgent-updates)
+    - 4.3 [useEffectEvent for Functions in useEffect](#43-useeffectevent-for-functions-in-useeffect)
+5. [Rendering Performance](#5-rendering-performance) - **MEDIUM**
+    - 5.1 [Animate SVG Wrapper Instead of SVG Element](#51-animate-svg-wrapper-instead-of-svg-element)
+    - 5.2 [CSS content-visibility for Long Lists](#52-css-content-visibility-for-long-lists)
+6. [JavaScript Performance](#6-javascript-performance) - **LOW-MEDIUM**
+    - 6.1 [Early Length Check for Array Comparisons](#61-early-length-check-for-array-comparisons)
+    - 6.2 [Use Set/Map for O(1) Lookups](#62-use-setmap-for-o1-lookups)
+    - 6.3 [Use toSorted() Instead of sort() for Immutability](#63-use-tosorted-instead-of-sort-for-immutability)
 
 ---
 
@@ -84,24 +84,24 @@ Popular icon and component libraries can have **up to 10,000 re-exports** in the
 **Incorrect (imports entire library):**
 
 ```tsx
-import { Check, X, Menu } from 'lucide-react';
+import { Check, X, Menu } from "lucide-react";
 // Loads 1,583 modules, takes ~2.8s extra in dev
 // Runtime cost: 200-800ms on every cold start
 
-import { Button, TextField } from '@mui/material';
+import { Button, TextField } from "@mui/material";
 // Loads 2,225 modules, takes ~4.2s extra in dev
 ```
 
 **Correct (imports only what you need):**
 
 ```tsx
-import Check from 'lucide-react/dist/esm/icons/check';
-import X from 'lucide-react/dist/esm/icons/x';
-import Menu from 'lucide-react/dist/esm/icons/menu';
+import Check from "lucide-react/dist/esm/icons/check";
+import X from "lucide-react/dist/esm/icons/x";
+import Menu from "lucide-react/dist/esm/icons/menu";
 // Loads only 3 modules (~2KB vs ~1MB)
 
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 // Loads only what you use
 ```
 
@@ -112,38 +112,40 @@ Analytics, logging, and error tracking don't block user interaction. Load them a
 **Incorrect (blocks initial bundle):**
 
 ```tsx
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
 
 export default function RootLayout({ children }) {
-  return (
-    <html>
-      <body>
-        {children}
-        <Analytics />
-      </body>
-    </html>
-  );
+    return (
+        <html>
+            <body>
+                {children}
+                <Analytics />
+            </body>
+        </html>
+    );
 }
 ```
 
 **Correct (loads after hydration):**
 
 ```tsx
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense } from "react";
 
-const Analytics = lazy(() => import('@vercel/analytics/react').then(m => ({ default: m.Analytics })));
+const Analytics = lazy(() =>
+    import("@vercel/analytics/react").then((m) => ({ default: m.Analytics })),
+);
 
 export default function RootLayout({ children }) {
-  return (
-    <html>
-      <body>
-        {children}
-        <Suspense fallback={null}>
-          <Analytics />
-        </Suspense>
-      </body>
-    </html>
-  );
+    return (
+        <html>
+            <body>
+                {children}
+                <Suspense fallback={null}>
+                    <Analytics />
+                </Suspense>
+            </body>
+        </html>
+    );
 }
 ```
 
@@ -163,52 +165,52 @@ TanStack Query enables request deduplication, caching, and revalidation across c
 
 ```tsx
 function UserList() {
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    fetch('/api/users')
-      .then(r => r.json())
-      .then(setUsers);
-  }, []);
+    const [users, setUsers] = useState([]);
+    useEffect(() => {
+        fetch("/api/users")
+            .then((r) => r.json())
+            .then(setUsers);
+    }, []);
 }
 ```
 
 **Correct (multiple instances share one request):**
 
 ```tsx
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
 
 function UserList() {
-  const { data: users } = useQuery({
-    queryKey: ['users'],
-    queryFn: () => fetch('/api/users').then(r => r.json()),
-  });
+    const { data: users } = useQuery({
+        queryKey: ["users"],
+        queryFn: () => fetch("/api/users").then((r) => r.json()),
+    });
 }
 ```
 
 **For immutable data:**
 
 ```tsx
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
 
 function StaticContent() {
-  const { data } = useQuery({
-    queryKey: ['config'],
-    queryFn: () => fetch('/api/config').then(r => r.json()),
-    staleTime: Infinity,
-  });
+    const { data } = useQuery({
+        queryKey: ["config"],
+        queryFn: () => fetch("/api/config").then((r) => r.json()),
+        staleTime: Infinity,
+    });
 }
 ```
 
 **For mutations:**
 
 ```tsx
-import { useMutation } from '@tanstack/react-query';
+import { useMutation } from "@tanstack/react-query";
 
 function UpdateButton() {
-  const { mutate } = useMutation({
-    mutationFn: updateUser,
-  });
-  return <button onClick={() => mutate()}>Update</button>;
+    const { mutate } = useMutation({
+        mutationFn: updateUser,
+    });
+    return <button onClick={() => mutate()}>Update</button>;
 }
 ```
 
@@ -230,19 +232,19 @@ Pass a function to `useState` for expensive initial values. Without the function
 
 ```tsx
 function FilteredList({ items }: { items: Item[] }) {
-  // buildSearchIndex() runs on EVERY render, even after initialization
-  const [searchIndex, setSearchIndex] = useState(buildSearchIndex(items));
-  const [query, setQuery] = useState('');
+    // buildSearchIndex() runs on EVERY render, even after initialization
+    const [searchIndex, setSearchIndex] = useState(buildSearchIndex(items));
+    const [query, setQuery] = useState("");
 
-  // When query changes, buildSearchIndex runs again unnecessarily
-  return <SearchResults index={searchIndex} query={query} />;
+    // When query changes, buildSearchIndex runs again unnecessarily
+    return <SearchResults index={searchIndex} query={query} />;
 }
 
 function UserProfile() {
-  // JSON.parse runs on every render
-  const [settings, setSettings] = useState(JSON.parse(localStorage.getItem('settings') || '{}'));
+    // JSON.parse runs on every render
+    const [settings, setSettings] = useState(JSON.parse(localStorage.getItem("settings") || "{}"));
 
-  return <SettingsForm settings={settings} onChange={setSettings} />;
+    return <SettingsForm settings={settings} onChange={setSettings} />;
 }
 ```
 
@@ -250,21 +252,21 @@ function UserProfile() {
 
 ```tsx
 function FilteredList({ items }: { items: Item[] }) {
-  // buildSearchIndex() runs ONLY on initial render
-  const [searchIndex, setSearchIndex] = useState(() => buildSearchIndex(items));
-  const [query, setQuery] = useState('');
+    // buildSearchIndex() runs ONLY on initial render
+    const [searchIndex, setSearchIndex] = useState(() => buildSearchIndex(items));
+    const [query, setQuery] = useState("");
 
-  return <SearchResults index={searchIndex} query={query} />;
+    return <SearchResults index={searchIndex} query={query} />;
 }
 
 function UserProfile() {
-  // JSON.parse runs only on initial render
-  const [settings, setSettings] = useState(() => {
-    const stored = localStorage.getItem('settings');
-    return stored ? JSON.parse(stored) : {};
-  });
+    // JSON.parse runs only on initial render
+    const [settings, setSettings] = useState(() => {
+        const stored = localStorage.getItem("settings");
+        return stored ? JSON.parse(stored) : {};
+    });
 
-  return <SettingsForm settings={settings} onChange={setSettings} />;
+    return <SettingsForm settings={settings} onChange={setSettings} />;
 }
 ```
 
@@ -280,29 +282,29 @@ Mark frequent, non-urgent state updates as transitions to maintain UI responsive
 
 ```tsx
 function ScrollTracker() {
-  const [scrollY, setScrollY] = useState(0);
-  useEffect(() => {
-    const handler = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handler, { passive: true });
-    return () => window.removeEventListener('scroll', handler);
-  }, []);
+    const [scrollY, setScrollY] = useState(0);
+    useEffect(() => {
+        const handler = () => setScrollY(window.scrollY);
+        window.addEventListener("scroll", handler, { passive: true });
+        return () => window.removeEventListener("scroll", handler);
+    }, []);
 }
 ```
 
 **Correct (non-blocking updates):**
 
 ```tsx
-import { startTransition } from 'react';
+import { startTransition } from "react";
 
 function ScrollTracker() {
-  const [scrollY, setScrollY] = useState(0);
-  useEffect(() => {
-    const handler = () => {
-      startTransition(() => setScrollY(window.scrollY));
-    };
-    window.addEventListener('scroll', handler, { passive: true });
-    return () => window.removeEventListener('scroll', handler);
-  }, []);
+    const [scrollY, setScrollY] = useState(0);
+    useEffect(() => {
+        const handler = () => {
+            startTransition(() => setScrollY(window.scrollY));
+        };
+        window.addEventListener("scroll", handler, { passive: true });
+        return () => window.removeEventListener("scroll", handler);
+    }, []);
 }
 ```
 
@@ -313,30 +315,30 @@ Using `useCallback` for event handlers adds unnecessary complexity and dependenc
 **Incorrect (unnecessary memoization with dependency management):**
 
 ```tsx
-import { useCallback } from 'react';
+import { useCallback } from "react";
 
 export function App() {
-  // useCallback adds boilerplate and requires managing dependencies
-  const onSubmit = useCallback((data: FormData) => {
-    // handle submission
-  }, []);
+    // useCallback adds boilerplate and requires managing dependencies
+    const onSubmit = useCallback((data: FormData) => {
+        // handle submission
+    }, []);
 
-  return <Form onSubmit={onSubmit} />;
+    return <Form onSubmit={onSubmit} />;
 }
 ```
 
 **Correct (useEffectEvent for event handlers):**
 
 ```tsx
-import { useEffectEvent } from 'react';
+import { useEffectEvent } from "react";
 
 export function App() {
-  // useEffectEvent always sees latest values, no dependency array needed
-  const onSubmit = useEffectEvent((data: FormData) => {
-    // handle submission
-  });
+    // useEffectEvent always sees latest values, no dependency array needed
+    const onSubmit = useEffectEvent((data: FormData) => {
+        // handle submission
+    });
 
-  return <Form onSubmit={onSubmit} />;
+    return <Form onSubmit={onSubmit} />;
 }
 ```
 
@@ -358,11 +360,11 @@ Many browsers don't have hardware acceleration for CSS3 animations on SVG elemen
 
 ```tsx
 function LoadingSpinner() {
-  return (
-    <svg className="animate-spin" width="24" height="24" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="10" stroke="currentColor" />
-    </svg>
-  );
+    return (
+        <svg className="animate-spin" width="24" height="24" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" />
+        </svg>
+    );
 }
 ```
 
@@ -370,13 +372,13 @@ function LoadingSpinner() {
 
 ```tsx
 function LoadingSpinner() {
-  return (
-    <div className="animate-spin">
-      <svg width="24" height="24" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10" stroke="currentColor" />
-      </svg>
-    </div>
-  );
+    return (
+        <div className="animate-spin">
+            <svg width="24" height="24" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" />
+            </svg>
+        </div>
+    );
 }
 ```
 
@@ -390,8 +392,8 @@ Apply `content-visibility: auto` to defer off-screen rendering.
 
 ```css
 .message-item {
-  content-visibility: auto;
-  contain-intrinsic-size: 0 80px;
+    content-visibility: auto;
+    contain-intrinsic-size: 0 80px;
 }
 ```
 
@@ -399,16 +401,16 @@ Apply `content-visibility: auto` to defer off-screen rendering.
 
 ```tsx
 function MessageList({ messages }: { messages: Message[] }) {
-  return (
-    <div className="overflow-y-auto h-screen">
-      {messages.map(msg => (
-        <div key={msg.id} className="message-item">
-          <Avatar user={msg.author} />
-          <div>{msg.content}</div>
+    return (
+        <div className="h-screen overflow-y-auto">
+            {messages.map((msg) => (
+                <div key={msg.id} className="message-item">
+                    <Avatar user={msg.author} />
+                    <div>{msg.content}</div>
+                </div>
+            ))}
         </div>
-      ))}
-    </div>
-  );
+    );
 }
 ```
 
@@ -432,8 +434,8 @@ In real-world applications, this optimization is especially valuable when the co
 
 ```typescript
 function hasChanges(current: string[], original: string[]) {
-  // Always sorts and joins, even when lengths differ
-  return current.sort().join() !== original.sort().join();
+    // Always sorts and joins, even when lengths differ
+    return current.sort().join() !== original.sort().join();
 }
 ```
 
@@ -443,19 +445,19 @@ Two O(n log n) sorts run even when `current.length` is 5 and `original.length` i
 
 ```typescript
 function hasChanges(current: string[], original: string[]) {
-  // Early return if lengths differ
-  if (current.length !== original.length) {
-    return true;
-  }
-  // Only sort/join when lengths match
-  const currentSorted = current.toSorted();
-  const originalSorted = original.toSorted();
-  for (let i = 0; i < currentSorted.length; i++) {
-    if (currentSorted[i] !== originalSorted[i]) {
-      return true;
+    // Early return if lengths differ
+    if (current.length !== original.length) {
+        return true;
     }
-  }
-  return false;
+    // Only sort/join when lengths match
+    const currentSorted = current.toSorted();
+    const originalSorted = original.toSorted();
+    for (let i = 0; i < currentSorted.length; i++) {
+        if (currentSorted[i] !== originalSorted[i]) {
+            return true;
+        }
+    }
+    return false;
 }
 ```
 

@@ -13,25 +13,25 @@ How should we structure the backend to balance separation of concerns with devel
 
 ## Considered Options
 
-- Flat handlers — all logic in route files
-- Controller + Service — two layers
-- Route → Controller → Service → Repository — four layers with clear boundaries
+- Flat handlers - all logic in route files
+- Controller + Service - two layers
+- Route → Controller → Service → Repository - four layers with clear boundaries
 
 ## Decision Outcome
 
 Chosen option: "Route → Controller → Service → Repository", because it provides the clearest separation of concerns and makes each layer independently testable.
 
-- **Routes** (`src/server/routes/`) — HTTP method + path only, delegates to controller
-- **Controllers** (`src/server/controllers/`) — Parse request, call service, format response, handle HTTP errors
-- **Services** (`src/server/services/`) — Business logic, custom error classes, never touches `req`/`res`
-- **Repositories** (`src/server/repositories/`) — Prisma queries only, no business logic
+- **Routes** (`src/server/routes/`) - HTTP method + path only, delegates to controller
+- **Controllers** (`src/server/controllers/`) - Parse request, call service, format response, handle HTTP errors
+- **Services** (`src/server/services/`) - Business logic, custom error classes, never touches `req`/`res`
+- **Repositories** (`src/server/repositories/`) - Prisma queries only, no business logic
 
 The `User` resource serves as the reference implementation for all future resources.
 
 ### Consequences
 
 - Good, because each layer is independently testable (mock the layer below)
-- Good, because adding a new resource is mechanical — copy the User pattern
+- Good, because adding a new resource is mechanical - copy the User pattern
 - Good, because business logic in services is framework-agnostic (could swap Express for Fastify)
 - Good, because error handling is centralized in controllers
 - Bad, because more files per resource (4 files vs 1 for flat handlers)
@@ -43,7 +43,7 @@ The `User` resource serves as the reference implementation for all future resour
 
 ### Flat handlers
 
-- Good, because minimal boilerplate — one file per resource
+- Good, because minimal boilerplate - one file per resource
 - Bad, because logic becomes monolithic as features grow
 - Bad, because business logic is tightly coupled to Express `req`/`res`
 

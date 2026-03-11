@@ -1,6 +1,9 @@
 ---
 name: implement-design
 description: Translates Figma designs into production-ready code with 1:1 visual fidelity. Use when implementing UI from Figma files, when user mentions "implement design", "generate code", "implement component", "build Figma design", provides Figma URLs, or asks to build components matching Figma specs. Requires Figma MCP server connection.
+argument-hint: "Figma URL (https://figma.com/design/:fileKey/:fileName?node-id=1-2)"
+user-invocable: true
+allowed-tools: figma__get_design_context, figma__get_screenshot, figma__get_assets, figma__get_variables
 metadata:
     mcp-server: figma
 ---
@@ -93,7 +96,7 @@ Download any assets (images, icons, SVGs) returned by the Figma MCP server.
 | ----------------------------------------------- | --------------------------------------------------------- |
 | Images / icons (Vite-processed, imported in TS) | `src/client/assets/images/` or `src/client/assets/icons/` |
 | Static fonts referenced by URL in CSS           | `public/fonts/`                                           |
-| Tailwind theme tokens (colors, spacing, radii)  | `src/client/index.css` — `@theme inline` block            |
+| Tailwind theme tokens (colors, spacing, radii)  | `src/client/index.css` - `@theme inline` block            |
 | Custom CSS (keyframes, @font-face, overrides)   | `src/client/custom.css`                                   |
 
 ### Step 5: Translate to Project Conventions
@@ -138,9 +141,9 @@ Before marking complete, validate the final UI against the Figma screenshot.
 
 ### Component Organization
 
-- Place new UI components in `src/client/components/` (never in `src/client/components/ui/` — those are shadcn files and must not be modified)
+- Place new UI components in `src/client/components/` (never in `src/client/components/ui/` - those are shadcn files and must not be modified)
 - To extend a shadcn/ui component, create a wrapper in `src/client/components/` that imports from `@/components/ui/`
-- Use **named exports only** — no default exports
+- Use **named exports only** - no default exports
 - Component names must be PascalCase; file names must match the component name
 - Never use inline `style={}` when an equivalent Tailwind utility class exists
 - Use `cn()` from `@/lib/utils` for conditional class merging

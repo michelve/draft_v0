@@ -10,7 +10,7 @@ January 2026
 > may also find it useful, but guidance here is optimized for automation  
 > and consistency by AI-assisted workflows.
 >
-> **Server-side (RSC/Next.js) rules have been removed** — this project uses Vite + Express.
+> **Server-side (RSC/Next.js) rules have been removed** - this project uses Vite + Express.
 
 ---
 
@@ -22,24 +22,24 @@ Comprehensive performance optimization guide for React applications, adapted fro
 
 ## Table of Contents
 
-1. [Eliminating Waterfalls](#1-eliminating-waterfalls) — **CRITICAL**
+1. [Eliminating Waterfalls](#1-eliminating-waterfalls) - **CRITICAL**
     - 1.1 [Defer Await Until Needed](#11-defer-await-until-needed)
     - 1.2 [Dependency-Based Parallelization](#12-dependency-based-parallelization)
     - 1.3 [Prevent Waterfall Chains in API Routes](#13-prevent-waterfall-chains-in-api-routes)
     - 1.4 [Promise.all() for Independent Operations](#14-promiseall-for-independent-operations)
     - 1.5 [Strategic Suspense Boundaries](#15-strategic-suspense-boundaries)
-2. [Bundle Size Optimization](#2-bundle-size-optimization) — **CRITICAL**
+2. [Bundle Size Optimization](#2-bundle-size-optimization) - **CRITICAL**
     - 2.1 [Avoid Barrel File Imports](#21-avoid-barrel-file-imports)
     - 2.2 [Conditional Module Loading](#22-conditional-module-loading)
     - 2.3 [Defer Non-Critical Third-Party Libraries](#23-defer-non-critical-third-party-libraries)
     - 2.4 [Dynamic Imports for Heavy Components](#24-dynamic-imports-for-heavy-components)
     - 2.5 [Preload Based on User Intent](#25-preload-based-on-user-intent)
-3. [Client-Side Data Fetching](#3-client-side-data-fetching) — **MEDIUM-HIGH**
+3. [Client-Side Data Fetching](#3-client-side-data-fetching) - **MEDIUM-HIGH**
     - 3.1 [Deduplicate Global Event Listeners](#31-deduplicate-global-event-listeners)
     - 3.2 [Use Passive Event Listeners for Scrolling Performance](#32-use-passive-event-listeners-for-scrolling-performance)
     - 3.3 [Use TanStack Query for Automatic Deduplication](#33-use-tanstack-query-for-automatic-deduplication)
     - 3.4 [Version and Minimize localStorage Data](#34-version-and-minimize-localstorage-data)
-4. [Re-render Optimization](#4-re-render-optimization) — **MEDIUM**
+4. [Re-render Optimization](#4-re-render-optimization) - **MEDIUM**
     - 4.1 [Calculate Derived State During Rendering](#41-calculate-derived-state-during-rendering)
     - 4.2 [Defer State Reads to Usage Point](#42-defer-state-reads-to-usage-point)
     - 4.3 [Do not wrap a simple expression with a primitive result type in useMemo](#43-do-not-wrap-a-simple-expression-with-a-primitive-result-type-in-usememo)
@@ -52,7 +52,7 @@ Comprehensive performance optimization guide for React applications, adapted fro
     - 4.10 [Use Lazy State Initialization](#410-use-lazy-state-initialization)
     - 4.11 [Use Transitions for Non-Urgent Updates](#411-use-transitions-for-non-urgent-updates)
     - 4.12 [Use useRef for Transient Values](#412-use-useref-for-transient-values)
-5. [Rendering Performance](#5-rendering-performance) — **MEDIUM**
+5. [Rendering Performance](#5-rendering-performance) - **MEDIUM**
     - 5.1 [Animate SVG Wrapper Instead of SVG Element](#51-animate-svg-wrapper-instead-of-svg-element)
     - 5.2 [CSS content-visibility for Long Lists](#52-css-content-visibility-for-long-lists)
     - 5.3 [Hoist Static JSX Elements](#53-hoist-static-jsx-elements)
@@ -62,7 +62,7 @@ Comprehensive performance optimization guide for React applications, adapted fro
     - 5.7 [Use Activity Component for Show/Hide](#57-use-activity-component-for-showhide)
     - 5.8 [Use Explicit Conditional Rendering](#58-use-explicit-conditional-rendering)
     - 5.9 [Use useTransition Over Manual Loading States](#59-use-usetransition-over-manual-loading-states)
-6. [JavaScript Performance](#6-javascript-performance) — **LOW-MEDIUM**
+6. [JavaScript Performance](#6-javascript-performance) - **LOW-MEDIUM**
     - 6.1 [Avoid Layout Thrashing](#61-avoid-layout-thrashing)
     - 6.2 [Build Index Maps for Repeated Lookups](#62-build-index-maps-for-repeated-lookups)
     - 6.3 [Cache Property Access in Loops](#63-cache-property-access-in-loops)
@@ -75,7 +75,7 @@ Comprehensive performance optimization guide for React applications, adapted fro
     - 6.10 [Use Loop for Min/Max Instead of Sort](#610-use-loop-for-minmax-instead-of-sort)
     - 6.11 [Use Set/Map for O(1) Lookups](#611-use-setmap-for-o1-lookups)
     - 6.12 [Use toSorted() Instead of sort() for Immutability](#612-use-tosorted-instead-of-sort-for-immutability)
-7. [Advanced Patterns](#7-advanced-patterns) — **LOW**
+7. [Advanced Patterns](#7-advanced-patterns) - **LOW**
     - 7.1 [Initialize App Once, Not Per Mount](#71-initialize-app-once-not-per-mount)
     - 7.2 [Store Event Handlers in Refs](#72-store-event-handlers-in-refs)
     - 7.3 [useEffectEvent for Stable Callback Refs](#73-useeffectevent-for-stable-callback-refs)

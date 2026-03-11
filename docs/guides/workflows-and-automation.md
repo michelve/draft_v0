@@ -51,7 +51,7 @@ concurrency:
     cancel-in-progress: true
 ```
 
-Redundant runs for the same branch are cancelled automatically — pushing two commits in quick succession won't queue duplicate jobs.
+Redundant runs for the same branch are cancelled automatically - pushing two commits in quick succession won't queue duplicate jobs.
 
 ### Running quality gates locally
 
@@ -77,9 +77,9 @@ Runs Playwright browser tests against a freshly started dev server.
 
 ### Key details
 
-- **Chromium only** — `playwright install --with-deps chromium` keeps CI fast; Firefox and WebKit are opt-in
-- **Full stack** — both Vite (`:5173`) and Express (`:3001`) must be running; the `PORT: 3001` env var ensures Express binds correctly
-- **Failure artifacts** — if any test fails, the `playwright-report/` directory is uploaded as a CI artifact (7-day retention) so you can download the HTML report and inspect traces
+- **Chromium only** - `playwright install --with-deps chromium` keeps CI fast; Firefox and WebKit are opt-in
+- **Full stack** - both Vite (`:5173`) and Express (`:3001`) must be running; the `PORT: 3001` env var ensures Express binds correctly
+- **Failure artifacts** - if any test fails, the `playwright-report/` directory is uploaded as a CI artifact (7-day retention) so you can download the HTML report and inspect traces
 
 ### Downloading a failure report
 
@@ -95,7 +95,7 @@ pnpm test:e2e           # run all tests headlessly
 pnpm test:e2e:ui        # open Playwright UI (interactive)
 ```
 
-Playwright config is in `playwright.config.ts`. The `baseURL` is `http://localhost:5173` — `pnpm dev` must be running before executing tests.
+Playwright config is in `playwright.config.ts`. The `baseURL` is `http://localhost:5173` - `pnpm dev` must be running before executing tests.
 
 ---
 
@@ -111,7 +111,7 @@ Scans new and updated dependencies for known security vulnerabilities using the 
 | Setting        | Value                                    |
 | -------------- | ---------------------------------------- |
 | Fail threshold | `high` severity or above                 |
-| PR comment     | Always — posts a summary table to the PR |
+| PR comment     | Always - posts a summary table to the PR |
 
 The job only runs when dependency files actually change, keeping it out of unrelated PRs.
 
@@ -136,7 +136,7 @@ uses: actions/checkout@v4
 uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
 ```
 
-Pinned SHAs prevent supply-chain attacks — a compromised tag can be moved, but a SHA cannot.
+Pinned SHAs prevent supply-chain attacks - a compromised tag can be moved, but a SHA cannot.
 
 ### npm / pnpm ecosystem
 
@@ -161,7 +161,7 @@ Ungrouped packages (React, Express, shadcn deps, etc.) get individual PRs so bre
 
 Two hooks run automatically on every `git commit`.
 
-### pre-commit — lint staged files
+### pre-commit - lint staged files
 
 **File:** `.husky/pre-commit`
 
@@ -174,7 +174,7 @@ Runs `lint-staged` before the commit is created. Only files that are staged (`gi
 
 If Biome or Prettier modifies a file, the modified version is included in the commit automatically.
 
-### commit-msg — enforce Conventional Commits
+### commit-msg - enforce Conventional Commits
 
 **File:** `.husky/commit-msg`
 **Config:** `commitlint.config.cjs`
@@ -235,7 +235,7 @@ Use sparingly. `--no-verify` skips both pre-commit and commit-msg hooks.
 ## Adding a New Workflow
 
 1. Create `.github/workflows/your-workflow.yml`
-2. Use `actions/checkout@v4` — Dependabot will pin it to a SHA on the next Monday run
+2. Use `actions/checkout@v4` - Dependabot will pin it to a SHA on the next Monday run
 3. Follow the existing env pattern (`DATABASE_URL`, `NODE_ENV`) if Prisma is needed
 4. Add `concurrency` with `cancel-in-progress: true` for branch-scoped jobs
 5. Document it in this guide

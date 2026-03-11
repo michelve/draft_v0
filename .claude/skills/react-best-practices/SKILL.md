@@ -1,6 +1,7 @@
 ---
 name: react-best-practices
 description: React performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React code to ensure optimal performance patterns. Triggers on tasks involving React components, data fetching, bundle optimization, or performance improvements.
+user-invocable: true
 license: MIT
 metadata:
     author: vercel
@@ -11,7 +12,7 @@ metadata:
 
 Comprehensive performance optimization guide for React applications (Vite SPA), adapted from Vercel Engineering. Contains rules across 7 categories, prioritized by impact to guide automated refactoring and code generation.
 
-**Note:** Server-side (RSC/Next.js) rules have been removed — this project uses Vite + Express, not Next.js.
+**Note:** Server-side (RSC/Next.js) rules have been removed - this project uses Vite + Express, not Next.js.
 
 ## When to Apply
 

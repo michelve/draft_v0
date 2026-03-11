@@ -16,7 +16,7 @@ Task tracking directory for the Draft v0 project.
 
 ## File Naming
 
-`NNNN-short-title.md` — zero-padded number, lowercase, hyphenated.
+`NNNN-short-title.md` - zero-padded number, lowercase, hyphenated.
 
 To find the next number, check across **all** subdirectories for the highest `NNNN` prefix and increment by 1.
 

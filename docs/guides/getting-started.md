@@ -41,7 +41,7 @@ This starts two servers concurrently:
 | **Vite**    | http://localhost:5173 | React frontend (SPA) |
 | **Express** | http://localhost:3001 | API backend          |
 
-API requests from the frontend are automatically proxied — `/api/*` routes are forwarded from Vite to Express.
+API requests from the frontend are automatically proxied - `/api/*` routes are forwarded from Vite to Express.
 
 ## Environment Variables
 
@@ -52,7 +52,7 @@ DATABASE_URL="file:./dev.db"     # SQLite database path
 PORT=3001                         # Express server port
 NODE_ENV="development"
 
-# Optional — Figma integration (see Figma guide)
+# Optional - Figma integration (see Figma guide)
 FIGMA_API_KEY=""
 FIGMA_FILE_ID=""
 FIGMA_PROJECT_ID=""
@@ -60,13 +60,13 @@ FIGMA_PROJECT_ID=""
 
 ## VS Code Setup
 
-Open the project in VS Code. You will see a notification to install recommended extensions — accept it. These extensions provide:
+Open the project in VS Code. You will see a notification to install recommended extensions - accept it. These extensions provide:
 
-- **Tailwind CSS IntelliSense** — Class autocomplete and hover previews
-- **Prisma** — Schema syntax highlighting and formatting
-- **Biome** — Fast linting and formatting
-- **ESLint + Prettier** — Additional code quality checks
-- **TanStack Router** — Route file support
+- **Tailwind CSS IntelliSense** - Class autocomplete and hover previews
+- **Prisma** - Schema syntax highlighting and formatting
+- **Biome** - Fast linting and formatting
+- **ESLint + Prettier** - Additional code quality checks
+- **TanStack Router** - Route file support
 
 The workspace is pre-configured with editor settings (4-space tabs, format-on-save, Tailwind class sorting).
 
@@ -117,6 +117,6 @@ pnpm build          # Clean production build
 
 ## Next Steps
 
-- [Project Structure](project-structure.md) — Understand the architecture and directory layout
-- [Skills & Agents](skills-and-agents.md) — Learn how AI-powered skills and agents accelerate development
-- [Figma Integration](figma-integration.md) — Set up Figma-to-code workflow for designers
+- [Project Structure](project-structure.md) - Understand the architecture and directory layout
+- [Skills & Agents](skills-and-agents.md) - Learn how AI-powered skills and agents accelerate development
+- [Figma Integration](figma-integration.md) - Set up Figma-to-code workflow for designers

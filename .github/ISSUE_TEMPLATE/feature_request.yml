@@ -3,86 +3,86 @@ description: Suggest a new feature or an improvement to an existing one.
 title: "feat: "
 labels: ["enhancement", "triage"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Have an idea to improve Draft v0? Great — fill in the form below.
+    - type: markdown
+      attributes:
+          value: |
+              Have an idea to improve Draft v0? Great - fill in the form below.
 
-        For open-ended discussion or early-stage ideas, consider starting a [GitHub Discussion](https://github.com/michelve/draft_v0/discussions) first.
+              For open-ended discussion or early-stage ideas, consider starting a [GitHub Discussion](https://github.com/michelve/draft_v0/discussions) first.
 
-  - type: dropdown
-    id: type
-    attributes:
-      label: Request Type
-      options:
-        - New feature
-        - Enhancement to existing feature
-        - New skill or agent
-        - Developer experience / tooling
-        - Documentation improvement
-        - Other
-    validations:
-      required: true
-
-  - type: textarea
-    id: problem
-    attributes:
-      label: Problem / Motivation
-      description: What problem does this solve? What is the current limitation?
-      placeholder: "I'm trying to do X but the project doesn't support it because..."
-    validations:
-      required: true
-
-  - type: textarea
-    id: solution
-    attributes:
-      label: Proposed Solution
-      description: Describe what you'd like to see. Be as specific as you can.
-    validations:
-      required: true
-
-  - type: textarea
-    id: alternatives
-    attributes:
-      label: Alternatives Considered
-      description: What other approaches did you consider, and why did you rule them out?
-    validations:
-      required: false
-
-  - type: dropdown
-    id: area
-    attributes:
-      label: Affected Area
-      description: Which part of the project does this touch?
-      options:
-        - Frontend (React / TanStack / Tailwind)
-        - Backend (Express / API routes)
-        - Database (Prisma / schema)
-        - Build / Tooling (Vite / TypeScript / Biome)
-        - AI Skills / Agents / Prompts
-        - Figma Integration
-        - Documentation
-        - Multiple areas
-        - Other
-    validations:
-      required: true
-
-  - type: textarea
-    id: context
-    attributes:
-      label: Additional Context
-      description: Mockups, links, examples from other projects, or anything else useful.
-    validations:
-      required: false
-
-  - type: checkboxes
-    id: checklist
-    attributes:
-      label: Before Submitting
-      options:
-        - label: I searched existing issues and this has not been requested before
+    - type: dropdown
+      id: type
+      attributes:
+          label: Request Type
+          options:
+              - New feature
+              - Enhancement to existing feature
+              - New skill or agent
+              - Developer experience / tooling
+              - Documentation improvement
+              - Other
+      validations:
           required: true
-        - label: I checked the [documentation](https://github.com/michelve/draft_v0/tree/main/docs/guides) and this is not already supported
+
+    - type: textarea
+      id: problem
+      attributes:
+          label: Problem / Motivation
+          description: What problem does this solve? What is the current limitation?
+          placeholder: "I'm trying to do X but the project doesn't support it because..."
+      validations:
           required: true
-        - label: I am willing to help implement this if guidance is provided
+
+    - type: textarea
+      id: solution
+      attributes:
+          label: Proposed Solution
+          description: Describe what you'd like to see. Be as specific as you can.
+      validations:
+          required: true
+
+    - type: textarea
+      id: alternatives
+      attributes:
+          label: Alternatives Considered
+          description: What other approaches did you consider, and why did you rule them out?
+      validations:
           required: false
+
+    - type: dropdown
+      id: area
+      attributes:
+          label: Affected Area
+          description: Which part of the project does this touch?
+          options:
+              - Frontend (React / TanStack / Tailwind)
+              - Backend (Express / API routes)
+              - Database (Prisma / schema)
+              - Build / Tooling (Vite / TypeScript / Biome)
+              - AI Skills / Agents / Prompts
+              - Figma Integration
+              - Documentation
+              - Multiple areas
+              - Other
+      validations:
+          required: true
+
+    - type: textarea
+      id: context
+      attributes:
+          label: Additional Context
+          description: Mockups, links, examples from other projects, or anything else useful.
+      validations:
+          required: false
+
+    - type: checkboxes
+      id: checklist
+      attributes:
+          label: Before Submitting
+          options:
+              - label: I searched existing issues and this has not been requested before
+                required: true
+              - label: I checked the [documentation](https://github.com/michelve/draft_v0/tree/main/docs/guides) and this is not already supported
+                required: true
+              - label: I am willing to help implement this if guidance is provided
+                required: false

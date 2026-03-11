@@ -4,10 +4,10 @@ Draft v0 uses a file-based task management system in `.tasks/` that integrates w
 
 ## Why File-Based Tasks?
 
-- **Version controlled** — Task history lives in Git alongside your code
-- **AI-readable** — Skills can create, validate, and verify tasks automatically
-- **No external tools** — No Jira, Linear, or Trello dependency
-- **Convention-driven** — Structured templates ensure consistent, actionable work items
+- **Version controlled** - Task history lives in Git alongside your code
+- **AI-readable** - Skills can create, validate, and verify tasks automatically
+- **No external tools** - No Jira, Linear, or Trello dependency
+- **Convention-driven** - Structured templates ensure consistent, actionable work items
 
 ## Directory Structure
 
@@ -60,7 +60,7 @@ Every task includes:
 | Section                    | Purpose                                     |
 | -------------------------- | ------------------------------------------- |
 | **YAML Frontmatter**       | Status, created/updated dates               |
-| **Deliverable**            | What the user sees when done — one sentence |
+| **Deliverable**            | What the user sees when done - one sentence |
 | **Context and Motivation** | Why this matters, PRD reference, background |
 | **Key Decisions**          | Constraints the engineer must follow        |
 | **Acceptance Criteria**    | Given-When-Then checkboxes (testable)       |
@@ -73,12 +73,12 @@ Every task includes:
 
 Every task must pass the INVEST checklist:
 
-- **I**ndependent — Delivers value alone
-- **N**egotiable — Scope can be discussed
-- **V**aluable — User/stakeholder sees clear benefit
-- **E**stimable — Can be sized confidently
-- **S**mall — Fits in one day of work or less
-- **T**estable — Has concrete acceptance criteria
+- **I**ndependent - Delivers value alone
+- **N**egotiable - Scope can be discussed
+- **V**aluable - User/stakeholder sees clear benefit
+- **E**stimable - Can be sized confidently
+- **S**mall - Fits in one day of work or less
+- **T**estable - Has concrete acceptance criteria
 
 ## Working on Tasks
 
@@ -101,15 +101,15 @@ The agent:
 1. Reads the task file and acceptance criteria
 2. Checks each Given-When-Then criterion
 3. Returns one of:
-    - **PASS** — All criteria met, move to `done/`
-    - **FAIL** — Lists which criteria failed and why
-    - **NEED_INFO** — Cannot determine, asks clarifying questions
+    - **PASS** - All criteria met, move to `done/`
+    - **FAIL** - Lists which criteria failed and why
+    - **NEED_INFO** - Cannot determine, asks clarifying questions
 
 A task gets **up to 3 attempts**. If it fails all 3, reassess the task scope.
 
 ## File Naming
 
-`NNNN-short-title.md` — zero-padded number, lowercase, hyphenated.
+`NNNN-short-title.md` - zero-padded number, lowercase, hyphenated.
 
 Check across **all** subdirectories for the highest existing number and increment by 1.
 
@@ -160,5 +160,5 @@ pnpm test
 
 ## Next Steps
 
-- [Architecture Decisions](architecture-decisions.md) — Record significant decisions made during tasks
-- [Skills & Agents](skills-and-agents.md) — Full reference of available skills and agents
+- [Architecture Decisions](architecture-decisions.md) - Record significant decisions made during tasks
+- [Skills & Agents](skills-and-agents.md) - Full reference of available skills and agents

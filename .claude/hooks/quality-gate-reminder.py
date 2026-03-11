@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-PostToolUse hook — quality-gate-reminder
+PostToolUse hook - quality-gate-reminder
 
 After any .ts / .tsx file write, injects a reminder to run the quality
 gates before committing. Eliminates the most common cause of push failures.
@@ -14,7 +14,7 @@ import json
 
 REMINDER = """\
 📋 Quality gate reminder (auto-injected):
-TypeScript file modified — run before committing:
+TypeScript file modified - run before committing:
 
     pnpm typecheck
     pnpm biome:check

@@ -52,10 +52,10 @@ Use [GitHub Private Vulnerability Reporting](https://github.com/michelve/draft_v
 
 This project uses automated security scanning as part of its development workflow:
 
-- **TypeScript strict mode** — Catches type-safety issues at compile time
-- **Codacy + Trivy** — Dependency vulnerability scanning runs automatically after any package installation
-- **Biome + ESLint** — Static analysis catches common security anti-patterns
-- **Prisma Client API** — No raw SQL queries allowed, preventing SQL injection by design
+- **TypeScript strict mode** - Catches type-safety issues at compile time
+- **Codacy + Trivy** - Dependency vulnerability scanning runs automatically after any package installation
+- **Biome + ESLint** - Static analysis catches common security anti-patterns
+- **Prisma Client API** - No raw SQL queries allowed, preventing SQL injection by design
 
 ## Disclosure Policy
 

@@ -27,22 +27,22 @@ Do NOT write an ADR for bug fixes, small refactors, cosmetic changes, adding pag
 
 ## File Naming
 
-`NNNN-short-title.md` — zero-padded number, lowercase, hyphenated.
+`NNNN-short-title.md` - zero-padded number, lowercase, hyphenated.
 
 ## Status Values
 
-- **proposed** — Under discussion, not yet implemented
-- **accepted** — Approved and implemented
-- **deprecated** — No longer relevant
-- **superseded** — Replaced by a newer ADR (link to it)
+- **proposed** - Under discussion, not yet implemented
+- **accepted** - Approved and implemented
+- **deprecated** - No longer relevant
+- **superseded** - Replaced by a newer ADR (link to it)
 
-## Agent Requirement — Non-Optional
+## Agent Requirement - Non-Optional
 
-When implementing a task that involves a qualifying decision (see "When to Write an ADR" above), you **MUST** write the ADR as part of the same task — not as a follow-up suggestion, not optional.
+When implementing a task that involves a qualifying decision (see "When to Write an ADR" above), you **MUST** write the ADR as part of the same task - not as a follow-up suggestion, not optional.
 
 - Write the ADR **before or alongside** the implementation, not after
 - If the implementation is already done, write the ADR immediately in the same response
-- Do NOT ask the user if they want an ADR — just write it
+- Do NOT ask the user if they want an ADR - just write it
 - Reference the template and existing ADRs in `docs/decisions/` for style consistency
 
 The only exception is the explicit "Do NOT write" list above (bug fixes, small refactors, cosmetic changes, adding pages following existing patterns, installing shadcn/ui components).

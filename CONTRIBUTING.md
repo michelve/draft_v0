@@ -76,7 +76,7 @@ pnpm dev
 
 ### Branch Strategy
 
-- `main` — stable, always deployable
+- `main` - stable, always deployable
 - Feature branches: `feat/short-description`
 - Bug fix branches: `fix/short-description`
 - Docs branches: `docs/short-description`
@@ -112,7 +112,7 @@ git checkout -b feat/your-feature
 
 ### Architecture
 
-The backend follows a strict layered architecture — keep each layer's responsibility clear:
+The backend follows a strict layered architecture - keep each layer's responsibility clear:
 
 ```text
 Route → Controller → Service → Repository → Prisma (SQLite)
@@ -138,7 +138,7 @@ src/client/routes/<page>.tsx  →  auto-registered in routeTree.gen.ts
 ### Adding a Frontend Page
 
 1. Create `src/client/routes/<path>.tsx` using `createFileRoute`
-2. The route tree regenerates automatically — never edit `routeTree.gen.ts`
+2. The route tree regenerates automatically - never edit `routeTree.gen.ts`
 3. Use `useQuery()` for data fetching, `useMutation()` for writes
 
 ### Adding a UI Component
@@ -183,9 +183,9 @@ chore: upgrade Prisma to v6.5
 ## Pull Request Process
 
 1. **Run all quality gates** (see below) and fix any failures before opening a PR
-2. **Write a clear PR description** — what changed, why, and how to test it
-3. **Keep PRs small and focused** — one logical change per PR is easier to review
-4. **Reference issues** — use `Closes #123` in the description when applicable
+2. **Write a clear PR description** - what changed, why, and how to test it
+3. **Keep PRs small and focused** - one logical change per PR is easier to review
+4. **Reference issues** - use `Closes #123` in the description when applicable
 5. **Respond to review feedback** in a timely manner
 
 PRs are squash-merged into `main`.
@@ -246,16 +246,16 @@ Do **not** write ADRs for bug fixes, small refactors, or cosmetic changes.
 
 ### TypeScript
 
-- Strict mode — no `any` unless absolutely necessary with a comment explaining why
+- Strict mode - no `any` unless absolutely necessary with a comment explaining why
 - Use `import type` for type-only imports
-- Named exports only — no `default export`
+- Named exports only - no `default export`
 
 ### React
 
 - Functional components only
 - No `forwardRef`, `propTypes`, or `React.FC` (removed in React 19)
 - Use `ref` as a regular prop
-- Use `useQuery()` / `useMutation()` for server data — never `useState` + `useEffect`
+- Use `useQuery()` / `useMutation()` for server data - never `useState` + `useEffect`
 - Loading states: use `LoadingOverlay` / `SuspenseLoader`, never early-return spinners
 
 ### Styling
@@ -287,8 +287,8 @@ res.status(500).json({ error: "Internal Server Error" });
 
 ## Getting Help
 
-- **Questions & Discussions** — Open a [GitHub Discussion](https://github.com/michelve/draft_v0/discussions)
-- **Bug Reports** — Open a [GitHub Issue](https://github.com/michelve/draft_v0/issues) with steps to reproduce
-- **Security Vulnerabilities** — See [SECURITY.md](SECURITY.md) — do **not** open public issues
+- **Questions & Discussions** - Open a [GitHub Discussion](https://github.com/michelve/draft_v0/discussions)
+- **Bug Reports** - Open a [GitHub Issue](https://github.com/michelve/draft_v0/issues) with steps to reproduce
+- **Security Vulnerabilities** - See [SECURITY.md](SECURITY.md) - do **not** open public issues
 
 We aim to respond to all issues and PRs within a few business days.

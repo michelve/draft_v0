@@ -8,12 +8,12 @@
 
 <!-- Check all that apply -->
 
-- [ ] `feat` — New feature
-- [ ] `fix` — Bug fix
-- [ ] `refactor` — Code change that is not a fix or feature
-- [ ] `docs` — Documentation only
-- [ ] `chore` — Build, tooling, or config change
-- [ ] `test` — Adding or updating tests
+- [ ] `feat` - New feature
+- [ ] `fix` - Bug fix
+- [ ] `refactor` - Code change that is not a fix or feature
+- [ ] `docs` - Documentation only
+- [ ] `chore` - Build, tooling, or config change
+- [ ] `test` - Adding or updating tests
 
 ## Related Issues
 
@@ -40,10 +40,10 @@ Closes #
 
 <!-- All must pass before requesting review -->
 
-- [ ] `pnpm typecheck` — zero TypeScript errors
-- [ ] `pnpm biome:check` — zero Biome lint/format errors
-- [ ] `pnpm lint` — zero ESLint errors
-- [ ] `pnpm build` — clean production build
+- [ ] `pnpm typecheck` - zero TypeScript errors
+- [ ] `pnpm biome:check` - zero Biome lint/format errors
+- [ ] `pnpm lint` - zero ESLint errors
+- [ ] `pnpm build` - clean production build
 
 ## Checklist
 

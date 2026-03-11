@@ -1,6 +1,16 @@
 ---
 name: figma
 description: Use the Figma MCP server to fetch design context, screenshots, variables, and assets from Figma, and to translate Figma nodes into production code. Trigger when a task involves Figma URLs, node IDs, design-to-code implementation, or Figma MCP setup and troubleshooting.
+argument-hint: "Figma URL or node-id"
+user-invocable: true
+metadata:
+    allowed-tools:
+        - figma__get_design_context
+        - figma__get_screenshot
+        - figma__get_assets
+        - figma__get_variables
+        - figma__get_code_connect_suggestions
+        - figma__create_design_system_rules
 ---
 
 # Figma MCP
@@ -48,7 +58,7 @@ These rules define how to translate Figma inputs into code for this project and 
 
 - **Design tokens and Tailwind theme** (colors, spacing, radii): `src/client/index.css` under `@theme inline`
 - **Custom CSS** (@font-face, @keyframes, CSS variables, Figma-exported variables, overrides): `src/client/custom.css`
-- **Tailwind component classes and utilities**: use `cn()` / `cva()` inline — avoid separate CSS files for component styles
+- **Tailwind component classes and utilities**: use `cn()` / `cva()` inline - avoid separate CSS files for component styles
 
 ### Link-based prompting
 
@@ -57,5 +67,5 @@ These rules define how to translate Figma inputs into code for this project and 
 
 ## References
 
-- `references/figma-mcp-config.md` — setup, verification, troubleshooting, and link-based usage reminders.
-- `references/figma-tools-and-prompts.md` — tool catalog and prompt patterns for selecting frameworks/components and fetching metadata.
+- `references/figma-mcp-config.md` - setup, verification, troubleshooting, and link-based usage reminders.
+- `references/figma-tools-and-prompts.md` - tool catalog and prompt patterns for selecting frameworks/components and fetching metadata.

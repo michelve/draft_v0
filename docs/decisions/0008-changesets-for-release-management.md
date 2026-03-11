@@ -11,9 +11,9 @@ Draft v0 needs a way to manage version bumps and generate changelogs as the proj
 
 ## Considered Options
 
-- `@changesets/cli` — changeset-based workflow with per-PR changesets accumulated into a release
-- `standard-version` / `release-please` — commit-message-driven changelog generation
-- Manual versioning — hand-edit `package.json` and `CHANGELOG.md`
+- `@changesets/cli` - changeset-based workflow with per-PR changesets accumulated into a release
+- `standard-version` / `release-please` - commit-message-driven changelog generation
+- Manual versioning - hand-edit `package.json` and `CHANGELOG.md`
 
 ## Decision Outcome
 
@@ -24,5 +24,5 @@ Chosen option: "`@changesets/cli`", because it fits a PR-based workflow where co
 - Good, because changelogs are written close to the change by the person who made it, giving accurate context
 - Good, because the release GitHub Actions workflow (`release.yml`) automates version bumps and publishes changesets automatically
 - Good, because patch/minor/major bump types are explicit per changeset, not inferred from commit messages
-- Bad, because contributors must remember to create a changeset file alongside their PR — a step the `pr` prompt template handles
+- Bad, because contributors must remember to create a changeset file alongside their PR - a step the `pr` prompt template handles
 - Neutral, because the changeset config (`.changeset/config.json`) pins the base branch and changelog format

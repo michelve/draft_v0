@@ -1,13 +1,24 @@
 ---
 name: tailwindcss
 description: Tailwind CSS v4 utility-first styling patterns including responsive design, dark mode, and custom configuration. Use when styling with Tailwind, adding utility classes, configuring Tailwind, setting up dark mode, or customizing the theme.
+user-invocable: true
 ---
 
 # Tailwind CSS v4 Development Guidelines
 
+## When to Use
+
+- Styling components with Tailwind utilities
+- Adding responsive design breakpoints
+- Implementing dark mode
+- Configuring Tailwind v4 theme (@theme inline)
+- Using utility classes for layout, typography, colors
+- Creating custom CSS with @layer
+- Working with Tailwind-specific patterns (cn(), cva())
+
 Best practices for using Tailwind CSS v4 utility classes effectively.
 
-**Note**: This project uses Tailwind CSS v4 with CSS-first configuration. No `tailwind.config.js` file is used — theme is defined via `@theme inline` in `src/client/index.css`.
+**Note**: This project uses Tailwind CSS v4 with CSS-first configuration. No `tailwind.config.js` file is used - theme is defined via `@theme inline` in `src/client/index.css`.
 
 ## Core Principles
 
@@ -19,65 +30,9 @@ Best practices for using Tailwind CSS v4 utility classes effectively.
 
 ## Basic Utilities
 
-### Layout
+See [basic-utilities.md](reference/basic-utilities.md) for layout (flexbox, grid, positioning), spacing, typography, and color utility patterns.
 
-```tsx
-// Flexbox
-<div className="flex items-center justify-between gap-4">
-  <div className="flex-1">Content</div>
-  <div className="flex-shrink-0">Sidebar</div>
-</div>
-
-// Grid
-<div className="grid grid-cols-3 gap-4">
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
-</div>
-
-// Positioning
-<div className="relative">
-  <div className="absolute top-0 right-0">Badge</div>
-</div>
-```
-
-### Spacing
-
-```tsx
-// Padding and Margin
-<div className="p-4 m-2">           {/* padding: 1rem, margin: 0.5rem */}
-<div className="px-6 py-4">        {/* padding-x: 1.5rem, padding-y: 1rem */}
-<div className="mt-8 mb-4">        {/* margin-top: 2rem, margin-bottom: 1rem */}
-
-// Space between children
-<div className="space-y-4">        {/* margin-bottom on all but last child */}
-  <div>Item 1</div>
-  <div>Item 2</div>
-</div>
-```
-
-### Typography
-
-```tsx
-<h1 className="text-4xl font-bold text-gray-900">Heading</h1>
-<p className="text-base font-normal text-gray-600 leading-relaxed">
-  Paragraph text with comfortable line height.
-</p>
-<span className="text-sm font-medium text-blue-600">Label</span>
-```
-
-### Colors
-
-```tsx
-// Text colors
-<p className="text-gray-900 dark:text-gray-100">Text</p>
-
-// Background colors
-<div className="bg-blue-500 hover:bg-blue-600">Button</div>
-
-// Border colors
-<div className="border border-gray-300">Box</div>
-```
+---
 
 ## Responsive Design
 
@@ -112,47 +67,9 @@ Best practices for using Tailwind CSS v4 utility classes effectively.
 
 ## Component Patterns
 
-### Button
+See [component-patterns.md](examples/component-patterns.md) for button, card, and form input styling examples.
 
-```tsx
-<button className="px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
-  Click me
-</button>
-
-// Variants
-<button className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
-  Secondary
-</button>
-```
-
-### Card
-
-```tsx
-<div className="overflow-hidden rounded-lg bg-white shadow-md">
-    <img src="/image.jpg" alt="" className="h-48 w-full object-cover" />
-    <div className="p-6">
-        <h2 className="mb-2 text-xl font-semibold">Card Title</h2>
-        <p className="text-gray-600">Card content goes here.</p>
-    </div>
-</div>
-```
-
-### Form Input
-
-```tsx
-<div className="space-y-2">
-    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-        Email
-    </label>
-    <input
-        type="email"
-        id="email"
-        className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
-        placeholder="you@example.com"
-    />
-    <p className="text-sm text-gray-500">We'll never share your email.</p>
-</div>
-```
+---
 
 ## State Variants
 
@@ -240,7 +157,7 @@ Colors use **oklch** values via CSS variables:
 
 ### CSS-First Configuration (This Project)
 
-This project uses Tailwind CSS v4 with **CSS-first configuration** — no `tailwind.config.js`. All theme config lives in `src/client/index.css`:
+This project uses Tailwind CSS v4 with **CSS-first configuration** - no `tailwind.config.js`. All theme config lives in `src/client/index.css`:
 
 ```css
 @import "tailwindcss";
@@ -315,7 +232,7 @@ npm install @tailwindcss/container-queries
 
 ### Build Integration
 
-This project uses the `@tailwindcss/vite` plugin for optimal build performance. Tailwind v4 automatically detects and scans all template files — no `content` configuration needed.
+This project uses the `@tailwindcss/vite` plugin for optimal build performance. Tailwind v4 automatically detects and scans all template files - no `content` configuration needed.
 
 ### Build Performance
 

@@ -12,7 +12,7 @@ Source: https://developers.figma.com/docs/figma-mcp-server/tools-and-prompts/
 - `get_metadata` (Figma Design): Sparse XML outline of layer IDs/names/types/positions/sizes. Use before re-calling `get_design_context` on large nodes to avoid truncation. Also works with multiple selections or the whole page if nothing is selected.
 - `get_screenshot` (Figma Design, FigJam): Screenshot of the selection for visual fidelity checks. Recommended to keep on (only turn off if concerned about token limits).
 - `get_figjam` (FigJam): XML + screenshots for FigJam diagrams (architecture, flows).
-- `generate_diagram` (no file context): Generates a FigJam diagram from Mermaid syntax. Supports flowcharts, Gantt charts, state diagrams, and sequence diagrams. You can describe diagrams in natural language — the agent generates the Mermaid syntax automatically.
+- `generate_diagram` (no file context): Generates a FigJam diagram from Mermaid syntax. Supports flowcharts, Gantt charts, state diagrams, and sequence diagrams. You can describe diagrams in natural language - the agent generates the Mermaid syntax automatically.
 - `create_design_system_rules` (no file context): Generates a rule file with design-to-code guidance for your stack. Save it to the `rules/` or `instructions/` path so the agent can access it during code generation.
 - `get_code_connect_map` (Figma Design): Returns mapping of Figma node IDs to code components (`codeConnectSrc`, `codeConnectName`). Use to reuse existing components.
 - `add_code_connect_map` (Figma Design): Adds/updates a mapping between a Figma node and a code component to improve design-to-code output quality.

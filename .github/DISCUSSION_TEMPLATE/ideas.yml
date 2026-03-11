@@ -1,55 +1,55 @@
 title: "[Idea] "
 labels: []
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Have an idea to improve Draft v0? This is the right place to think it through before it becomes a formal feature request.
+    - type: markdown
+      attributes:
+          value: |
+              Have an idea to improve Draft v0? This is the right place to think it through before it becomes a formal feature request.
 
-        Ideas here are open for community discussion. If there's enough interest and clarity, it can graduate to a [feature request issue](https://github.com/michelve/draft_v0/issues/new/choose).
+              Ideas here are open for community discussion. If there's enough interest and clarity, it can graduate to a [feature request issue](https://github.com/michelve/draft_v0/issues/new/choose).
 
-  - type: dropdown
-    id: type
-    attributes:
-      label: What kind of idea is this?
-      options:
-        - New feature
-        - Improvement to something existing
-        - New skill or agent
-        - Developer experience / tooling
-        - Documentation
-        - Something else
-    validations:
-      required: true
+    - type: dropdown
+      id: type
+      attributes:
+          label: What kind of idea is this?
+          options:
+              - New feature
+              - Improvement to something existing
+              - New skill or agent
+              - Developer experience / tooling
+              - Documentation
+              - Something else
+      validations:
+          required: true
 
-  - type: textarea
-    id: problem
-    attributes:
-      label: What problem does this solve?
-      description: Describe the gap or friction point. "I wish I could…" or "It's annoying that…" are both fine starting points.
-    validations:
-      required: true
+    - type: textarea
+      id: problem
+      attributes:
+          label: What problem does this solve?
+          description: Describe the gap or friction point. "I wish I could…" or "It's annoying that…" are both fine starting points.
+      validations:
+          required: true
 
-  - type: textarea
-    id: idea
-    attributes:
-      label: Your idea
-      description: What would you like to see? It doesn't need to be a fully formed proposal — rough ideas are welcome here.
-    validations:
-      required: true
+    - type: textarea
+      id: idea
+      attributes:
+          label: Your idea
+          description: What would you like to see? It doesn't need to be a fully formed proposal - rough ideas are welcome here.
+      validations:
+          required: true
 
-  - type: textarea
-    id: alternatives
-    attributes:
-      label: Alternatives you've considered
-      description: Any other approaches you thought about?
-    validations:
-      required: false
+    - type: textarea
+      id: alternatives
+      attributes:
+          label: Alternatives you've considered
+          description: Any other approaches you thought about?
+      validations:
+          required: false
 
-  - type: textarea
-    id: context
-    attributes:
-      label: Additional context
-      description: Examples from other projects, mockups, links — anything that helps illustrate the idea.
-    validations:
-      required: false
+    - type: textarea
+      id: context
+      attributes:
+          label: Additional context
+          description: Examples from other projects, mockups, links - anything that helps illustrate the idea.
+      validations:
+          required: false

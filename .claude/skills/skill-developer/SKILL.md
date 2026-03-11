@@ -1,6 +1,8 @@
 ---
 name: skill-developer
 description: Create and manage Claude Code skills following Anthropic best practices. Use when creating new skills, modifying skill-rules.json, understanding trigger patterns, working with hooks, debugging skill activation, or implementing progressive disclosure. Covers skill structure, YAML frontmatter, trigger types (keywords, intent patterns, file paths, content patterns), enforcement levels (block, suggest, warn), hook mechanisms (UserPromptSubmit, PreToolUse), session tracking, and the 500-line rule.
+user-invocable: true
+disable-model-invocation: true
 ---
 
 # Skill Developer Guide
@@ -28,185 +30,19 @@ Automatically activates when you mention:
 
 ## System Overview
 
-### Two-Hook Architecture
-
-**1. UserPromptSubmit Hook** (Proactive Suggestions)
-
-- **File**: `.claude/hooks/skill-activation-prompt.ts`
-- **Trigger**: BEFORE Claude sees user's prompt
-- **Purpose**: Suggest relevant skills based on keywords + intent patterns
-- **Method**: Injects formatted reminder as context (stdout → Claude's input)
-- **Use Cases**: Topic-based skills, implicit work detection
-
-**2. Stop Hook - Error Handling Reminder** (Gentle Reminders)
-
-- **File**: `.claude/hooks/error-handling-reminder.ts`
-- **Trigger**: AFTER Claude finishes responding
-- **Purpose**: Gentle reminder to self-assess error handling in code written
-- **Method**: Analyzes edited files for risky patterns, displays reminder if needed
-- **Use Cases**: Error handling awareness without blocking friction
-
-**Philosophy Change (2025-10-27):** We moved away from blocking PreToolUse for Sentry/error handling. Instead, use gentle post-response reminders that don't block workflow but maintain code quality awareness.
-
-### Configuration File
-
-**Location**: `.github/skills/skill-rules.json`
-
-Defines:
-
-- All skills and their trigger conditions
-- Enforcement levels (block, suggest, warn)
-- File path patterns (glob)
-- Content detection patterns (regex)
-- Skip conditions (session tracking, file markers, env vars)
+See [hook-architecture.md](reference/hook-architecture.md) for the two-hook architecture (UserPromptSubmit + Stop Hook) and configuration file details.
 
 ---
 
 ## Skill Types
 
-### 1. Guardrail Skills
-
-**Purpose:** Enforce critical best practices that prevent errors
-
-**Characteristics:**
-
-- Type: `"guardrail"`
-- Enforcement: `"block"`
-- Priority: `"critical"` or `"high"`
-- Block file edits until skill used
-- Prevent common mistakes (column names, critical errors)
-- Session-aware (don't repeat nag in same session)
-
-**Examples:**
-
-- `database-verification` - Verify table/column names before Prisma queries
-- `frontend-dev-guidelines` - Enforce React/TypeScript patterns
-
-**When to Use:**
-
-- Mistakes that cause runtime errors
-- Data integrity concerns
-- Critical compatibility issues
-
-### 2. Domain Skills
-
-**Purpose:** Provide comprehensive guidance for specific areas
-
-**Characteristics:**
-
-- Type: `"domain"`
-- Enforcement: `"suggest"`
-- Priority: `"high"` or `"medium"`
-- Advisory, not mandatory
-- Topic or domain-specific
-- Comprehensive documentation
-
-**Examples:**
-
-- `backend-dev-guidelines` - Node.js/Express/TypeScript patterns
-- `frontend-dev-guidelines` - React/TypeScript best practices
-- `error-tracking` - Sentry integration guidance
-
-**When to Use:**
-
-- Complex systems requiring deep knowledge
-- Best practices documentation
-- Architectural patterns
-- How-to guides
+See [skill-types.md](reference/skill-types.md) for guardrail skills (block enforcement) and domain skills (suggest enforcement) with examples.
 
 ---
 
 ## Quick Start: Creating a New Skill
 
-### Step 1: Create Skill File
-
-**Location:** `.github/skills/{skill-name}/SKILL.md`
-
-**Template:**
-
-```markdown
----
-name: my-new-skill
-description: Brief description including keywords that trigger this skill. Mention topics, file types, and use cases. Be explicit about trigger terms.
----
-
-# My New Skill
-
-## Purpose
-
-What this skill helps with
-
-## When to Use
-
-Specific scenarios and conditions
-
-## Key Information
-
-The actual guidance, documentation, patterns, examples
-```
-
-**Best Practices:**
-
-- ✅ **Name**: Lowercase, hyphens, gerund form (verb + -ing) preferred
-- ✅ **Description**: Include ALL trigger keywords/phrases (max 1024 chars)
-- ✅ **Content**: Under 500 lines - use reference files for details
-- ✅ **Examples**: Real code examples
-- ✅ **Structure**: Clear headings, lists, code blocks
-
-### Step 2: Add to skill-rules.json
-
-See [SKILL_RULES_REFERENCE.md](resources/SKILL_RULES_REFERENCE.md) for complete schema.
-
-**Basic Template:**
-
-```json
-{
-    "my-new-skill": {
-        "type": "domain",
-        "enforcement": "suggest",
-        "priority": "medium",
-        "promptTriggers": {
-            "keywords": ["keyword1", "keyword2"],
-            "intentPatterns": ["(create|add).*?something"]
-        }
-    }
-}
-```
-
-### Step 3: Test Triggers
-
-**Test UserPromptSubmit:**
-
-```bash
-echo '{"session_id":"test","prompt":"your test prompt"}' | \
-  npx tsx .claude/hooks/skill-activation-prompt.ts
-```
-
-**Test PreToolUse:**
-
-```bash
-cat <<'EOF' | npx tsx .claude/hooks/skill-verification-guard.ts
-{"session_id":"test","tool_name":"Edit","tool_input":{"file_path":"test.ts"}}
-EOF
-```
-
-### Step 4: Refine Patterns
-
-Based on testing:
-
-- Add missing keywords
-- Refine intent patterns to reduce false positives
-- Adjust file path patterns
-- Test content patterns against actual files
-
-### Step 5: Follow Anthropic Best Practices
-
-✅ Keep SKILL.md under 500 lines
-✅ Use progressive disclosure with reference files
-✅ Add table of contents to reference files > 100 lines
-✅ Write detailed description with trigger keywords
-✅ Test with 3+ real scenarios before documenting
-✅ Iterate based on actual usage
+See [quick-start-workflow.md](reference/quick-start-workflow.md) for the 5-step workflow: create skill file, add to skill-rules.json, test triggers, refine patterns, follow best practices.
 
 ---
 
@@ -242,50 +78,7 @@ Based on testing:
 
 ## Skip Conditions & User Control
 
-### 1. Session Tracking
-
-**Purpose:** Don't nag repeatedly in same session
-
-**How it works:**
-
-- First edit → Hook blocks, updates session state
-- Second edit (same session) → Hook allows
-- Different session → Blocks again
-
-**State File:** `.claude/hooks/state/skills-used-{session_id}.json`
-
-### 2. File Markers
-
-**Purpose:** Permanent skip for verified files
-
-**Marker:** `// @skip-validation`
-
-**Usage:**
-
-```typescript
-// @skip-validation
-import { prisma } from "@server/lib/prisma";
-// This file has been manually verified
-```
-
-**NOTE:** Use sparingly - defeats the purpose if overused
-
-### 3. Environment Variables
-
-**Purpose:** Emergency disable, temporary override
-
-**Global disable:**
-
-```bash
-export SKIP_SKILL_GUARDRAILS=true  # Disables ALL PreToolUse blocks
-```
-
-**Skill-specific:**
-
-```bash
-export SKIP_DB_VERIFICATION=true
-export SKIP_ERROR_REMINDER=true
-```
+See [enforcement-skip.md](reference/enforcement-skip.md) for session tracking, file markers, and environment variable overrides.
 
 ---
 
@@ -310,6 +103,82 @@ When creating a new skill, verify:
 - [ ] **SKILL.md under 500 lines** ⭐
 - [ ] Reference files created if needed
 - [ ] Table of contents added to files > 100 lines
+
+---
+
+## Advanced Patterns
+
+See [advanced-patterns.md](reference/advanced-patterns.md) for comprehensive documentation on:
+
+1. **Ultrathink keyword** — Force extended reasoning for complex analysis
+2. **Dynamic context injection** — `` `!`command`` `` syntax for live codebase data
+3. **Supporting files structure** — Directory conventions and extraction guidelines
+4. **Skill-scoped hooks** — Lifecycle hooks scoped to individual skills (deferred — needs CLI testing)
+5. **Model field** — Per-skill model selection (not recommended for current skills)
+6. **Agent field optimization** — Choosing between `default`, `Explore`, and `Plan` agents
+7. **Visual output pattern** — Bundled scripts generating interactive HTML visualizations
+
+---
+
+## YAML Frontmatter Reference
+
+All 13 official fields for `SKILL.md` frontmatter:
+
+### Core Fields
+
+| Field         | Type   | Default    | Purpose                                                          |
+| ------------- | ------ | ---------- | ---------------------------------------------------------------- |
+| `name`        | string | dir name   | Skill identifier (lowercase, hyphens, max 64 chars)              |
+| `description` | string | first para | Trigger matching — use phrasing users would say (max 1024 chars) |
+| `version`     | string | -          | Semantic version (e.g., `1.0.0`)                                 |
+| `license`     | string | -          | License identifier (e.g., `MIT`)                                 |
+
+### Discoverability Fields
+
+| Field            | Type    | Default | Purpose                                            |
+| ---------------- | ------- | ------- | -------------------------------------------------- |
+| `user-invocable` | boolean | `true`  | Show in `/` menu. `false` for background knowledge |
+| `argument-hint`  | string  | -       | Autocomplete UI hint: `[issue-number]`, `[url]`    |
+
+### Execution Control Fields
+
+| Field                      | Type    | Default | Purpose                                                |
+| -------------------------- | ------- | ------- | ------------------------------------------------------ |
+| `disable-model-invocation` | boolean | `false` | Prevent auto-triggering. Manual-only workflows         |
+| `context`                  | string  | -       | `fork` to run in isolated subagent                     |
+| `agent`                    | string  | -       | Subagent type: `default`, `Explore`, `Plan`, custom    |
+| `model`                    | string  | -       | Claude model override (e.g., `claude-opus-4-20250514`) |
+
+### MCP Integration Fields
+
+| Field                    | Type   | Default | Purpose                                        |
+| ------------------------ | ------ | ------- | ---------------------------------------------- |
+| `metadata.allowed-tools` | array  | -       | Whitelist MCP tools (nested under `metadata:`) |
+| `metadata.mcp-server`    | string | -       | MCP server name (documentation only)           |
+
+### Advanced Fields
+
+| Field   | Type   | Default | Purpose                                                                        |
+| ------- | ------ | ------- | ------------------------------------------------------------------------------ |
+| `hooks` | object | -       | Skill-scoped lifecycle hooks (`UserPromptSubmit`, `PreToolUse`, `PostToolUse`) |
+
+### Example
+
+```yaml
+---
+name: "my-skill"
+description: "Short description with trigger keywords users would say."
+user-invocable: true
+argument-hint: "[url] [options]"
+context: fork
+agent: default
+metadata:
+    allowed-tools:
+        - tool_name_1
+        - tool_name_2
+    mcp-server: server-name
+---
+```
 
 ---
 

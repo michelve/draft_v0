@@ -1,11 +1,28 @@
 ---
 name: route-tester
 description: Framework-agnostic HTTP API route testing patterns, authentication strategies, and integration testing best practices. Supports REST APIs with JWT cookie authentication and other common auth patterns.
+argument-hint: "<route-path-to-test>"
+user-invocable: true
 ---
+
+## Current Project Context
+
+```json
+!`cat package.json 2>/dev/null || echo '{"error": "No package.json found."}'`
+```
 
 # API Route Testing Skill
 
 This skill provides guidance for testing HTTP API routes and endpoints. Primary examples use Express with TypeScript, but patterns adapt to other frameworks.
+
+## When to Use
+
+- Testing API endpoints
+- Writing integration tests for Express routes
+- Testing authentication flows (JWT cookies, sessions)
+- Validating API responses and status codes
+- Testing route middleware and error handling
+- Creating route test suites
 
 ## Core Testing Principles
 
@@ -34,240 +51,15 @@ This skill provides guidance for testing HTTP API routes and endpoints. Primary 
 
 ### 2. Authentication Testing Patterns
 
-#### JWT Cookie Authentication
-
-```typescript
-// Common pattern across frameworks
-describe("Protected Route Tests", () => {
-    let authCookie: string;
-
-    beforeEach(async () => {
-        // Login and get JWT cookie
-        const loginResponse = await request(app)
-            .post("/api/auth/login")
-            .send({ email: "test@example.com", password: "password123" });
-
-        authCookie = loginResponse.headers["set-cookie"][0];
-    });
-
-    it("should access protected route with valid cookie", async () => {
-        const response = await request(app)
-            .get("/api/protected/resource")
-            .set("Cookie", authCookie);
-
-        expect(response.status).toBe(200);
-    });
-
-    it("should reject access without cookie", async () => {
-        const response = await request(app).get("/api/protected/resource");
-
-        expect(response.status).toBe(401);
-    });
-});
-```
-
-#### JWT Bearer Token Authentication
-
-```typescript
-describe("Bearer Token Auth", () => {
-    let token: string;
-
-    beforeEach(async () => {
-        const response = await request(app)
-            .post("/api/auth/login")
-            .send({ email: "test@example.com", password: "password123" });
-
-        token = response.body.token;
-    });
-
-    it("should authenticate with bearer token", async () => {
-        const response = await request(app)
-            .get("/api/protected/resource")
-            .set("Authorization", `Bearer ${token}`);
-
-        expect(response.status).toBe(200);
-    });
-});
-```
+See [authentication-testing.md](examples/authentication-testing.md) for JWT cookie and bearer token authentication test patterns.
 
 ### 3. HTTP Method Testing
 
-**GET Requests**
-
-```typescript
-describe("GET /api/users", () => {
-    it("should return paginated users", async () => {
-        const response = await request(app).get("/api/users?page=1&limit=10");
-
-        expect(response.status).toBe(200);
-        expect(response.body).toHaveProperty("data");
-        expect(response.body).toHaveProperty("pagination");
-        expect(Array.isArray(response.body.data)).toBe(true);
-    });
-
-    it("should filter users by query params", async () => {
-        const response = await request(app).get("/api/users?role=admin");
-
-        expect(response.status).toBe(200);
-        expect(response.body.data.every((u) => u.role === "admin")).toBe(true);
-    });
-});
-```
-
-**POST Requests**
-
-```typescript
-describe("POST /api/users", () => {
-    it("should create new user with valid data", async () => {
-        const newUser = {
-            name: "John Doe",
-            email: "john@example.com",
-            role: "user",
-        };
-
-        const response = await request(app)
-            .post("/api/users")
-            .set("Cookie", authCookie)
-            .send(newUser);
-
-        expect(response.status).toBe(201);
-        expect(response.body).toMatchObject(newUser);
-        expect(response.body).toHaveProperty("id");
-    });
-
-    it("should reject invalid data", async () => {
-        const invalidUser = {
-            name: "John Doe",
-            // Missing required email field
-        };
-
-        const response = await request(app)
-            .post("/api/users")
-            .set("Cookie", authCookie)
-            .send(invalidUser);
-
-        expect(response.status).toBe(400);
-        expect(response.body).toHaveProperty("errors");
-    });
-});
-```
-
-**PUT/PATCH Requests**
-
-```typescript
-describe("PATCH /api/users/:id", () => {
-    it("should update user fields", async () => {
-        const updates = { name: "Jane Doe" };
-
-        const response = await request(app)
-            .patch("/api/users/123")
-            .set("Cookie", authCookie)
-            .send(updates);
-
-        expect(response.status).toBe(200);
-        expect(response.body.name).toBe("Jane Doe");
-    });
-
-    it("should return 404 for non-existent user", async () => {
-        const response = await request(app)
-            .patch("/api/users/999999")
-            .set("Cookie", authCookie)
-            .send({ name: "Test" });
-
-        expect(response.status).toBe(404);
-    });
-});
-```
-
-**DELETE Requests**
-
-```typescript
-describe("DELETE /api/users/:id", () => {
-    it("should delete user and return success", async () => {
-        const response = await request(app).delete("/api/users/123").set("Cookie", authCookie);
-
-        expect(response.status).toBe(204);
-    });
-
-    it("should prevent unauthorized deletion", async () => {
-        const response = await request(app).delete("/api/users/123");
-        // No auth cookie
-
-        expect(response.status).toBe(401);
-    });
-});
-```
+See [http-method-patterns.md](examples/http-method-patterns.md) for GET, POST, PUT/PATCH, and DELETE request test examples.
 
 ### 4. Response Validation
 
-**Status Codes**
-
-```typescript
-describe("HTTP Status Codes", () => {
-    it("200 OK - Successful GET", async () => {
-        const response = await request(app).get("/api/users");
-        expect(response.status).toBe(200);
-    });
-
-    it("201 Created - Successful POST", async () => {
-        const response = await request(app).post("/api/users").send(validData);
-        expect(response.status).toBe(201);
-    });
-
-    it("204 No Content - Successful DELETE", async () => {
-        const response = await request(app).delete("/api/users/123");
-        expect(response.status).toBe(204);
-    });
-
-    it("400 Bad Request - Invalid input", async () => {
-        const response = await request(app).post("/api/users").send({});
-        expect(response.status).toBe(400);
-    });
-
-    it("401 Unauthorized - Missing auth", async () => {
-        const response = await request(app).get("/api/protected");
-        expect(response.status).toBe(401);
-    });
-
-    it("403 Forbidden - Insufficient permissions", async () => {
-        const response = await request(app)
-            .delete("/api/admin/users/123")
-            .set("Cookie", userCookie);
-        expect(response.status).toBe(403);
-    });
-
-    it("404 Not Found - Non-existent resource", async () => {
-        const response = await request(app).get("/api/users/999999");
-        expect(response.status).toBe(404);
-    });
-
-    it("500 Internal Server Error - Server failure", async () => {
-        // Test error handling
-        mockDatabase.findOne.mockRejectedValue(new Error("DB Error"));
-        const response = await request(app).get("/api/users/123");
-        expect(response.status).toBe(500);
-    });
-});
-```
-
-**Response Schema Validation**
-
-```typescript
-describe("Response Schema", () => {
-    it("should match expected schema", async () => {
-        const response = await request(app).get("/api/users/123");
-
-        expect(response.body).toEqual({
-            id: expect.any(String),
-            name: expect.any(String),
-            email: expect.any(String),
-            role: expect.stringMatching(/^(user|admin)$/),
-            createdAt: expect.any(String),
-            updatedAt: expect.any(String),
-        });
-    });
-});
-```
+See [response-validation.md](reference/response-validation.md) for status code testing and response schema validation patterns.
 
 ### 5. Error Handling Tests
 

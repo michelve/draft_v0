@@ -1,54 +1,54 @@
 title: "[Q&A] "
 labels: []
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Got a question about Draft v0? Ask away. Good questions with clear context get better answers — and stay searchable for others who run into the same thing.
+    - type: markdown
+      attributes:
+          value: |
+              Got a question about Draft v0? Ask away. Good questions with clear context get better answers - and stay searchable for others who run into the same thing.
 
-        Before posting, check the [documentation](https://github.com/michelve/draft_v0/tree/main/docs/guides) — your answer may already be there.
+              Before posting, check the [documentation](https://github.com/michelve/draft_v0/tree/main/docs/guides) - your answer may already be there.
 
-  - type: dropdown
-    id: area
-    attributes:
-      label: Area
-      description: Which part of the project is your question about?
-      options:
-        - Getting started / setup
-        - Frontend (React / TanStack / Tailwind)
-        - Backend (Express / API routes)
-        - Database (Prisma / schema)
-        - Build / Tooling (Vite / TypeScript / Biome)
-        - AI Skills / Agents / Prompts
-        - Figma integration
-        - Tasks workflow
-        - Architecture / design decisions
-        - Other
-    validations:
-      required: true
+    - type: dropdown
+      id: area
+      attributes:
+          label: Area
+          description: Which part of the project is your question about?
+          options:
+              - Getting started / setup
+              - Frontend (React / TanStack / Tailwind)
+              - Backend (Express / API routes)
+              - Database (Prisma / schema)
+              - Build / Tooling (Vite / TypeScript / Biome)
+              - AI Skills / Agents / Prompts
+              - Figma integration
+              - Tasks workflow
+              - Architecture / design decisions
+              - Other
+      validations:
+          required: true
 
-  - type: textarea
-    id: question
-    attributes:
-      label: What are you trying to do?
-      description: Describe what you're working on and what you're stuck on. The more context the better.
-      placeholder: "I'm trying to add a new API resource but I'm not sure where to handle validation..."
-    validations:
-      required: true
+    - type: textarea
+      id: question
+      attributes:
+          label: What are you trying to do?
+          description: Describe what you're working on and what you're stuck on. The more context the better.
+          placeholder: "I'm trying to add a new API resource but I'm not sure where to handle validation..."
+      validations:
+          required: true
 
-  - type: textarea
-    id: tried
-    attributes:
-      label: What have you tried?
-      description: Share what you've already attempted. This avoids suggestions you've already ruled out.
-    validations:
-      required: false
+    - type: textarea
+      id: tried
+      attributes:
+          label: What have you tried?
+          description: Share what you've already attempted. This avoids suggestions you've already ruled out.
+      validations:
+          required: false
 
-  - type: textarea
-    id: context
-    attributes:
-      label: Relevant code or error output
-      description: Paste any relevant snippets, error messages, or stack traces here.
-      render: shell
-    validations:
-      required: false
+    - type: textarea
+      id: context
+      attributes:
+          label: Relevant code or error output
+          description: Paste any relevant snippets, error messages, or stack traces here.
+          render: shell
+      validations:
+          required: false

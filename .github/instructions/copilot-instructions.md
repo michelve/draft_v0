@@ -6,10 +6,10 @@ applyTo: "**"
 
 ## Engineering Philosophy
 
-- **First Principles Over Convention** — Question assumptions, understand WHY things work
-- **Simple Over Clever** — Solve the actual problem, not the general case
-- **Measure, Don't Guess** — Data over intuition for performance claims
-- **#NoMessLeftBehind** — Never leave broken builds, every error must be resolved
+- **First Principles Over Convention** - Question assumptions, understand WHY things work
+- **Simple Over Clever** - Solve the actual problem, not the general case
+- **Measure, Don't Guess** - Data over intuition for performance claims
+- **#NoMessLeftBehind** - Never leave broken builds, every error must be resolved
 
 ## Tech Stack
 

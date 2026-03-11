@@ -1,6 +1,6 @@
 # shadcn/ui Guide
 
-Draft v0 uses [shadcn/ui](https://ui.shadcn.com/) — a collection of accessible, composable components installed directly as source code into your project.
+Draft v0 uses [shadcn/ui](https://ui.shadcn.com/) - a collection of accessible, composable components installed directly as source code into your project.
 
 ## How It Works
 
@@ -13,11 +13,11 @@ This project's shadcn config is in `components.json`:
 | Field             | Value                                        |
 | ----------------- | -------------------------------------------- |
 | `style`           | `new-york`                                   |
-| `rsc`             | `false` — Vite SPA, never add `"use client"` |
-| `tailwindVersion` | `v4` — CSS-first via `@theme inline`         |
+| `rsc`             | `false` - Vite SPA, never add `"use client"` |
+| `tailwindVersion` | `v4` - CSS-first via `@theme inline`         |
 | `tailwindCssFile` | `src/client/index.css`                       |
-| `base`            | `radix` — flat `radix-ui` package            |
-| `iconLibrary`     | `lucide` — import from `lucide-react`        |
+| `base`            | `radix` - flat `radix-ui` package            |
+| `iconLibrary`     | `lucide` - import from `lucide-react`        |
 | `ui alias`        | `@/components/ui`                            |
 | `utils alias`     | `@/lib/utils`                                |
 | `packageManager`  | `pnpm`                                       |
@@ -44,7 +44,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 ```
 
-## The Golden Rule — Never Edit `ui/`
+## The Golden Rule - Never Edit `ui/`
 
 Files in `src/client/components/ui/` are managed by shadcn and may be updated by the CLI. **Never modify them directly.**
 
@@ -82,21 +82,21 @@ import { cn } from "@/lib/utils";
 <Card className={cn("shadow-sm", isPrimary && "border-primary")} />
 ```
 
-Never use raw template literals for conditional Tailwind classes — they don't merge correctly.
+Never use raw template literals for conditional Tailwind classes - they don't merge correctly.
 
 ## Styling Rules
 
 - **Use semantic color tokens**, not raw Tailwind colors: `bg-primary`, `text-muted-foreground`, `border-destructive`
 - **Use `size-*`** when width and height are equal: `size-10` not `w-10 h-10`
 - **Use `gap-*`** for spacing, not `space-x-*` / `space-y-*`
-- **No manual `z-index`** on overlay components — Dialog, Sheet, Popover manage their own stacking
-- **No `"use client"`** — this project is a Vite SPA (`rsc: false`), never add the directive
+- **No manual `z-index`** on overlay components - Dialog, Sheet, Popover manage their own stacking
+- **No `"use client"`** - this project is a Vite SPA (`rsc: false`), never add the directive
 
 ## Common Patterns
 
 ### Forms
 
-Use `FieldGroup` and `Field` for form layout — never raw `div` with `space-y-*`:
+Use `FieldGroup` and `Field` for form layout - never raw `div` with `space-y-*`:
 
 ```tsx
 <FieldGroup>
@@ -123,7 +123,7 @@ For validation:
 
 ### Icons in Buttons
 
-Use `data-icon` — never add sizing classes to icons inside components:
+Use `data-icon` - never add sizing classes to icons inside components:
 
 ```tsx
 import { SearchIcon } from "lucide-react";
@@ -134,7 +134,7 @@ import { SearchIcon } from "lucide-react";
     Search
 </Button>
 
-// Wrong — no size classes on icons inside components
+// Wrong - no size classes on icons inside components
 <Button>
     <SearchIcon className="size-4 mr-2" />
     Search
@@ -184,7 +184,7 @@ pnpm dlx shadcn@latest docs button dialog
 pnpm dlx shadcn@latest view sidebar
 ```
 
-Alternatively, the **shadcn MCP server** is pre-configured in this project — use the `shadcn` skill in Copilot to browse and install components conversationally.
+Alternatively, the **shadcn MCP server** is pre-configured in this project - use the `shadcn` skill in Copilot to browse and install components conversationally.
 
 ## Updating Components
 
@@ -223,4 +223,4 @@ The shadcn MCP server is pre-configured in `.vscode/mcp.json` and `.claude/setti
 - Component docs and examples on demand
 - CLI command generation for your specific setup
 
-Just ask: _"add a data table with sorting"_ or _"show me how to use the Combobox"_ — the skill handles the rest.
+Just ask: _"add a data table with sorting"_ or _"show me how to use the Combobox"_ - the skill handles the rest.

@@ -13,11 +13,11 @@ The user will describe a page they want. Your job is to design and implement it 
 
 Activate and follow these project skills throughout:
 
-- **react** — React 19 component patterns, hooks, Suspense, lazy loading
-- **tailwindcss** — Tailwind CSS v4 utility-first styling, responsive design, dark mode
-- **shadcn** — shadcn/ui component discovery, installation, and usage
-- **react-best-practices** — Performance optimization, data fetching patterns
-- **web-design-guidelines** — Accessibility, UX best practices
+- **react** - React 19 component patterns, hooks, Suspense, lazy loading
+- **tailwindcss** - Tailwind CSS v4 utility-first styling, responsive design, dark mode
+- **shadcn** - shadcn/ui component discovery, installation, and usage
+- **react-best-practices** - Performance optimization, data fetching patterns
+- **web-design-guidelines** - Accessibility, UX best practices
 
 ## Workflow
 
@@ -38,7 +38,7 @@ Before writing code:
 1. List the shadcn/ui components needed (e.g., Card, Table, Button, Dialog)
 2. Install any missing components: `npx shadcn@latest add <component>`
 3. Identify the route path and where it fits in the navigation
-4. Determine data requirements — use TanStack Query for server data, Zustand for UI state
+4. Determine data requirements - use TanStack Query for server data, Zustand for UI state
 
 ### Step 3: Create the Route
 
@@ -56,14 +56,14 @@ export const Route = createFileRoute("/path")({
 
 Follow these conventions:
 
-- **Named exports only** — no default exports
+- **Named exports only** - no default exports
 - **Functional components** with TypeScript interfaces for props
 - **TanStack Query** for any server data (`useQuery`, `useMutation`)
-- **shadcn/ui** components for all UI elements — never build from scratch what shadcn provides
-- **Tailwind CSS v4** utilities for styling — use `cn()` for conditional classes
+- **shadcn/ui** components for all UI elements - never build from scratch what shadcn provides
+- **Tailwind CSS v4** utilities for styling - use `cn()` for conditional classes
 - **Lucide icons** via `lucide-react` for all iconography
 - **Loading states** via `<Suspense>` with LoadingOverlay/SuspenseLoader
-- **Max 300 lines** per component — extract sub-components if larger
+- **Max 300 lines** per component - extract sub-components if larger
 
 ### Step 5: Wire Data (if applicable)
 

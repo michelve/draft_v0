@@ -14,16 +14,16 @@ The `adr-writer` agent is discoverable in `AGENTS.md` and appears in the orchest
 
 After task `0001` creates the prompt template, the `adr-writer` agent needs to be registered two places:
 
-1. **`AGENTS.md`** — project-level agent registry, read by Copilot and other agents when deciding which agent to invoke
-2. **`.github/instructions/orchestrator.instructions.md`** — the master routing table that tells agents when to use which agent
+1. **`AGENTS.md`** - project-level agent registry, read by Copilot and other agents when deciding which agent to invoke
+2. **`.github/instructions/orchestrator.instructions.md`** - the master routing table that tells agents when to use which agent
 
 Currently `AGENTS.md` has 8 agents (auto-error-resolver, code-architecture-reviewer, code-refactor-master, documentation-architect, plan-reviewer, principal-engineer, refactor-planner, web-research-specialist). There is no `adr-writer` entry and the orchestrator routing table has no row for ADR tasks.
 
 ## Key Decisions
 
-- **Two files, one task** — both edits are tiny (1–2 line insertions) and tightly coupled; splitting would create a dependency chain with no benefit
-- **AGENTS.md description format** — match existing entries: single paragraph, action-oriented verbs, describes what the agent does and when it hands off, no markdown headers inside the entry
-- **Orchestrator routing trigger wording** — match the `| Task | Agent |` table style already present; trigger column should match how users naturally describe the task
+- **Two files, one task** - both edits are tiny (1–2 line insertions) and tightly coupled; splitting would create a dependency chain with no benefit
+- **AGENTS.md description format** - match existing entries: single paragraph, action-oriented verbs, describes what the agent does and when it hands off, no markdown headers inside the entry
+- **Orchestrator routing trigger wording** - match the `| Task | Agent |` table style already present; trigger column should match how users naturally describe the task
 
 ## Acceptance Criteria
 
@@ -42,12 +42,12 @@ Currently `AGENTS.md` has 8 agents (auto-error-resolver, code-architecture-revie
 
 ## Dependencies
 
-- Task `0001` (write-adr prompt template) should be completed first — the agent description references `write-adr.prompt.md`
+- Task `0001` (write-adr prompt template) should be completed first - the agent description references `write-adr.prompt.md`
 
 ## Related Code
 
-- `AGENTS.md` — current agent registry; add `adr-writer` entry in alphabetical order
-- `.github/instructions/orchestrator.instructions.md` — "When to use which agent" table, "Skill & Agent Routing" section
+- `AGENTS.md` - current agent registry; add `adr-writer` entry in alphabetical order
+- `.github/instructions/orchestrator.instructions.md` - "When to use which agent" table, "Skill & Agent Routing" section
 - Existing agent entries in `AGENTS.md` for description style reference (e.g., `documentation-architect`, `plan-reviewer`)
 
 ## Verification

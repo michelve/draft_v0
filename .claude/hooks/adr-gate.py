@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-UserPromptSubmit hook — adr-gate
+UserPromptSubmit hook - adr-gate
 
 Detects qualifying architectural decision keywords in the user's message and
 injects an ADR violation check reminder before Claude processes the prompt.

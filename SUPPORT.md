@@ -4,7 +4,7 @@ This document explains where to get help with Draft v0 and what to expect when y
 
 ## Before You Ask
 
-Check these resources first — your answer is likely already there:
+Check these resources first - your answer is likely already there:
 
 | Resource                                                        | What's covered                         |
 | --------------------------------------------------------------- | -------------------------------------- |
@@ -30,7 +30,7 @@ Discussions are the right place for open-ended conversation. They stay searchabl
 
 ### Bug Reports
 
-Open a [GitHub Issue](https://github.com/michelve/draft_v0/issues) if something is broken — unexpected errors, incorrect behavior, or broken commands. Include:
+Open a [GitHub Issue](https://github.com/michelve/draft_v0/issues) if something is broken - unexpected errors, incorrect behavior, or broken commands. Include:
 
 - What you did (steps to reproduce)
 - What you expected to happen
@@ -67,4 +67,4 @@ This is an open-source project maintained in spare time. There are no SLAs. We a
 
 ## Contributing
 
-If you want to fix a bug or add a feature yourself, see [CONTRIBUTING.md](CONTRIBUTING.md) for the full workflow — including how to set up your dev environment, branch strategy, commit conventions, and the PR checklist.
+If you want to fix a bug or add a feature yourself, see [CONTRIBUTING.md](CONTRIBUTING.md) for the full workflow - including how to set up your dev environment, branch strategy, commit conventions, and the PR checklist.

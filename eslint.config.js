@@ -56,7 +56,7 @@ export default tseslint.config(
         },
     },
 
-    // Server files — Node.js globals
+    // Server files - Node.js globals
     {
         files: ["src/server/**/*.ts"],
         languageOptions: {
@@ -67,7 +67,7 @@ export default tseslint.config(
         },
     },
 
-    // TanStack Router route files — mixed exports are expected
+    // TanStack Router route files - mixed exports are expected
     {
         files: ["src/client/routes/**/*.tsx"],
         rules: {
@@ -75,7 +75,7 @@ export default tseslint.config(
         },
     },
 
-    // shadcn components — relaxed rules (auto-generated code)
+    // shadcn components - relaxed rules (auto-generated code)
     {
         files: ["src/client/components/ui/**/*.tsx"],
         rules: {

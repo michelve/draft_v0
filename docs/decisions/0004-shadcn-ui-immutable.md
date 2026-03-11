@@ -7,14 +7,14 @@ date: 2026-03-07
 
 ## Context and Problem Statement
 
-shadcn/ui installs components as source code into `src/client/components/ui/`. This is different from typical npm packages — the files are fully owned by the project. However, modifying these files creates maintenance problems: `npx shadcn@latest add` overwrites manual changes, Biome/ESLint rules conflict with shadcn's generated code style, and each new component installation would require re-applying manual fixes.
+shadcn/ui installs components as source code into `src/client/components/ui/`. This is different from typical npm packages - the files are fully owned by the project. However, modifying these files creates maintenance problems: `npx shadcn@latest add` overwrites manual changes, Biome/ESLint rules conflict with shadcn's generated code style, and each new component installation would require re-applying manual fixes.
 
 Should we modify shadcn component files to match our project conventions, or treat them as immutable?
 
 ## Decision Drivers
 
 - Biome flagged 3 issues in `button.tsx` (import order, import type, formatting)
-- Initial fix of reformatting the file was the wrong approach — changes would be overwritten
+- Initial fix of reformatting the file was the wrong approach - changes would be overwritten
 - Need a sustainable strategy as more shadcn components are added
 
 ## Considered Options
@@ -28,7 +28,7 @@ Chosen option: "Treat shadcn files as immutable vendor code and create wrappers"
 
 Rules:
 
-1. **Never modify shadcn component files directly** — create wrapper components in `src/client/components/` instead
+1. **Never modify shadcn component files directly** - create wrapper components in `src/client/components/` instead
 2. **Biome ignores the `ui/` directory** via overrides in `biome.json` (formatter disabled, import organization off, `useImportType` off)
 3. **Wrappers compose** the shadcn component with project-specific defaults
 

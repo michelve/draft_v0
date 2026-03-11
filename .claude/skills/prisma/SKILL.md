@@ -1,9 +1,20 @@
 ---
 name: prisma
 description: Prisma ORM patterns including Prisma Client usage, queries, mutations, relations, transactions, and schema management. Use when working with Prisma database operations or schema definitions.
+user-invocable: true
 ---
 
 # Prisma ORM Patterns
+
+## When to Use
+
+- Writing database queries with Prisma Client
+- Defining or modifying Prisma schema
+- Adding database models
+- Creating migrations
+- Working with relations and associations
+- Implementing transactions
+- Handling Prisma errors (P2002, P2025)
 
 ## Purpose
 
@@ -83,315 +94,37 @@ const posts = await prisma.post.findMany({
 
 ## Repository Pattern
 
-### When to Use Repositories
-
-✅ **Use repositories when:**
-
-- Complex queries with joins/includes
-- Query used in multiple places
-- Need to mock for testing
-
-❌ **Skip repositories for:**
-
-- Simple one-off queries
-- Prototyping
-
-### Repository Template
-
-```typescript
-import { prisma } from "@server/lib/prisma";
-import type { User, Prisma } from "@prisma/client";
-
-export class UserRepository {
-    async findById(id: string): Promise<User | null> {
-        return prisma.user.findUnique({
-            where: { id },
-            include: { profile: true },
-        });
-    }
-
-    async findByEmail(email: string): Promise<User | null> {
-        return prisma.user.findUnique({
-            where: { email },
-        });
-    }
-
-    async findActive(): Promise<User[]> {
-        return prisma.user.findMany({
-            where: { isActive: true },
-            orderBy: { createdAt: "desc" },
-        });
-    }
-
-    async create(data: Prisma.UserCreateInput): Promise<User> {
-        return prisma.user.create({ data });
-    }
-
-    async update(id: string, data: Prisma.UserUpdateInput): Promise<User> {
-        return prisma.user.update({ where: { id }, data });
-    }
-
-    async delete(id: string): Promise<void> {
-        await prisma.user.delete({ where: { id } });
-    }
-}
-```
-
-### Using in Service
-
-```typescript
-export class UserService {
-    private userRepository: UserRepository;
-
-    constructor() {
-        this.userRepository = new UserRepository();
-    }
-
-    async getById(id: string): Promise<User> {
-        const user = await this.userRepository.findById(id);
-        if (!user) {
-            throw new Error("User not found");
-        }
-        return user;
-    }
-}
-```
+See [repository-pattern.md](reference/repository-pattern.md) for repository template, when to use repositories, and service integration.
 
 ---
 
 ## Transaction Patterns
 
-### Simple Transaction
-
-```typescript
-const result = await prisma.$transaction(async (tx) => {
-    const user = await tx.user.create({
-        data: { email: "user@example.com", name: "John" },
-    });
-
-    const profile = await tx.userProfile.create({
-        data: { userId: user.id, bio: "Developer" },
-    });
-
-    return { user, profile };
-});
-```
-
-### Interactive Transaction
-
-```typescript
-const result = await prisma.$transaction(
-    async (tx) => {
-        const user = await tx.user.findUnique({ where: { id: userId } });
-        if (!user) throw new Error("User not found");
-
-        const updated = await tx.user.update({
-            where: { id: userId },
-            data: { lastLogin: new Date() },
-        });
-
-        await tx.auditLog.create({
-            data: { userId, action: "LOGIN", timestamp: new Date() },
-        });
-
-        return updated;
-    },
-    {
-        maxWait: 5000, // Wait max 5s to start
-        timeout: 10000, // Timeout after 10s
-    },
-);
-```
+See [transactions.md](reference/transactions.md) for simple and interactive transaction patterns with timeout configuration.
 
 ---
 
 ## Query Optimization
 
-### Use select to Limit Fields
-
-```typescript
-// ❌ Fetches all fields
-const users = await prisma.user.findMany();
-
-// ✅ Only fetch needed fields
-const users = await prisma.user.findMany({
-    select: {
-        id: true,
-        email: true,
-        name: true,
-    },
-});
-
-// ✅ Select with relations
-const users = await prisma.user.findMany({
-    select: {
-        id: true,
-        email: true,
-        profile: {
-            select: { firstName: true, lastName: true },
-        },
-    },
-});
-```
-
-### Use include Carefully
-
-```typescript
-// ❌ Excessive includes
-const user = await prisma.user.findUnique({
-    where: { id },
-    include: {
-        posts: { include: { comments: true } },
-        workflows: { include: { steps: { include: { actions: true } } } },
-    },
-});
-
-// ✅ Only include what you need
-const user = await prisma.user.findUnique({
-    where: { id },
-    include: { profile: true },
-});
-```
+See [query-optimization.md](reference/query-optimization.md) for select vs include, field limiting, and relation fetching.
 
 ---
 
 ## N+1 Query Prevention
 
-### Problem
-
-```typescript
-// ❌ N+1 Query Problem
-const users = await prisma.user.findMany(); // 1 query
-
-for (const user of users) {
-    // N additional queries
-    const profile = await prisma.userProfile.findUnique({
-        where: { userId: user.id },
-    });
-}
-```
-
-### Solution 1: Use include
-
-```typescript
-// ✅ Single query with include
-const users = await prisma.user.findMany({
-    include: { profile: true },
-});
-
-for (const user of users) {
-    console.log(user.profile.bio);
-}
-```
-
-### Solution 2: Batch Query
-
-```typescript
-// ✅ Batch query
-const users = await prisma.user.findMany();
-const userIds = users.map((u) => u.id);
-
-const profiles = await prisma.userProfile.findMany({
-    where: { userId: { in: userIds } },
-});
-
-const profileMap = new Map(profiles.map((p) => [p.userId, p]));
-```
+See [n-plus-one.md](reference/n-plus-one.md) for N+1 problem identification and solutions using include and batch queries.
 
 ---
 
 ## Relations
 
-### One-to-Many
-
-```typescript
-// Get user with posts
-const user = await prisma.user.findUnique({
-    where: { id: userId },
-    include: {
-        posts: {
-            where: { published: true },
-            orderBy: { createdAt: "desc" },
-            take: 10,
-        },
-    },
-});
-```
-
-### Nested Writes
-
-```typescript
-// Create user with profile
-const user = await prisma.user.create({
-    data: {
-        email: "user@example.com",
-        name: "John Doe",
-        profile: {
-            create: {
-                bio: "Developer",
-                avatar: "avatar.jpg",
-            },
-        },
-    },
-    include: { profile: true },
-});
-
-// Update with nested updates
-const user = await prisma.user.update({
-    where: { id: userId },
-    data: {
-        name: "Jane Doe",
-        profile: {
-            update: { bio: "Senior developer" },
-        },
-    },
-});
-```
+See [relations.md](reference/relations.md) for one-to-many queries, nested writes, and relation data patterns.
 
 ---
 
 ## Error Handling
 
-### Prisma Error Codes
-
-```typescript
-import { Prisma } from "@prisma/client";
-
-try {
-    await prisma.user.create({
-        data: { email: "user@example.com" },
-    });
-} catch (error) {
-    if (error instanceof Prisma.PrismaClientKnownRequestError) {
-        // P2002: Unique constraint violation
-        if (error.code === "P2002") {
-            throw new ConflictError("Email already exists");
-        }
-
-        // P2003: Foreign key constraint failed
-        if (error.code === "P2003") {
-            throw new ValidationError("Invalid reference");
-        }
-
-        // P2025: Record not found
-        if (error.code === "P2025") {
-            throw new NotFoundError("Record not found");
-        }
-    }
-
-    console.error(error);
-    throw error;
-}
-```
-
-### Common Error Codes
-
-| Code  | Meaning                       |
-| ----- | ----------------------------- |
-| P2002 | Unique constraint violation   |
-| P2003 | Foreign key constraint failed |
-| P2025 | Record not found              |
-| P2014 | Relation violation            |
+See [error-handling.md](reference/error-handling.md) for Prisma error codes (P2002, P2003, P2025) and error handling patterns.
 
 ---
 

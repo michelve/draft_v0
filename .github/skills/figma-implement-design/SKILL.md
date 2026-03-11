@@ -1,7 +1,28 @@
 ---
 name: "figma-implement-design"
 description: "Translate Figma nodes into production-ready code with 1:1 visual fidelity using the Figma MCP workflow (design context, screenshots, assets, and project-convention translation). Trigger when the user provides Figma URLs or node IDs, or asks to implement designs or components that must match Figma specs. Requires a working Figma MCP server connection."
+argument-hint: "Figma URL (https://figma.com/design/:fileKey/:fileName?node-id=1-2)"
+user-invocable: true
+metadata:
+    context: fork
+    allowed-tools:
+        - figma__get_design_context
+        - figma__get_screenshot
+        - figma__get_assets
+        - figma__get_variables
 ---
+
+This skill uses extended thinking for complex design-to-code translation. ultrathink
+
+## Current Repository State
+
+```
+!`git status --short 2>/dev/null || echo 'Not a git repository'`
+```
+
+```
+!`git log --oneline -5 2>/dev/null || echo 'No git history available'`
+```
 
 # Implement Design
 
@@ -12,6 +33,8 @@ This skill provides a structured workflow for translating Figma designs into pro
 ## Prerequisites
 
 - Figma MCP server must be connected and accessible
+    - Before proceeding, verify the Figma MCP server is connected by checking if Figma MCP tools (e.g., `get_design_context`) are available.
+    - If the tools are not available, the Figma MCP server may not be enabled. Guide the user to enable the Figma MCP server that is included with the plugin. They may need to restart their MCP client afterward.
 - User must provide a Figma URL in the format: `https://figma.com/design/:fileKey/:fileName?node-id=1-2`
     - `:fileKey` is the file key
     - `1-2` is the node ID (the specific component or frame to implement)
@@ -24,7 +47,7 @@ This skill provides a structured workflow for translating Figma designs into pro
 
 ### Step 0: Set up Figma MCP (if not already configured)
 
-**VS Code + GitHub Copilot users:** Figma MCP is pre-configured in `.vscode/mcp.json` — skip to Step 1. If tools are still unavailable, reload the VS Code window and check the MCP panel.
+**VS Code + GitHub Copilot users:** Figma MCP is pre-configured in `.vscode/mcp.json` - skip to Step 1. If tools are still unavailable, reload the VS Code window and check the MCP panel.
 
 **Claude Code / Codex CLI users:** If any MCP call fails because Figma MCP is not connected, pause and set it up:
 
@@ -107,20 +130,14 @@ Download any assets (images, icons, SVGs) returned by the Figma MCP server.
 - DO NOT use or create placeholders if a `localhost` source is provided
 - Assets are served through the Figma MCP server's built-in assets endpoint
 
-**Where to save downloaded assets:**
+**Project asset and style file locations:**
 
-| Asset type                           | Save to                                                   | How to use                                    |
-| ------------------------------------ | --------------------------------------------------------- | --------------------------------------------- |
-| Images, icons, SVGs (Vite-processed) | `src/client/assets/images/` or `src/client/assets/icons/` | `import logo from "@/assets/images/logo.svg"` |
-| Web fonts (static URL, no hashing)   | `public/fonts/`                                           | `url("/fonts/MyFont.woff2")` in `custom.css`  |
-
-**Where to save styles from Figma:**
-
-| Style type                                                  | Save to                                                               |
-| ----------------------------------------------------------- | --------------------------------------------------------------------- |
-| Design tokens (colors, spacing, radii exported from Figma)  | `src/client/index.css` — add to `@theme inline`                       |
-| CSS variables, `@font-face`, `@keyframes`, global overrides | `src/client/custom.css`                                               |
-| Component-scoped styles                                     | Tailwind utilities inline via `cn()` / `cva()` — no separate CSS file |
+| Type                                            | Location                                                  |
+| ----------------------------------------------- | --------------------------------------------------------- |
+| Images / icons (Vite-processed, imported in TS) | `src/client/assets/images/` or `src/client/assets/icons/` |
+| Static fonts referenced by URL in CSS           | `public/fonts/`                                           |
+| Tailwind theme tokens (colors, spacing, radii)  | `src/client/index.css` - `@theme inline` block            |
+| Custom CSS (keyframes, @font-face, overrides)   | `src/client/custom.css`                                   |
 
 ### Step 5: Translate to Project Conventions
 
@@ -164,60 +181,29 @@ Before marking complete, validate the final UI against the Figma screenshot.
 
 ### Component Organization
 
-- Place UI components in the project's designated design system directory
-- Follow the project's component naming conventions
-- Avoid inline styles unless truly necessary for dynamic values
+- Place new UI components in `src/client/components/` (never in `src/client/components/ui/` - those are shadcn files and must not be modified)
+- To extend a shadcn/ui component, create a wrapper in `src/client/components/` that imports from `@/components/ui/`
+- Use **named exports only** - no default exports
+- Component names must be PascalCase; file names must match the component name
+- Never use inline `style={}` when an equivalent Tailwind utility class exists
+- Use `cn()` from `@/lib/utils` for conditional class merging
 
 ### Design System Integration
 
-- ALWAYS use components from the project's design system when possible
-- Map Figma design tokens to project design tokens
-- When a matching component exists, extend it rather than creating a new one
-- Document any new components added to the design system
+- ALWAYS check `src/client/components/` for an existing component before creating a new one
+- Map Figma design tokens to project tokens: colors from `@theme inline` in `src/client/index.css`, typography from the theme block, spacing via Tailwind scale
+- When a matching component exists, extend it (create a wrapper) rather than duplicating
+- Use `cn()` from `@/lib/utils` for all conditional class merging
 
 ### Code Quality
 
 - Avoid hardcoded values - extract to constants or design tokens
 - Keep components composable and reusable
 - Add TypeScript types for component props
-- Include JSDoc comments for exported components
 
 ## Examples
 
-### Example 1: Implementing a Button Component
-
-User says: "Implement this Figma button component: https://figma.com/design/kL9xQn2VwM8pYrTb4ZcHjF/DesignSystem?node-id=42-15"
-
-**Actions:**
-
-1. Parse URL to extract fileKey=`kL9xQn2VwM8pYrTb4ZcHjF` and nodeId=`42-15`
-2. Run `get_design_context(fileKey="kL9xQn2VwM8pYrTb4ZcHjF", nodeId="42-15")`
-3. Run `get_screenshot(fileKey="kL9xQn2VwM8pYrTb4ZcHjF", nodeId="42-15")` for visual reference
-4. Download any button icons from the assets endpoint
-5. Check if project has existing button component
-6. If yes, extend it with new variant; if no, create new component using project conventions
-7. Map Figma colors to project design tokens (e.g., `primary-500`, `primary-hover`)
-8. Validate against screenshot for padding, border radius, typography
-
-**Result:** Button component matching Figma design, integrated with project design system.
-
-### Example 2: Building a Dashboard Layout
-
-User says: "Build this dashboard: https://figma.com/design/pR8mNv5KqXzGwY2JtCfL4D/Dashboard?node-id=10-5"
-
-**Actions:**
-
-1. Parse URL to extract fileKey=`pR8mNv5KqXzGwY2JtCfL4D` and nodeId=`10-5`
-2. Run `get_metadata(fileKey="pR8mNv5KqXzGwY2JtCfL4D", nodeId="10-5")` to understand the page structure
-3. Identify main sections from metadata (header, sidebar, content area, cards) and their child node IDs
-4. Run `get_design_context(fileKey="pR8mNv5KqXzGwY2JtCfL4D", nodeId=":childNodeId")` for each major section
-5. Run `get_screenshot(fileKey="pR8mNv5KqXzGwY2JtCfL4D", nodeId="10-5")` for the full page
-6. Download all assets (logos, icons, charts)
-7. Build layout using project's layout primitives
-8. Implement each section using existing components where possible
-9. Validate responsive behavior against Figma constraints
-
-**Result:** Complete dashboard matching Figma design with responsive layout.
+See [design-implementation-scenarios.md](examples/design-implementation-scenarios.md) for detailed scenarios including implementing a button component and building a complete dashboard layout from Figma designs.
 
 ## Best Practices
 
@@ -243,25 +229,7 @@ When in doubt, prefer the project's design system patterns over literal Figma tr
 
 ## Common Issues and Solutions
 
-### Issue: Figma output is truncated
-
-**Cause:** The design is too complex or has too many nested layers to return in a single response.
-**Solution:** Use `get_metadata` to get the node structure, then fetch specific nodes individually with `get_design_context`.
-
-### Issue: Design doesn't match after implementation
-
-**Cause:** Visual discrepancies between the implemented code and the original Figma design.
-**Solution:** Compare side-by-side with the screenshot from Step 3. Check spacing, colors, and typography values in the design context data.
-
-### Issue: Assets not loading
-
-**Cause:** The Figma MCP server's assets endpoint is not accessible or the URLs are being modified.
-**Solution:** Verify the Figma MCP server's assets endpoint is accessible. The server serves assets at `localhost` URLs. Use these directly without modification.
-
-### Issue: Design token values differ from Figma
-
-**Cause:** The project's design system tokens have different values than those specified in the Figma design.
-**Solution:** When project tokens differ from Figma values, prefer project tokens for consistency but adjust spacing/sizing to maintain visual fidelity.
+See [troubleshooting.md](reference/troubleshooting.md) for solutions to common issues including truncated Figma output, design mismatches, asset loading problems, and design token discrepancies.
 
 ## Understanding Design Implementation
 
@@ -272,6 +240,38 @@ The Figma implementation workflow establishes a reliable process for translating
 **For teams:** Consistent, high-quality implementations that maintain design system integrity.
 
 By following this workflow, you ensure that every Figma design is implemented with the same level of care and attention to detail.
+
+## Arguments
+
+When invoking this skill with arguments:
+
+- `$0` or `$ARGUMENTS[0]` - Figma URL in format `https://figma.com/design/:fileKey/:fileName?node-id=1-2`
+    - The skill extracts `:fileKey` (file identifier) and `1-2` (node ID) from the URL
+    - Example: `/figma-implement-design https://figma.com/design/abc123/MyDesign?node-id=10-25`
+- `$1` or `$ARGUMENTS[1]` - Optional explicit node-id override
+    - Use when targeting a specific variant or nested component
+    - Example: `/figma-implement-design https://figma.com/design/abc123/MyDesign 10-25`
+
+If invoked without arguments, the skill will prompt for the Figma URL during execution.
+
+## Session Tracking
+
+This skill uses `${CLAUDE_SESSION_ID}` to track design implementation sessions:
+
+```typescript
+// Each implementation is logged with session context
+const sessionId = process.env.CLAUDE_SESSION_ID;
+console.log(`[${sessionId}] Implementing Figma design: ${fileKey}, node: ${nodeId}`);
+```
+
+This allows correlation between:
+
+- Design implementation start/completion
+- MCP tool invocations (get_design_context, get_screenshot, get_assets)
+- Git commits containing the implementation code
+- Code review feedback and iterations
+
+Use the session ID to trace the full lifecycle of a design implementation from Figma link to production code.
 
 ## Additional Resources
 

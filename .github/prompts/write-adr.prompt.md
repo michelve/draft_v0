@@ -11,7 +11,7 @@ Follow each step in order. Do not skip steps. Do not write the file until valida
 
 ---
 
-## Step 1 — Determine the next ADR number
+## Step 1 - Determine the next ADR number
 
 Read `docs/decisions/README.md`. Find the highest `NNNN` number in the index table. Increment by 1. This is your ADR number for this session.
 
@@ -21,7 +21,7 @@ If a `supersedes` parameter was provided (see Step 9), note the number of the AD
 
 ---
 
-## Step 2 — Load the MADR template
+## Step 2 - Load the MADR template
 
 Read `docs/decisions/_template.md`. This is the canonical MADR 4.0.0 structure. All mandatory sections must appear in your output:
 
@@ -39,7 +39,7 @@ Read `docs/decisions/_template.md`. This is the canonical MADR 4.0.0 structure. 
 
 ---
 
-## Step 3 — Load style references
+## Step 3 - Load style references
 
 Read the two most recent ADRs in `docs/decisions/` (by number). Absorb:
 
@@ -48,11 +48,11 @@ Read the two most recent ADRs in `docs/decisions/` (by number). Absorb:
 - How Consequences bullets are phrased (`Good, because ...` / `Bad, because ...` / `Neutral, because ...`)
 - Frontmatter format (`status: accepted`, `date: YYYY-MM-DD`)
 
-Do not copy content — only absorb style.
+Do not copy content - only absorb style.
 
 ---
 
-## Step 4 — Scan codebase context
+## Step 4 - Scan codebase context
 
 Search the codebase for code, config, or documentation relevant to the decision topic. Look for:
 
@@ -64,7 +64,7 @@ This context will make the ADR accurate and grounded rather than generic.
 
 ---
 
-## Step 5 — Draft the ADR
+## Step 5 - Draft the ADR
 
 Write the full ADR using the MADR 4.0.0 structure. Requirements:
 
@@ -85,7 +85,7 @@ If superseding another ADR, add:
 ---
 status: accepted
 date: YYYY-MM-DD
-supersedes: "NNNN — Title of superseded ADR"
+supersedes: "NNNN - Title of superseded ADR"
 ---
 ```
 
@@ -102,11 +102,11 @@ Short, specific, noun-phrase form. Describes the decision, not the problem.
 
 ### Considered Options
 
-List 2–4 options evaluated. Each is a concise noun phrase — not a sentence.
+List 2–4 options evaluated. Each is a concise noun phrase - not a sentence.
 
 ### Decision Outcome
 
-**This phrasing is mandatory — do not vary it:**
+**This phrasing is mandatory - do not vary it:**
 
 ```
 Chosen option: "{option name}", because {justification}.
@@ -124,7 +124,7 @@ At least one Good and one Bad bullet. Format:
 
 ---
 
-## Step 6 — Validate
+## Step 6 - Validate
 
 Before writing any file, check every item below. If any fail, fix the draft and re-check before proceeding.
 
@@ -138,7 +138,7 @@ Before writing any file, check every item below. If any fail, fix the draft and 
 
 ---
 
-## Step 7 — Write the ADR file
+## Step 7 - Write the ADR file
 
 Write the validated ADR to:
 
@@ -155,7 +155,7 @@ Example: `0014-use-zod-for-input-validation.md`
 
 ---
 
-## Step 8 — Update the index
+## Step 8 - Update the index
 
 Edit `docs/decisions/README.md`. Add one row to the index table:
 
@@ -167,7 +167,7 @@ Insert it at the bottom of the index table, maintaining consistent column spacin
 
 ---
 
-## Step 9 — Handle supersede (if applicable)
+## Step 9 - Handle supersede (if applicable)
 
 If this ADR supersedes an existing one (the user said "supersede ADR NNNN" or this was triggered by `check-adr-violations.prompt.md` with a `supersedes` parameter):
 
@@ -177,15 +177,15 @@ If this ADR supersedes an existing one (the user said "supersede ADR NNNN" or th
     ---
     status: superseded
     date: { original date }
-    superseded-by: "{new NNNN} — {new title}"
+    superseded-by: "{new NNNN} - {new title}"
     ---
     ```
-3. Update the old ADR's row in `docs/decisions/README.md` — change status column to `superseded`
+3. Update the old ADR's row in `docs/decisions/README.md` - change status column to `superseded`
 4. Confirm both files are saved before finishing
 
 ---
 
-## Step 10 — Optional: ground with external evidence
+## Step 10 - Optional: ground with external evidence
 
 If the user asked for external evidence or research to support the decision:
 

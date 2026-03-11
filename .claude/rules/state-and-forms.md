@@ -4,7 +4,7 @@ description: "State management (TanStack Query, Zustand) and form patterns (Reac
 
 # State Management & Forms
 
-## Server State — TanStack Query
+## Server State - TanStack Query
 
 - Use `useQuery()` for all server data fetching
 - **Never** use `useState` + `useEffect` to fetch API data
@@ -20,10 +20,10 @@ description: "State management (TanStack Query, Zustand) and form patterns (Reac
     ```
 - QueryClient config already set: 1-min staleTime, 1 retry
 
-## Client State — Zustand
+## Client State - Zustand
 
 - Use for UI-only state (modals, sidebar, theme, filters)
-- Small focused stores — not one mega-store
+- Small focused stores - not one mega-store
 - Define with `create()`:
 
     ```ts
@@ -42,7 +42,7 @@ description: "State management (TanStack Query, Zustand) and form patterns (Reac
 
 - Prefer derived/computed state over duplicating state
 
-## Forms — React Hook Form + Zod
+## Forms - React Hook Form + Zod
 
 - Define Zod schema first, infer TypeScript type from it:
 

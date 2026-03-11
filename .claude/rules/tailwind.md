@@ -6,7 +6,7 @@ description: "Tailwind CSS v4 styling patterns and conventions"
 
 ## Configuration
 
-- CSS-first config — no `tailwind.config.js` file
+- CSS-first config - no `tailwind.config.js` file
 - Theme defined via `@theme inline` in `src/client/index.css`
 - Color system uses oklch values for consistent color space
 - Dark mode via `@custom-variant dark` (class-based)
@@ -15,7 +15,7 @@ description: "Tailwind CSS v4 styling patterns and conventions"
 
 | Purpose                                                                 | File                                                      |
 | ----------------------------------------------------------------------- | --------------------------------------------------------- |
-| Tailwind theme tokens (colors, spacing, radii)                          | `src/client/index.css` — `@theme inline` block            |
+| Tailwind theme tokens (colors, spacing, radii)                          | `src/client/index.css` - `@theme inline` block            |
 | Custom CSS (@font-face, @keyframes, CSS vars, Figma exports, overrides) | `src/client/custom.css`                                   |
 | Vite-processed images/icons (imported in TS)                            | `src/client/assets/images/` or `src/client/assets/icons/` |
 | Static fonts referenced by URL in CSS                                   | `public/fonts/`                                           |
@@ -28,7 +28,7 @@ description: "Tailwind CSS v4 styling patterns and conventions"
 
 ## Styling Rules
 
-- Use utility classes for all styling — avoid custom CSS unless truly necessary
+- Use utility classes for all styling - avoid custom CSS unless truly necessary
 - Avoid `@apply` except in `@layer base` for global defaults
 - **Never** use inline `style={}` when an equivalent Tailwind utility exists
 - Mobile-first responsive: `sm:`, `md:`, `lg:`, `xl:`, `2xl:` breakpoints

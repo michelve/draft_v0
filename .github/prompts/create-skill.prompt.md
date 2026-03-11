@@ -13,16 +13,16 @@ Use the **skill-creator** skill throughout this workflow.
 
 Before starting, figure out where the user is in the process:
 
-- **Starting fresh** — they have an idea for a new skill
-- **Have a draft** — they've already written a SKILL.md and want feedback or evals
-- **Eval/iterate** — they want to test an existing skill and improve it
-- **Optimize triggering** — the skill works but isn't activating reliably
+- **Starting fresh** - they have an idea for a new skill
+- **Have a draft** - they've already written a SKILL.md and want feedback or evals
+- **Eval/iterate** - they want to test an existing skill and improve it
+- **Optimize triggering** - the skill works but isn't activating reliably
 
 Jump in at the right stage. If the user says "just vibe with me", skip the formal steps.
 
 ## Skills to Apply
 
-- **skill-creator** — full authoring workflow, eval scripts, benchmarking, description optimization
+- **skill-creator** - full authoring workflow, eval scripts, benchmarking, description optimization
 
 ## Workflow
 
@@ -54,7 +54,7 @@ description: When to trigger + what it does. Be specific and slightly "pushy" to
 
 Then write the body: workflow steps, patterns, anti-patterns, examples.
 
-Skills live in **both** directories — create them in parallel:
+Skills live in **both** directories - create them in parallel:
 
 - `.github/skills/<skill-name>/SKILL.md` (GitHub Copilot)
 - `.claude/skills/<skill-name>/SKILL.md` (Claude Code)

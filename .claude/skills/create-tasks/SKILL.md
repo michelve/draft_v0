@@ -1,8 +1,17 @@
 ---
 name: create-tasks
 description: "Creates well-formed tasks following a template that engineers can implement. Triggers on: 'create tasks', 'define work items', 'break this down', creating tasks from PRD, converting requirements into actionable tasks, feature breakdown, sprint planning."
+argument-hint: "<task-description-or-requirements>"
 version: 1.0.0
+user-invocable: true
+context: fork
 ---
+
+## Current Project Context
+
+```
+!`cat .tasks/_template.md 2>/dev/null || echo 'No task template found at .tasks/_template.md'`
+```
 
 # Create Tasks
 
@@ -21,7 +30,7 @@ All tasks are stored in `.tasks/` with the following lifecycle directories:
 | `.tasks/done/`        | Completed tasks (passed `task-check`) |
 | `.tasks/cancelled/`   | Cancelled tasks (with reason)         |
 
-**File naming:** `NNNN-short-title.md` — zero-padded number, lowercase, hyphenated.
+**File naming:** `NNNN-short-title.md` - zero-padded number, lowercase, hyphenated.
 
 To find the next number, check across **all** subdirectories for the highest `NNNN` prefix and increment by 1.
 
@@ -62,7 +71,7 @@ When [action/trigger]
 Then [expected outcome]
 ```
 
-**Edge case checklist** — for each rule, systematically consider:
+**Edge case checklist** - for each rule, systematically consider:
 
 | Category   | Check For                                                                             |
 | ---------- | ------------------------------------------------------------------------------------- |
@@ -160,9 +169,9 @@ Every task MUST pass INVEST before creation:
 
 ### Hard Limits
 
-- **Max 1 day of work** — if longer, split it
-- **Must be vertical** — touches all layers for ONE thing
-- **Must be demoable** — when done, you can show it working
+- **Max 1 day of work** - if longer, split it
+- **Must be vertical** - touches all layers for ONE thing
+- **Must be demoable** - when done, you can show it working
 
 ## Task Template
 
@@ -183,11 +192,11 @@ updated: YYYY-MM-DD
 
 ## Context and Motivation
 
-[WHY this matters — PRD path, bug report URL, conversation context]
+[WHY this matters - PRD path, bug report URL, conversation context]
 
 ## Key Decisions
 
-- [Decision/Principle] — [rationale]
+- [Decision/Principle] - [rationale]
 
 ## Acceptance Criteria
 
@@ -199,11 +208,11 @@ updated: YYYY-MM-DD
 
 ## Dependencies
 
-- [Dependency] — [why needed]
+- [Dependency] - [why needed]
 
 ## Related Code
 
-- `path/to/file` — [what pattern to follow]
+- `path/to/file` - [what pattern to follow]
 
 ## Verification
 
@@ -212,10 +221,10 @@ updated: YYYY-MM-DD
 
 ## Process
 
-1. **Slice first** — Apply Example Mapping. If task has >3-4 rules or fails splitting signals, use SPIDR to break it down.
-2. **Discover acceptance criteria** — For each rule: generate happy path, edge cases, error cases using the checklist. Write as Given-When-Then. Surface questions.
-3. **Name it** — Write a specific, action-oriented title. If you can't, the task isn't clear enough.
-4. **Validate size** — Must pass INVEST. Max 1 day. Must be vertical slice.
+1. **Slice first** - Apply Example Mapping. If task has >3-4 rules or fails splitting signals, use SPIDR to break it down.
+2. **Discover acceptance criteria** - For each rule: generate happy path, edge cases, error cases using the checklist. Write as Given-When-Then. Surface questions.
+3. **Name it** - Write a specific, action-oriented title. If you can't, the task isn't clear enough.
+4. **Validate size** - Must pass INVEST. Max 1 day. Must be vertical slice.
 5. Gather context (from PRD, conversation, bug report, etc.)
 6. Identify key decisions that affect implementation
 7. Find related code/patterns in the codebase
@@ -235,3 +244,22 @@ Before finalizing any task, verify ALL of these:
 | **Context**  | Can an engineer implement without asking questions? | Add what's missing            |
 
 🚨 **If the PRD says "full implementation" or similar, you MUST split it. Creating such a task is a critical failure.**
+
+## Session Tracking
+
+This skill uses `${CLAUDE_SESSION_ID}` to track task creation sessions:
+
+```typescript
+// Each task creation is logged with session context
+const sessionId = process.env.CLAUDE_SESSION_ID;
+console.log(`[${sessionId}] Created task: ${taskNumber}-${taskTitle}.md`);
+```
+
+This allows correlation between:
+
+- The conversation or PRD that generated the task
+- The task file created in `.tasks/backlog/`
+- Later implementation work when the task moves to `in-progress/` and `done/`
+- Task verification via `task-check` agent
+
+Use the session ID to trace the full lifecycle of a task from requirements to completion.

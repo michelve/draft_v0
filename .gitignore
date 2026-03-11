@@ -33,6 +33,9 @@ CLAUDE.local.md
 draft_v0/
 .claude/agent-memory-local/
 
+# Generated visualizations
+component-graph.html
+
 # Research artifacts
 AI-CODING-ASSISTANTS-CONFIG-COMPARISON.md
 pnpm-lock.yaml

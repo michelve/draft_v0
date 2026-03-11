@@ -1,6 +1,6 @@
 # Figma Integration
 
-Draft v0 includes a complete Figma-to-code pipeline that lets designers hand off work and developers implement designs with pixel-perfect accuracy — powered by MCP servers and specialized skills.
+Draft v0 includes a complete Figma-to-code pipeline that lets designers hand off work and developers implement designs with pixel-perfect accuracy - powered by MCP servers and specialized skills.
 
 ## Overview
 
@@ -64,7 +64,7 @@ The fastest way is the **figma-to-code** prompt template:
 
 ### What the Skills Do
 
-**Step 1 — figma skill** fetches from Figma:
+**Step 1 - figma skill** fetches from Figma:
 
 - Node structure and hierarchy
 - Design tokens (colors, spacing, typography)
@@ -72,7 +72,7 @@ The fastest way is the **figma-to-code** prompt template:
 - Screenshots for visual reference
 - Asset URLs for images and icons
 
-**Step 2 — figma-implement-design skill** translates to code:
+**Step 2 - figma-implement-design skill** translates to code:
 
 - Maps Figma components to shadcn/ui equivalents
 - Converts design tokens to Tailwind CSS classes
@@ -146,11 +146,11 @@ This enables Figma's Dev Mode to show your exact React code for each component.
 
 ## Tips for Designers
 
-1. **Use Auto Layout** — It translates cleanly to Flexbox/Grid
-2. **Name your layers** — Meaningful names help generate readable component code
-3. **Use components and variants** — They map directly to React component props
-4. **Define design tokens** — Colors, spacing, and typography as Figma variables
-5. **Share frame links** — Right-click → Copy link gives the developer the exact reference
+1. **Use Auto Layout** - It translates cleanly to Flexbox/Grid
+2. **Name your layers** - Meaningful names help generate readable component code
+3. **Use components and variants** - They map directly to React component props
+4. **Define design tokens** - Colors, spacing, and typography as Figma variables
+5. **Share frame links** - Right-click → Copy link gives the developer the exact reference
 
 ## Troubleshooting
 
@@ -163,6 +163,6 @@ This enables Figma's Dev Mode to show your exact React code for each component.
 
 ## Next Steps
 
-- [Getting Started](getting-started.md) — Set up the project
-- [Skills & Agents](skills-and-agents.md) — Full reference of Figma skills and other tools
-- [Architecture Decisions](architecture-decisions.md) — Record decisions about design system choices
+- [Getting Started](getting-started.md) - Set up the project
+- [Skills & Agents](skills-and-agents.md) - Full reference of Figma skills and other tools
+- [Architecture Decisions](architecture-decisions.md) - Record decisions about design system choices

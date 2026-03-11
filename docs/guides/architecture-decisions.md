@@ -133,6 +133,6 @@ When working on a task that involves a significant decision:
 
 ## Next Steps
 
-- [Tasks Workflow](tasks-workflow.md) — How ADRs connect to task implementation
-- [Skills & Agents](skills-and-agents.md) — Agents that help review architectural decisions
-- [Project Structure](project-structure.md) — See where ADRs fit in the project layout
+- [Tasks Workflow](tasks-workflow.md) - How ADRs connect to task implementation
+- [Skills & Agents](skills-and-agents.md) - Agents that help review architectural decisions
+- [Project Structure](project-structure.md) - See where ADRs fit in the project layout

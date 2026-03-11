@@ -18,7 +18,7 @@ draft_v0/
 └── .vscode/             # Editor config, MCP servers
 ```
 
-## Frontend — React 19 SPA
+## Frontend - React 19 SPA
 
 ```text
 src/client/
@@ -37,7 +37,7 @@ src/client/
 
 ### Key Concepts
 
-**File-based routing** — Create a file in `src/client/routes/` and it becomes a route automatically. The route tree (`routeTree.gen.ts`) is auto-generated — never edit it manually.
+**File-based routing** - Create a file in `src/client/routes/` and it becomes a route automatically. The route tree (`routeTree.gen.ts`) is auto-generated - never edit it manually.
 
 ```tsx
 // src/client/routes/about.tsx → becomes /about
@@ -54,7 +54,7 @@ function AboutPage() {
 
 **shadcn/ui components** are installed to `src/client/components/ui/` and must never be modified directly. If you need to customize a component, create a wrapper in `src/client/components/`. See the [shadcn/ui guide](shadcn-ui.md) for installation, styling rules, and common patterns.
 
-**Data fetching** uses TanStack Query — never `useState` + `useEffect` for server data:
+**Data fetching** uses TanStack Query - never `useState` + `useEffect` for server data:
 
 ```tsx
 import { useQuery } from "@tanstack/react-query";
@@ -65,7 +65,7 @@ const { data: users } = useQuery({
 });
 ```
 
-## Backend — Express API (Layered Architecture)
+## Backend - Express API (Layered Architecture)
 
 ```text
 src/server/
@@ -117,7 +117,7 @@ All API responses follow a consistent shape:
 { error: "Internal Server Error" }                   // 500
 ```
 
-## Database — Prisma ORM
+## Database - Prisma ORM
 
 ```text
 prisma/
@@ -198,7 +198,7 @@ Unit tests use Vitest and live alongside the code they test.
 
 ```text
 docs/
-├── guides/              # You are here — usage guides
+├── guides/              # You are here - usage guides
 └── decisions/           # Architecture Decision Records (ADRs)
 
 .tasks/                  # Task management system
@@ -211,6 +211,6 @@ docs/
 
 ## Next Steps
 
-- [Skills & Agents](skills-and-agents.md) — How AI skills and agents accelerate your workflow
-- [Figma Integration](figma-integration.md) — Design-to-code workflow
-- [Tasks Workflow](tasks-workflow.md) — How tasks are created, tracked, and verified
+- [Skills & Agents](skills-and-agents.md) - How AI skills and agents accelerate your workflow
+- [Figma Integration](figma-integration.md) - Design-to-code workflow
+- [Tasks Workflow](tasks-workflow.md) - How tasks are created, tracked, and verified

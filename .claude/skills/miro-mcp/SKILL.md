@@ -1,6 +1,8 @@
 ---
 name: miro-mcp
 description: This skill teaches how to use Miro MCP tools effectively for creating diagrams, documents, tables, and extracting context from Miro boards. Use when the user asks about Miro capabilities, wants to create content on Miro boards, or needs to work with Miro board data.
+user-invocable: true
+allowed-tools: miro__draft_diagram_new, miro__draft_doc_new, miro__table_create_new, miro__table_sync_rows, miro__board_get_items, miro__context_get_board_docs, miro__table_list_rows, miro__board_get_image_data
 ---
 
 # Using Miro with Claude Code

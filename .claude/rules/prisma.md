@@ -19,7 +19,7 @@ description: "Prisma ORM database patterns and error handling for src/server/** 
 
 ## Queries
 
-- Use Prisma Client API — **never** raw SQL
+- Use Prisma Client API - **never** raw SQL
 - Use `include` for loading relations
 - Use `select` to fetch only needed fields (prevents over-fetching)
 - Use `import type` for Prisma-generated types: `import type { User } from "@prisma/client"`

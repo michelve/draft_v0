@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-PreToolUse hook — anti-pattern-guard
+PreToolUse hook - anti-pattern-guard
 
 Warns (does not block) when React/TypeScript anti-patterns from
 orchestrator.instructions.md are detected in .ts / .tsx file writes.
@@ -10,7 +10,7 @@ Covered patterns:
   - React.FC           (removed in React 19)
   - forwardRef(        (removed in React 19)
   - .propTypes =       (removed in React 19)
-  - export default function in .tsx  (banned — named exports only)
+  - export default function in .tsx  (banned - named exports only)
 """
 
 import sys
@@ -24,17 +24,17 @@ ANTI_PATTERNS = [
     },
     {
         'pattern': 'forwardRef(',
-        'rule': 'forwardRef was removed in React 19 — pass ref as a regular prop.',
+        'rule': 'forwardRef was removed in React 19 - pass ref as a regular prop.',
         'fix': 'function MyComponent({ ref, ...props }: Props & { ref?: React.Ref<T> }) { ... }',
     },
     {
         'pattern': '.propTypes =',
-        'rule': 'propTypes were removed in React 19 — use TypeScript interface instead.',
+        'rule': 'propTypes were removed in React 19 - use TypeScript interface instead.',
         'fix': 'interface Props { name: string; }',
     },
     {
         'pattern': 'export default function',
-        'rule': 'Default exports are banned — named exports only.',
+        'rule': 'Default exports are banned - named exports only.',
         'fix': 'export function MyComponent() { ... }',
         'tsx_only': True,
     },
@@ -86,7 +86,7 @@ def main() -> None:
             hits.append(ap)
 
     if hits:
-        lines = [f'⚠️  Anti-pattern guard — {file_path}:']
+        lines = [f'⚠️  Anti-pattern guard - {file_path}:']
         for h in hits:
             lines.append(f'\n   ✗ Pattern : {h["pattern"]}')
             lines.append(f'     Rule    : {h["rule"]}')
@@ -94,7 +94,7 @@ def main() -> None:
         lines.append('\n   Source: orchestrator.instructions.md § Anti-Patterns')
         print('\n'.join(lines))
 
-    sys.exit(0)  # Warn only — do not block
+    sys.exit(0)  # Warn only - do not block
 
 
 if __name__ == '__main__':

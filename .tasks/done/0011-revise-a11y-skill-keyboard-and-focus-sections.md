@@ -4,12 +4,12 @@ created: 2026-03-09
 updated: 2026-03-09
 ---
 
-# 0011 — Revise a11y skill keyboard navigation and focus management sections
+# 0011 - Revise a11y skill keyboard navigation and focus management sections
 
 ## Deliverable
 
 The "Keyboard Navigation" and "Focus Management" sections of the accessibility skill reference only
-vanilla React patterns and `radix-ui` primitives — every code example compiles correctly against the
+vanilla React patterns and `radix-ui` primitives - every code example compiles correctly against the
 installed packages in draft_v0.
 
 ## Context and Motivation
@@ -32,14 +32,14 @@ See session plan: `/memories/session/plan.md` for full context.
 - `useFocusTrap` from `@dsai-io/react` → replace with `<FocusScope loop trapped>` from `radix-ui` (already installed v1.4.3). Document as a JSX component, not a hook.
 - `trapFocus` (low-level utility) and `createRovingTabindex` from `@dsai-io/react` → remove entirely; Radix handles both use cases.
 - `announceToScreenReader` from `@dsai-io/react` → replace with the JSX live region pattern already covered in the ARIA section (no external utility).
-- The "Keyboard Keys by Component Type" reference table is WCAG-standard — keep it unchanged.
+- The "Keyboard Keys by Component Type" reference table is WCAG-standard - keep it unchanged.
 - `useReducedMotion` from `@dsai-io/react` → replace with a vanilla `window.matchMedia('(prefers-reduced-motion: reduce)')` + `useEffect` hook pattern at `src/client/hooks/useReducedMotion.ts`.
-- The "Return Focus Pattern" (pure `useRef` + `useEffect`) is already framework-agnostic — keep it unchanged.
+- The "Return Focus Pattern" (pure `useRef` + `useEffect`) is already framework-agnostic - keep it unchanged.
 
 ## Acceptance Criteria
 
 - [ ] Given the keyboard navigation section, when the `useKeyPress` hook example is read, then it shows `import { useKeyPress } from '@/hooks/useKeyPress'` and provides the hook implementation using `useEffect` + `addEventListener`.
-- [ ] Given the keyboard navigation section, when the `getArrowKeyHandler` example is read, then it is replaced with an equivalent inline `onKeyDown` arrow function handler using `e.key === 'ArrowUp'` etc. — no import required.
+- [ ] Given the keyboard navigation section, when the `getArrowKeyHandler` example is read, then it is replaced with an equivalent inline `onKeyDown` arrow function handler using `e.key === 'ArrowUp'` etc. - no import required.
 - [ ] Given the focus management section, when the `useFocusTrap` example is read, then it is replaced with `<FocusScope loop trapped>` wrapping pattern with `import { FocusScope } from 'radix-ui'`.
 - [ ] Given the focus management section, when searched for `trapFocus` or `createRovingTabindex`, then zero results are found.
 - [ ] Given the screen reader section, when `announceToScreenReader` is searched, then it is replaced with the JSX `aria-live` region pattern only.
@@ -56,16 +56,16 @@ See session plan: `/memories/session/plan.md` for full context.
 - Focus style CSS → Tailwind conversion (task 0012)
 - `sr-only` raw CSS → Tailwind (task 0012)
 - Testing section (task 0013)
-- Creating actual hook files in `src/client/hooks/` — the skill documents the pattern; hook creation is separate work triggered by feature tasks.
+- Creating actual hook files in `src/client/hooks/` - the skill documents the pattern; hook creation is separate work triggered by feature tasks.
 
 ## Dependencies
 
-- Task 0010 completed — ensures the utilities table framing is in place before code examples are updated.
+- Task 0010 completed - ensures the utilities table framing is in place before code examples are updated.
 
 ## Related Code
 
-- `.github/skills/accessibility/SKILL.md` — focus management section (~lines 140–240), keyboard section (~lines 50–110)
-- `src/client/components/ui/button.tsx` — example of how `onKeyDown` is handled in this project
+- `.github/skills/accessibility/SKILL.md` - focus management section (~lines 140–240), keyboard section (~lines 50–110)
+- `src/client/components/ui/button.tsx` - example of how `onKeyDown` is handled in this project
 - `radix-ui` package docs: `FocusScope` accepts `loop` (cycles Tab) and `trapped` (prevents escape) boolean props; `onEscapeKeyDown` for close callback
 
 ## Verification

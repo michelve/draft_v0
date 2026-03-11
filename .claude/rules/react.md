@@ -7,7 +7,7 @@ description: "React 19 component conventions and TanStack patterns for src/clien
 ## Components
 
 - Functional components with **named exports** only (no default exports)
-- No `forwardRef` — use `ref` as a regular prop
+- No `forwardRef` - use `ref` as a regular prop
 - No `propTypes`, no `React.FC`, no `React.memo` (unless measured bottleneck)
 - Structure: types/interfaces → component function → exports
 - Max 300 lines per component, max 5 nesting levels
@@ -27,9 +27,9 @@ description: "React 19 component conventions and TanStack patterns for src/clien
 ## TanStack Router
 
 - File-based routing in `src/client/routes/`
-- Use `createFileRoute("/path")` — export as `Route`
+- Use `createFileRoute("/path")` - export as `Route`
 - Root layout via `createRootRoute()` in `__root.tsx`
-- Route tree is auto-generated (`routeTree.gen.ts` — never edit)
+- Route tree is auto-generated (`routeTree.gen.ts` - never edit)
 
 ## TanStack Query
 
@@ -37,7 +37,7 @@ description: "React 19 component conventions and TanStack patterns for src/clien
 - Query keys: `[entityName, params]` array format (e.g., `["users", { id }]`)
 - Invalidate after mutations: `queryClient.invalidateQueries({ queryKey: ["users"] })`
 - QueryClient config: 1-min staleTime, 1 retry (already set in `lib/query-client.ts`)
-- **Never** use `useState` + `useEffect` for server data — use TanStack Query
+- **Never** use `useState` + `useEffect` for server data - use TanStack Query
 
 ## Event Handlers
 
