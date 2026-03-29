@@ -29,6 +29,9 @@ Thumbs.db
 CLAUDE.local.md
 .claude/settings.local.json
 
+# Generated Prisma client
+src/generated/
+
 # Nested repo clone (not a submodule)
 draft_v0/
 .claude/agent-memory-local/

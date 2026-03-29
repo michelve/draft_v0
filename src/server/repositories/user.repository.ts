@@ -1,5 +1,5 @@
-import type { Prisma } from "@prisma/client";
 import { prisma } from "@server/lib/prisma";
+import type { Prisma } from "../../generated/prisma/client.js";
 
 export const userRepository = {
     findAll(params?: { skip?: number; take?: number }) {

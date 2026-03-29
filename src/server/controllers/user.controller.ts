@@ -1,7 +1,7 @@
-import { Prisma } from "@prisma/client";
 import { UserNotFoundError, userService } from "@server/services/user.service";
 import type { Request, Response } from "express";
 import { z } from "zod";
+import { Prisma } from "../../generated/prisma/client.js";
 
 const userCreateSchema = z.object({
     email: z.string().email("Invalid email format"),
