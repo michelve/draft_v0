@@ -34,6 +34,9 @@ $enable-dark-mode: true !default;
 $enable-rounded: true !default;
 $enable-shadows: true !default;
 $enable-gradients: false !default;
+
+// Disable Bootstrap's inset box-shadow on :active buttons
+$btn-active-box-shadow: none;
 $enable-transitions: true !default;
 $enable-reduced-motion: true !default;
 $enable-smooth-scroll: true !default;
