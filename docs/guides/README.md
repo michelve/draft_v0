@@ -21,7 +21,7 @@ The result: AI-generated code that follows your project's rules and passes quali
 | ----------------------------------------------------- | ---------------------------------------------------------------------------- |
 | [Getting Started](getting-started.md)                 | Prerequisites, installation, running the project, available commands         |
 | [Project Structure](project-structure.md)             | Directory layout, architecture layers, path aliases, configuration files     |
-| [shadcn/ui](shadcn-ui.md)                             | Installing components, styling rules, common patterns, MCP server usage      |
+| [DSAi Design System](dsai-design-system.md)           | Token pipeline, Bootstrap integration, styling conventions, dark mode        |
 | [Skills & Agents](skills-and-agents.md)               | All 17 skills, 8 agents, 12 prompts, 7 rule files, and 5 Claude Code hooks   |
 | [Tasks Workflow](tasks-workflow.md)                   | File-based task management - creating, tracking, and verifying tasks with AI |
 | [Workflows & Automation](workflows-and-automation.md) | GitHub Actions CI/CD, Dependabot, and local Git hooks (Husky + commitlint)   |

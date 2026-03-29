@@ -14,21 +14,22 @@ Each ADR follows the [MADR 4.0.0](https://adr.github.io/madr/) (Markdown Archite
 
 ## Index
 
-| #    | Decision                                                   | Status   | Date       |
-| ---- | ---------------------------------------------------------- | -------- | ---------- |
-| 0001 | Use ADRs to record decisions                               | accepted | 2026-03-07 |
-| 0002 | Layered backend architecture                               | accepted | 2026-03-07 |
-| 0003 | Tailwind CSS v4 with CSS-first config                      | accepted | 2026-03-07 |
-| 0004 | shadcn/ui components are immutable                         | accepted | 2026-03-07 |
-| 0005 | TanStack Router + Query over Next.js                       | accepted | 2026-03-07 |
-| 0006 | Biome ignores shadcn/ui directory                          | accepted | 2026-03-07 |
-| 0007 | Build uses tsc --noEmit instead of tsc -b                  | accepted | 2026-03-07 |
-| 0008 | Changesets for release management and changelog generation | accepted | 2026-03-08 |
-| 0009 | Knip for dead code and unused dependency detection         | accepted | 2026-03-08 |
-| 0010 | Node --env-file instead of dotenv package                  | accepted | 2026-03-08 |
-| 0011 | Single custom.css file for project-level style overrides   | accepted | 2026-03-08 |
-| 0012 | Use helmet for HTTP security headers                       | accepted | 2026-03-08 |
-| 0013 | Use express-rate-limit for API rate limiting               | accepted | 2026-03-08 |
+| #    | Decision                                                   | Status     | Date       |
+| ---- | ---------------------------------------------------------- | ---------- | ---------- |
+| 0001 | Use ADRs to record decisions                               | accepted   | 2026-03-07 |
+| 0002 | Layered backend architecture                               | accepted   | 2026-03-07 |
+| 0003 | ~~Tailwind CSS v4 with CSS-first config~~                  | superseded | 2026-03-07 |
+| 0004 | ~~shadcn/ui components are immutable~~                     | superseded | 2026-03-07 |
+| 0005 | TanStack Router + Query over Next.js                       | accepted   | 2026-03-07 |
+| 0006 | ~~Biome ignores shadcn/ui directory~~                      | superseded | 2026-03-07 |
+| 0007 | Build uses tsc --noEmit instead of tsc -b                  | accepted   | 2026-03-07 |
+| 0008 | Changesets for release management and changelog generation | accepted   | 2026-03-08 |
+| 0009 | Knip for dead code and unused dependency detection         | accepted   | 2026-03-08 |
+| 0010 | Node --env-file instead of dotenv package                  | accepted   | 2026-03-08 |
+| 0011 | Single custom.css file for project-level style overrides   | accepted   | 2026-03-08 |
+| 0012 | Use helmet for HTTP security headers                       | accepted   | 2026-03-08 |
+| 0013 | Use express-rate-limit for API rate limiting               | accepted   | 2026-03-08 |
+| 0014 | Migrate to DSAi Design System + Bootstrap 5.3              | accepted   | 2026-03-29 |
 
 ## Naming Convention
 
@@ -46,4 +47,4 @@ You do NOT need an ADR for:
 
 - Bug fixes, small refactors, or cosmetic changes
 - Adding a new page/route following existing patterns
-- Installing a shadcn/ui component
+- Adding a Bootstrap-based UI component following existing patterns

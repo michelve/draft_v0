@@ -10,7 +10,7 @@
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
 [![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma&logoColor=white)](https://www.prisma.io/)
 [![pnpm](https://img.shields.io/badge/pnpm-package_manager-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
@@ -32,7 +32,7 @@ Draft_v0 ships a complete AI development system on top of the scaffold. Designer
 
 | Component               | What it does                                                                                                                                                                                                                                |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **17 Skills**           | Teach your AI the exact patterns, conventions, and anti-patterns for every layer of the stack - React 19, Express, Prisma, Tailwind, Figma, and more. AI produces correct code on the first attempt, not after three correction rounds      |
+| **17 Skills**           | Teach your AI the exact patterns, conventions, and anti-patterns for every layer of the stack - React 19, Express, Prisma, DSAi, Figma, and more. AI produces correct code on the first attempt, not after three correction rounds          |
 | **8 Agents**            | Autonomous workers: fix TypeScript errors, review code for architectural consistency, plan refactors with risk assessments, research solutions across the internet. Multi-step tasks that would interrupt a developer run in the background |
 | **12 Prompt templates** | One-click workflows that chain skills together - `figma-to-code` translates a Figma URL into a production component, `build-page` scaffolds a full route, `gh-new-pr` handles commit, PR, and description in one shot                       |
 | **Task system**         | File-based tasks with AI-powered breakdown (Example Mapping) and verification (PASS/FAIL/NEED_INFO). Work is tracked, verifiable, and never lost between sessions                                                                           |
@@ -41,16 +41,16 @@ Draft_v0 ships a complete AI development system on top of the scaffold. Designer
 
 ## Tech Stack
 
-| Layer        | Technology                                                                |
-| ------------ | ------------------------------------------------------------------------- |
-| **Frontend** | React 19, TypeScript, TanStack Router + Query, Tailwind CSS v4, shadcn/ui |
-| **Backend**  | Node.js, Express, TypeScript                                              |
-| **Database** | Prisma ORM (SQLite default)                                               |
-| **State**    | TanStack Query (server), Zustand (client), React Hook Form + Zod (forms)  |
-| **Build**    | Vite 6, TypeScript strict mode                                            |
-| **Testing**  | Vitest (unit), Playwright (e2e)                                           |
-| **Quality**  | Biome, ESLint, Prettier (with Tailwind plugin)                            |
-| **Design**   | Figma MCP servers, Figma Code Connect                                     |
+| Layer        | Technology                                                                       |
+| ------------ | -------------------------------------------------------------------------------- |
+| **Frontend** | React 19, TypeScript, TanStack Router + Query, DSAi Design System, Bootstrap 5.3 |
+| **Backend**  | Node.js, Express, TypeScript                                                     |
+| **Database** | Prisma ORM (SQLite default)                                                      |
+| **State**    | TanStack Query (server), Zustand (client), React Hook Form + Zod (forms)         |
+| **Build**    | Vite 6, TypeScript strict mode                                                   |
+| **Testing**  | Vitest (unit), Playwright (e2e)                                                  |
+| **Quality**  | Biome, ESLint, Prettier                                                          |
+| **Design**   | Figma MCP servers, Figma Code Connect                                            |
 
 ## Quick Start
 
@@ -71,8 +71,8 @@ Open http://localhost:5173 (frontend) - API runs on http://localhost:3001.
 src/
 ├── client/              # React 19 SPA (Vite)
 │   ├── routes/          # TanStack Router file-based routes
-│   ├── components/      # Shared components (shadcn/ui in ui/)
-│   ├── lib/             # Utilities (cn, query-client)
+│   ├── components/      # Custom UI components (Button, Typography, etc.)
+│   ├── lib/             # Utilities (query-client, helpers)
 │   └── hooks/           # Custom React hooks
 ├── server/              # Express API
 │   ├── routes/          # API route handlers
@@ -109,7 +109,7 @@ Domain-specific knowledge that teaches AI assistants your project's patterns:
 
 | Category     | Skills                                                                           |
 | ------------ | -------------------------------------------------------------------------------- |
-| **Frontend** | react, react-best-practices, tailwindcss, shadcn-ui, web-design-guidelines       |
+| **Frontend** | react, react-best-practices, dsai, web-design-guidelines                         |
 | **Backend**  | nodejs, prisma, route-tester                                                     |
 | **Workflow** | create-tasks, task-check, writing-tests, playwright-skill, automatic-code-review |
 | **Design**   | figma, figma-implement-design                                                    |
@@ -136,11 +136,13 @@ One-click workflows: `build-page`, `figma-to-code`, `commit`, `pr`, `gh-new-pr`,
 
 ## Adding UI Components
 
-```bash
-npx shadcn@latest add button card dialog
-```
+Custom Bootstrap-based components live in `src/client/components/ui/`. Use DSAi design tokens (`--dsai-*` CSS variables) and Bootstrap utility classes for styling.
 
-Components install to `src/client/components/ui/`. Never modify these files directly - create wrappers in `src/client/components/` instead.
+Build tokens with:
+
+```bash
+pnpm tokens:build
+```
 
 ## Figma Integration
 

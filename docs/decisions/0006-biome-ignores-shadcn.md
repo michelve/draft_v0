@@ -1,9 +1,11 @@
 ---
-status: accepted
+status: superseded by ADR-0014
 date: 2026-03-07
 ---
 
 # Biome Ignores shadcn/ui Directory
+
+> **Superseded by [ADR 0014 — Migrate to DSAi Design System + Bootstrap 5.3](0014-dsai-bootstrap-migration.md)**
 
 ## Context and Problem Statement
 
