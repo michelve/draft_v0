@@ -1,11 +1,9 @@
-/* eslint jsx-a11y/no-autofocus: 0 */
+import { forwardRef, useEffect, useReducer } from "react";
 
-import { forwardRef, useEffect, useReducer } from 'react';
+import { BaseButton } from "./BaseButton";
+import { type ButtonFSMEvent, buttonFSMReducer, createInitialButtonFSMState } from "./Button.fsm";
 
-import { BaseButton } from './BaseButton';
-import { type ButtonFSMEvent, buttonFSMReducer, createInitialButtonFSMState } from './Button.fsm';
-
-import type { ButtonProps } from './Button.types';
+import type { ButtonProps } from "./Button.types";
 
 /**
  * Button Component with FSM State Management
@@ -90,94 +88,98 @@ import type { ButtonProps } from './Button.types';
  * - Consistent Help (WCAG 2.2 3.2.6)
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ disabled = false, loading = false, error = false, onClick, as, ...restProps }, ref) => {
-    // Initialize FSM with current state
-    const [fsmState, dispatch] = useReducer(
-      buttonFSMReducer,
-      { disabled, loading, error },
-      (initialState) =>
-        createInitialButtonFSMState(initialState.disabled, initialState.loading, initialState.error)
-    );
+    ({ disabled = false, loading = false, error = false, onClick, as, ...restProps }, ref) => {
+        // Initialize FSM with current state
+        const [fsmState, dispatch] = useReducer(
+            buttonFSMReducer,
+            { disabled, loading, error },
+            (initialState) =>
+                createInitialButtonFSMState(
+                    initialState.disabled,
+                    initialState.loading,
+                    initialState.error,
+                ),
+        );
 
-    // Sync FSM with external prop changes
-    useEffect(() => {
-      if (disabled && !fsmState.isDisabled) {
-        dispatch({ type: 'DISABLE' });
-      } else if (!disabled && fsmState.isDisabled) {
-        dispatch({ type: 'ENABLE' });
-      }
-    }, [disabled, fsmState.isDisabled]);
+        // Sync FSM with external prop changes
+        useEffect(() => {
+            if (disabled && !fsmState.isDisabled) {
+                dispatch({ type: "DISABLE" });
+            } else if (!disabled && fsmState.isDisabled) {
+                dispatch({ type: "ENABLE" });
+            }
+        }, [disabled, fsmState.isDisabled]);
 
-    useEffect(() => {
-      dispatch({ type: 'LOADING', payload: loading });
-    }, [loading]);
+        useEffect(() => {
+            dispatch({ type: "LOADING", payload: loading });
+        }, [loading]);
 
-    useEffect(() => {
-      dispatch({ type: 'ERROR', payload: error });
-    }, [error]);
+        useEffect(() => {
+            dispatch({ type: "ERROR", payload: error });
+        }, [error]);
 
-    // FSM event handlers
-    const dispatchFSMEvent = (event: ButtonFSMEvent): void => {
-      dispatch(event);
-    };
+        // FSM event handlers
+        const dispatchFSMEvent = (event: ButtonFSMEvent): void => {
+            dispatch(event);
+        };
 
-    // Create wrapper handlers that dispatch FSM events and call user handlers
-    const handleMouseEnter = (): void => {
-      dispatchFSMEvent({ type: 'HOVER' });
-    };
+        // Create wrapper handlers that dispatch FSM events and call user handlers
+        const handleMouseEnter = (): void => {
+            dispatchFSMEvent({ type: "HOVER" });
+        };
 
-    const handleMouseLeave = (): void => {
-      dispatchFSMEvent({ type: 'BLUR' });
-    };
+        const handleMouseLeave = (): void => {
+            dispatchFSMEvent({ type: "BLUR" });
+        };
 
-    const handleFocus = (): void => {
-      dispatchFSMEvent({ type: 'FOCUS' });
-    };
+        const handleFocus = (): void => {
+            dispatchFSMEvent({ type: "FOCUS" });
+        };
 
-    const handleBlur = (): void => {
-      dispatchFSMEvent({ type: 'BLUR' });
-    };
+        const handleBlur = (): void => {
+            dispatchFSMEvent({ type: "BLUR" });
+        };
 
-    const handleMouseUp = (): void => {
-      dispatchFSMEvent({ type: 'RELEASE' });
-    };
+        const handleMouseUp = (): void => {
+            dispatchFSMEvent({ type: "RELEASE" });
+        };
 
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
-      // Prevent click if disabled or loading
-      if (disabled || loading) {
-        e.preventDefault();
-        return;
-      }
-      onClick?.(e);
-    };
+        const handleClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
+            // Prevent click if disabled or loading
+            if (disabled || loading) {
+                e.preventDefault();
+                return;
+            }
+            onClick?.(e);
+        };
 
-    // Note: onMouseDown for FSM - only respond to left button (button 0)
-    const handleMouseDownFSM = (e: React.MouseEvent<HTMLButtonElement>): void => {
-      // Only dispatch PRESS for left mouse button
-      if (e.button === 0) {
-        dispatchFSMEvent({ type: 'PRESS' });
-      }
-    };
+        // Note: onMouseDown for FSM - only respond to left button (button 0)
+        const handleMouseDownFSM = (e: React.MouseEvent<HTMLButtonElement>): void => {
+            // Only dispatch PRESS for left mouse button
+            if (e.button === 0) {
+                dispatchFSMEvent({ type: "PRESS" });
+            }
+        };
 
-    return (
-      <BaseButton
-        ref={ref}
-        {...restProps}
-        as={as}
-        disabled={disabled}
-        loading={loading}
-        error={error}
-        onClick={handleClick}
-        fsmState={fsmState}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        onMouseDown={handleMouseDownFSM}
-        onMouseUp={handleMouseUp}
-      />
-    );
-  }
+        return (
+            <BaseButton
+                ref={ref}
+                {...restProps}
+                as={as}
+                disabled={disabled}
+                loading={loading}
+                error={error}
+                onClick={handleClick}
+                fsmState={fsmState}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                onMouseDown={handleMouseDownFSM}
+                onMouseUp={handleMouseUp}
+            />
+        );
+    },
 );
 
-Button.displayName = 'Button';
+Button.displayName = "Button";

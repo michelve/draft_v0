@@ -75,6 +75,14 @@ export default tseslint.config(
         },
     },
 
+    // Config files - Node.js globals
+    {
+        files: ["*.config.{js,mjs,ts}"],
+        languageOptions: {
+            globals: globals.node,
+        },
+    },
+
     // shadcn components - relaxed rules (auto-generated code)
     {
         files: ["src/client/components/ui/**/*.tsx"],
