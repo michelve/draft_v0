@@ -1,0 +1,724 @@
+// ============================================================================
+// DSAi Bootstrap 5.3 Theme Integration (Playground)
+// ============================================================================
+//
+// This file customizes Bootstrap 5.3 with DSAi design tokens exported from Figma.
+// It provides consistent theming across all Bootstrap components while maintaining
+// accessibility standards (WCAG 2.1 AA).
+//
+// WORKFLOW:
+// 1. Export tokens from Figma → src/figma-exports/
+// 2. Run: pnpm tokens:transform && pnpm tokens:build
+// 3. Run: pnpm scss:build (compiles this file to CSS)
+//
+// ARCHITECTURE:
+// - _variables.scss: Compatibility layer mapping generated tokens to theme names
+// - This file: Bootstrap customization and theme settings
+// - components/: Custom component extensions (avatar, etc.)
+//
+// @see https://getbootstrap.com/docs/5.3/customize/sass/
+// ============================================================================
+
+// 1. Import DSAi token variables (compatibility layer)
+@use "./_variables" as dsai;
+
+// 2. Required Bootstrap functions (must come first)
+@import "../../node_modules/bootstrap/scss/functions";
+
+// ============================================================================
+// 3. BOOTSTRAP CONFIGURATION
+// ============================================================================
+
+// Enable features
+$enable-dark-mode: true !default;
+$enable-rounded: true !default;
+$enable-shadows: true !default;
+$enable-gradients: false !default;
+$enable-transitions: true !default;
+$enable-reduced-motion: true !default;
+$enable-smooth-scroll: true !default;
+$enable-grid-classes: true !default;
+$enable-container-classes: true !default;
+$enable-caret: true !default;
+$enable-button-pointers: true !default;
+$enable-rfs: true !default;
+$enable-validation-icons: true !default;
+$enable-negative-margins: false !default;
+$enable-deprecation-messages: true !default;
+$enable-important-utilities: true !default;
+$enable-cssgrid: false !default;
+
+// Color mode preference
+$color-mode-type: data !default;
+
+// ============================================================================
+// 4. CORE COLOR VARIABLES
+// ============================================================================
+
+// Gray scale (Bootstrap base colors)
+$gray-100: dsai.$color-gray-100 !default;
+$gray-200: dsai.$color-gray-200 !default;
+$gray-300: dsai.$color-gray-300 !default;
+$gray-400: dsai.$color-gray-400 !default;
+$gray-500: dsai.$color-gray-500 !default;
+$gray-600: dsai.$color-gray-600 !default;
+$gray-700: dsai.$color-gray-700 !default;
+$gray-800: dsai.$color-gray-800 !default;
+$gray-900: dsai.$color-gray-900 !default;
+
+// Primary colors using 500 (base) values
+$blue: dsai.$color-blue-500 !default;
+$indigo: dsai.$color-indigo-500 !default;
+$purple: dsai.$color-purple-500 !default;
+$pink: dsai.$color-pink-500 !default;
+$red: dsai.$color-red-500 !default;
+$orange: dsai.$color-orange-500 !default;
+$yellow: dsai.$color-yellow-500 !default;
+$green: dsai.$color-green-500 !default;
+$teal: dsai.$color-teal-500 !default;
+$cyan: dsai.$color-cyan-500 !default;
+$white: dsai.$neutral-white !default;
+$black: dsai.$neutral-black !default;
+
+// Semantic theme colors
+$primary: dsai.$semantic-primary !default;
+$secondary: dsai.$semantic-secondary !default;
+$success: dsai.$semantic-success !default;
+$info: dsai.$semantic-info !default;
+$warning: dsai.$semantic-warning !default;
+$danger: dsai.$semantic-danger !default;
+$light: dsai.$semantic-light !default;
+$dark: dsai.$semantic-dark !default;
+
+// Body text colors
+$body-bg: dsai.$semantic-body-bg !default;
+$body-color: dsai.$semantic-body-color !default;
+$body-secondary-color: dsai.$semantic-secondary-text-emphasis !default;
+$body-tertiary-color: dsai.$neutral-gray-600 !default;
+
+// ============================================================================
+// 5. COLOR MAPS - Full Color Palettes (50-950 scales)
+// ============================================================================
+
+$blues: (
+    "50": dsai.$color-blue-50,
+    "100": dsai.$color-blue-100,
+    "200": dsai.$color-blue-200,
+    "300": dsai.$color-blue-300,
+    "400": dsai.$color-blue-400,
+    "500": dsai.$color-blue-500,
+    "600": dsai.$color-blue-600,
+    "700": dsai.$color-blue-700,
+    "800": dsai.$color-blue-800,
+    "900": dsai.$color-blue-900,
+    "950": dsai.$color-blue-950,
+) !default;
+
+$indigos: (
+    "50": dsai.$color-indigo-50,
+    "100": dsai.$color-indigo-100,
+    "200": dsai.$color-indigo-200,
+    "300": dsai.$color-indigo-300,
+    "400": dsai.$color-indigo-400,
+    "500": dsai.$color-indigo-500,
+    "600": dsai.$color-indigo-600,
+    "700": dsai.$color-indigo-700,
+    "800": dsai.$color-indigo-800,
+    "900": dsai.$color-indigo-900,
+    "950": dsai.$color-indigo-950,
+) !default;
+
+$purples: (
+    "50": dsai.$color-purple-50,
+    "100": dsai.$color-purple-100,
+    "200": dsai.$color-purple-200,
+    "300": dsai.$color-purple-300,
+    "400": dsai.$color-purple-400,
+    "500": dsai.$color-purple-500,
+    "600": dsai.$color-purple-600,
+    "700": dsai.$color-purple-700,
+    "800": dsai.$color-purple-800,
+    "900": dsai.$color-purple-900,
+    "950": dsai.$color-purple-950,
+) !default;
+
+$pinks: (
+    "50": dsai.$color-pink-50,
+    "100": dsai.$color-pink-100,
+    "200": dsai.$color-pink-200,
+    "300": dsai.$color-pink-300,
+    "400": dsai.$color-pink-400,
+    "500": dsai.$color-pink-500,
+    "600": dsai.$color-pink-600,
+    "700": dsai.$color-pink-700,
+    "800": dsai.$color-pink-800,
+    "900": dsai.$color-pink-900,
+    "950": dsai.$color-pink-950,
+) !default;
+
+$reds: (
+    "50": dsai.$color-red-50,
+    "100": dsai.$color-red-100,
+    "200": dsai.$color-red-200,
+    "300": dsai.$color-red-300,
+    "400": dsai.$color-red-400,
+    "500": dsai.$color-red-500,
+    "600": dsai.$color-red-600,
+    "700": dsai.$color-red-700,
+    "800": dsai.$color-red-800,
+    "900": dsai.$color-red-900,
+    "950": dsai.$color-red-950,
+) !default;
+
+$oranges: (
+    "50": dsai.$color-orange-50,
+    "100": dsai.$color-orange-100,
+    "200": dsai.$color-orange-200,
+    "300": dsai.$color-orange-300,
+    "400": dsai.$color-orange-400,
+    "500": dsai.$color-orange-500,
+    "600": dsai.$color-orange-600,
+    "700": dsai.$color-orange-700,
+    "800": dsai.$color-orange-800,
+    "900": dsai.$color-orange-900,
+    "950": dsai.$color-orange-950,
+) !default;
+
+$yellows: (
+    "50": dsai.$color-yellow-50,
+    "100": dsai.$color-yellow-100,
+    "200": dsai.$color-yellow-200,
+    "300": dsai.$color-yellow-300,
+    "400": dsai.$color-yellow-400,
+    "500": dsai.$color-yellow-500,
+    "600": dsai.$color-yellow-600,
+    "700": dsai.$color-yellow-700,
+    "800": dsai.$color-yellow-800,
+    "900": dsai.$color-yellow-900,
+    "950": dsai.$color-yellow-950,
+) !default;
+
+$greens: (
+    "50": dsai.$color-green-50,
+    "100": dsai.$color-green-100,
+    "200": dsai.$color-green-200,
+    "300": dsai.$color-green-300,
+    "400": dsai.$color-green-400,
+    "500": dsai.$color-green-500,
+    "600": dsai.$color-green-600,
+    "700": dsai.$color-green-700,
+    "800": dsai.$color-green-800,
+    "900": dsai.$color-green-900,
+    "950": dsai.$color-green-950,
+) !default;
+
+$teals: (
+    "50": dsai.$color-teal-50,
+    "100": dsai.$color-teal-100,
+    "200": dsai.$color-teal-200,
+    "300": dsai.$color-teal-300,
+    "400": dsai.$color-teal-400,
+    "500": dsai.$color-teal-500,
+    "600": dsai.$color-teal-600,
+    "700": dsai.$color-teal-700,
+    "800": dsai.$color-teal-800,
+    "900": dsai.$color-teal-900,
+    "950": dsai.$color-teal-950,
+) !default;
+
+$cyans: (
+    "50": dsai.$color-cyan-50,
+    "100": dsai.$color-cyan-100,
+    "200": dsai.$color-cyan-200,
+    "300": dsai.$color-cyan-300,
+    "400": dsai.$color-cyan-400,
+    "500": dsai.$color-cyan-500,
+    "600": dsai.$color-cyan-600,
+    "700": dsai.$color-cyan-700,
+    "800": dsai.$color-cyan-800,
+    "900": dsai.$color-cyan-900,
+    "950": dsai.$color-cyan-950,
+) !default;
+
+$grays: (
+    "50": dsai.$color-gray-50,
+    "100": $gray-100,
+    "200": $gray-200,
+    "300": $gray-300,
+    "400": $gray-400,
+    "500": $gray-500,
+    "600": $gray-600,
+    "700": $gray-700,
+    "800": $gray-800,
+    "900": $gray-900,
+    "950": dsai.$color-gray-950,
+) !default;
+
+// Theme colors map
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "light": $light,
+    "dark": $dark,
+) !default;
+
+// ============================================================================
+// 6. TYPOGRAPHY
+// ============================================================================
+
+// Font families
+$font-family-sans-serif: dsai.$font-family-base !default;
+$font-family-monospace: dsai.$font-family-monospace !default;
+$btn-font-family: $font-family-sans-serif !default;
+
+// Font sizes (mapped from generated token names)
+$font-size-base: dsai.$font-size-base !default;
+$font-size-sm: dsai.$font-size-sm !default;
+$font-size-lg: dsai.$font-size-lg !default;
+
+// Font weights (mapped from generated token names)
+$font-weight-lighter: dsai.$font-weight-lighter !default;
+$font-weight-light: dsai.$font-weight-light !default;
+$font-weight-normal: dsai.$font-weight-normal !default;
+$font-weight-medium: dsai.$font-weight-medium !default;
+$font-weight-semibold: dsai.$font-weight-semibold !default;
+$font-weight-bold: dsai.$font-weight-bold !default;
+$font-weight-bolder: dsai.$font-weight-bolder !default;
+$font-weight-base: $font-weight-normal !default;
+
+// Line heights
+$line-height-base: dsai.$line-height-base !default;
+$line-height-sm: dsai.$line-height-sm !default;
+$line-height-lg: dsai.$line-height-lg !default;
+
+// Headings (mapped from generated token names)
+$h1-font-size: dsai.$h1-font-size !default;
+$h2-font-size: dsai.$h2-font-size !default;
+$h3-font-size: dsai.$h3-font-size !default;
+$h4-font-size: dsai.$h4-font-size !default;
+$h5-font-size: dsai.$h5-font-size !default;
+$h6-font-size: dsai.$h6-font-size !default;
+$headings-font-weight: dsai.$font-weight-medium !default;
+$headings-line-height: dsai.$headings-line-height !default;
+
+// Display headings (mapped from generated token names)
+$display-font-sizes: (
+    1: dsai.$display1-size,
+    2: dsai.$display2-size,
+    3: dsai.$display3-size,
+    4: dsai.$display4-size,
+    5: dsai.$display5-size,
+    6: dsai.$display6-size,
+) !default;
+
+$display-font-weight: dsai.$font-weight-light !default;
+$display-line-height: $headings-line-height !default;
+
+// Lead paragraph
+$lead-font-size: dsai.$font-size-lg !default;
+$lead-font-weight: dsai.$font-weight-light !default;
+
+// Small text
+$small-font-size: dsai.$font-size-sm !default;
+
+// Letter spacing
+$letter-spacing-tighter: dsai.$letter-spacing-tighter !default;
+$letter-spacing-tight: dsai.$letter-spacing-tight !default;
+$letter-spacing-normal: dsai.$letter-spacing-normal !default;
+$letter-spacing-wide: dsai.$letter-spacing-wide !default;
+$letter-spacing-wider: dsai.$letter-spacing-wider !default;
+$letter-spacing-widest: dsai.$letter-spacing-widest !default;
+
+// ============================================================================
+// 7. SPACING
+// ============================================================================
+
+$spacer: dsai.$spacing-3 !default;
+
+$spacers: (
+    // Bootstrap-compatible scale (0-5)
+    0: 0,
+    1: dsai.$spacing-1,
+    // 4px
+    2: dsai.$spacing-2,
+    // 8px
+    3: $spacer,
+    // 16px (base)
+    4: dsai.$spacing-4,
+    // 24px
+    5: dsai.$spacing-5,
+    // 48px
+    // Extended scale (6-10)
+    6: dsai.$spacing-6,
+    // 64px
+    7: dsai.$spacing-7,
+    // 80px
+    8: dsai.$spacing-8,
+    // 96px
+    9: dsai.$spacing-9,
+    // 128px
+    10: dsai.$spacing-10,
+    // 160px
+    // Intermediate 4px grid values (for .p-12, .gap-32, etc.)
+    12: dsai.$spacing-12,
+    // 12px
+    20: dsai.$spacing-20,
+    // 20px
+    28: dsai.$spacing-28,
+    // 28px
+    32: dsai.$spacing-32,
+    // 32px
+    36: dsai.$spacing-36,
+    // 36px
+    40: dsai.$spacing-40,
+    // 40px
+    44: dsai.$spacing-44,
+    // 44px
+    56: dsai.$spacing-56 // 56px
+) !default;
+
+// ============================================================================
+// 8. GRID BREAKPOINTS
+// ============================================================================
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: dsai.$breakpoint-sm,
+    md: dsai.$breakpoint-md,
+    lg: dsai.$breakpoint-lg,
+    xl: dsai.$breakpoint-xl,
+    xxl: dsai.$breakpoint-xxl,
+) !default;
+
+// ============================================================================
+// 9. CONTAINER MAX WIDTHS
+// ============================================================================
+
+$container-max-widths: (
+    sm: dsai.$container-max-width-sm,
+    md: dsai.$container-max-width-md,
+    lg: dsai.$container-max-width-lg,
+    xl: dsai.$container-max-width-xl,
+    xxl: dsai.$container-max-width-xxl,
+) !default;
+
+$container-padding-x: dsai.$container-padding-x !default;
+$grid-columns: dsai.$grid-columns !default;
+$grid-gutter-width: dsai.$grid-gutter-width !default;
+$grid-row-columns: dsai.$grid-row-columns !default;
+
+$gutters: (
+    0: dsai.$gutters-0,
+    1: dsai.$gutters-1,
+    2: dsai.$gutters-2,
+    3: dsai.$gutters-3,
+    4: dsai.$gutters-4,
+    5: dsai.$gutters-5,
+) !default;
+
+// ============================================================================
+// 10. BORDERS
+// ============================================================================
+
+$border-radius: dsai.$border-radius !default;
+$border-radius-sm: dsai.$border-radius-sm !default;
+$border-radius-lg: dsai.$border-radius-lg !default;
+$border-radius-xl: dsai.$border-radius-xl !default;
+$border-radius-xxl: dsai.$border-radius-xxl !default;
+$border-radius-pill: dsai.$border-radius-pill !default;
+
+$border-width: dsai.$border-width-1 !default;
+$border-width-0: dsai.$border-width-0 !default;
+$border-width-1: dsai.$border-width-1 !default;
+$border-width-2: dsai.$border-width-2 !default;
+$border-width-3: dsai.$border-width-3 !default;
+$border-width-4: dsai.$border-width-4 !default;
+$border-width-5: dsai.$border-width-5 !default;
+
+// ============================================================================
+// 11. SHADOWS
+// ============================================================================
+
+$box-shadow: dsai.$box-shadow !default;
+$box-shadow-sm: dsai.$box-shadow-sm !default;
+$box-shadow-lg: dsai.$box-shadow-lg !default;
+$box-shadow-inset: dsai.$box-shadow-inset !default;
+
+// ============================================================================
+// 12. FOCUS RING
+// ============================================================================
+
+$focus-ring-width: dsai.$spacing-1 !default; // 0.25rem (4px)
+$focus-ring-opacity: dsai.$opacity-25 !default; // 0.25
+$focus-ring-color: rgba($primary, $focus-ring-opacity) !default;
+$focus-ring-blur: dsai.$spacing-0 !default; // 0
+$focus-ring-box-shadow: 0 0 $focus-ring-blur $focus-ring-width $focus-ring-color !default;
+
+// ============================================================================
+// 13. LINKS & PARAGRAPHS
+// ============================================================================
+
+$link-color: $primary !default;
+$paragraph-margin-bottom: dsai.$spacing-3 !default; // 1rem (16px)
+
+// ============================================================================
+// 14. COMPONENT ACTIVE STATES
+// ============================================================================
+
+$component-active-color: dsai.$neutral-white !default;
+$component-active-bg: $primary !default;
+
+// ============================================================================
+// 15. ICON LINKS
+// ============================================================================
+
+$icon-link-gap: dsai.$spacing-1-5 !default; // 0.375rem (6px)
+
+// ============================================================================
+// 16. BOOTSTRAP IMPORTS
+// ============================================================================
+
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/variables-dark";
+
+// Merge color palettes into Bootstrap's $colors map
+$custom-colors: (
+    "blue-50": map-get($blues, "50"),
+    "blue-100": map-get($blues, "100"),
+    "blue-200": map-get($blues, "200"),
+    "blue-300": map-get($blues, "300"),
+    "blue-400": map-get($blues, "400"),
+    "blue-500": map-get($blues, "500"),
+    "blue-600": map-get($blues, "600"),
+    "blue-700": map-get($blues, "700"),
+    "blue-800": map-get($blues, "800"),
+    "blue-900": map-get($blues, "900"),
+    "blue-950": map-get($blues, "950"),
+    "indigo-50": map-get($indigos, "50"),
+    "indigo-100": map-get($indigos, "100"),
+    "indigo-200": map-get($indigos, "200"),
+    "indigo-300": map-get($indigos, "300"),
+    "indigo-400": map-get($indigos, "400"),
+    "indigo-500": map-get($indigos, "500"),
+    "indigo-600": map-get($indigos, "600"),
+    "indigo-700": map-get($indigos, "700"),
+    "indigo-800": map-get($indigos, "800"),
+    "indigo-900": map-get($indigos, "900"),
+    "indigo-950": map-get($indigos, "950"),
+    "purple-50": map-get($purples, "50"),
+    "purple-100": map-get($purples, "100"),
+    "purple-200": map-get($purples, "200"),
+    "purple-300": map-get($purples, "300"),
+    "purple-400": map-get($purples, "400"),
+    "purple-500": map-get($purples, "500"),
+    "purple-600": map-get($purples, "600"),
+    "purple-700": map-get($purples, "700"),
+    "purple-800": map-get($purples, "800"),
+    "purple-900": map-get($purples, "900"),
+    "purple-950": map-get($purples, "950"),
+    "pink-50": map-get($pinks, "50"),
+    "pink-100": map-get($pinks, "100"),
+    "pink-200": map-get($pinks, "200"),
+    "pink-300": map-get($pinks, "300"),
+    "pink-400": map-get($pinks, "400"),
+    "pink-500": map-get($pinks, "500"),
+    "pink-600": map-get($pinks, "600"),
+    "pink-700": map-get($pinks, "700"),
+    "pink-800": map-get($pinks, "800"),
+    "pink-900": map-get($pinks, "900"),
+    "pink-950": map-get($pinks, "950"),
+    "red-50": map-get($reds, "50"),
+    "red-100": map-get($reds, "100"),
+    "red-200": map-get($reds, "200"),
+    "red-300": map-get($reds, "300"),
+    "red-400": map-get($reds, "400"),
+    "red-500": map-get($reds, "500"),
+    "red-600": map-get($reds, "600"),
+    "red-700": map-get($reds, "700"),
+    "red-800": map-get($reds, "800"),
+    "red-900": map-get($reds, "900"),
+    "red-950": map-get($reds, "950"),
+    "orange-50": map-get($oranges, "50"),
+    "orange-100": map-get($oranges, "100"),
+    "orange-200": map-get($oranges, "200"),
+    "orange-300": map-get($oranges, "300"),
+    "orange-400": map-get($oranges, "400"),
+    "orange-500": map-get($oranges, "500"),
+    "orange-600": map-get($oranges, "600"),
+    "orange-700": map-get($oranges, "700"),
+    "orange-800": map-get($oranges, "800"),
+    "orange-900": map-get($oranges, "900"),
+    "orange-950": map-get($oranges, "950"),
+    "yellow-50": map-get($yellows, "50"),
+    "yellow-100": map-get($yellows, "100"),
+    "yellow-200": map-get($yellows, "200"),
+    "yellow-300": map-get($yellows, "300"),
+    "yellow-400": map-get($yellows, "400"),
+    "yellow-500": map-get($yellows, "500"),
+    "yellow-600": map-get($yellows, "600"),
+    "yellow-700": map-get($yellows, "700"),
+    "yellow-800": map-get($yellows, "800"),
+    "yellow-900": map-get($yellows, "900"),
+    "yellow-950": map-get($yellows, "950"),
+    "green-50": map-get($greens, "50"),
+    "green-100": map-get($greens, "100"),
+    "green-200": map-get($greens, "200"),
+    "green-300": map-get($greens, "300"),
+    "green-400": map-get($greens, "400"),
+    "green-500": map-get($greens, "500"),
+    "green-600": map-get($greens, "600"),
+    "green-700": map-get($greens, "700"),
+    "green-800": map-get($greens, "800"),
+    "green-900": map-get($greens, "900"),
+    "green-950": map-get($greens, "950"),
+    "teal-50": map-get($teals, "50"),
+    "teal-100": map-get($teals, "100"),
+    "teal-200": map-get($teals, "200"),
+    "teal-300": map-get($teals, "300"),
+    "teal-400": map-get($teals, "400"),
+    "teal-500": map-get($teals, "500"),
+    "teal-600": map-get($teals, "600"),
+    "teal-700": map-get($teals, "700"),
+    "teal-800": map-get($teals, "800"),
+    "teal-900": map-get($teals, "900"),
+    "teal-950": map-get($teals, "950"),
+    "cyan-50": map-get($cyans, "50"),
+    "cyan-100": map-get($cyans, "100"),
+    "cyan-200": map-get($cyans, "200"),
+    "cyan-300": map-get($cyans, "300"),
+    "cyan-400": map-get($cyans, "400"),
+    "cyan-500": map-get($cyans, "500"),
+    "cyan-600": map-get($cyans, "600"),
+    "cyan-700": map-get($cyans, "700"),
+    "cyan-800": map-get($cyans, "800"),
+    "cyan-900": map-get($cyans, "900"),
+    "cyan-950": map-get($cyans, "950"),
+    "gray-50": map-get($grays, "50"),
+    "gray-950": map-get($grays, "950"),
+);
+
+$colors: map-merge($colors, $custom-colors) !default;
+
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+// ============================================================================
+// 17. THEME ATTRIBUTE OVERRIDE
+// ============================================================================
+
+// Override Bootstrap's color-mode mixin to use data-dsai-theme instead of data-bs-theme
+@mixin color-mode($mode: light, $root: false) {
+    @if $mode == light and $root == true {
+        :root,
+        [data-dsai-theme="#{$mode}"] {
+            @content;
+        }
+    } @else {
+        [data-dsai-theme="#{$mode}"] {
+            @content;
+        }
+    }
+}
+
+@import "../../node_modules/bootstrap/scss/root";
+
+// ============================================================================
+// 18. BOOTSTRAP COMPONENTS
+// ============================================================================
+
+@import "../../node_modules/bootstrap/scss/utilities";
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/containers";
+@import "../../node_modules/bootstrap/scss/grid";
+@import "../../node_modules/bootstrap/scss/tables";
+@import "../../node_modules/bootstrap/scss/forms";
+@import "../../node_modules/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/transitions";
+@import "../../node_modules/bootstrap/scss/dropdown";
+@import "../../node_modules/bootstrap/scss/button-group";
+@import "../../node_modules/bootstrap/scss/nav";
+@import "../../node_modules/bootstrap/scss/navbar";
+@import "../../node_modules/bootstrap/scss/card";
+@import "../../node_modules/bootstrap/scss/accordion";
+@import "../../node_modules/bootstrap/scss/breadcrumb";
+@import "../../node_modules/bootstrap/scss/pagination";
+@import "../../node_modules/bootstrap/scss/badge";
+@import "../../node_modules/bootstrap/scss/alert";
+@import "../../node_modules/bootstrap/scss/progress";
+@import "../../node_modules/bootstrap/scss/list-group";
+@import "../../node_modules/bootstrap/scss/close";
+@import "../../node_modules/bootstrap/scss/toasts";
+@import "../../node_modules/bootstrap/scss/modal";
+@import "../../node_modules/bootstrap/scss/tooltip";
+@import "../../node_modules/bootstrap/scss/popover";
+@import "../../node_modules/bootstrap/scss/carousel";
+@import "../../node_modules/bootstrap/scss/spinners";
+@import "../../node_modules/bootstrap/scss/offcanvas";
+@import "../../node_modules/bootstrap/scss/placeholders";
+
+// Helpers
+@import "../../node_modules/bootstrap/scss/helpers";
+
+// Utilities API (must come last)
+@import "../../node_modules/bootstrap/scss/utilities/api";
+
+// ============================================================================
+// 19. CUSTOM COMPONENTS
+// ============================================================================
+
+// ============================================================================
+// Size Scale
+// ============================================================================
+// Avatar sizes derived from spacing scale where possible
+$dsai-avatar-size-xs: dsai.$spacing-4 !default; // 1.5rem (24px)
+$dsai-avatar-size-sm: dsai.$spacing-32 !default; // 2rem (32px)
+$dsai-avatar-size-md: dsai.$spacing-40 !default; // 2.5rem (40px)
+$dsai-avatar-size-lg: dsai.$spacing-5 !default; // 3rem (48px)
+$dsai-avatar-size-xl: dsai.$spacing-6 !default; // 4rem (64px)
+$dsai-avatar-size-2xl: dsai.$spacing-7 !default; // 5rem (80px)
+$dsai-avatar-size-xxl: dsai.$spacing-8 !default; // 6rem (96px)
+
+// ============================================================================
+// Font Sizes (for initials)
+// ============================================================================
+// Maps to typography scale where available
+$dsai-avatar-font-size-xs: dsai.$spacing-2 !default; // 0.5rem (8px) - closest to 10px
+$dsai-avatar-font-size-sm: dsai.$spacing-12 !default; // 0.75rem (12px)
+$dsai-avatar-font-size-md: dsai.$font-size-sm !default; // 0.875rem (14px)
+$dsai-avatar-font-size-lg: dsai.$font-size-base !default; // 1rem (16px)
+$dsai-avatar-font-size-xl: dsai.$spacing-20 !default; // 1.25rem (20px)
+$dsai-avatar-font-size-2xl: dsai.$h4-font-size !default; // 1.5rem (24px)
+$dsai-avatar-font-size-xxl: dsai.$spacing-28 !default; // 1.75rem (28px)
+
+// ============================================================================
+// Status Indicator Sizes
+// ============================================================================
+// Proportional to avatar size - using closest token matches
+$dsai-avatar-status-size-xs: dsai.$spacing-1-5 !default; // 0.375rem (6px)
+$dsai-avatar-status-size-sm: dsai.$spacing-2 !default; // 0.5rem (8px)
+$dsai-avatar-status-size-md: dsai.$spacing-2 !default; // 0.5rem (8px) - closest to 10px
+$dsai-avatar-status-size-lg: dsai.$spacing-12 !default; // 0.75rem (12px)
+$dsai-avatar-status-size-xl: dsai.$spacing-12 !default; // 0.75rem (12px) - closest to 14px
+$dsai-avatar-status-size-2xl: dsai.$spacing-3 !default; // 1rem (16px)
+$dsai-avatar-status-size-xxl: dsai.$spacing-20 !default; // 1.25rem (20px) - closest to 18px
+
+// ============================================================================
+// AvatarGroup Overlap Ratios
+// ============================================================================
+// Unitless ratios for calculating negative margins (reusing opacity scale)
+$dsai-avatar-overlap-compact: dsai.$opacity-40 !default; // 40% overlap
+$dsai-avatar-overlap-normal: dsai.$opacity-30 !default; // 30% overlap
+$dsai-avatar-overlap-loose: dsai.$opacity-20 !default; // 20% overlap
+
+// ============================================================================
+// AvatarGroup Gap (non-overlapping mode)
+// ============================================================================
+$dsai-avatar-gap-compact: dsai.$spacing-1 !default; // 0.25rem (4px)
+$dsai-avatar-gap-normal: dsai.$spacing-2 !default; // 0.5rem (8px)
+$dsai-avatar-gap-loose: dsai.$spacing-12 !default; // 0.75rem (12px)

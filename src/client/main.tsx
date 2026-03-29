@@ -2,8 +2,15 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
-import "./custom.css";
+
+// Bootstrap compiled with DSAi tokens (this IS Bootstrap, not an override)
+import "../generated/css/dsai-theme-bs.css";
+// DSAi CSS custom properties
+import "../generated/css/tokens.css";
+import "../generated/css/tokens-dark.css";
 import "./index.css";
+import "./custom.css";
+
 import { queryClient } from "./lib/query-client";
 import { routeTree } from "./routeTree.gen";
 

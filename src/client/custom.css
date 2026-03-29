@@ -1,11 +1,11 @@
-/*
- * custom.css - project-level styles
+/**
+ * custom.css - Project-level style overrides
  *
- * Use this file for anything that Tailwind utilities can't express:
- *   - Figma-exported CSS variables
- *   - @font-face declarations (pair with fonts in public/fonts/ or src/client/assets/fonts/)
+ * Use this file for:
+ *   - @font-face declarations
  *   - Custom @keyframes animations
- *   - CSS nesting or overrides that go beyond utility classes
+ *   - App-specific CSS overrides beyond Bootstrap utilities
  *
- * Tailwind design tokens (colors, spacing, radii) live in src/client/index.css @theme.
+ * Design tokens live in src/collections/ (JSON).
+ * Run `pnpm tokens:build` after editing tokens.
  */
