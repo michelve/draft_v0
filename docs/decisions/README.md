@@ -30,6 +30,8 @@ Each ADR follows the [MADR 4.0.0](https://adr.github.io/madr/) (Markdown Archite
 | 0012 | Use helmet for HTTP security headers                       | accepted   | 2026-03-08 |
 | 0013 | Use express-rate-limit for API rate limiting               | accepted   | 2026-03-08 |
 | 0014 | Migrate to DSAi Design System + Bootstrap 5.3              | accepted   | 2026-03-29 |
+| 0015 | Migrate to Vite 8 with Rolldown and Oxc                    | accepted   | 2026-03-29 |
+| 0016 | Migrate to TypeScript 6                                    | accepted   | 2026-03-29 |
 
 ## Naming Convention
 
