@@ -14,7 +14,7 @@ Configuration for AI behavior when interacting with Codacy's MCP Server
 - ALWAYS use:
 - provider: gh
 - organization: michelve
-- repository: draft_v0
+- repository: dsai
 - Avoid calling `git remote -v` unless really necessary
 
 ## CRITICAL: After ANY successful `edit_file` or `reapply` operation
