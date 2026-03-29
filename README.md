@@ -8,11 +8,12 @@
 [![E2E Tests](https://github.com/michelve/draft_v0/actions/workflows/e2e.yml/badge.svg)](https://github.com/michelve/draft_v0/actions/workflows/e2e.yml)
 [![License](https://img.shields.io/github/license/michelve/draft_v0)](LICENSE)
 
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
-[![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
-[![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma&logoColor=white)](https://www.prisma.io/)
+[![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Prisma](https://img.shields.io/badge/Prisma-7-2D3748?logo=prisma&logoColor=white)](https://www.prisma.io/)
+[![Express](https://img.shields.io/badge/Express-5-000000?logo=express&logoColor=white)](https://expressjs.com/)
 [![pnpm](https://img.shields.io/badge/pnpm-package_manager-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
 
 ## Why Draft_v0?
@@ -41,16 +42,16 @@ Draft_v0 ships a complete AI development system on top of the scaffold. Designer
 
 ## Tech Stack
 
-| Layer        | Technology                                                                       |
-| ------------ | -------------------------------------------------------------------------------- |
-| **Frontend** | React 19, TypeScript, TanStack Router + Query, DSAi Design System, Bootstrap 5.3 |
-| **Backend**  | Node.js, Express, TypeScript                                                     |
-| **Database** | Prisma ORM (SQLite default)                                                      |
-| **State**    | TanStack Query (server), Zustand (client), React Hook Form + Zod (forms)         |
-| **Build**    | Vite 6, TypeScript strict mode                                                   |
-| **Testing**  | Vitest (unit), Playwright (e2e)                                                  |
-| **Quality**  | Biome, ESLint, Prettier                                                          |
-| **Design**   | Figma MCP servers, Figma Code Connect                                            |
+| Layer        | Technology                                                                         |
+| ------------ | ---------------------------------------------------------------------------------- |
+| **Frontend** | React 19, TypeScript 6, TanStack Router + Query, DSAi Design System, Bootstrap 5.3 |
+| **Backend**  | Node.js, Express 5, TypeScript 6                                                   |
+| **Database** | Prisma 7 (SQLite default)                                                          |
+| **State**    | TanStack Query (server), Zustand (client), React Hook Form + Zod (forms)           |
+| **Build**    | Vite 8 (Rolldown + Oxc), TypeScript strict mode                                    |
+| **Testing**  | Vitest (unit), Playwright (e2e)                                                    |
+| **Quality**  | Biome, ESLint, Prettier                                                            |
+| **Design**   | Figma MCP servers, Figma Code Connect                                              |
 
 ## Quick Start
 
@@ -103,36 +104,9 @@ prisma/
 
 ## AI Ecosystem
 
-### Skills (17)
+Draft_v0 includes **17 skills**, **8 agents**, and **12 prompt templates** that encode your project's patterns, conventions, and workflows into AI-assisted development.
 
-Domain-specific knowledge that teaches AI assistants your project's patterns:
-
-| Category     | Skills                                                                           |
-| ------------ | -------------------------------------------------------------------------------- |
-| **Frontend** | react, react-best-practices, dsai, web-design-guidelines                         |
-| **Backend**  | nodejs, prisma, route-tester                                                     |
-| **Workflow** | create-tasks, task-check, writing-tests, playwright-skill, automatic-code-review |
-| **Design**   | figma, figma-implement-design                                                    |
-| **Meta**     | skill-creator                                                                    |
-
-### Agents (8)
-
-Specialized workers for autonomous multi-step tasks:
-
-| Agent                      | Purpose                                        |
-| -------------------------- | ---------------------------------------------- |
-| auto-error-resolver        | Fix TypeScript/build errors systematically     |
-| code-architecture-reviewer | Review code for best practices and consistency |
-| code-refactor-master       | Refactor with dependency tracking              |
-| documentation-architect    | Create and enhance documentation               |
-| plan-reviewer              | Review plans before implementation             |
-| principal-engineer         | First-principles engineering analysis          |
-| refactor-planner           | Create refactoring plans with risk assessment  |
-| web-research-specialist    | Research solutions across the internet         |
-
-### Prompt Templates (12)
-
-One-click workflows: `build-page`, `figma-to-code`, `commit`, `pr`, `gh-new-pr`, `gh-debug-issue`, `gh-fix-ci`, `gh-pr-comments`, `make-moves`, `changeset`, `ralph-plan`, `create-skill`.
+See [Skills & Agents Guide](docs/guides/skills-and-agents.md) for the full reference.
 
 ## Adding UI Components
 
@@ -162,17 +136,6 @@ Two MCP servers (figma-developer-mcp, figma-console-mcp) are pre-configured in `
 | [Tasks Workflow](docs/guides/tasks-workflow.md)                 | File-based task management system |
 | [Figma Integration](docs/guides/figma-integration.md)           | Design-to-code pipeline           |
 | [Architecture Decisions](docs/guides/architecture-decisions.md) | ADR system and existing decisions |
-
-## Quality Gates
-
-All must pass before committing:
-
-```bash
-pnpm typecheck      # Zero TypeScript errors
-pnpm biome:check    # Zero Biome lint/format errors
-pnpm lint           # Zero ESLint errors
-pnpm build          # Clean production build
-```
 
 ## Security
 

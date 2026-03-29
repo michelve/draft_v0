@@ -57,17 +57,17 @@ For each accepted ADR, ask: does the proposed change contradict the decision?
 
 **Violation signals:**
 
-| If proposed change involves...            | Check against...                                                 |
-| ----------------------------------------- | ---------------------------------------------------------------- |
-| A new library or package                  | ADRs about that domain (state, routing, DB, styling, etc.)       |
-| A new pattern or approach                 | ADRs that mandate a specific pattern                             |
-| Removing or bypassing something           | ADRs that mandated the thing being removed                       |
-| A new architectural layer                 | ADR 0002 (layered architecture)                                  |
-| Raw SQL                                   | ADR 0002 (Prisma Client API only)                                |
-| `useState + useEffect` for server data    | ADR 0005 (TanStack Query)                                        |
-| Editing `src/client/components/ui/` files | ADR 0004 (shadcn immutability)                                   |
-| A new CSS config file                     | ADR 0003 (Tailwind v4 CSS-first) or ADR 0011 (single custom.css) |
-| A default export                          | ADRs about TypeScript conventions                                |
+| If proposed change involves...            | Check against...                                           |
+| ----------------------------------------- | ---------------------------------------------------------- |
+| A new library or package                  | ADRs about that domain (state, routing, DB, styling, etc.) |
+| A new pattern or approach                 | ADRs that mandate a specific pattern                       |
+| Removing or bypassing something           | ADRs that mandated the thing being removed                 |
+| A new architectural layer                 | ADR 0002 (layered architecture)                            |
+| Raw SQL                                   | ADR 0002 (Prisma Client API only)                          |
+| `useState + useEffect` for server data    | ADR 0005 (TanStack Query)                                  |
+| Editing `src/client/components/ui/` files | ADR 0004 (DSAi immutability)                               |
+| A new CSS config file                     | ADR 0011 (single custom.css)                               |
+| A default export                          | ADRs about TypeScript conventions                          |
 
 When uncertain, flag as a **possible conflict** rather than silently passing. The user decides.
 

@@ -8,6 +8,21 @@
 
 Only the latest release on the `main` branch receives security updates. There are no backported fixes for older versions at this time.
 
+### Stack Versions
+
+| Component  | Version      |
+| ---------- | ------------ |
+| Node.js    | 20+          |
+| TypeScript | 6            |
+| React      | 19           |
+| Vite       | 8 (Rolldown) |
+| Express    | 5            |
+| Prisma     | 7            |
+| Biome      | 2            |
+| ESLint     | 10           |
+
+Security reports should reference these versions. Vulnerabilities in transitive dependencies are also in scope.
+
 ## Reporting a Vulnerability
 
 **Do not open a public issue for security vulnerabilities.**
@@ -40,6 +55,8 @@ Use [GitHub Private Vulnerability Reporting](https://github.com/michelve/draft_v
 - Sensitive data exposure (API keys, database credentials, tokens)
 - Server-side request forgery (SSRF)
 - Insecure defaults in configuration
+- Express middleware misconfiguration
+- Prisma query vulnerabilities
 
 ### Out of Scope
 

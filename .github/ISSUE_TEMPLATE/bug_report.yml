@@ -16,7 +16,7 @@ body:
           label: Affected Area
           description: Which part of the project is this related to?
           options:
-              - Frontend (React / TanStack / Tailwind)
+              - Frontend (React / TanStack / Bootstrap)
               - Backend (Express / API routes)
               - Database (Prisma / schema)
               - Build / Tooling (Vite / TypeScript / Biome)

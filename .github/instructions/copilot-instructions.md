@@ -13,7 +13,7 @@ applyTo: "**"
 
 ## Tech Stack
 
-- Frontend: React 19, TypeScript, TanStack Router/Query, Tailwind CSS v4, shadcn/ui
+- Frontend: React 19, TypeScript, TanStack Router/Query, Bootstrap 5.3, DSAi Design System
 - Backend: Node.js, Express, TypeScript
 - Database: Prisma ORM
 - State: TanStack Query (server), Zustand (client), React Hook Form (forms)

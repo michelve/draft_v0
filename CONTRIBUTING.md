@@ -143,11 +143,7 @@ src/client/routes/<page>.tsx  →  auto-registered in routeTree.gen.ts
 
 ### Adding a UI Component
 
-```bash
-npx shadcn@latest add <component-name>
-```
-
-Components install to `src/client/components/ui/`. **Never modify these files.** Create wrappers in `src/client/components/` instead.
+DSAi components live in `src/client/components/ui/`. **Never modify these files.** Create wrappers in `src/client/components/` instead.
 
 ---
 
@@ -260,9 +256,9 @@ Do **not** write ADRs for bug fixes, small refactors, or cosmetic changes.
 
 ### Styling
 
-- Tailwind utility classes for all styling
+- Bootstrap utility classes for all styling
 - `cn()` from `@/lib/utils` for conditional class merging
-- Never use inline `style={}` for Tailwind-supported properties
+- Never use inline `style={}` for Bootstrap-supported properties
 
 ### API Responses
 

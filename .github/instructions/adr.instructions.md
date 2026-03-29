@@ -14,7 +14,7 @@ When making significant architectural or design decisions, record them in `docs/
 - Making a trade-off that future engineers will question
 - Deprecating or replacing a previous decision
 
-Do NOT write an ADR for bug fixes, small refactors, cosmetic changes, adding pages following existing patterns, or installing shadcn/ui components.
+Do NOT write an ADR for bug fixes, small refactors, cosmetic changes, adding pages following existing patterns, or installing DSAi components.
 
 ## How to Create an ADR
 
@@ -45,4 +45,4 @@ When implementing a task that involves a qualifying decision (see "When to Write
 - Do NOT ask the user if they want an ADR - just write it
 - Reference the template and existing ADRs in `docs/decisions/` for style consistency
 
-The only exception is the explicit "Do NOT write" list above (bug fixes, small refactors, cosmetic changes, adding pages following existing patterns, installing shadcn/ui components).
+The only exception is the explicit "Do NOT write" list above (bug fixes, small refactors, cosmetic changes, adding pages following existing patterns, installing DSAi components).

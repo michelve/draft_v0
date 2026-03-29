@@ -150,7 +150,7 @@ Updates are grouped into focused PRs instead of one per package:
 | `prisma`      | Prisma CLI and client                             |
 | `types`       | All `@types/*` packages                           |
 
-Ungrouped packages (React, Express, shadcn deps, etc.) get individual PRs so breaking changes are easier to isolate.
+Ungrouped packages (React, Express, etc.) get individual PRs so breaking changes are easier to isolate.
 
 ---
 

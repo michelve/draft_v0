@@ -55,7 +55,7 @@ body:
           label: Affected Area
           description: Which part of the project does this touch?
           options:
-              - Frontend (React / TanStack / Tailwind)
+              - Frontend (React / TanStack / Bootstrap)
               - Backend (Express / API routes)
               - Database (Prisma / schema)
               - Build / Tooling (Vite / TypeScript / Biome)

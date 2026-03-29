@@ -9,13 +9,13 @@
 
 ## Tech Stack
 
-- **Frontend**: React 19, TypeScript, TanStack Router/Query, Tailwind CSS v4, shadcn/ui
+- **Frontend**: React 19, TypeScript, TanStack Router/Query, Bootstrap 5.3, DSAi Design System
 - **Backend**: Node.js, Express, TypeScript
 - **Database**: Prisma ORM (SQLite default)
 - **State**: TanStack Query (server), Zustand (client), React Hook Form + Zod (forms)
 - **Build**: Vite 6, TypeScript strict mode
 - **Testing**: Vitest (unit), Playwright (e2e)
-- **Linting/Formatting**: Biome, ESLint, Prettier (with Tailwind plugin)
+- **Linting/Formatting**: Biome, ESLint, Prettier
 - **Design**: Figma Code Connect, Figma MCP servers
 - **Plugin**: [hugin-v0](https://github.com/michelve/hugin-v0) (skills, agents, hooks, MCP servers)
 
@@ -109,7 +109,7 @@ claude --plugin-dir ./path/to/hugin-v0
 src/
 ├── client/              # React 19 SPA (Vite)
 │   ├── routes/          # TanStack Router file-based routes
-│   ├── components/      # Shared components (shadcn/ui in ui/)
+│   ├── components/      # Shared components (DSAi in ui/)
 │   ├── lib/             # Utilities (cn, query-client)
 │   └── hooks/           # Custom React hooks
 ├── server/              # Express API
@@ -126,11 +126,9 @@ e2e/
 
 ## Adding UI Components
 
-```bash
-npx shadcn@latest add button card dialog    # install shadcn components
-```
+DSAi components live in `src/client/components/ui/`. Import with `@/components/ui/button`.
 
-Components install to `src/client/components/ui/`. Import with `@/components/ui/button`.
+Use DSAi design tokens (`--dsai-*` CSS variables) and Bootstrap utility classes for styling.
 
 ## Figma Integration
 

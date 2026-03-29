@@ -16,8 +16,8 @@ Activate and follow these project skills throughout:
 - **figma** - Figma MCP server integration, fetching design context, screenshots, and assets
 - **figma-implement-design** - Full Figma-to-code workflow with pixel-perfect translation
 - **react** - React 19 component patterns, hooks, TypeScript
-- **tailwindcss** - Tailwind CSS v4 utility-first styling
-- **shadcn** - shadcn/ui component reuse and customization
+- **bootstrap-styling** - Bootstrap 5.3 utility-first styling
+- **dsai-components** - DSAi component reuse and customization
 - **web-design-guidelines** - Accessibility and UX compliance
 
 ## Workflow
@@ -52,14 +52,14 @@ Download any images, icons, or SVGs returned by the Figma MCP server.
 - Do NOT create placeholder images when a real source is provided
 - For general icons not in the design, use `lucide-react`
 
-### Step 4: Map to Project Components (uses `shadcn` and `tailwindcss` skills)
+### Step 4: Map to Project Components (uses `dsai-components` and `bootstrap-styling` skills)
 
 Before writing new code, check what already exists:
 
-1. **Reuse shadcn/ui components** - If the design has buttons, inputs, cards, dialogs, tables, etc., use the existing shadcn components
-2. **Install missing components**: `npx shadcn@latest add <component>`
+1. **Reuse DSAi components** - If the design has buttons, inputs, cards, dialogs, tables, etc., use the existing DSAi components
+2. **DSAi components are pre-installed** - All standard components are available in `src/client/components/ui/`
 3. **Map Figma tokens to project tokens** - Use the project's color system (`bg-background`, `text-foreground`, `bg-primary`, etc.) instead of raw color values
-4. **Use Tailwind utilities** - Translate Figma spacing, sizing, and layout into Tailwind classes
+4. **Use Bootstrap utilities** - Translate Figma spacing, sizing, and layout into Bootstrap classes
 
 ### Step 5: Implement the Component (uses `react` skill)
 
@@ -103,22 +103,22 @@ You would:
 1. Extract fileKey=`kL9xQn2VwM8pYrTb4ZcHjF`, nodeId=`42-15`
 2. Run `get_design_context(fileKey, nodeId)` → get layout, colors, typography
 3. Run `get_screenshot(fileKey, nodeId)` → get visual reference
-4. Check if shadcn `Card` component exists - if not, `npx shadcn@latest add card`
-5. Build the component using shadcn Card as the base, applying Figma-specific overrides with Tailwind
+4. Check if DSAi `Card` component exists in `src/client/components/ui/`
+5. Build the component using DSAi Card as the base, applying Figma-specific overrides with Bootstrap
 6. Map Figma colors to project tokens (`bg-card`, `text-card-foreground`)
 7. Export as a named component, validate with typecheck
 
 ## How Skills Work in This Prompt
 
-This prompt references skills by name (e.g., **figma**, **react**, **shadcn**). When Copilot encounters a task matching a skill's trigger patterns, it automatically loads the full skill instructions from the corresponding `SKILL.md` file. Skills provide domain-specific rules, patterns, and code examples that guide implementation.
+This prompt references skills by name (e.g., **figma**, **react**, **dsai-components**). When Copilot encounters a task matching a skill's trigger patterns, it automatically loads the full skill instructions from the corresponding `SKILL.md` file. Skills provide domain-specific rules, patterns, and code examples that guide implementation.
 
 Skills referenced in this prompt:
 
-| Skill                    | Location                                         | Provides                                         |
-| ------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `figma`                  | `.github/skills/figma/SKILL.md`                  | Figma MCP tool usage, asset handling rules       |
-| `figma-implement-design` | `.github/skills/figma-implement-design/SKILL.md` | Step-by-step design-to-code workflow             |
-| `react`                  | `.github/skills/react/SKILL.md`                  | React 19 component patterns, hooks               |
-| `tailwindcss`            | `.github/skills/tailwindcss/SKILL.md`            | Tailwind CSS v4 utilities, responsive design     |
-| `shadcn`                 | `.github/skills/shadcn/SKILL.md`                 | Component discovery, installation, customization |
-| `web-design-guidelines`  | `.github/skills/web-design-guidelines/SKILL.md`  | Accessibility, UX review checklist               |
+| Skill                    | Location                                         | Provides                                   |
+| ------------------------ | ------------------------------------------------ | ------------------------------------------ |
+| `figma`                  | `.github/skills/figma/SKILL.md`                  | Figma MCP tool usage, asset handling rules |
+| `figma-implement-design` | `.github/skills/figma-implement-design/SKILL.md` | Step-by-step design-to-code workflow       |
+| `react`                  | `.github/skills/react/SKILL.md`                  | React 19 component patterns, hooks         |
+| `bootstrap-styling`      | `.github/skills/bootstrap-styling/SKILL.md`      | Bootstrap CSS utilities, responsive design |
+| `dsai-components`        | `.github/skills/dsai-components/SKILL.md`        | Component discovery, customization         |
+| `web-design-guidelines`  | `.github/skills/web-design-guidelines/SKILL.md`  | Accessibility, UX review checklist         |

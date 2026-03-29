@@ -15,7 +15,7 @@ body:
           description: Which part of the project is your question about?
           options:
               - Getting started / setup
-              - Frontend (React / TanStack / Tailwind)
+              - Frontend (React / TanStack / Bootstrap)
               - Backend (Express / API routes)
               - Database (Prisma / schema)
               - Build / Tooling (Vite / TypeScript / Biome)

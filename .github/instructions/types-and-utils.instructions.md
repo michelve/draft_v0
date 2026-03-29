@@ -30,7 +30,7 @@ description: "TypeScript types, interfaces, and utility conventions"
 
 | Export          | File                             | Purpose                                                    |
 | --------------- | -------------------------------- | ---------------------------------------------------------- |
-| `cn(...inputs)` | `src/client/lib/utils.ts`        | Merge Tailwind classes (clsx + tailwind-merge)             |
+| `cn(...inputs)` | `src/client/lib/utils.ts`        | Merge CSS classes (clsx + class merging)                   |
 | `queryClient`   | `src/client/lib/query-client.ts` | Singleton TanStack Query client (1-min staleTime, 1 retry) |
 
 ### Adding new utilities

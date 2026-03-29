@@ -28,8 +28,8 @@ AI generates code that follows YOUR project's rules
 | ------------------------- | --------------------------------- | --------------------------------------------------------------------------- |
 | **react**                 | React components, hooks, Suspense | React 19 patterns - no forwardRef, no React.FC, named exports, lazy loading |
 | **react-best-practices**  | Performance optimization          | Vercel engineering guidelines for React SPA performance                     |
-| **tailwindcss**           | Styling, responsive, dark mode    | Tailwind CSS v4 patterns with CSS-first config, `cn()`, `cva()`             |
-| **shadcn-ui**             | UI components                     | shadcn/ui installation, usage, customization (never edit `ui/` files)       |
+| **bootstrap-styling**     | Styling, responsive, dark mode    | Bootstrap 5.3 utilities + DSAi design tokens, `cn()`, `cva()`               |
+| **dsai-components**       | UI components                     | DSAi component usage, customization (never edit `ui/` files)                |
 | **web-design-guidelines** | UI review, accessibility          | Web Interface Guidelines compliance for accessibility and design            |
 
 ### Backend Skills
@@ -86,20 +86,20 @@ Agents are invoked when a task requires multi-step autonomous work.
 
 One-click workflows that combine skills and agents for common tasks. Use them from VS Code's command palette or Copilot chat.
 
-| Prompt             | Purpose                                                                 |
-| ------------------ | ----------------------------------------------------------------------- |
-| **build-page**     | Design and build a new page with React 19 + TanStack Router + shadcn/ui |
-| **figma-to-code**  | Translate a Figma design into production-ready React components         |
-| **commit**         | Create a conventional commit with proper format                         |
-| **pr**             | Create a changeset and open a pull request                              |
-| **gh-new-pr**      | Open a new GitHub PR using GH CLI                                       |
-| **gh-debug-issue** | Debug a GitHub issue: analyze → reproduce → fix                         |
-| **gh-fix-ci**      | Diagnose and fix CI failures on a pull request                          |
-| **gh-pr-comments** | Handle and respond to PR review comments                                |
-| **make-moves**     | Work on a specific GitHub issue with analysis and reproduction          |
-| **changeset**      | Create version-bump changesets for releases                             |
-| **ralph-plan**     | Interactive planning assistant for structured task planning             |
-| **create-skill**   | Build, improve, evaluate, and optimize skills - full authoring workflow |
+| Prompt             | Purpose                                                                       |
+| ------------------ | ----------------------------------------------------------------------------- |
+| **build-page**     | Design and build a new page with React 19 + TanStack Router + DSAi components |
+| **figma-to-code**  | Translate a Figma design into production-ready React components               |
+| **commit**         | Create a conventional commit with proper format                               |
+| **pr**             | Create a changeset and open a pull request                                    |
+| **gh-new-pr**      | Open a new GitHub PR using GH CLI                                             |
+| **gh-debug-issue** | Debug a GitHub issue: analyze → reproduce → fix                               |
+| **gh-fix-ci**      | Diagnose and fix CI failures on a pull request                                |
+| **gh-pr-comments** | Handle and respond to PR review comments                                      |
+| **make-moves**     | Work on a specific GitHub issue with analysis and reproduction                |
+| **changeset**      | Create version-bump changesets for releases                                   |
+| **ralph-plan**     | Interactive planning assistant for structured task planning                   |
+| **create-skill**   | Build, improve, evaluate, and optimize skills - full authoring workflow       |
 
 ---
 
@@ -305,7 +305,7 @@ Some skills need **isolated execution context** to prevent cross-contamination b
 
 **Do NOT use `context: fork` for:**
 
-- Tech augmentation skills that add domain knowledge (e.g., `react`, `prisma`, `nodejs`, `tailwindcss`)
+- Tech augmentation skills that add domain knowledge (e.g., `react`, `prisma`, `nodejs`, `bootstrap-styling`)
 - Skills that should inherit context from the main conversation
 - Read-only operations that benefit from existing context
 
@@ -389,7 +389,7 @@ Use this checklist when creating a new skill to ensure proper configuration:
 → `user-invocable: true`, `disable-model-invocation: true`, document when to manually invoke
 
 **Creating background knowledge only?**
-→ `user-invocable: false` (rare - only `shadcn` uses this currently)
+→ `user-invocable: false` (rare - only `dsai-components` uses this currently)
 
 ### Template Structure
 
@@ -456,9 +456,9 @@ Rules in `.claude/rules/` are always active and enforce project conventions auto
 | **express-api**     | API response format, status codes, error handling patterns  |
 | **prisma**          | Prisma Client usage, P2002/P2025 error handling, no raw SQL |
 | **react**           | React 19 patterns, TanStack Router/Query, named exports     |
-| **shadcn-ui**       | Component installation, no direct ui/ modification          |
+| **dsai-components** | Component usage, no direct ui/ modification                 |
 | **state-and-forms** | TanStack Query for server state, Zustand for client state   |
-| **tailwind**        | Tailwind v4 CSS-first config, utility classes, `cn()` usage |
+| **bootstrap**       | Bootstrap 5.3 utilities, DSAi design tokens, `cn()` usage   |
 | **codacy**          | Automated code quality analysis after every file edit       |
 
 ## Hooks (Claude Code)

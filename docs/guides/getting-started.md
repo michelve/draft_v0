@@ -62,13 +62,12 @@ FIGMA_PROJECT_ID=""
 
 Open the project in VS Code. You will see a notification to install recommended extensions - accept it. These extensions provide:
 
-- **Tailwind CSS IntelliSense** - Class autocomplete and hover previews
 - **Prisma** - Schema syntax highlighting and formatting
 - **Biome** - Fast linting and formatting
 - **ESLint + Prettier** - Additional code quality checks
 - **TanStack Router** - Route file support
 
-The workspace is pre-configured with editor settings (4-space tabs, format-on-save, Tailwind class sorting).
+The workspace is pre-configured with editor settings (4-space tabs, format-on-save).
 
 ## Available Commands
 

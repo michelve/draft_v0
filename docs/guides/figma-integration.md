@@ -13,7 +13,7 @@ figma skill fetches design context via MCP
     ↓
 figma-implement-design skill generates production code
     ↓
-Result: React component with Tailwind CSS, matching the design
+Result: React component with Bootstrap CSS, matching the design
 ```
 
 ## Setup
@@ -74,8 +74,8 @@ The fastest way is the **figma-to-code** prompt template:
 
 **Step 2 - figma-implement-design skill** translates to code:
 
-- Maps Figma components to shadcn/ui equivalents
-- Converts design tokens to Tailwind CSS classes
+- Maps Figma components to DSAi equivalents
+- Converts design tokens to Bootstrap CSS classes
 - Generates React 19 components with proper patterns
 - Applies project conventions (named exports, path aliases, `cn()`)
 
@@ -90,35 +90,35 @@ If you prefer step-by-step control:
 
 ## Design Token Mapping
 
-Figma design tokens map to Tailwind CSS theme tokens:
+Figma design tokens map to Bootstrap CSS / DSAi theme tokens:
 
-| Figma Token       | Tailwind Class                             | CSS Variable                         |
+| Figma Token       | Bootstrap Class                            | CSS Variable                         |
 | ----------------- | ------------------------------------------ | ------------------------------------ |
 | Fill / Background | `bg-background`, `bg-primary`              | `--background`, `--primary`          |
 | Text color        | `text-foreground`, `text-muted-foreground` | `--foreground`, `--muted-foreground` |
 | Border color      | `border-border`                            | `--border`                           |
 | Border radius     | `rounded-md`, `rounded-lg`                 | `--radius`                           |
-| Spacing           | `p-4`, `gap-6`, `m-2`                      | Tailwind defaults                    |
-| Typography        | `text-sm`, `font-medium`                   | Tailwind defaults                    |
+| Spacing           | `p-4`, `gap-6`, `m-2`                      | Bootstrap defaults                   |
+| Typography        | `text-sm`, `font-medium`                   | Bootstrap defaults                   |
 
-Theme tokens are defined in `src/client/index.css` using oklch colors. See the [Tailwind guide](../guides/project-structure.md) for customization.
+Theme tokens are defined in `src/client/index.css`. See the [project structure guide](project-structure.md) for customization.
 
 ## Component Mapping
 
-Common Figma patterns map to shadcn/ui components:
+Common Figma patterns map to DSAi components:
 
-| Figma Pattern | shadcn/ui Component | Install Command                       |
-| ------------- | ------------------- | ------------------------------------- |
-| Button        | `Button`            | `npx shadcn@latest add button`        |
-| Input field   | `Input`             | `npx shadcn@latest add input`         |
-| Card          | `Card`              | `npx shadcn@latest add card`          |
-| Dialog/Modal  | `Dialog`            | `npx shadcn@latest add dialog`        |
-| Dropdown      | `DropdownMenu`      | `npx shadcn@latest add dropdown-menu` |
-| Table         | `Table`             | `npx shadcn@latest add table`         |
-| Tabs          | `Tabs`              | `npx shadcn@latest add tabs`          |
-| Toast         | `Sonner`            | `npx shadcn@latest add sonner`        |
+| Figma Pattern | DSAi Component | Import                                                         |
+| ------------- | -------------- | -------------------------------------------------------------- |
+| Button        | `Button`       | `import { Button } from "@/components/ui/button"`              |
+| Input field   | `Input`        | `import { Input } from "@/components/ui/input"`                |
+| Card          | `Card`         | `import { Card } from "@/components/ui/card"`                  |
+| Dialog/Modal  | `Dialog`       | `import { Dialog } from "@/components/ui/dialog"`              |
+| Dropdown      | `DropdownMenu` | `import { DropdownMenu } from "@/components/ui/dropdown-menu"` |
+| Table         | `Table`        | `import { Table } from "@/components/ui/table"`                |
+| Tabs          | `Tabs`         | `import { Tabs } from "@/components/ui/tabs"`                  |
+| Toast         | `Sonner`       | `import { Sonner } from "@/components/ui/sonner"`              |
 
-If a Figma component does not map to shadcn/ui, a custom component is created in `src/client/components/`.
+If a Figma component does not map to a DSAi component, a custom component is created in `src/client/components/`.
 
 ## Figma Code Connect
 
@@ -159,7 +159,7 @@ This enables Figma's Dev Mode to show your exact React code for each component.
 | "Figma MCP not connected" | Check `FIGMA_API_KEY` in `.env`. Restart VS Code.                 |
 | "Cannot fetch node"       | Verify the Figma URL is a frame or component (not the whole file) |
 | Wrong colors              | Check that Figma tokens match the theme in `src/client/index.css` |
-| Missing component         | Install it via `npx shadcn@latest add <component>`                |
+| Missing component         | Check available DSAi components in `src/client/components/ui/`    |
 
 ## Next Steps
 

@@ -83,7 +83,7 @@ export default tseslint.config(
         },
     },
 
-    // shadcn components - relaxed rules (auto-generated code)
+    // DSAi components - relaxed rules (auto-generated code)
     {
         files: ["src/client/components/ui/**/*.tsx"],
         rules: {

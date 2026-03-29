@@ -45,7 +45,7 @@ Write an ADR when you are:
 - Making a trade-off that someone will question later
 - Deprecating or replacing a previous decision
 
-**Do NOT** write an ADR for bug fixes, small refactors, cosmetic changes, adding pages following existing patterns, or installing shadcn/ui components.
+**Do NOT** write an ADR for bug fixes, small refactors, cosmetic changes, adding pages following existing patterns, or installing DSAi components.
 
 ## How to Create an ADR
 

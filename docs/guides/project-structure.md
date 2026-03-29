@@ -26,13 +26,13 @@ src/client/
 │   ├── __root.tsx       # Root layout (wraps all pages)
 │   └── index.tsx        # Home page (/)
 ├── components/          # Shared components
-│   └── ui/              # shadcn/ui components (DO NOT EDIT)
+│   └── ui/              # DSAi components (DO NOT EDIT)
 ├── lib/                 # Utilities
 │   ├── utils.ts         # cn() helper for class merging
 │   └── query-client.ts  # TanStack Query client config
 ├── hooks/               # Custom React hooks
 ├── main.tsx             # App entry point
-└── index.css            # Tailwind v4 theme (@theme inline)
+└── index.css            # Bootstrap 5.3 + DSAi design tokens
 ```
 
 ### Key Concepts
@@ -52,7 +52,7 @@ function AboutPage() {
 }
 ```
 
-**shadcn/ui components** are installed to `src/client/components/ui/` and must never be modified directly. If you need to customize a component, create a wrapper in `src/client/components/`. See the [shadcn/ui guide](shadcn-ui.md) for installation, styling rules, and common patterns.
+**DSAi components** are in `src/client/components/ui/` and must never be modified directly. If you need to customize a component, create a wrapper in `src/client/components/`.
 
 **Data fetching** uses TanStack Query - never `useState` + `useEffect` for server data:
 
@@ -160,8 +160,8 @@ import { prisma } from "@server/lib/prisma";
 | `tsconfig.node.json` | Server TypeScript config               |
 | `biome.json`         | Biome linter/formatter rules           |
 | `eslint.config.js`   | ESLint rules                           |
-| `.prettierrc`        | Prettier formatting (Tailwind plugin)  |
-| `components.json`    | shadcn/ui installation config          |
+| `.prettierrc`        | Prettier formatting                    |
+| `components.json`    | DSAi component configuration           |
 | `.env`               | Environment variables (gitignored)     |
 
 ## AI Configuration

@@ -1,75 +1,74 @@
 {
-  "folders": [
-    {
-      "path": ".",
-    },
-  ],
-  "settings": {},
-  "extensions": {
-    "recommendations": [
-      "esbenp.prettier-vscode",
-      "dbaeumer.vscode-eslint",
-      "bradlc.vscode-tailwindcss",
-      "Prisma.prisma",
-      "burkeholland.simple-react-snippets",
-      "YoavBls.pretty-ts-errors",
-      "usernamehw.errorlens",
-      "GitHub.copilot",
-      "GitHub.copilot-chat",
-      "figma.figma-vscode-extension",
-      "codacy-app.codacy",
-    ],
-  },
-  "tasks": {
-    "version": "2.0.0",
-    "tasks": [
-      {
-        "label": "Dev Server",
-        "type": "shell",
-        "command": "pnpm dev",
-        "group": "build",
-        "isBackground": true,
-        "problemMatcher": [],
-      },
-      {
-        "label": "Typecheck",
-        "type": "shell",
-        "command": "pnpm typecheck",
-        "group": "test",
-        "problemMatcher": ["$tsc"],
-      },
-      {
-        "label": "Prisma Studio",
-        "type": "shell",
-        "command": "pnpm db:studio",
-        "isBackground": true,
-        "problemMatcher": [],
-      },
-    ],
-  },
-  "launch": {
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "name": "Debug Server",
-        "type": "node",
-        "request": "launch",
-        "runtimeExecutable": "npx",
-        "runtimeArgs": ["tsx", "src/server/index.ts"],
-        "restart": true,
-        "console": "integratedTerminal",
-        "env": {
-          "NODE_ENV": "development",
+    "folders": [
+        {
+            "path": ".",
         },
-      },
-      {
-        "name": "Debug Vitest",
-        "type": "node",
-        "request": "launch",
-        "runtimeExecutable": "npx",
-        "runtimeArgs": ["vitest", "run", "--reporter", "verbose"],
-        "console": "integratedTerminal",
-      },
     ],
-  },
+    "settings": {},
+    "extensions": {
+        "recommendations": [
+            "esbenp.prettier-vscode",
+            "dbaeumer.vscode-eslint",
+            "Prisma.prisma",
+            "burkeholland.simple-react-snippets",
+            "YoavBls.pretty-ts-errors",
+            "usernamehw.errorlens",
+            "GitHub.copilot",
+            "GitHub.copilot-chat",
+            "figma.figma-vscode-extension",
+            "codacy-app.codacy",
+        ],
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "Dev Server",
+                "type": "shell",
+                "command": "pnpm dev",
+                "group": "build",
+                "isBackground": true,
+                "problemMatcher": [],
+            },
+            {
+                "label": "Typecheck",
+                "type": "shell",
+                "command": "pnpm typecheck",
+                "group": "test",
+                "problemMatcher": ["$tsc"],
+            },
+            {
+                "label": "Prisma Studio",
+                "type": "shell",
+                "command": "pnpm db:studio",
+                "isBackground": true,
+                "problemMatcher": [],
+            },
+        ],
+    },
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Debug Server",
+                "type": "node",
+                "request": "launch",
+                "runtimeExecutable": "npx",
+                "runtimeArgs": ["tsx", "src/server/index.ts"],
+                "restart": true,
+                "console": "integratedTerminal",
+                "env": {
+                    "NODE_ENV": "development",
+                },
+            },
+            {
+                "name": "Debug Vitest",
+                "type": "node",
+                "request": "launch",
+                "runtimeExecutable": "npx",
+                "runtimeArgs": ["vitest", "run", "--reporter", "verbose"],
+                "console": "integratedTerminal",
+            },
+        ],
+    },
 }

@@ -32,11 +32,11 @@ Route → Controller → Service → Repository → Prisma (SQLite)
 | Concern      | Location                      | Pattern                              |
 | ------------ | ----------------------------- | ------------------------------------ |
 | Pages/Routes | `src/client/routes/`          | TanStack Router file-based routing   |
-| Components   | `src/client/components/`      | Feature components + `ui/` (shadcn)  |
+| Components   | `src/client/components/`      | Feature components + `ui/` (DSAi)    |
 | Hooks        | `src/client/hooks/`           | Custom hooks (`use` prefix)          |
 | Utilities    | `src/client/lib/`             | `cn()`, `queryClient`, helpers       |
 | Entry        | `src/client/main.tsx`         | QueryClientProvider + RouterProvider |
-| Styles       | `src/client/index.css`        | Tailwind v4 theme (`@theme inline`)  |
+| Styles       | `src/client/index.css`        | Bootstrap 5.3 + DSAi design tokens   |
 | Route Tree   | `src/client/routeTree.gen.ts` | AUTO-GENERATED - never edit          |
 
 ### Path Aliases
@@ -54,8 +54,8 @@ Route → Controller → Service → Repository → Prisma (SQLite)
 | ---------------------------------------------------- | ---------------------------- |
 | React components, hooks, Suspense                    | `react`                      |
 | React performance optimization                       | `react-best-practices`       |
-| Tailwind styling, responsive, dark mode              | `tailwindcss`                |
-| Adding/using shadcn/ui components                    | `shadcn`                     |
+| Bootstrap styling, responsive, dark mode             | `bootstrap-styling`          |
+| Adding/using DSAi components                         | `dsai-components`            |
 | Prisma schema, queries, migrations                   | `prisma`                     |
 | Node.js/Express backend patterns                     | `nodejs`                     |
 | API route testing, integration tests                 | `route-tester`               |
@@ -184,13 +184,13 @@ Example: adding a `Post` resource - follow the existing `User` implementation.
 2. Route tree auto-regenerates - never edit `routeTree.gen.ts`
 3. **Data** - Use `useQuery()` for reads, `useMutation()` for writes
 4. **Code splitting** - Use `React.lazy()` + `<Suspense>` for heavy components
-5. **Styling** - Tailwind utilities + `cn()` for conditional classes
+5. **Styling** - Bootstrap utilities + `cn()` for conditional classes
 6. **Verify** - `pnpm typecheck` + `pnpm biome:check`
 
 ### 3. Add a UI Component
 
-1. **Check shadcn first** - `npx shadcn@latest add [component]`
-    - Installs to `src/client/components/ui/` - never modify these files
+1. **Check DSAi components first** - Review available DSAi components
+    - Components are in `src/client/components/ui/` - never modify these files
 2. **Custom wrapper** - If you need project-specific defaults, create a wrapper in `src/client/components/`
 3. **Styling** - Use `cn()` for class merging, `cva()` for variant systems
 4. **Exports** - Named exports only, no `default export`
@@ -285,20 +285,20 @@ After completing **any** task that modifies files (feature, fix, refactor, docs,
 
 These are hard rules - never do any of these:
 
-| Don't                                               | Do instead                                                      |
-| --------------------------------------------------- | --------------------------------------------------------------- |
-| `useState` + `useEffect` for server data            | `useQuery()` / `useMutation()` from TanStack Query              |
-| Modify files in `src/client/components/ui/`         | Create a wrapper component in `src/client/components/`          |
-| Edit `routeTree.gen.ts`                             | Add/modify route files - tree auto-regenerates                  |
-| Use `tsc -b` in build scripts                       | Use `tsc --noEmit` - Vite handles bundling                      |
-| Expose Prisma/internal errors to API clients        | Log server-side, return generic error to client                 |
-| Use raw SQL queries                                 | Use Prisma Client API                                           |
-| Use `React.FC`, `forwardRef`, `propTypes`           | Regular function components, `ref` as prop (React 19)           |
-| Use `default export`                                | Named exports only                                              |
-| Use inline `style={}` for Tailwind-supported styles | Use Tailwind utility classes                                    |
-| Create `.js` files in `src/`                        | TypeScript only (`.ts` / `.tsx`)                                |
-| Use `any` type                                      | Use proper types - `any` only as last resort with justification |
-| Early-return loading spinners                       | Use `LoadingOverlay` / `SuspenseLoader` components              |
+| Don't                                                | Do instead                                                      |
+| ---------------------------------------------------- | --------------------------------------------------------------- |
+| `useState` + `useEffect` for server data             | `useQuery()` / `useMutation()` from TanStack Query              |
+| Modify files in `src/client/components/ui/`          | Create a wrapper component in `src/client/components/`          |
+| Edit `routeTree.gen.ts`                              | Add/modify route files - tree auto-regenerates                  |
+| Use `tsc -b` in build scripts                        | Use `tsc --noEmit` - Vite handles bundling                      |
+| Expose Prisma/internal errors to API clients         | Log server-side, return generic error to client                 |
+| Use raw SQL queries                                  | Use Prisma Client API                                           |
+| Use `React.FC`, `forwardRef`, `propTypes`            | Regular function components, `ref` as prop (React 19)           |
+| Use `default export`                                 | Named exports only                                              |
+| Use inline `style={}` for Bootstrap-supported styles | Use Bootstrap utility classes                                   |
+| Create `.js` files in `src/`                         | TypeScript only (`.ts` / `.tsx`)                                |
+| Use `any` type                                       | Use proper types - `any` only as last resort with justification |
+| Early-return loading spinners                        | Use `LoadingOverlay` / `SuspenseLoader` components              |
 
 ---
 
