@@ -73,7 +73,7 @@
     },
     "css": {
         "parser": {
-            "tailwindDirectives": true
+            "tailwindDirectives": false
         },
         "formatter": {
             "enabled": true,
@@ -120,7 +120,8 @@
                         "noExplicitAny": "off"
                     },
                     "a11y": {
-                        "useButtonType": "off"
+                        "useButtonType": "off",
+                        "useSemanticElements": "off"
                     }
                 }
             }
