@@ -1,59 +1,57 @@
 name: E2E Tests
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
 
 concurrency:
-  group: e2e-${{ github.ref }}
-  cancel-in-progress: true
+    group: e2e-${{ github.ref }}
+    cancel-in-progress: true
 
 jobs:
-  e2e:
-    name: Playwright
-    runs-on: ubuntu-latest
+    e2e:
+        name: Playwright
+        runs-on: ubuntu-latest
 
-    env:
-      DATABASE_URL: file:./dev.db
-      NODE_ENV: test
-      PORT: 3001
+        env:
+            DATABASE_URL: file:./dev.db
+            NODE_ENV: test
+            PORT: 3001
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
+            - name: Setup pnpm
+              uses: pnpm/action-setup@v5
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: pnpm
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: pnpm
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
 
-      - name: Install Playwright browsers
-        run: pnpm exec playwright install --with-deps chromium
+            - name: Install Playwright browsers
+              run: pnpm exec playwright install --with-deps chromium
 
-      - name: Generate Prisma client
-        run: pnpm db:generate
+            - name: Generate Prisma client
+              run: pnpm db:generate
 
-      - name: Push database schema
-        run: pnpm db:push
+            - name: Push database schema
+              run: pnpm db:push
 
-      - name: Run E2E tests
-        run: pnpm test:e2e
+            - name: Run E2E tests
+              run: pnpm test:e2e
 
-      - name: Upload test report
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 7
+            - name: Upload test report
+              uses: actions/upload-artifact@v4
+              if: failure()
+              with:
+                  name: playwright-report
+                  path: playwright-report/
+                  retention-days: 7
