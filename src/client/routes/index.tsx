@@ -20,6 +20,13 @@ function Index() {
     return (
         <div className="d-flex min-vh-100 align-items-center justify-content-center">
             <div className="text-center" style={{ maxWidth: "600px" }}>
+                <img
+                    src="/assets/draft_v0_icon.svg"
+                    alt="Draft v0 logo"
+                    width={80}
+                    height={80}
+                    className="mb-3"
+                />
                 <Heading level={1} className="mb-3">
                     Welcome to DSAi
                 </Heading>
