@@ -5,12 +5,6 @@
  * Bootstrap provides the utility classes and grid system.
  * DSAi theme overrides Bootstrap variables with design token values.
  *
- * Import order matters:
- * 1. Bootstrap CSS (base framework)
- * 2. DSAi theme (overrides Bootstrap variables)
- * 3. DSAi tokens (CSS custom properties)
- * 4. DSAi dark mode tokens
- * 5. This file (app-level overrides)
  */
 
 :root {
