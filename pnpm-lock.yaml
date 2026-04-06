@@ -79,8 +79,8 @@ importers:
         specifier: ^10.0.1
         version: 10.0.1(eslint@10.1.0(jiti@2.6.1))
       '@figma/code-connect':
-        specifier: ^1.4.2
-        version: 1.4.2
+        specifier: ^1.4.3
+        version: 1.4.3
       '@playwright/test':
         specifier: ^1.58.2
         version: 1.58.2
@@ -727,8 +727,8 @@ packages:
     resolution: {integrity: sha512-iH1B076HoAshH1mLpHMgwdGeTs0CYwL0SPMkGuSebZrwBp16v415e9NZXg2jtrqPVQjf6IANe2Vtlr5KswtcZQ==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
 
-  '@figma/code-connect@1.4.2':
-    resolution: {integrity: sha512-5DobQUw5xd96d52v4vwrb/YvOQkXY6puVHBZlOP+1ATB4t+FUwH8UHWEBcYYdhVpZGnDWe2EtkP8I3hVVrHJKg==}
+  '@figma/code-connect@1.4.3':
+    resolution: {integrity: sha512-Tj3QMhx3pfBB0I0tgvT82FTVbJb+DnSEE8hTJ0K+d1/8XXgrBzG62I5K8OLG9Vj+OkVmdOnnbC4MDl4DgP5wLA==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -1884,11 +1884,15 @@ packages:
     resolution: {integrity: sha512-JtIQYts08AFAYGF4eSh3pUt3NQkYV/e75pRtQmAVTLNWR/1L7Bsswxlgzgk8nmLEM+gFszsIlA9BgD3XnSqp3g==}
     engines: {node: '>=10'}
 
-  brace-expansion@2.0.2:
-    resolution: {integrity: sha512-Jt0vHyM+jmUBqojB7E1NIYadt0vI0Qxjxd2TErW94wDz+E2LAm5vKMXXwg6ZZBTHPuUlDgQHKXvjGBdfcF1ZDQ==}
+  brace-expansion@2.0.3:
+    resolution: {integrity: sha512-MCV/fYJEbqx68aE58kv2cA/kiky1G8vux3OR6/jbS+jIMe/6fJWa0DTzJU7dqijOWYwHi1t29FlfYI9uytqlpA==}
 
   brace-expansion@5.0.4:
     resolution: {integrity: sha512-h+DEnpVvxmfVefa4jFbCf5HdH5YMDXRsmKflpf1pILZWRFlTbJpxeU55nJl4Smt5HQaGzg1o6RHFPJaOqnmBDg==}
+    engines: {node: 18 || 20 || >=22}
+
+  brace-expansion@5.0.5:
+    resolution: {integrity: sha512-VZznLgtwhn+Mact9tfiwx64fA9erHH/MCXEUfB/0bX/6Fz6ny5EGTXYltMocqg4xFAQZtnO3DHWWXi8RiuN7cQ==}
     engines: {node: 18 || 20 || >=22}
 
   braces@3.0.3:
@@ -3165,6 +3169,10 @@ packages:
     resolution: {integrity: sha512-oRjTw/97aTBN0RHbYCdtF1MQfvusSIBQM0IZEgzl6426+8jSC0nF1a/GmnVLpfB9yyr6g6FTqWqiZVbxrtaCIg==}
     engines: {node: 18 || 20 || >=22}
 
+  minimatch@10.2.5:
+    resolution: {integrity: sha512-MULkVLfKGYDFYejP07QOurDLLQpcjk7Fw+7jXS2R2czRQzR56yHRveU5NDJEOviH+hETZKSkIk5c+T23GjFUMg==}
+    engines: {node: 18 || 20 || >=22}
+
   minimatch@9.0.9:
     resolution: {integrity: sha512-OBwBN9AL4dqmETlpS2zasx+vTeWclWzkblfZk7KTA5j3jeOONz/tRCnZomUyvNg83wL5Zv9Ss6HMJXAgL8R2Yg==}
     engines: {node: '>=16 || 14 >=14.17'}
@@ -3980,8 +3988,8 @@ packages:
   undici-types@7.18.2:
     resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==}
 
-  undici@7.22.0:
-    resolution: {integrity: sha512-RqslV2Us5BrllB+JeiZnK4peryVTndy9Dnqq62S3yYRRTj0tFQCwEniUy2167skdGOy3vqRzEvl1Dm4sV2ReDg==}
+  undici@7.24.7:
+    resolution: {integrity: sha512-H/nlJ/h0ggGC+uRL3ovD+G0i4bqhvsDOpbDv7At5eFLlj2b41L8QliGbnl2H7SnDiYhENphh1tQFJZf+MyfLsQ==}
     engines: {node: '>=20.18.1'}
 
   unicode-trie@2.0.0:
@@ -4187,8 +4195,8 @@ packages:
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
-  ws@8.19.0:
-    resolution: {integrity: sha512-blAT2mjOEIi0ZzruJfIhb3nps74PRWTCz1IjglWEEpQl5XS/UNama6u2/rjFkDDouqr4L67ry+1aGIALViWjDg==}
+  ws@8.20.0:
+    resolution: {integrity: sha512-sAt8BhgNbzCtgGbt2OxmpuryO63ZoDk/sqaB/znQm94T4fCEsy/yV+7CdC1kJhOU9lboAEU7R3kquuycDoibVA==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -4899,7 +4907,7 @@ snapshots:
     dependencies:
       '@eslint/object-schema': 3.0.3
       debug: 4.4.3
-      minimatch: 10.2.4
+      minimatch: 10.2.5
     transitivePeerDependencies:
       - supports-color
 
@@ -4922,7 +4930,7 @@ snapshots:
       '@eslint/core': 1.1.1
       levn: 0.4.1
 
-  '@figma/code-connect@1.4.2':
+  '@figma/code-connect@1.4.3':
     dependencies:
       boxen: 5.1.1
       chalk: 4.1.2
@@ -4943,7 +4951,7 @@ snapshots:
       strip-ansi: 6.0.1
       ts-morph: 27.0.2
       typescript: 5.9.3
-      undici: 7.22.0
+      undici: 7.24.7
       zod: 3.25.58
       zod-validation-error: 3.5.4(zod@3.25.58)
     transitivePeerDependencies:
@@ -5657,7 +5665,7 @@ snapshots:
 
   '@ts-morph/common@0.28.1':
     dependencies:
-      minimatch: 10.2.4
+      minimatch: 10.2.5
       path-browserify: 1.0.1
       tinyglobby: 0.2.15
 
@@ -5805,7 +5813,7 @@ snapshots:
       '@typescript-eslint/types': 8.57.2
       '@typescript-eslint/visitor-keys': 8.57.2
       debug: 4.4.3
-      minimatch: 10.2.4
+      minimatch: 10.2.5
       semver: 7.7.4
       tinyglobby: 0.2.15
       ts-api-utils: 2.5.0(typescript@6.0.2)
@@ -6036,11 +6044,15 @@ snapshots:
       widest-line: 3.1.0
       wrap-ansi: 7.0.0
 
-  brace-expansion@2.0.2:
+  brace-expansion@2.0.3:
     dependencies:
       balanced-match: 1.0.2
 
   brace-expansion@5.0.4:
+    dependencies:
+      balanced-match: 4.0.4
+
+  brace-expansion@5.0.5:
     dependencies:
       balanced-match: 4.0.4
 
@@ -6819,7 +6831,7 @@ snapshots:
     dependencies:
       foreground-child: 3.3.1
       jackspeak: 4.2.3
-      minimatch: 10.2.4
+      minimatch: 10.2.5
       minipass: 7.1.3
       package-json-from-dist: 1.0.1
       path-scurry: 2.0.2
@@ -7074,7 +7086,7 @@ snapshots:
       whatwg-encoding: 3.1.1
       whatwg-mimetype: 4.0.0
       whatwg-url: 14.2.0
-      ws: 8.19.0
+      ws: 8.20.0
       xml-name-validator: 5.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -7311,9 +7323,13 @@ snapshots:
     dependencies:
       brace-expansion: 5.0.4
 
+  minimatch@10.2.5:
+    dependencies:
+      brace-expansion: 5.0.5
+
   minimatch@9.0.9:
     dependencies:
-      brace-expansion: 2.0.2
+      brace-expansion: 2.0.3
 
   minimist@1.2.8: {}
 
@@ -8181,7 +8197,7 @@ snapshots:
 
   undici-types@7.18.2: {}
 
-  undici@7.22.0: {}
+  undici@7.24.7: {}
 
   unicode-trie@2.0.0:
     dependencies:
@@ -8353,7 +8369,7 @@ snapshots:
 
   wrappy@1.0.2: {}
 
-  ws@8.19.0: {}
+  ws@8.20.0: {}
 
   xml-name-validator@5.0.0: {}
 
