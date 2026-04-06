@@ -81,7 +81,7 @@
         "lint-staged": "^16.4.0",
         "prettier": "^3.8.1",
         "prisma": "^7.6.0",
-        "sass": "^1.98.0",
+        "sass": "^1.99.0",
         "style-dictionary": "^5.1.1",
         "tsx": "^4.19.0",
         "typescript": "^6.0.2",
